@@ -53,15 +53,6 @@ function M.setup(opts)
     colors.green = default_palette.green.bright
   end
 
-  colors.orange = default_palette.orange.bright
-  colors.yellow = default_palette.yellow.bright -- match parens, ...
-  colors.red = default_palette.red.bright
-  colors.purple = default_palette.purple.bright
-  colors.blue = default_palette.blue.bright
-  colors.light_blue = default_palette.light_blue.bright
-  colors.teal = default_palette.teal.bright
-  colors.cyan = default_palette.cyan.bright
-  colors.green = default_palette.green.bright
   colors.Orange = default_palette.orange
   colors.Yellow = default_palette.yellow
   colors.Red = default_palette.red
