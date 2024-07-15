@@ -7,19 +7,45 @@ function M.get(c)
     htmlH1 = { fg = c.purple, bold = true },
     htmlH2 = { fg = c.blue, bold = true },
 
-    mkdCodeDelimiter = { bg = c.terminal_black, fg = c.fg },
-    mkdCodeStart = { fg = c.blue14, bold = true },
-    mkdCodeEnd = { fg = c.blue14, bold = true },
+    -- Code snippet
+    markdownCode = { fg = c.grey[4] },
+    mkdCodeDelimiter = { bg = c.grey[4], fg = c.fg },
+    mkdCodeStart = { fg = c.blue, bold = true },
+    mkdCodeEnd = { fg = c.blue, bold = true },
 
     markdownHeadingDelimiter = { fg = c.orange, bold = true },
-    markdownCode = { fg = c.blue14 },
-    markdownCodeBlock = { fg = c.blue14 },
+    markdownCodeBlock = { fg = c.blue },
     markdownH1 = { fg = c.purple, bold = true },
     markdownH2 = { fg = c.blue, bold = true },
     markdownLinkText = { fg = c.blue, underline = true },
+
+    --- Text
+    ["@markup.raw.markdown"] = { fg = c.cyan },
+    ["@markup.raw.markdown_inline"] = { fg = c.grey[4] }, -- text between ``
+    ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- code snippet with language not known like Mermaid
+    ["@markup.link"] = { fg = c.to_check },
+    ["@markup.link.label"] = { link = "SpecialChar" },
+    ["@markup.link.label.symbol"] = { link = "Identifier" },
+    ["@markup"] = { link = "@none" },
+    ["@markup.environment"] = { link = "Macro" },
+    ["@markup.environment.name"] = { link = "Type" },
+    ["@markup.raw"] = { link = "String" },
+    ["@markup.math"] = { link = "Special" },
+    ["@markup.strong"] = { bold = true },
+    ["@markup.emphasis"] = { italic = true },
+    ["@markup.strikethrough"] = { strikethrough = true },
+    ["@markup.underline"] = { underline = true },
+    ["@markup.heading"] = { link = "Title" },
+    ["@markup.link.url"] = { link = "Underlined" },
+    ["@markup.list"] = { fg = c.to_check }, -- For special punctutation that does not fall in the catagories before.
+    ["@markup.list.markdown"] = { fg = c.orange, bold = true },
+    ["@markup.list.unchecked"] = { fg = c.cyan }, -- For brackets and parens.
+    ["@markup.list.checked"] = { fg = c.green }, -- For brackets and parens.
+    ["@lable.markdown"] = { fg = c.cyan },
+    ["@keyword.directive.markdown"] = { fg = c.yellow },
   }
 
-  local headers = { c.base, c.base11, c.base12, c.base13, c.base14 }
+  local headers = { c.purple, c.light_blue, c.teal, c.cyan, c.blue }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
   end

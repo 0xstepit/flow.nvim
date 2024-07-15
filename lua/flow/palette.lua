@@ -11,6 +11,7 @@ function M.get()
       pink = "#FF007C",
       yellow = "#FAFF00",
       green = "#14FF00",
+      orange = "#FF7A00",
     },
 
     -- Greys

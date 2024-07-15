@@ -14,7 +14,7 @@ function M.setup(opts)
 
   local colors = {}
 
-  colors.to_check = "#FAFF00" -- value used for hi that i don't know how they are applied.
+  colors.to_check = default_palette.fluo.yellow -- value used for hi that i don't know how they are applied.
 
   colors.fluo = default_palette.fluo[opts.fluo_color] -- used for cursor line nr, ..
 
@@ -64,24 +64,24 @@ function M.setup(opts)
   colors.Green = default_palette.green
 
   -- Sidebar
-  colors.fg_sidebar = colors.to_check
-  colors.bg_sidebar = config.options.transparent == true and colors.none or colors.black
+  colors.fg_sidebar = default_palette.grey[5] -- use by items on quickfix list and help text
+  colors.bg_sidebar = (opts.transparent and default_palette.transparent) or colors.black
 
   -- Float
-  colors.fg_float = colors.grey[4]
+  colors.fg_float = colors.grey[5]
   colors.bg_float = default_palette.transparent
 
   -- Popups
-  colors.fg_popup = colors.to_check
-  colors.bg_popup = colors.black
+  colors.fg_popup = default_palette.fluo.pink
+  colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
 
   -- Statusline
-  colors.fg_statusline = colors.white
+  colors.fg_statusline = colors.grey[3]
   colors.bg_statusline = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = colors.to_check
-  colors.bg_highlight = colors.black -- used for colorcolumn, cursorline, ...
+  colors.fg_highlight = default_palette.fluo.orange
+  colors.bg_highlight = colors.grey[1] -- used for colorcolumn, cursorline, ...
 
   -- Gutter
   colors.fg_gutter = colors.grey[3] -- used for nontext, signcolumn, foldcolumn, ...
@@ -92,7 +92,7 @@ function M.setup(opts)
   colors.fg_visual = colors.black
 
   -- Borders
-  colors.border_highlight = colors.to_check
+  colors.border_highlight = default_palette.fluo.green
   colors.border = default_palette.grey[1]
 
   -- Git

@@ -12,9 +12,9 @@ function M.get(colors)
     TelescopeSelection = { fg = colors.fluo, bg = colors.bg_float, bold = true },
     TelescopeSelectionCaret = { fg = colors.fluo, bold = true },
 
-    TelescopePromptPrefix = { fg = colors.fluo, bg = colors.pink1 },
+    TelescopePromptPrefix = { fg = colors.fluo, bg = colors.bg_float },
 
-    TelescopeResultsTitle = { fg = colors.base, bg = colors.bg_float },
+    TelescopeResultsTitle = { fg = colors.fg_gutter, bg = colors.bg_float },
     TelescopePromptTitle = { link = "TelescopeResultsTitle" },
     TelescopePreviewTitle = { link = "TelescopeResultsTitle" },
 

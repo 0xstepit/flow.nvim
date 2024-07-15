@@ -58,6 +58,17 @@ return {
   end,
 }
 ```
+## Supported plugins
+
+Below the list of supported plugins divided by category:.
+
+- **Git**: [fugitive](https://github.com/tpope/vim-fugitive), [gitsign](https://github.com/lewis6991/gitsigns.nvim).
+- **Completion**: [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [lsp-kind](https://github.com/onsails/lspkind.nvim).
+- **Debug**: [nvim-dap](https://github.com/mfussenegger/nvim-dap).
+- **Plugins**: [lazy](https://github.com/folke/lazy.nvim).
+- **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim), [treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+- **Utils**: [trouble](https://github.com/folke/trouble.nvim), [todo-comments](https://github.com/folke/todo-comments.nvim), [which-key](https://github.com/folke/which-key.nvim).
+- **Base Nvim**: diagnostic, lsp, markdown.
 
 ## Todo
 

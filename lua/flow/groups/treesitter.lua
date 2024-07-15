@@ -3,7 +3,7 @@ local M = {}
 function M.get(colors)
   local theme = {
 
-    TreesitterContext = { bg = colors.bg_dark },
+    TreesitterContext = { bg = colors.border },
     -- Linked
     ["@annotation"] = { link = "PreProc" },
     ["@attribute"] = { link = "PreProc" },
@@ -36,21 +36,9 @@ function M.get(colors)
     ["@keyword.repeat"] = { link = "Repeat" },
     ["@keyword.storage"] = { link = "StorageClass" },
     ["@string"] = { link = "String" },
-    ["@markup.link.label"] = { link = "SpecialChar" },
-    ["@markup.link.label.symbol"] = { link = "Identifier" },
     ["@tag"] = { link = "Label" },
     ["@tag.attribute"] = { link = "@property" },
     ["@tag.delimiter"] = { link = "Delimiter" },
-    ["@markup"] = { link = "@none" },
-    ["@markup.environment"] = { link = "Macro" },
-    ["@markup.environment.name"] = { link = "Type" },
-    ["@markup.raw"] = { link = "String" },
-    ["@markup.math"] = { link = "Special" },
-    ["@markup.strong"] = { bold = true },
-    ["@markup.emphasis"] = { italic = true },
-    ["@markup.strikethrough"] = { strikethrough = true },
-    ["@markup.underline"] = { underline = true },
-    ["@markup.heading"] = { link = "Title" },
 
     ["@comment.note"] = { fg = colors.hint },
     ["@comment.error"] = { fg = colors.error },
@@ -59,7 +47,6 @@ function M.get(colors)
     ["@comment.warning"] = { fg = colors.warning },
     ["@comment.todo"] = { fg = colors.todo },
 
-    ["@markup.link.url"] = { link = "Underlined" },
     ["@type"] = { link = "Type" },
     ["@type.definition"] = { link = "Typedef" },
     ["@type.qualifier"] = { link = "@keyword" },
@@ -69,8 +56,6 @@ function M.get(colors)
     ["@punctuation.delimiter"] = { fg = colors.base13 }, -- For delimiters ie: `.`
     ["@punctuation.bracket"] = { fg = colors.fg_dark }, -- For brackets and parens.
     ["@punctuation.special"] = { fg = colors.base12 }, -- For special symbols (e.g. `{}` in string interpolation)
-    ["@markup.list"] = { fg = colors.base13 }, -- For special punctutation that does not fall in the catagories before.
-    ["@markup.list.markdown"] = { fg = colors.orange, bold = true },
 
     --- Literals
     ["@string.documentation"] = { fg = colors.yellow },
@@ -98,14 +83,6 @@ function M.get(colors)
     ["@variable"] = { fg = colors.fg }, -- any variable name that does not have another highlight, like in go "local util"
     ["@variable.builtin"] = { fg = colors.red1 }, -- Variable names that are defined by the languages, like `this` or `self`.
     ["@module.builtin"] = { fg = colors.red1 }, -- Variable names that are defined by the languages, like `this` or `self`.
-
-    --- Text
-    -- ["@markup.raw.markdown"] = { fg = colors.cyan},
-    ["@markup.raw.markdown_inline"] = { bg = colors.terminal_black, fg = colors.cyan },
-    ["@markup.link"] = { fg = colors.blue14 },
-
-    ["@markup.list.unchecked"] = { fg = colors.cyan }, -- For brackets and parens.
-    ["@markup.list.checked"] = { fg = colors.green1 }, -- For brackets and parens.
 
     ["@diff.plus"] = { link = "DiffAdd" },
     ["@diff.minus"] = { link = "DiffDelete" },

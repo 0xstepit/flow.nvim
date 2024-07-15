@@ -3,10 +3,6 @@ local M = {}
 -- Defines the highlight group colors for diagnostic.
 -- @param c The available colors.
 function M.get(c)
-  -- TODO: un todo
-  -- FIXME: un todo
-  -- WARN: un todo
-  -- NOTE: un todo
   local theme = {
     TodoBgTODO = { fg = c.bg, bg = c.Teal.bright },
     TodoFgTODO = { bg = c.bg, fg = c.Teal.bright },

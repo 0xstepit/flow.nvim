@@ -10,7 +10,7 @@ function M.get(c, options)
     NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- normal text in sidebar
     NormalFloat = { fg = c.fg_float, bg = options.transparent and c.none or c.bg_float }, -- normal text in floating windows like documentation
 
-    NonText = { fg = c.fg_gutter }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText = { fg = c.grey[6] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Whitespace = { fg = c.fg_gutter }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 
     Comment = { fg = c.comment }, -- any comment
@@ -56,18 +56,21 @@ function M.get(c, options)
 
     -- TODO: change with lualine color
     Pmenu = { bg = c.bg_gutter, fg = c.fg }, -- popup menu: normal item triggered for example when listing plugin commands in terminal
-    PmenuSel = { link = "IncSearch" }, -- popup menu: selected item.
-    PmenuSbar = { bg = c.yellow }, -- popup menu: scrollbar.
-    PmenuThumb = { bg = c.red }, -- popup menu: Thumb of the scrollbar.
+    PmenuSel = { fg = c.fluo }, -- popup menu: selected item.
+    PmenuKindSel = { fg = c.to_check }, -- popup menu: selected item.
+    PmenuSbar = { bg = c.grey[2] }, -- popup menu: scrollbar.
+    PmenuThumb = { bg = c.grey[3] }, -- popup menu: Thumb of the scrollbar.
 
     FloatBorder = { fg = c.fg_float, bg = c.bg_float }, -- border of for example completion
-    FloatTitle = { fg = c.to_check, bg = c.black },
+    FloatTitle = { fg = c.red, bg = c.black },
 
     Question = { fg = c.bg_visual }, -- |hit-enter| prompt and yes/no questions
 
     QuickFixLine = { bg = c.bg_visual, fg = c.fg_visual, bold = true }, -- current |quickfix| item in the quickfix window
-    qfLineNr = { fg = c.fg_gutter },
-    qfFileName = { fg = c.fg_gutter },
+    qfLineNr = { fg = c.grey[4] },
+    qfFileName = { fg = c.light_blue },
+    qfSeparator = { fg = c.fg_sidebar },
+    qfInfo = { fg = c.to_check },
 
     SpecialKey = { fg = c.to_check }, -- unprintable characters: text displayed differently from what it really is
 
@@ -86,7 +89,7 @@ function M.get(c, options)
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
     Constant = { fg = c.yellow }, -- (preferred) any constant
-    String = { fg = c.cyan }, --   a string constant: "this is a string"
+    String = { fg = c.light_blue }, --   a string constant: "this is a string"
     Character = { fg = c.cyan }, --  a character constant: 'c', '\n'
     Operator = { fg = c.green }, -- "sizeof", "+", "*", etc.
     Number = { link = "Constant" }, --   a number constant: 234, 0xff
@@ -122,7 +125,7 @@ function M.get(c, options)
     TabLine = { bg = c.green, fg = c.fg_gutter }, -- tab pages line, not active tab page label
     TabLineFill = { bg = c.green }, -- tab pages line, where there are no labels
     TabLineSel = { fg = c.green, bg = c.cyan }, -- tab pages line, active tab page label
-    Title = { fg = c.green, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
+    Title = { fg = c.light_blue, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
     WildMenu = { bg = c.green }, -- current match in 'wildmenu' completion
     WinBar = { bg = c.green }, -- window bar
     WinBarNC = { bg = c.green }, -- window bar in inactive windows

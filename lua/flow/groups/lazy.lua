@@ -5,8 +5,8 @@ local M = {}
 -- @param c The available colors.
 function M.get(c)
   local theme = {
-    LazyProgressDone = { bold = true, fg = c.magenta1 },
-    LazyProgressTodo = { bold = true, fg = c.fg_gutter },
+    LazyProgressDone = { bold = true, fg = c.fluo },
+    LazyProgressTodo = { bold = true, fg = c.light_blue },
   }
 
   return theme

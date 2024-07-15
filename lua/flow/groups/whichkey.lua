@@ -6,7 +6,7 @@ local M = {}
 function M.get(c)
   local theme = {
     WhichKey = { fg = c.fluo },
-    WhichKeyGroup = { fg = c.cyan },
+    WhichKeyGroup = { fg = c.purple },
     WhichKeyDesc = { fg = c.white },
     WhichKeyFloat = { bg = c.bg_popup },
     WhichKeyBorder = { fg = c.border }, -- require border to be activated in the plugin.

@@ -7,12 +7,7 @@ function M.get(c)
 
     gitCommitSummary = { fg = c.fluo },
 
-    DiffAdd = { bg = c.diff.add }, -- diff mode: Added line |diff.txt|
-    DiffChange = { bg = c.diff.change }, -- diff mode: Changed line |diff.txt|
-    DiffDelete = { bg = c.diff.delete }, -- diff mode: Deleted line |diff.txt|
-    DiffText = { bg = c.diff.text }, -- diff mode: Changed text within a changed line |diff.txt|
-
-    -- diff
+    -- Diff
     diffAdded = { fg = c.git.add },
     diffRemoved = { fg = c.git.delete },
     diffChanged = { fg = c.git.change },
@@ -21,11 +16,26 @@ function M.get(c)
     diffFile = { fg = c.cyan },
     diffLine = { fg = c.comment },
     diffIndexLine = { fg = c.purple },
+    DiffAdd = { bg = c.diff.add }, -- diff mode: Added line |diff.txt|
+    DiffChange = { bg = c.diff.change }, -- diff mode: Changed line |diff.txt|
+    DiffDelete = { bg = c.diff.delete }, -- diff mode: Deleted line |diff.txt|
+    DiffText = { bg = c.diff.text }, -- diff mode: Changed text within a changed line |diff.txt|
 
     -- GitSigns
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|
     GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
     GitSignsDelete = { fg = c.git.delete }, -- diff mode: Deleted line |diff.txt|
+
+    -- Fugitive
+    fugitiveHeader = { fg = c.grey[5] },
+    fugitiveHelpHeader = { link = "fugitiveHeader" },
+    fugitiveUntrackedHeading = { fg = c.yellow },
+    fugitiveUntrackedModifier = { link = "fugitiveUntrackedHeading" },
+    fugitiveUnstagedHeading = { fg = c.light_blue },
+    fugitiveUnstagedModifier = { link = "fugitiveUnstagedHeading" },
+    fugitiveStagedHeading = { fg = c.green },
+    fugitiveStagedModifier = { link = "fugitiveStagedHeading" },
+    fugitiveCount = { fg = c.grey[4] },
   }
 
   return theme
