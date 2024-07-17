@@ -42,7 +42,7 @@ function M.get(c, options)
 
     EndOfBuffer = { fg = c.fg_highlight }, -- Filler lines (~) after the end of the buffer.
 
-    VertSplit = { fg = c.border, bold = true }, -- The column separating vertically split windows.
+    VertSplit = { fg = c.fg_border, bold = true }, -- The column separating vertically split windows.
     WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
     -- the horizontal split does not exists and the status line is used
 
@@ -77,7 +77,7 @@ function M.get(c, options)
     -- Quickfix
     QuickFixLine = { bg = c.bg_visual, fg = c.fg_visual, bold = true }, -- Current |quickfix| item in the quickfix window.
     qfLineNr = { link = "CursorLineNr" },
-    qfFileName = { fg = c.light_blue },
+    qfFileName = { link = "Directory" },
     qfSeparator = { fg = c.fg_sidebar }, -- Separator between quickfix line number and filename.
 
     -- Spelling
@@ -90,24 +90,29 @@ function M.get(c, options)
     WinBarNC = { bg = c.grey[2] }, -- Window bar in inactive windows, used by dap-ui.
 
     Special = { fg = c.purple }, -- Any special symbol, like {} in lua.
+    Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
 
-    -- TODO: study these. The colors of following items is accented to better see when they appear.
     TabLine = { bg = c.fluo, fg = c.fg_gutter }, -- tab pages line, not active tab page label
     TabLineFill = { bg = c.fluo }, -- tab pages line, where there are no labels
-    TabLineSel = { fg = c.to_check, bg = c.cyan }, -- tab pages line, active tab page label
+    TabLineSel = { link = "LineNr" }, -- Tab pages line, active tab page label. Used by Trouble for numbers
+
+    Include = { fg = c.red }, --  preprocessor #include
+
+    -- TODO: study these. The colors of following items is accented to better see when they appear.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
     PmenuKindSel = { fg = c.to_check }, -- Popup menu: selected item.
     qfInfo = { fg = c.to_check },
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
     SpecialKey = { fg = c.to_check }, -- Unprintable characters: text displayed differently from what it really is.
     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
-    Include = { fg = c.to_check }, --  preprocessor #include
     Define = { fg = c.to_check }, --   preprocessor #define
     Macro = { fg = c.to_check }, --    same as Define
     PreCondit = { fg = c.to_check }, --  preprocessor #if, #else, #endif, etc.
     SpecialChar = { fg = c.to_check }, --  special character in a constant
-    Tag = { fg = c.to_check }, --    you can use CTRL-] on this
     SpecialComment = { fg = c.to_check }, -- special things inside a comment
+
+    IblIndent = { link = "LineNr" },
+    IblWhiteSpace = { fg = c.fluo },
   }
 
   return theme

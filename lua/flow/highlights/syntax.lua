@@ -1,7 +1,7 @@
 local M = {}
 
 -- @param c The available colors.
-function M.get(c)
+function M.get(c, options)
   local theme = {
     Constant = { fg = c.yellow }, -- Any constant.
     String = { fg = c.blue }, -- A string constant: "this is a string".
@@ -11,7 +11,7 @@ function M.get(c)
     Boolean = { link = "Constant" }, -- A boolean constant: TRUE, false.
     Float = { link = "Number" }, -- A floating point constant: 2.3e10.
 
-    Type = { fg = c.purple }, -- Types like int, long, char, etc.
+    Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Keyword = { fg = c.red }, -- Any other keyword.
     Typedef = { link = "Type" }, -- A typedef.
     Structure = { link = "Type" }, -- A struct, union, enum, etc.

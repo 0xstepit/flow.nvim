@@ -1,6 +1,6 @@
 local M = {}
 
-function M.get(c)
+function M.get(c, options)
   local theme = {
     -- Normal text
     TelescopeNormal = { fg = c.fg, bg = c.bg_float }, -- background float is the background where the text is

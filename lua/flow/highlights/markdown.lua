@@ -2,7 +2,7 @@ local M = {}
 
 -- Defines the highlight group colors for markdown
 -- @param c The available colors.
-function M.get(c)
+function M.get(c, options)
   local theme = {
     htmlH1 = { fg = c.purple, bold = true },
     htmlH2 = { fg = c.blue, bold = true },

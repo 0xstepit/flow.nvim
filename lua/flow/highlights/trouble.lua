@@ -2,15 +2,14 @@ local M = {}
 
 -- Defines the highlight group colors for trouble.
 -- @param c The available colors.
-function M.get(c)
+function M.get(c, options)
   local theme = {
     -- LspTrouble
     TroubleText = { fg = c.fg_dark },
-    TroubleCount = { fg = c.purple, bg = c.fg_gutter },
-    TroubleNormal = { fg = c.fg, bg = c.bg_sidebar },
+    TroubleCount = { fg = c.red, bg = c.fg_gutter },
+    TroubleDiagnosticsBasename = { fg = c.light_blue },
   }
 
   return theme
 end
-
 return M

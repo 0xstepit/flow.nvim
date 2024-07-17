@@ -73,7 +73,7 @@ function M.setup(opts)
   colors.bg_float = default_palette.transparent
 
   -- Popups
-  colors.fg_popup = default_palette.grey[3]
+  colors.fg_popup = default_palette.grey[6]
   colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
 
   -- Statusline

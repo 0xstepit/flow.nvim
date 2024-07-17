@@ -1,6 +1,6 @@
 local M = {}
 
-function M.get(colors)
+function M.get(colors, options)
   local theme = {
 
     TreesitterContext = { bg = colors.border },
@@ -53,14 +53,14 @@ function M.get(colors)
     ["@operator"] = { link = "Operator" }, -- For any operator: `+`, but also `->` and `*` in C.
 
     --- Punctuation
-    ["@punctuation.delimiter"] = { fg = colors.base13 }, -- For delimiters ie: `.`
-    ["@punctuation.bracket"] = { fg = colors.fg_dark }, -- For brackets and parens.
-    ["@punctuation.special"] = { fg = colors.base12 }, -- For special symbols (e.g. `{}` in string interpolation)
+    ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters ie: `.`
+    ["@punctuation.bracket"] = { fg = colors.purple }, -- For brackets and parens.
+    ["@punctuation.special"] = { link = "Special" }, -- For special symbols (e.g. `{}` in string interpolation)
 
     --- Literals
     ["@string.documentation"] = { fg = colors.yellow },
-    ["@string.regexp"] = { fg = colors.base12 }, -- For regexes.
-    ["@string.escape"] = { fg = colors.purple }, -- For escape characters within a string.
+    ["@string.regexp"] = { fg = colors.cyan }, -- For regexes.
+    ["@string.escape"] = { fg = colors.fg_visual }, -- For escape characters within a string.
 
     --- Functions
     ["@constructor"] = { fg = colors.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
@@ -68,8 +68,8 @@ function M.get(colors)
     ["@variable.parameter.builtin"] = { fg = colors.yellow }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
 
     --- Keywords
-    ["@keyword"] = { fg = colors.red }, -- For keywords that don't fall in previous categories.
-    ["@keyword.function"] = { fg = colors.purple }, -- For keywords used to define a function.
+    ["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
+    ["@keyword.function"] = { link = "Function" }, -- For keywords used to define a function.
 
     ["@label"] = { fg = colors.cyan }, -- For labels: `label:` in C and `:label:` in Lua.
 
@@ -81,8 +81,8 @@ function M.get(colors)
 
     --- Identifiers
     ["@variable"] = { fg = colors.fg }, -- any variable name that does not have another highlight, like in go "local util"
-    ["@variable.builtin"] = { fg = colors.red1 }, -- Variable names that are defined by the languages, like `this` or `self`.
-    ["@module.builtin"] = { fg = colors.red1 }, -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@variable.builtin"] = { fg = colors.red }, -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@module.builtin"] = { fg = colors.red }, -- Variable names that are defined by the languages, like `this` or `self`.
 
     ["@diff.plus"] = { link = "DiffAdd" },
     ["@diff.minus"] = { link = "DiffDelete" },
@@ -132,6 +132,9 @@ function M.get(colors)
     ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
     ["@lsp.typemod.variable.injected"] = { link = "@variable" },
     ["@lsp.typemod.variable.static"] = { link = "@constant" },
+
+    -- Golang
+    -- ["@module.go"] = { fg = colors.cyan },
   }
 
   return theme

@@ -19,6 +19,8 @@ M.active_highlights = {
   "whichkey",
 }
 
+M.b = {}
+
 function M.setup()
   local config = require("flow.config")
   local options = config.options
