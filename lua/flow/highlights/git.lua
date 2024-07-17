@@ -16,10 +16,11 @@ function M.get(c)
     diffFile = { fg = c.cyan },
     diffLine = { fg = c.comment },
     diffIndexLine = { fg = c.purple },
-    DiffAdd = { bg = c.diff.add }, -- diff mode: Added line |diff.txt|
-    DiffChange = { bg = c.diff.change }, -- diff mode: Changed line |diff.txt|
-    DiffDelete = { bg = c.diff.delete }, -- diff mode: Deleted line |diff.txt|
-    DiffText = { bg = c.diff.text }, -- diff mode: Changed text within a changed line |diff.txt|
+
+    DiffAdd = { bg = c.diff.add }, -- Diff mode: Added line |diff.txt|.
+    DiffChange = { bg = c.diff.change }, -- Diff mode: Changed line |diff.txt|.
+    DiffDelete = { bg = c.diff.delete }, -- Diff mode: Deleted line |diff.txt|.
+    DiffText = { bg = c.diff.text }, -- Diff mode: Changed text within a changed line |diff.txt|.
 
     -- GitSigns
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|

@@ -14,7 +14,8 @@ function M.setup(opts)
 
   local colors = {}
 
-  colors.to_check = default_palette.fluo.yellow -- value used for hi that i don't know how they are applied.
+  colors.transparent = default_palette.transparent
+  colors.to_check = default_palette.fluo.green -- value used for hi that i don't know how they are applied.
 
   colors.fluo = default_palette.fluo[opts.fluo_color] -- used for cursor line nr, ..
 
@@ -31,7 +32,7 @@ function M.setup(opts)
   colors.fg_dark = colors.grey4
 
   -- Main colors
-  if opts.brighter == true then
+  if opts.brighter == false then
     colors.orange = default_palette.orange.base
     colors.yellow = default_palette.yellow.base -- match parens, ...
     colors.red = default_palette.red.base
@@ -72,7 +73,7 @@ function M.setup(opts)
   colors.bg_float = default_palette.transparent
 
   -- Popups
-  colors.fg_popup = default_palette.fluo.pink
+  colors.fg_popup = default_palette.grey[3]
   colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
 
   -- Statusline
@@ -88,12 +89,13 @@ function M.setup(opts)
   colors.bg_gutter = colors.bg -- signcolumn, foldcolumn, ...
 
   -- Visual
-  colors.bg_visual = colors.fluo
-  colors.fg_visual = colors.black
+  colors.bg_visual = colors.black
+  colors.fg_visual = colors.fluo
 
   -- Borders
-  colors.border_highlight = default_palette.fluo.green
-  colors.border = default_palette.grey[1]
+  colors.border_highlight = default_palette.fluo.orange
+  colors.fg_border = default_palette.grey[3]
+  colors.bg_border = default_palette.grey[3]
 
   -- Git
   colors.git = {

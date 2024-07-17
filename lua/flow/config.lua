@@ -10,6 +10,7 @@ local defaults = {
     functions = { italic = false, bold = false, underline = false },
     variables = { italic = false, bold = false, underline = false },
   },
+  aggressive_spell_visual = false,
 
   sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
 

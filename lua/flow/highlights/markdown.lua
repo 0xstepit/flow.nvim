@@ -19,7 +19,7 @@ function M.get(c)
     markdownH2 = { fg = c.blue, bold = true },
     markdownLinkText = { fg = c.blue, underline = true },
 
-    --- Text
+    --- Markup
     ["@markup.raw.markdown"] = { fg = c.cyan },
     ["@markup.raw.markdown_inline"] = { fg = c.grey[4] }, -- text between ``
     ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- code snippet with language not known like Mermaid
@@ -43,6 +43,10 @@ function M.get(c)
     ["@markup.list.checked"] = { fg = c.green }, -- For brackets and parens.
     ["@lable.markdown"] = { fg = c.cyan },
     ["@keyword.directive.markdown"] = { fg = c.yellow },
+    ["@spell.markdown"] = { link = "@spell" },
+
+    -- Obsidian
+    ObsidianRefText = { fg = c.blue },
   }
 
   local headers = { c.purple, c.light_blue, c.teal, c.cyan, c.blue }
