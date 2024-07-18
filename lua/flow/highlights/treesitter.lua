@@ -136,7 +136,8 @@ function M.get(colors, options)
     ["@lsp.typemod.variable.static"] = { link = "@constant" },
 
     -- Golang
-    -- ["@module.go"] = { fg = colors.cyan },
+    ["@module.go"] = { fg = colors.cyan },
+    ["@keyword.function.go"] = { link = "Statement" },
   }
 
   return theme

@@ -4,7 +4,7 @@ local M = {}
 function M.get(c, options)
   local theme = {
     Constant = { fg = c.yellow }, -- Any constant.
-    String = { fg = c.blue }, -- A string constant: "this is a string".
+    String = { fg = c.Cyan.dim }, -- A string constant: "this is a string".
     Character = { link = "String" }, -- A character constant: 'c', '\n'.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
