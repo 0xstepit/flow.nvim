@@ -141,7 +141,7 @@ Pull requests and improvement suggestions are very welcome!
 
 ## References
 
-My dot config [oxstepit/dotfiles](https://github.com/0xstepit/dotfiles).
+My dot config [0xstepit/dotfiles](https://github.com/0xstepit/dotfiles).
 
 This colorscheme is inspired by other amazing colorscheme:
 
