@@ -14,19 +14,23 @@ cool!
 
 ## Palette
 
-Flow has been designed to use a palette based on 9 colors selected on the HSL representation. The principal color is the light blue, and the
-other colors has been chosen in the following way:
+Flow has been designed to use a palette based on 9 colors selected using the HSL representation to provide a coherent ambiance.
+The principal color is light blue, and the other colors have been chosen in the following way:
 
 - **Analogous** (S+/-30): blue, cyan.
+
 - **Complementary** (S+/-180): orange.
+
 - **Tetradic** 60 (S+/-60): purple, green.
+
 - **Slit comp** (S+/-150): yellow, red.
 
-To these colors it has been added the teal to provide a more bluish palette and the fluo one. The palette is defined with 3 different level of light:
+Additionally, teal has been added to provide a more bluish palette, along with a fluorescent color to have really accented features. The palette
+is defined with 3 different levels of light:
 
 |Bright|Normal|Dim|
 |-|-|-|
-|L=80|L=70|L=30|
+|80|70|30|
 
 ![palette](./assets/flow-palette.png) 
 
@@ -61,9 +65,9 @@ vim.cmd "colorscheme flow"
 
 ## Configuration
 
-> ❗️ Set the configuration **BEFORE** loading the color scheme with `colorscheme flow`.
+### Default configuration
 
-### Example configuration
+The configuration allows to specify 4 different options:
 
 ```lua 
 return {
@@ -74,38 +78,75 @@ return {
   opts = {},
   config = function()
     require("flow").setup {
-      transparent = true,
-      brighter = true,
-      fluo_color = "yellow"
+      transparent = false, -- Set transparent background.
+      fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
+      mode = "normal", -- Intensity of the palette: normal, dark, or bright. Notice that dark is ugly!
+      aggressive_spell = false, -- Display colors for spell check.
     }
 
     vim.cmd "colorscheme flow"
   end,
 }
 ```
+
+### My personal config
+
+```lua
+return {
+  "0xstepit/flow.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+    require("flow").setup_options {
+      transparent = true,
+      fluo_color = "pink",
+      mode = "normal",
+      aggressive_spell = false,
+    }
+    vim.cmd "colorscheme flow"
+  end,
+}
+```
+
 ## Supported plugins
 
-Below the list of supported plugins divided by category:.
+Below the list of supported plugins divided by category:
 
 - **Git**: [fugitive](https://github.com/tpope/vim-fugitive), [gitsign](https://github.com/lewis6991/gitsigns.nvim).
+
 - **Completion**: [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [lsp-kind](https://github.com/onsails/lspkind.nvim).
+
 - **Debug**: [nvim-dap](https://github.com/mfussenegger/nvim-dap).
+
 - **Plugins**: [lazy](https://github.com/folke/lazy.nvim).
+
 - **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim), [treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+
 - **Utils**: [trouble](https://github.com/folke/trouble.nvim), [todo-comments](https://github.com/folke/todo-comments.nvim), [which-key](https://github.com/folke/which-key.nvim).
+
 - **Base Nvim**: diagnostic, lsp, markdown.
 
 ## Todo
 
 This is still an ongoing project. Below are the next topics I will work on:
 
+- [ ] Add docs.
+
 - [ ] Fix extra automatic generation.
 
 ## Contributing
 
-Pull requests are welcome.
+Pull requests and improvement suggestions are very welcome!
 
 ## References
 
-This colorscheme is inspired by the amazing [Tokyo Night](https://github.com/folke/tokyonight.nvim) plugin.
+My dot config [oxstepit/dotfiles](https://github.com/0xstepit/dotfiles).
+
+This colorscheme is inspired by other amazing colorscheme:
+
+- [Tokyo Night](https://github.com/folke/tokyonight.nvim)
+
+- [Nordic](https://github.com/AlexvZyl/nordic.nvim)
+
 
