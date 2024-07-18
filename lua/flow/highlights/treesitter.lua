@@ -3,7 +3,9 @@ local M = {}
 function M.get(colors, options)
   local theme = {
 
-    TreesitterContext = { bg = colors.border },
+    -- TreesitterContext = { bg = colors.grey[2] },
+    TreesitterContextBottom = { fg = colors.fg_border, underline = true, sp = colors.red },
+    TreesitterContextLineNumberBottom = { underline = true, sp = colors.red },
     -- Linked
     ["@annotation"] = { link = "PreProc" },
     ["@attribute"] = { link = "PreProc" },
@@ -71,7 +73,7 @@ function M.get(colors, options)
     ["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
     ["@keyword.function"] = { link = "Function" }, -- For keywords used to define a function.
 
-    ["@label"] = { fg = colors.cyan }, -- For labels: `label:` in C and `:label:` in Lua.
+    ["@label"] = { link = "Label" }, -- For labels: `label:` in C and `:label:` in Lua.
 
     --- Types
     ["@type.builtin"] = { fg = colors.cyan },

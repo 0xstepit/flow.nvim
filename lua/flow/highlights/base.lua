@@ -46,7 +46,7 @@ function M.get(c, options)
     WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
     -- the horizontal split does not exists and the status line is used
 
-    Folded = { fg = c.orange }, -- Line used for closed folds.
+    Folded = { fg = c.Light_blue.dim }, -- Line used for closed folds.
 
     -- Search
     IncSearch = { bg = c.fg_visual, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
@@ -98,6 +98,8 @@ function M.get(c, options)
 
     Include = { fg = c.red }, --  preprocessor #include
 
+    SpecialChar = { fg = c.teal }, --  special character in a constant. Heavily used in markdown.
+
     -- TODO: study these. The colors of following items is accented to better see when they appear.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
     PmenuKindSel = { fg = c.to_check }, -- Popup menu: selected item.
@@ -108,11 +110,12 @@ function M.get(c, options)
     Define = { fg = c.to_check }, --   preprocessor #define
     Macro = { fg = c.to_check }, --    same as Define
     PreCondit = { fg = c.to_check }, --  preprocessor #if, #else, #endif, etc.
-    SpecialChar = { fg = c.to_check }, --  special character in a constant
     SpecialComment = { fg = c.to_check }, -- special things inside a comment
 
     IblIndent = { link = "LineNr" },
     IblWhiteSpace = { fg = c.fluo },
+
+    netrwClassify = { link = "Type" },
   }
 
   return theme

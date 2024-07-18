@@ -58,12 +58,14 @@ function M.get()
     },
 
     light_blue = {
+      dark = "#0A3A5C",
       dim = "#0F578A",
       base = "#75BDF0",
       bright = "#A3D3F5",
     },
 
     cyan = {
+      dark = "#0A5C55",
       dim = "#0F8A80",
       base = "#75F0E6",
       bright = "#A3F5EE",

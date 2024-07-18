@@ -23,7 +23,7 @@ function M.get(c, options)
     ["@markup.raw.markdown"] = { fg = c.cyan },
     ["@markup.raw.markdown_inline"] = { fg = c.grey[4] }, -- text between ``
     ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- code snippet with language not known like Mermaid
-    ["@markup.link"] = { fg = c.to_check },
+    ["@markup.link"] = { fg = c.Cyan.dim },
     ["@markup.link.label"] = { link = "SpecialChar" },
     ["@markup.link.label.symbol"] = { link = "Identifier" },
     ["@markup"] = { link = "@none" },
@@ -41,7 +41,6 @@ function M.get(c, options)
     ["@markup.list.markdown"] = { fg = c.orange, bold = true },
     ["@markup.list.unchecked"] = { fg = c.cyan }, -- For brackets and parens.
     ["@markup.list.checked"] = { fg = c.green }, -- For brackets and parens.
-    ["@lable.markdown"] = { fg = c.cyan },
     ["@keyword.directive.markdown"] = { fg = c.yellow },
     ["@spell.markdown"] = { link = "@spell" },
 
@@ -49,7 +48,7 @@ function M.get(c, options)
     ObsidianRefText = { fg = c.blue },
   }
 
-  local headers = { c.purple, c.light_blue, c.teal, c.cyan, c.blue }
+  local headers = { c.purple, c.light_blue, c.blue, c.cyan, c.teal }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
   end

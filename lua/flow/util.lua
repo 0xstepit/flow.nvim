@@ -30,15 +30,8 @@ function M.autocmds(config)
 
   vim.api.nvim_create_autocmd("FileType", {
     group = group,
-    pattern = table.concat(config.sidebars, ","),
     callback = set_whl,
   })
-  if vim.tbl_contains(config.sidebars, "terminal") then
-    vim.api.nvim_create_autocmd("TermOpen", {
-      group = group,
-      callback = set_whl,
-    })
-  end
 end
 
 function M.terminal(colors)

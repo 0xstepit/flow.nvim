@@ -1,10 +1,35 @@
 # 🌊 Flow
 
-![logo](./assets/logo.png) 
+![logo](./assets/flow-logo.png) 
 
 Flow is an [Nvim](https://github.com/neovim/neovim) color scheme designed for transparent or dark backgrounds. It features
-carefully designed colors to help focusing during coding plus fluorescent details. Why fluo? Because it is
-nice!
+carefully designed colors to help focusing during coding plus fluorescent details to provide a vibrant environment. Why fluo? Because it is
+cool!
+
+## Showcase
+
+![terminal](./assets/flow-single-terminal.png) 
+
+![terminals](./assets/flow-multiple-terminals.png)
+
+## Palette
+
+Flow has been designed to use a palette based on 9 colors selected on the HSL representation. The principal color is the light blue, and the
+other colors has been chosen in the following way:
+
+- **Analogous** (S+/-30): blue, cyan.
+- **Complementary** (S+/-180): orange.
+- **Tetradic** 60 (S+/-60): purple, green.
+- **Slit comp** (S+/-150): yellow, red.
+
+To these colors it has been added the teal to provide a more bluish palette and the fluo one. The palette is defined with 3 different level of light:
+
+|Bright|Normal|Dim|
+|-|-|-|
+|L=80|L=70|L=30|
+
+![palette](./assets/flow-palette.png) 
+
 
 ## Requirements
 
@@ -74,9 +99,6 @@ Below the list of supported plugins divided by category:.
 
 This is still an ongoing project. Below are the next topics I will work on:
 
-- [ ] Add missing major plugins.
-- [ ] Add docs.
-- [ ] Improve readme.
 - [ ] Fix extra automatic generation.
 
 ## Contributing

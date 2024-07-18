@@ -32,17 +32,17 @@ function M.setup(opts)
   colors.fg_dark = colors.grey4
 
   -- Main colors
-  if opts.brighter == false then
-    colors.orange = default_palette.orange.base
-    colors.yellow = default_palette.yellow.base -- match parens, ...
-    colors.red = default_palette.red.base
-    colors.purple = default_palette.purple.base
-    colors.blue = default_palette.blue.base
-    colors.light_blue = default_palette.light_blue.base
-    colors.teal = default_palette.teal.base
-    colors.cyan = default_palette.cyan.base
-    colors.green = default_palette.green.base
-  else
+  if opts.mode == "dark" then
+    colors.orange = default_palette.orange.dim
+    colors.yellow = default_palette.yellow.dim -- match parens, ...
+    colors.red = default_palette.red.dim
+    colors.purple = default_palette.purple.dim
+    colors.blue = default_palette.blue.dim
+    colors.light_blue = default_palette.light_blue.dim
+    colors.teal = default_palette.teal.dim
+    colors.cyan = default_palette.cyan.dim
+    colors.green = default_palette.green.dim
+  elseif opts.mode == "bright" then
     colors.orange = default_palette.orange.bright
     colors.yellow = default_palette.yellow.bright -- match parens, ...
     colors.red = default_palette.red.bright
@@ -52,6 +52,16 @@ function M.setup(opts)
     colors.teal = default_palette.teal.bright
     colors.cyan = default_palette.cyan.bright
     colors.green = default_palette.green.bright
+  else
+    colors.orange = default_palette.orange.base
+    colors.yellow = default_palette.yellow.base -- match parens, ...
+    colors.red = default_palette.red.base
+    colors.purple = default_palette.purple.base
+    colors.blue = default_palette.blue.base
+    colors.light_blue = default_palette.light_blue.base
+    colors.teal = default_palette.teal.base
+    colors.cyan = default_palette.cyan.base
+    colors.green = default_palette.green.base
   end
 
   colors.Orange = default_palette.orange
@@ -106,10 +116,10 @@ function M.setup(opts)
     untrcked = colors.teal,
   }
   colors.diff = {
-    add = colors.green11, -- background of added lines
-    delete = colors.red11, -- background of deleted lines
-    change = colors.blue11, -- background of changed lines
-    text = colors.yellow11, -- background of changed characters
+    add = colors.Green.dark, -- background of added lines
+    delete = colors.Red.dark, -- background of deleted lines
+    change = colors.Light_blue.dark, -- background of changed lines
+    text = colors.Cyan.dark, -- background of changed characters
   }
 
   -- Diagnostics
@@ -123,8 +133,6 @@ function M.setup(opts)
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter
 
   colors.terminal_black = default_palette.black
-
-  config.options.on_colors(colors)
 
   M.colors = colors
 
