@@ -137,11 +137,11 @@ Below the list of supported plugins divided by category:
 
 Flow.nvim provides colorschemes also for the following tools:
 
-- [Tmux](https://github.com/tmux/tmux/wiki).
+- [Tmux](https://github.com/tmux/tmux/wiki) at [tmux-flow.conf](./extra/tmux-flow.conf).
 
-- [Alacritty](https://alacritty.org/).
+- [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/alacritty-flow.toml).
 
-- [fzf](https://github.com/junegunn/fzf).
+- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
 
 ## Todo
 
