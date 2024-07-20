@@ -1,20 +1,21 @@
-local util = require("flow.util")
+package.path = package.path .. ";../?.lua;../flow/?.lua"
+
+local util = require("util")
 
 local M = {}
 
---- @param colors ColorScheme
 function M.generate(colors)
-  local alacritty = util.template(
-    [=[
-# Flow Alacritty Colors
-# Default colors
+  return util.interpolate(M.template, colors)
+end
+
+M.template = [=[
+# Flow colorscheme | Alacritty
+# https://github.com/0xstepit/flow.nvim
+
+# Black and white
 [colors.primary]
 background = '${bg}'
 foreground = '${fg}'
-
-#[colors.cursor]
-#cursor = '${fg}'
-#text = '${bg}'
 
 # Normal colors
 [colors.normal]
@@ -22,36 +23,26 @@ black = '${black}'
 red = '${red}'
 green = '${green}'
 yellow = '${yellow}'
-blue = '${blue}'
-magenta = '${magenta}'
+blue = '${light_blue}'
+magenta = '${purple}'
 cyan = '${cyan}'
-white = '${fg_dark}'
+white = '${white}'
 
 # Bright colors
 [colors.bright]
-black = '${terminal_black}'
+black = '${black}'
 red = '${red}'
 green = '${green}'
 yellow = '${yellow}'
-blue = '${blue}'
-magenta = '${magenta}'
+blue = '${light_blue}'
+magenta = '${purple}'
 cyan = '${cyan}'
-white = '${fg}'
+white = '${white}'
 
-# Indexed Colors
+# Fluo Colors
 [[colors.indexed_colors]]
-index = 16
-color = '${orange}'
-
-[[colors.indexed_colors]]
-index = 17
-color = '${red1}'
-
-]=],
-    colors
-  )
-
-  return alacritty
-end
+index = 198
+color = '${fluo}'
+]=]
 
 return M

@@ -37,12 +37,12 @@ function M.get(c, options)
     ["@markup.underline"] = { underline = true },
     ["@markup.heading"] = { link = "Title" },
     ["@markup.link.url"] = { link = "Underlined" },
-    ["@markup.list"] = { fg = c.to_check }, -- For special punctutation that does not fall in the catagories before.
     ["@markup.list.markdown"] = { fg = c.orange, bold = true },
     ["@markup.list.unchecked"] = { fg = c.cyan }, -- For brackets and parens.
     ["@markup.list.checked"] = { fg = c.green }, -- For brackets and parens.
     ["@keyword.directive.markdown"] = { fg = c.yellow },
     ["@spell.markdown"] = { link = "@spell" },
+    ["@markup.list"] = { fg = c.grey[5] }, -- For special punctuation that does not fall in the categories before. Also used in rust.
 
     -- Obsidian
     ObsidianRefText = { fg = c.blue },

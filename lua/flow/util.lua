@@ -63,4 +63,18 @@ function M.terminal(colors)
   vim.g.terminal_color_14 = colors.cyan
 end
 
+--- Interpolates a string by replacing placeholders with corresponding values from a table.
+-- @param string The input string containing placeholders in the form ${variable_name}.
+-- @param colors A table mapping variable names to their corresponding HEX values.
+-- @return A new string with all placeholders replaced by their corresponding values from the colors table.
+function M.interpolate(string, colors)
+  return (
+    string:gsub("($%b{})", function(w)
+      -- access the colors table with what is between "${" and "}".
+      -- TODO: add string split to access multiple levels.
+      return colors[w:sub(3, -2)] or w
+    end)
+  )
+end
+
 return M

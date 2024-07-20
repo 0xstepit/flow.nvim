@@ -138,6 +138,9 @@ function M.get(colors, options)
     -- Golang
     ["@module.go"] = { fg = colors.cyan },
     ["@keyword.function.go"] = { link = "Statement" },
+
+    -- Rust
+    -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[5] },
   }
 
   return theme

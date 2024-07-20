@@ -1,53 +1,43 @@
-local util = require("flow.util")
+package.path = package.path .. ";../?.lua;../flow/?.lua"
+
+local util = require("util")
 
 local M = {}
 
---- @param colors ColorScheme
 function M.generate(colors)
-  local tmux = util.template(
-    [[
-#!/usr/bin/env bash
-
-# Flow colors for Tmux
-
-set -g mode-style "fg=${blue},bg=${fg_gutter}"
-
-set -g message-style "fg=${blue},bg=${fg_gutter}"
-set -g message-command-style "fg=${blue},bg=${fg_gutter}"
-
-set -g pane-border-style "fg=${fg_gutter}"
-set -g pane-active-border-style "fg=${blue}"
-
-set -g status "on"
-set -g status-justify "left"
-
-set -g status-style "fg=${blue},bg=${bg_statusline}"
-
-set -g status-left-length "100"
-set -g status-right-length "100"
-
-set -g status-left-style ${none}
-set -g status-right-style ${none}
-
-set -g status-left "#[fg=${black},bg=${blue},bold] #S #[fg=${blue},bg=${bg_statusline},nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=${bg_statusline},bg=${bg_statusline},nobold,nounderscore,noitalics]#[fg=${blue},bg=${bg_statusline}] #{prefix_highlight} #[fg=${fg_gutter},bg=${bg_statusline},nobold,nounderscore,noitalics]#[fg=${blue},bg=${fg_gutter}] %Y-%m-%d  %I:%M %p #[fg=${blue},bg=${fg_gutter},nobold,nounderscore,noitalics]#[fg=${black},bg=${blue},bold] #h "
-if-shell '[ "$(tmux show-option -gqv "clock-mode-style")" == "24" ]' {
-  set -g status-right "#[fg=${bg_statusline},bg=${bg_statusline},nobold,nounderscore,noitalics]#[fg=${blue},bg=${bg_statusline}] #{prefix_highlight} #[fg=${fg_gutter},bg=${bg_statusline},nobold,nounderscore,noitalics]#[fg=${blue},bg=${fg_gutter}] %Y-%m-%d  %H:%M #[fg=${blue},bg=${fg_gutter},nobold,nounderscore,noitalics]#[fg=${black},bg=${blue},bold] #h "
-}
-
-setw -g window-status-activity-style "underscore,fg=${fg_sidebar},bg=${bg_statusline}"
-setw -g window-status-separator ""
-setw -g window-status-style "${none},fg=${fg_sidebar},bg=${bg_statusline}"
-setw -g window-status-format "#[fg=${bg_statusline},bg=${bg_statusline},nobold,nounderscore,noitalics]#[default] #I  #W #F #[fg=${bg_statusline},bg=${bg_statusline},nobold,nounderscore,noitalics]"
-setw -g window-status-current-format "#[fg=${bg_statusline},bg=${fg_gutter},nobold,nounderscore,noitalics]#[fg=${blue},bg=${fg_gutter},bold] #I  #W #F #[fg=${fg_gutter},bg=${bg_statusline},nobold,nounderscore,noitalics]"
-
-# tmux-plugins/tmux-prefix-highlight support
-set -g @prefix_highlight_output_prefix "#[fg=${yellow}]#[bg=${bg_statusline}]#[fg=${bg_statusline}]#[bg=${yellow}]"
-set -g @prefix_highlight_output_suffix ""
-]],
-    colors
-  )
-  return tmux
+  return util.interpolate(M.template, colors)
 end
+
+M.template = [[
+# Flow colorscheme | Tmux
+# https://github.com/0xstepit/flow.nvim
+
+## Statusbar style
+
+set -g status-position top
+set -g status-right-length "100" 
+set -g status-left-length "100" 
+set -g status-style bg=${bg_statusline},fg=${fg_statusline}
+set -g window-status-style fg=${fg_statusline},bg=${bg_statusline}
+setw -g window-status-separator " "
+set -g window-status-current-style fg=colour198
+set -g window-status-format "(#I) #W"
+set -g window-status-current-format "(#I) #W"
+set -g status-left "#[fg=${black},bg=${light_blue}] #S #[bg=${fg_gutter},fg=${light_blue}] #h #[bg=${bg_statusline}] "
+set -g status-right "#[bg=${fg_gutter},fg=${light_blue}] %H:%M #[fg=${black},bg=${light_blue}] %A %d. %b %Y "
+
+set -g message-command-style fg=${fluo}
+set -g message-style "fg=${fluo}, bg=${bg_statusline}" # color used in the message popup.
+
+set -g mode-style "fg=${fluo}"
+
+## Borders
+set -g pane-border-style "fg=${fg_border}"
+set -g pane-active-border-style "fg=${fg_border}"
+
+# Set below the rest of your config
+# ...
+
+]]
 
 return M

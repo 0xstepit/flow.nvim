@@ -100,6 +100,9 @@ function M.get(c, options)
 
     SpecialChar = { fg = c.teal }, --  special character in a constant. Heavily used in markdown.
 
+    Macro = { fg = c.grey[5] }, -- Heavily used in rust.
+    Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
+
     -- TODO: study these. The colors of following items is accented to better see when they appear.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
     PmenuKindSel = { fg = c.to_check }, -- Popup menu: selected item.
@@ -107,8 +110,6 @@ function M.get(c, options)
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
     SpecialKey = { fg = c.to_check }, -- Unprintable characters: text displayed differently from what it really is.
     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
-    Define = { fg = c.to_check }, --   preprocessor #define
-    Macro = { fg = c.to_check }, --    same as Define
     PreCondit = { fg = c.to_check }, --  preprocessor #if, #else, #endif, etc.
     SpecialComment = { fg = c.to_check }, -- special things inside a comment
 

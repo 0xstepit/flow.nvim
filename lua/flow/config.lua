@@ -7,11 +7,11 @@ local defaults = {
   aggressive_spell = false, -- Display colors for spell check.
 }
 
-M.options = nil
+M.options = defaults
 
 -- This is the entry point of the configuration before loading the plugin.
 function M.setup(options)
-  M.options = vim.tbl_deep_extend("force", {}, defaults, options or {})
+  M.options = vim.tbl_deep_extend("force", {}, M.options or defaults, options or {})
 end
 
 return M

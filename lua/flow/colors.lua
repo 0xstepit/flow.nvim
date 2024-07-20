@@ -1,11 +1,8 @@
-local util = require("flow.util")
-
 local M = {}
 
 M.colors = nil
 
 function M.setup(opts)
-  local config = require("flow.config")
   local palette = require("flow.palette")
 
   opts = opts or {}
@@ -17,7 +14,7 @@ function M.setup(opts)
   colors.transparent = default_palette.transparent
   colors.to_check = default_palette.fluo.green -- value used for hi that i don't know how they are applied.
 
-  colors.fluo = default_palette.fluo[opts.fluo_color] -- used for cursor line nr, ..
+  colors.fluo = (opts.fluo_color and default_palette.fluo[opts.fluo_color] or default_palette.fluo.pink) -- used for cursor line nr, ..
 
   colors.black = default_palette.black
   colors.white = default_palette.white
