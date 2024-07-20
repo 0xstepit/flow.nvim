@@ -39,9 +39,12 @@ background = '#FF007C'
 
 # Selection colors
 [colors.selection]
-text = '#FF007C'
-background = '#0D0D0D'
+background = '#FF007C'
+text = '#0D0D0D'
 
+# Cursors
+# If you don't want to override original behavior, which is nice,
+# remove [colors.cursor] and [colors.vi_mode_cursor].
 [colors.cursor]
 cursor = '#FF007C'
 text = '#0D0D0D'

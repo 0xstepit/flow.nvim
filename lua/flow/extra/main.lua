@@ -1,6 +1,7 @@
 package.path = package.path .. ";../../?.lua;"
 
 local flow_colors = require("flow.colors")
+local util = require("flow.util")
 local palette = flow_colors.setup()
 
 local extras = {
@@ -22,3 +23,10 @@ for _, e in pairs(extras) do
     print("error: could not open file for writing")
   end
 end
+
+local r, g, b = util.hsl_to_rbg(205, 80, 70)
+local hex = util.rgb_to_hex(r, g, b)
+print(r)
+print(g)
+print(b)
+print(hex)

@@ -49,6 +49,16 @@ function M.setup(opts)
     colors.teal = default_palette.teal.bright
     colors.cyan = default_palette.cyan.bright
     colors.green = default_palette.green.bright
+  elseif opts.mode == "desaturated" then
+    colors.orange = default_palette.orange.desat
+    colors.yellow = default_palette.yellow.desat -- match parens, ...
+    colors.red = default_palette.red.desat
+    colors.purple = default_palette.purple.desat
+    colors.blue = default_palette.blue.desat
+    colors.light_blue = default_palette.light_blue.desat
+    colors.teal = default_palette.teal.desat
+    colors.cyan = default_palette.cyan.desat
+    colors.green = default_palette.green.desat
   else
     colors.orange = default_palette.orange.base
     colors.yellow = default_palette.yellow.base -- match parens, ...

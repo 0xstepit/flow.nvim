@@ -9,6 +9,57 @@ function M.merge(left, right)
   return left
 end
 
+function M.hsl_to_hex(h, s, l)
+  local r, g, b = M.hsl_to_rbg(h, s, l)
+  return M.rgb_to_hex(r, g, b)
+end
+
+function M.rgb_to_hex(r, g, b)
+  local rx = string.format("%02x", r)
+  local gx = string.format("%02x", g)
+  local bx = string.format("%02x", b)
+  return string.format("#%s%s%s", rx, gx, bx)
+end
+
+function M.hsl_to_rbg(h, s, l)
+  h = h / 360
+  s = s / 100
+  l = l / 100
+
+  local r, g, b
+
+  if s == 0 then
+    r, g, b = l, l, l -- achromatic
+  else
+    local function hue_to_rgb(p, q, t)
+      if t < 0 then
+        t = t + 1
+      end
+      if t > 1 then
+        t = t - 1
+      end
+      if t < 1 / 6 then
+        return p + (q - p) * 6 * t
+      end
+      if t < 1 / 2 then
+        return q
+      end
+      if t < 2 / 3 then
+        return p + (q - p) * (2 / 3 - t) * 6
+      end
+      return p
+    end
+
+    local q = l < 0.5 and l * (1 + s) or l + s - l * s
+    local p = 2 * l - q
+    r = hue_to_rgb(p, q, h + 1 / 3)
+    g = hue_to_rgb(p, q, h)
+    b = hue_to_rgb(p, q, h - 1 / 3)
+  end
+
+  return math.floor(0.5 + r * 255), math.floor(0.5 + g * 255), math.floor(0.5 + b * 255)
+end
+
 function M.autocmds(config)
   local group = vim.api.nvim_create_augroup("flow", { clear = true })
 
