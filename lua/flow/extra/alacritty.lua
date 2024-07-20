@@ -39,6 +39,39 @@ magenta = '${purple}'
 cyan = '${cyan}'
 white = '${white}'
 
+# Search colors
+[colors.search.matches]
+foreground = '${fluo}'
+background = '${black}'
+
+[colors.search.focused_match]
+foreground = '${black}'
+background = '${fluo}'
+
+# Selection colors
+[colors.selection]
+background = '${fluo}'
+text = '${black}'
+
+# Cursors
+# If you don't want to override original behavior, which is nice,
+# remove [colors.cursor] and [colors.vi_mode_cursor].
+[colors.cursor]
+cursor = '${fluo}'
+text = '${black}'
+
+[colors.vi_mode_cursor]
+cursor = '${fluo}'
+text = '${black}'
+
+[colors.footer_bar]
+foreground = '${fluo}'
+background = '${black}'
+
+[[colors.indexed_colors]]
+index = 93
+color = '${purple}'
+
 # Fluo Colors
 [[colors.indexed_colors]]
 index = 198

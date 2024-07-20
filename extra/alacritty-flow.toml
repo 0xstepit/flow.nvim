@@ -28,6 +28,36 @@ magenta = '#A875F0'
 cyan = '#75F0E6'
 white = '#F2F2F2'
 
+# Search colors
+[colors.search.matches]
+foreground = '#FF007C'
+background = '#0D0D0D'
+
+[colors.search.focused_match]
+foreground = '#0D0D0D'
+background = '#FF007C'
+
+# Selection colors
+[colors.selection]
+text = '#FF007C'
+background = '#0D0D0D'
+
+[colors.cursor]
+cursor = '#FF007C'
+text = '#0D0D0D'
+
+[colors.vi_mode_cursor]
+cursor = '#FF007C'
+text = '#0D0D0D'
+
+[colors.footer_bar]
+foreground = '#FF007C'
+background = '#0D0D0D'
+
+[[colors.indexed_colors]]
+index = 93
+color = '#A875F0'
+
 # Fluo Colors
 [[colors.indexed_colors]]
 index = 198

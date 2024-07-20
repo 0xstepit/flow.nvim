@@ -14,8 +14,9 @@ cool!
 
 ## Palette
 
-Flow has been designed to use a palette based on 9 colors selected using the HSL representation to provide a coherent ambiance.
-The principal color is light blue, and the other colors have been chosen in the following way:
+Flow has been designed using a palette based on nine colors selected through the HSL representation to
+create a cohesive ambiance. The principal color is light blue, and the additional colors have been chosen
+as follows:
 
 - **Analogous** (S+/-30): blue, cyan.
 
@@ -25,8 +26,8 @@ The principal color is light blue, and the other colors have been chosen in the 
 
 - **Slit comp** (S+/-150): yellow, red.
 
-Additionally, teal has been added to provide a more bluish palette, along with a fluorescent color to have really accented features. The palette
-is defined with 3 different levels of light:
+Furthermore, teal has been included to enhance the blue tones, and a fluorescent color has been added for
+striking accents. The palette is defined across three different levels of light:
 
 |Bright|Normal|Dim|
 |-|-|-|
@@ -65,7 +66,7 @@ vim.cmd "colorscheme flow"
 
 ## Configuration
 
-### Default configuration
+### Default
 
 The configuration allows to specify 4 different options:
 
@@ -89,7 +90,10 @@ return {
 }
 ```
 
-### My personal config
+### Suggested
+
+<details>
+<summary>My favorite config</summary>
 
 ```lua
 return {
@@ -108,6 +112,8 @@ return {
   end,
 }
 ```
+</details>
+
 
 ## Supported plugins
 
@@ -127,13 +133,23 @@ Below the list of supported plugins divided by category:
 
 - **Base Nvim**: diagnostic, lsp, markdown.
 
+## Extras
+
+Flow.nvim provides colorschemes also for the following tools:
+
+- [Tmux](https://github.com/tmux/tmux/wiki).
+
+- [Alacritty](https://alacritty.org/).
+
+- [fzf](https://github.com/junegunn/fzf).
+
 ## Todo
 
 This is still an ongoing project. Below are the next topics I will work on:
 
 - [ ] Add docs.
 
-- [ ] Fix extra automatic generation.
+- [ ] Extra automatic generation.
 
 ## Contributing
 

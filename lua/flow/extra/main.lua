@@ -10,12 +10,10 @@ local extras = {
 }
 
 for _, e in pairs(extras) do
-  print("hello")
   local template = require(e.name)
   local colorscheme = template.generate(palette)
 
   local file = io.open("../../../extra/" .. e.name .. "-flow." .. e.extension, "w")
-  print(file)
   -- Write the formatted string to the file
   if file then
     file:write(colorscheme)
