@@ -60,7 +60,7 @@ Install the theme with your preferred package manager, such as
 ### [Lua](https://www.lua.org)
 
 ```lua
-require("flow").setup_options {}
+require("flow").setup{}
 vim.cmd "colorscheme flow"
 ```
 
@@ -78,7 +78,7 @@ return {
   priority = 1000,
   opts = {},
   config = function()
-    require("flow").setup_options {
+    require("flow").setup{
       transparent = false, -- Set transparent background.
       fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
       mode = "normal", -- Intensity of the palette: normal, dark, or bright. Notice that dark is ugly!
@@ -102,7 +102,7 @@ return {
   priority = 1000,
   opts = {},
   config = function()
-    require("flow").setup_options {
+    require("flow").setup{
       transparent = true,
       fluo_color = "pink",
       mode = "normal",
