@@ -17,9 +17,9 @@ function M.get(c, options)
     diffLine = { fg = c.comment },
     diffIndexLine = { fg = c.purple },
 
-    DiffAdd = { bg = c.diff.add }, -- Diff mode: Added line |diff.txt|.
-    DiffChange = { bg = c.diff.change }, -- Diff mode: Changed line |diff.txt|.
-    DiffDelete = { bg = c.diff.delete }, -- Diff mode: Deleted line |diff.txt|.
+    DiffAdd = { link = "Added" }, -- Diff mode: Added line |diff.txt|.
+    DiffChange = { link = "Changed" }, -- Diff mode: Changed line |diff.txt|.
+    DiffDelete = { link = "Removed" }, -- Diff mode: Deleted line |diff.txt|.
     DiffText = { bg = c.diff.text }, -- Diff mode: Changed text within a changed line |diff.txt|.
 
     -- GitSigns

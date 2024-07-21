@@ -60,7 +60,7 @@ function M.hsl_to_rbg(h, s, l)
   return math.floor(0.5 + r * 255), math.floor(0.5 + g * 255), math.floor(0.5 + b * 255)
 end
 
-function M.autocmds(config)
+function M.autocmds()
   local group = vim.api.nvim_create_augroup("flow", { clear = true })
 
   vim.api.nvim_create_autocmd("ColorSchemePre", {
@@ -85,6 +85,7 @@ function M.autocmds(config)
   })
 end
 
+-- TODO: complete
 function M.terminal(colors)
   -- dark
   vim.g.terminal_color_0 = colors.black
@@ -115,12 +116,12 @@ function M.terminal(colors)
 end
 
 --- Interpolates a string by replacing placeholders with corresponding values from a table.
--- @param string The input string containing placeholders in the form ${variable_name}.
--- @param colors A table mapping variable names to their corresponding HEX values.
--- @return A new string with all placeholders replaced by their corresponding values from the colors table.
-function M.interpolate(string, colors)
+--- @param file string The input string containing placeholders in the form ${variable_name}.
+--- @param colors table A table mapping variable names to their corresponding HEX values.
+--- @return string A new string with all placeholders replaced by their corresponding values from the colors table.
+function M.interpolate(file, colors)
   return (
-    string:gsub("($%b{})", function(w)
+    file:gsub("($%b{})", function(w)
       -- access the colors table with what is between "${" and "}".
       -- TODO: add string split to access multiple levels.
       return colors[w:sub(3, -2)] or w

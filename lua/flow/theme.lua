@@ -3,6 +3,8 @@ local util = require("flow.util")
 
 local M = {}
 
+--- List of active highlight groups to be configured.
+-- @type string[]
 M.active_highlights = {
   "base",
   "completion",
@@ -20,10 +22,13 @@ M.active_highlights = {
 }
 
 M.b = {}
-
-function M.setup()
-  local config = require("flow.config")
-  local options = config.options
+---
+--- Configure the colorscheme highlights.
+--- This function sets up the highlight groups by merging the colors
+--- and options for each active highlight group.
+--- @return table A table of configured highlight groups.
+function M.configure()
+  local options = require("flow.config").options
 
   local colors = flow_colors.setup(options)
 
@@ -36,7 +41,7 @@ function M.setup()
     highlights = util.merge(highlights, hi)
   end
 
-  util.autocmds(options)
+  util.autocmds()
 
   return highlights
 end

@@ -1,1 +1,1 @@
-require("flow").load_colorscheme()
+require("flow").load()
