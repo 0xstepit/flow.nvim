@@ -25,8 +25,8 @@ function M.get(c, options)
     NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
     EndOfBuffer = { fg = c.fg_highlight }, -- Filler lines (~) after the end of the buffer.
-    NonText = { fg = c.grey[6] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Whitespace = { fg = options.transparent and c.transparent or c.bg }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
+    NonText = { fg = c.grey[3] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Whitespace = { link = "LineNr" }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
 
     --Columns
     ColorColumn = { link = "CursorLine" }, -- Used for the columns set with 'colorcolumn'.

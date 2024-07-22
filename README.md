@@ -12,7 +12,7 @@ cool!
 
 ![terminals](./assets/flow-multiple-terminals.png)
 
-## Palette
+# Palette
 
 Flow has been designed using a palette based on nine colors selected through the HSL representation to
 create a cohesive ambiance. The principal color is light blue, and the additional colors have been chosen
@@ -36,7 +36,7 @@ striking accents. The palette is defined across three different levels of light:
 ![palette](./assets/flow-palette.png) 
 
 
-## Requirements
+# Requirements
 
 - [Neovim](https://github.com/neovim/neovim) >=
   [0.8.0](https://github.com/neovim/neovim/releases/tag/v0.8.0)
@@ -55,25 +55,24 @@ Install the theme with your preferred package manager, such as
 }
 ```
 
-## Usage
+# Usage
 
-### [Lua](https://www.lua.org)
+## [Lua](https://www.lua.org)
 
 ```lua
 require("flow").setup{}
 vim.cmd "colorscheme flow"
 ```
 
-## Configuration
+# Configuration
 
-### Default
+## Default
 
 The configuration allows to specify 4 different options:
 
 ```lua 
 return {
   "0xstepit/flow.nvim",
-  name = "Flow",
   lazy = false,
   priority = 1000,
   opts = {},
@@ -81,7 +80,7 @@ return {
     require("flow").setup{
       transparent = false, -- Set transparent background.
       fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
-      mode = "normal", -- Intensity of the palette: normal, dark, or bright. Notice that dark is ugly!
+      mode = "normal", -- Intensity of the palette: normal, bright, desaturate, or dark. Notice that dark is ugly!
       aggressive_spell = false, -- Display colors for spell check.
     }
 
@@ -90,7 +89,7 @@ return {
 }
 ```
 
-### Suggested
+## Suggested
 
 <details>
 <summary>My favorite config</summary>
@@ -115,7 +114,7 @@ return {
 </details>
 
 
-## Supported plugins
+# Supported plugins
 
 Below the list of supported plugins divided by category:
 
@@ -133,7 +132,7 @@ Below the list of supported plugins divided by category:
 
 - **Base Nvim**: diagnostic, lsp, markdown.
 
-## Extras
+# Extras
 
 Flow.nvim provides colorschemes also for the following tools:
 
@@ -143,7 +142,7 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
 
-## Todo
+# Todo
 
 This is still an ongoing project. Below are the next topics I will work on:
 
@@ -151,11 +150,11 @@ This is still an ongoing project. Below are the next topics I will work on:
 
 - [ ] Extra automatic generation.
 
-## Contributing
+# Contributing
 
 Pull requests and improvement suggestions are very welcome!
 
-## References
+# References
 
 My dot config [0xstepit/dotfiles](https://github.com/0xstepit/dotfiles).
 
