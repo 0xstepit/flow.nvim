@@ -1,21 +1,24 @@
-*flow.nvim.txt*          For Neovim >= 0.8.0         Last change: 2024 July 21
+*flow.nvim.txt*          For Neovim >= 0.8.0         Last change: 2024 July 22
 
 ==============================================================================
 Table of Contents                                *flow.nvim-table-of-contents*
 
 1. 🌊 Flow                                             |flow.nvim-🌊-flow|
   - Showcase                                    |flow.nvim-🌊-flow-showcase|
-  - Palette                                      |flow.nvim-🌊-flow-palette|
-  - Requirements                            |flow.nvim-🌊-flow-requirements|
-  - Installation                            |flow.nvim-🌊-flow-installation|
-  - Usage                                          |flow.nvim-🌊-flow-usage|
-  - Configuration                          |flow.nvim-🌊-flow-configuration|
-  - Supported plugins                  |flow.nvim-🌊-flow-supported-plugins|
-  - Extras                                        |flow.nvim-🌊-flow-extras|
-  - Todo                                            |flow.nvim-🌊-flow-todo|
-  - Contributing                            |flow.nvim-🌊-flow-contributing|
-  - References                                |flow.nvim-🌊-flow-references|
-2. Links                                                     |flow.nvim-links|
+2. Palette                                                 |flow.nvim-palette|
+3. Requirements                                       |flow.nvim-requirements|
+  - Installation                         |flow.nvim-requirements-installation|
+4. Usage                                                     |flow.nvim-usage|
+  - Lua                                                  |flow.nvim-usage-lua|
+5. Configuration                                     |flow.nvim-configuration|
+  - Default                                  |flow.nvim-configuration-default|
+  - Suggested                              |flow.nvim-configuration-suggested|
+6. Supported plugins                             |flow.nvim-supported-plugins|
+7. Extras                                                   |flow.nvim-extras|
+8. Todo                                                       |flow.nvim-todo|
+9. Contributing                                       |flow.nvim-contributing|
+10. References                                          |flow.nvim-references|
+11. Links                                                    |flow.nvim-links|
 
 ==============================================================================
 1. 🌊 Flow                                             *flow.nvim-🌊-flow*
@@ -29,7 +32,8 @@ environment. Why fluo? Because it is cool!
 SHOWCASE                                        *flow.nvim-🌊-flow-showcase*
 
 
-PALETTE                                          *flow.nvim-🌊-flow-palette*
+==============================================================================
+2. Palette                                                 *flow.nvim-palette*
 
 Flow has been designed using a palette based on nine colors selected through
 the HSL representation to create a cohesive ambiance. The principal color is
@@ -48,13 +52,14 @@ across three different levels of light:
   -------- -------- -----
   80       70       30
 
-REQUIREMENTS                                *flow.nvim-🌊-flow-requirements*
+==============================================================================
+3. Requirements                                       *flow.nvim-requirements*
 
 - Neovim <https://github.com/neovim/neovim> >=
     0.8.0 <https://github.com/neovim/neovim/releases/tag/v0.8.0>
 
 
-INSTALLATION                                *flow.nvim-🌊-flow-installation*
+INSTALLATION                             *flow.nvim-requirements-installation*
 
 Install the theme with your preferred package manager, such as folke/lazy.nvim
 <https://github.com/folke/lazy.nvim>:
@@ -69,10 +74,11 @@ Install the theme with your preferred package manager, such as folke/lazy.nvim
 <
 
 
-USAGE                                              *flow.nvim-🌊-flow-usage*
+==============================================================================
+4. Usage                                                     *flow.nvim-usage*
 
 
-LUA ~
+LUA                                                      *flow.nvim-usage-lua*
 
 >lua
     require("flow").setup{}
@@ -80,17 +86,17 @@ LUA ~
 <
 
 
-CONFIGURATION                              *flow.nvim-🌊-flow-configuration*
+==============================================================================
+5. Configuration                                     *flow.nvim-configuration*
 
 
-DEFAULT ~
+DEFAULT                                      *flow.nvim-configuration-default*
 
 The configuration allows to specify 4 different options:
 
 >lua
     return {
       "0xstepit/flow.nvim",
-      name = "Flow",
       lazy = false,
       priority = 1000,
       opts = {},
@@ -98,7 +104,7 @@ The configuration allows to specify 4 different options:
         require("flow").setup{
           transparent = false, -- Set transparent background.
           fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
-          mode = "normal", -- Intensity of the palette: normal, dark, or bright. Notice that dark is ugly!
+          mode = "normal", -- Intensity of the palette: normal, bright, desaturate, or dark. Notice that dark is ugly!
           aggressive_spell = false, -- Display colors for spell check.
         }
     
@@ -108,7 +114,7 @@ The configuration allows to specify 4 different options:
 <
 
 
-SUGGESTED ~
+SUGGESTED                                  *flow.nvim-configuration-suggested*
 
 My favorite config ~
 
@@ -131,7 +137,8 @@ My favorite config ~
 <
 
 
-SUPPORTED PLUGINS                      *flow.nvim-🌊-flow-supported-plugins*
+==============================================================================
+6. Supported plugins                             *flow.nvim-supported-plugins*
 
 Below the list of supported plugins divided by category:
 
@@ -149,7 +156,8 @@ Below the list of supported plugins divided by category:
 - **Base Nvim**: diagnostic, lsp, markdown.
 
 
-EXTRAS                                            *flow.nvim-🌊-flow-extras*
+==============================================================================
+7. Extras                                                   *flow.nvim-extras*
 
 Flow.nvim provides colorschemes also for the following tools:
 
@@ -160,7 +168,8 @@ Flow.nvim provides colorschemes also for the following tools:
 - fzf <https://github.com/junegunn/fzf> at fzf-flow.sh <./extra/fzf-flow.sh>.
 
 
-TODO                                                *flow.nvim-🌊-flow-todo*
+==============================================================================
+8. Todo                                                       *flow.nvim-todo*
 
 This is still an ongoing project. Below are the next topics I will work on:
 
@@ -168,12 +177,14 @@ This is still an ongoing project. Below are the next topics I will work on:
 - ☐ Extra automatic generation.
 
 
-CONTRIBUTING                                *flow.nvim-🌊-flow-contributing*
+==============================================================================
+9. Contributing                                       *flow.nvim-contributing*
 
 Pull requests and improvement suggestions are very welcome!
 
 
-REFERENCES                                    *flow.nvim-🌊-flow-references*
+==============================================================================
+10. References                                          *flow.nvim-references*
 
 My dot config 0xstepit/dotfiles <https://github.com/0xstepit/dotfiles>.
 
@@ -183,7 +194,7 @@ This colorscheme is inspired by other amazing colorscheme:
 - Nordic <https://github.com/AlexvZyl/nordic.nvim>
 
 ==============================================================================
-2. Links                                                     *flow.nvim-links*
+11. Links                                                    *flow.nvim-links*
 
 1. *logo*: ./assets/flow-logo.png
 2. *terminal*: ./assets/flow-single-terminal.png
