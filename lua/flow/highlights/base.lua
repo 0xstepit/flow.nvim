@@ -94,7 +94,7 @@ function M.get(c, options)
     -- I'm not sure where these groups are set.
     Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
     IblIndent = { link = "LineNr" },
-    IblWhiteSpace = { fg = c.fluo },
+    IblWhiteSpace = { link = "LineNr" },
     Include = { fg = c.red }, --  preprocessor #include
     Menu = {}, -- Current font, background and foreground colors of the menus. Also used for the toolbar. Applicable highlight arguments: font, guibg, guifg.
     Question = { fg = c.fg_visual }, -- |hit-enter| prompt and yes/no questions.

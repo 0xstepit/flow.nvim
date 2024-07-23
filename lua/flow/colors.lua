@@ -84,7 +84,7 @@ function M.setup(opts)
 
   -- Sidebar
   colors.fg_sidebar = default_palette.grey[5] -- use by items on quickfix list and help text
-  colors.bg_sidebar = (opts.transparent and default_palette.transparent) or colors.black
+  colors.bg_sidebar = (opts.transparent and default_palette.transparent) or colors.bg
 
   -- Float
   colors.fg_float = colors.grey[5]
