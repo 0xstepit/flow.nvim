@@ -1,4 +1,4 @@
-*flow.nvim.txt*          For Neovim >= 0.8.0         Last change: 2024 July 22
+*flow.nvim.txt*          For Neovim >= 0.8.0         Last change: 2024 July 23
 
 ==============================================================================
 Table of Contents                                *flow.nvim-table-of-contents*
