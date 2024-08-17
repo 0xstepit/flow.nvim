@@ -104,7 +104,7 @@ return {
     require("flow").setup{
       transparent = true,
       fluo_color = "pink",
-      mode = "normal",
+      mode = "desaturate",
       aggressive_spell = false,
     }
     vim.cmd "colorscheme flow"
@@ -163,5 +163,3 @@ This colorscheme is inspired by other amazing colorscheme:
 - [Tokyo Night](https://github.com/folke/tokyonight.nvim)
 
 - [Nordic](https://github.com/AlexvZyl/nordic.nvim)
-
-
