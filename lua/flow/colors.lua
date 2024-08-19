@@ -15,34 +15,43 @@ function M.setup(opts)
 
   colors.fluo = (
     opts.fluo_color and default_palette.fluo[opts.fluo_color] or default_palette.fluo.pink
-  ) -- used for cursor line nr, ..
+  )
 
   colors.black = default_palette.black
   colors.white = default_palette.white
   colors.grey = default_palette.grey
 
   -- Background colors
+  if opts.light_theme then
+    local n_greys = #colors.grey
+    for i = 1, math.floor(n_greys / 2) do
+      local c = colors.grey[n_greys + 1 - i]
+      colors.grey[n_greys + 1 - i] = colors.grey[i]
+      colors.grey[i] = c
+    end
+  end
+
   colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
   colors.bg_dark = default_palette.grey[6]
 
   -- Foreground colors
   colors.fg = default_palette.grey[6] -- used for text in the colorscheme
-  colors.fg_dark = colors.grey4
+  colors.fg_dark = colors.grey[4]
 
   -- Main colors
   if opts.mode == "dark" then
-    colors.orange = default_palette.orange.dim
-    colors.yellow = default_palette.yellow.dim -- match parens, ...
-    colors.red = default_palette.red.dim
-    colors.purple = default_palette.purple.dim
-    colors.blue = default_palette.blue.dim
-    colors.light_blue = default_palette.light_blue.dim
-    colors.teal = default_palette.teal.dim
-    colors.cyan = default_palette.cyan.dim
-    colors.green = default_palette.green.dim
+    colors.orange = default_palette.orange.dark
+    colors.yellow = default_palette.yellow.dark
+    colors.red = default_palette.red.dark
+    colors.purple = default_palette.purple.dark
+    colors.blue = default_palette.blue.dark
+    colors.light_blue = default_palette.light_blue.dark
+    colors.teal = default_palette.teal.dark
+    colors.cyan = default_palette.cyan.dark
+    colors.green = default_palette.green.dark
   elseif opts.mode == "bright" then
     colors.orange = default_palette.orange.bright
-    colors.yellow = default_palette.yellow.bright -- match parens, ...
+    colors.yellow = default_palette.yellow.bright
     colors.red = default_palette.red.bright
     colors.purple = default_palette.purple.bright
     colors.blue = default_palette.blue.bright
@@ -51,18 +60,18 @@ function M.setup(opts)
     colors.cyan = default_palette.cyan.bright
     colors.green = default_palette.green.bright
   elseif opts.mode == "desaturate" then
-    colors.orange = default_palette.orange.desat
-    colors.yellow = default_palette.yellow.desat -- match parens, ...
-    colors.red = default_palette.red.desat
-    colors.purple = default_palette.purple.desat
-    colors.blue = default_palette.blue.desat
-    colors.light_blue = default_palette.light_blue.desat
-    colors.teal = default_palette.teal.desat
-    colors.cyan = default_palette.cyan.desat
-    colors.green = default_palette.green.desat
+    colors.orange = default_palette.orange.desaturate
+    colors.yellow = default_palette.yellow.desaturate
+    colors.red = default_palette.red.desaturate
+    colors.purple = default_palette.purple.desaturate
+    colors.blue = default_palette.blue.desaturate
+    colors.light_blue = default_palette.light_blue.desaturate
+    colors.teal = default_palette.teal.desaturate
+    colors.cyan = default_palette.cyan.desaturate
+    colors.green = default_palette.green.desaturate
   else
     colors.orange = default_palette.orange.base
-    colors.yellow = default_palette.yellow.base -- match parens, ...
+    colors.yellow = default_palette.yellow.base
     colors.red = default_palette.red.base
     colors.purple = default_palette.purple.base
     colors.blue = default_palette.blue.base
@@ -120,22 +129,31 @@ function M.setup(opts)
     add = colors.green,
     change = colors.yellow,
     delete = colors.red,
-    ignore = colors.dark3,
+    ignore = colors.grey[4],
     untrcked = colors.teal,
   }
-  colors.diff = {
-    add = colors.Green.dark, -- background of added lines
-    delete = colors.Red.dark, -- background of deleted lines
-    change = colors.Light_blue.dark, -- background of changed lines
-    text = colors.Cyan.dark, -- background of changed characters
-  }
+  if opts.light_theme then
+    colors.diff = {
+      add = colors.Green.very_bright, -- background of added lines
+      delete = colors.Red.very_bright, -- background of deleted lines
+      change = colors.Light_blue.very_bright, -- background of changed lines
+      text = colors.Cyan.very_bright, -- background of changed characters
+    }
+  else
+    colors.diff = {
+      add = colors.Green.very_dark, -- background of added lines
+      delete = colors.Red.very_dark, -- background of deleted lines
+      change = colors.Light_blue.very_dark, -- background of changed lines
+      text = colors.Cyan.very_dark, -- background of changed characters
+    }
+  end
 
   -- Diagnostics
-  colors.error = default_palette.red.dim
-  colors.todo = default_palette.light_blue.dim
-  colors.warning = default_palette.yellow.dim
-  colors.info = default_palette.cyan.dim
-  colors.hint = default_palette.teal.dim
+  colors.error = colors.red
+  colors.todo = colors.light_blue
+  colors.warning = colors.yellow
+  colors.info = colors.cyan
+  colors.hint = colors.teal
 
   -- Misc
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter
