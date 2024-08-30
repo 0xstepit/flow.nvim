@@ -23,7 +23,7 @@ function M.get(c, options)
     ["@markup.raw.markdown"] = { fg = c.cyan },
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = options.light_theme and c.Cyan.very_bright or c.Cyan.very.dark,
+      bg = options.light_theme and c.Cyan.very_bright or c.Cyan.very_dark,
     }, -- Text between ``.
     ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- Code snippet with language not known like Mermaid.
     ["@markup.link"] = { fg = c.teal },

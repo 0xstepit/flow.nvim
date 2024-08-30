@@ -9,6 +9,7 @@ M.active_highlights = {
   "base",
   "completion",
   "dap",
+  "diagnostic",
   "git",
   "lazy",
   "lsp",

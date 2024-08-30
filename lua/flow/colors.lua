@@ -139,6 +139,13 @@ function M.setup(opts)
       change = colors.Light_blue.very_bright, -- background of changed lines
       text = colors.Cyan.very_bright, -- background of changed characters
     }
+
+    -- Diagnostics
+    colors.error = colors.Red.very_bright
+    colors.todo = colors.Light_blue.very_bright
+    colors.warning = colors.Yellow.very_bright
+    colors.info = colors.Cyan.very_bright
+    colors.hint = colors.Teal.very_bright
   else
     colors.diff = {
       add = colors.Green.very_dark, -- background of added lines
@@ -146,14 +153,14 @@ function M.setup(opts)
       change = colors.Light_blue.very_dark, -- background of changed lines
       text = colors.Cyan.very_dark, -- background of changed characters
     }
-  end
 
-  -- Diagnostics
-  colors.error = colors.red
-  colors.todo = colors.light_blue
-  colors.warning = colors.yellow
-  colors.info = colors.cyan
-  colors.hint = colors.teal
+    -- Diagnostics
+    colors.error = colors.Red.very_dark
+    colors.todo = colors.Light_blue.very_dark
+    colors.warning = colors.Yellow.very_dark
+    colors.info = colors.Cyan.very_dark
+    colors.hint = colors.Teal.very_dark
+  end
 
   -- Misc
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter

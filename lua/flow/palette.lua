@@ -26,7 +26,7 @@ function M.get()
 
   local base_desat = {
     S = 50,
-    L = 50,
+    L = 70,
   }
 
   local bright = {

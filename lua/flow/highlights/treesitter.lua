@@ -62,7 +62,7 @@ function M.get(colors, options)
     --- Literals
     ["@string.documentation"] = { fg = colors.yellow },
     ["@string.regexp"] = { fg = colors.cyan }, -- For regexes.
-    ["@string.escape"] = { fg = colors.fg_visual }, -- For escape characters within a string.
+    ["@string.escape"] = { fg = colors.cyan }, -- For escape characters within a string.
 
     --- Functions
     ["@constructor"] = { fg = colors.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.

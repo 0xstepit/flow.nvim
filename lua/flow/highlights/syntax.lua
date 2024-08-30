@@ -22,7 +22,7 @@ function M.get(c, _)
     Note = { bg = c.bg, fg = c.light_blue }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
-    PreCondit = { fg = c.to_check }, --  preprocessor #if, #else, #endif, etc.
+    PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
     Removed = { bg = c.diff.delete }, -- Removed line in a diff.
     Repeat = { link = "Operator" }, -- for, do, while, etc.
