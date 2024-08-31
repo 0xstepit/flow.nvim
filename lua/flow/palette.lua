@@ -5,8 +5,6 @@ local hsl = util.hsl_to_hex
 local M = {}
 
 ---Generates and returns a color palette using HSL and HEX values.
----Each color family includes different shades: dark, dim, base,
----desaturated, and bright.
 ---@return table
 function M.get()
   local very_dark = {

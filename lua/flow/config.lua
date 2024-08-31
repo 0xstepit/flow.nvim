@@ -3,11 +3,11 @@ local M = {}
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
 local defaults = {
-  light_theme = false,
+  light_theme = false, -- Set the theme with white background.
   transparent = false, -- Set transparent background.
-  fluo_color = "pink", -- Fluo color: pink, yellow, orange, or green.
-  mode = "normal", -- Intensity of the palette: normal, dark, desaturate, orbright. Notice that dark is ugly!
-  aggressive_spell = false, -- Display colors for spell check.
+  fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
+  mode = "normal", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+  aggressive_spell = false, -- Use colors for spell check.
 }
 
 M.options = defaults
