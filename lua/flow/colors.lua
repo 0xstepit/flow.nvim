@@ -70,6 +70,10 @@ function M.setup(opts)
     colors.cyan = default_palette.cyan.desaturate
     colors.green = default_palette.green.desaturate
   else
+    vim.notify(
+      "Invalid mode: '" .. opts.mode .. "'. Falling back to 'base' mode.",
+      vim.log.levels.WARN
+    )
     colors.orange = default_palette.orange.base
     colors.yellow = default_palette.yellow.base
     colors.red = default_palette.red.base

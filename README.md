@@ -2,15 +2,17 @@
 
 ![logo](./assets/flow-logo.png) 
 
-Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in [Lua](https://www.lua.org/). It features
-carefully designed colors to help focusing during coding plus fluorescent details to provide a vibrant environment. Why fluo? Because it is
-cool!
+Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
+[Lua](https://www.lua.org/). It features carefully designed colors to help
+focusing during coding plus fluorescent details to provide a vibrant environment.
+Why fluo? Because it is cool!
 
 ## Showcase
 
-![terminal](./assets/flow-single-terminal.png) 
+![flow-single-terminal](https://github.com/user-attachments/assets/69a1c7b3-5ea8-448a-9307-02f5aa0617ac)
 
-![terminals](./assets/flow-multiple-terminals.png)
+![flow-multiple-terminal](https://github.com/user-attachments/assets/0aff8ec7-81fb-4610-bcbe-f34b707a86f6)
+
 
 # Palette
 
@@ -26,15 +28,18 @@ as follows:
 
 - **Slit comp** (S+/-150): yellow, red.
 
-Furthermore, teal has been included to enhance the blue tones, and a fluorescent color has been added for
-striking accents. The palette is defined across three different levels of light:
+Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been added for
+striking accents. 
 
-|Bright|Normal|Dim|
-|-|-|-|
-|80|70|30|
+![flow-palette](https://github.com/user-attachments/assets/c90da8b7-4269-4e60-8c52-55c937d2d022)
 
-[comment]: <> FIX: update values
-![palette](./assets/flow-palette.png) 
+The palette is defined across four different levels of light and saturation of
+base color to provide different choices of based on the user preferences:
+
+|          |Base|Bright|Dark|Desaturate|
+|----------|----|------|----|----------|
+|**Light**     |50  |75    |25  |70        |
+|**Saturation**|80  |80    |50  |50        |
 
 # Requirements
 
@@ -57,7 +62,7 @@ Install the theme with your preferred package manager, such as
 
 # Usage
 
-## [Lua](https://www.lua.org)
+## Lua
 
 ```lua
 require("flow").setup{}
@@ -78,10 +83,10 @@ return {
   opts = {},
   config = function()
     require("flow").setup{
-      light_theme = false, -- Set the theme with white background.
-      transparent = false, -- Set transparent background.
-      fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
-      mode = "base", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+      light_theme = false,      -- Set the theme with white background.
+      transparent = false,      -- Set transparent background.
+      fluo_color = "pink",      -- Color used as fluo. Available values are pink, yellow, orange, or green.
+      mode = "base",            -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
       aggressive_spell = false, -- Use colors for spell check.
     }
 
@@ -170,5 +175,7 @@ My dot config [0xstepit/dotfiles](https://github.com/0xstepit/dotfiles).
 This colorscheme is inspired by other amazing colorscheme:
 
 - [Tokyo Night](https://github.com/folke/tokyonight.nvim)
+
+- [Gruvbox](https://github.com/morhetz/gruvbox)
 
 - [Nordic](https://github.com/AlexvZyl/nordic.nvim)
