@@ -1,7 +1,14 @@
 package.path = package.path .. ";../../?.lua;"
 
 local flow_colors = require("flow.colors")
-local palette = flow_colors.setup()
+local opts = {
+  light_theme = false,
+  transparent = false,
+  fluo_color = "pink",
+  mode = "desaturate",
+  aggressive_spell = false,
+}
+local palette = flow_colors.setup(opts)
 
 local extras = {
   alacritty = { name = "alacritty", extension = "toml" },
