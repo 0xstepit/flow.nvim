@@ -3,65 +3,65 @@
 
 # Black and white
 [colors.primary]
-background = '#1B2228'
-foreground = '#B2C1CC'
+background = '#1b2228'
+foreground = '#b3c1cc'
 
 # Normal colors
 [colors.normal]
-black = '#0D0D0D'
-red = '#F07580'
-green = '#80F075'
-yellow = '#F0E575'
-blue = '#75BDF0'
-magenta = '#A875F0'
-cyan = '#75F0E6'
-white = '#F2F2F2'
+black = '#0d0d0d'
+red = '#d98c93'
+green = '#93d98c'
+yellow = '#d9d28c'
+blue = '#8cb9d9'
+magenta = '#ac8cd9'
+cyan = '#8cd9d2'
+white = '#f2f2f2'
 
 # Bright colors
 [colors.bright]
-black = '#0D0D0D'
-red = '#F07580'
-green = '#80F075'
-yellow = '#F0E575'
-blue = '#75BDF0'
-magenta = '#A875F0'
-cyan = '#75F0E6'
-white = '#F2F2F2'
+black = '#0d0d0d'
+red = '#d98c93'
+green = '#93d98c'
+yellow = '#d9d28c'
+blue = '#8cb9d9'
+magenta = '#ac8cd9'
+cyan = '#8cd9d2'
+white = '#f2f2f2'
 
 # Search colors
 [colors.search.matches]
-foreground = '#FF007C'
-background = '#0D0D0D'
+foreground = '#ff007b'
+background = '#0d0d0d'
 
 [colors.search.focused_match]
-foreground = '#0D0D0D'
-background = '#FF007C'
+foreground = '#0d0d0d'
+background = '#ff007b'
 
 # Selection colors
 [colors.selection]
-background = '#FF007C'
-text = '#0D0D0D'
+background = '#ff007b'
+text = '#0d0d0d'
 
 # Cursors
 # If you don't want to override original behavior, which is nice,
 # remove [colors.cursor] and [colors.vi_mode_cursor].
 [colors.cursor]
-cursor = '#FF007C'
-text = '#0D0D0D'
+cursor = '#ff007b'
+text = '#0d0d0d'
 
 [colors.vi_mode_cursor]
-cursor = '#FF007C'
-text = '#0D0D0D'
+cursor = '#ff007b'
+text = '#0d0d0d'
 
 [colors.footer_bar]
-foreground = '#FF007C'
-background = '#0D0D0D'
+foreground = '#ff007b'
+background = '#0d0d0d'
 
 [[colors.indexed_colors]]
 index = 93
-color = '#A875F0'
+color = '#ac8cd9'
 
 # Fluo Colors
 [[colors.indexed_colors]]
 index = 198
-color = '#FF007C'
+color = '#ff007b'

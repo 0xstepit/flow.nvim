@@ -36,10 +36,10 @@ striking accents.
 The palette is defined across four different levels of light and saturation of
 base color to provide different choices of based on the user preferences:
 
-|          |Base|Bright|Dark|Desaturate|
-|----------|----|------|----|----------|
-|**Light**     |50  |75    |25  |70        |
-|**Saturation**|80  |80    |50  |50        |
+|               |Base|Bright|Dark|Desaturate|
+|---------------|----|------|----|----------|
+|**Light**      |50  |75    |25  |70        |
+|**Saturation** |80  |80    |50  |50        |
 
 # Requirements
 
@@ -149,7 +149,18 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
 
-The generation of extra is not automatic, FIX.
+The generation of extra is not automatic (I'm sorry, I'm working on it). If you want
+to generate the color scheme for extras, you need to perform the following steps:
+
+1. Change the config used for the extra theme generation in `lua/flow/extra/main.lua` without
+setting the background transparent.
+
+2. Generate the themes:
+
+```sh
+cd ./lua/flow/extra
+lua main.lua -v
+```
 
 # Todo
 

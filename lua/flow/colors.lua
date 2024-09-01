@@ -97,7 +97,7 @@ function M.setup(opts)
 
   -- Sidebar
   colors.fg_sidebar = default_palette.grey[5] -- use by items on quickfix list and help text
-  colors.bg_sidebar = (opts.transparent and default_palette.transparent) or colors.bg
+  colors.bg_sidebar = colors.bg
 
   -- Float
   colors.fg_float = colors.grey[5]
@@ -124,7 +124,6 @@ function M.setup(opts)
   colors.fg_visual = colors.fluo
 
   -- Borders
-  colors.border_highlight = default_palette.fluo.orange
   colors.fg_border = default_palette.grey[3]
   colors.bg_border = default_palette.grey[3]
 
