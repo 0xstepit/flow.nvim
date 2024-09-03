@@ -140,6 +140,8 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/alacritty-flow.toml).
 
+- [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/kitty-flow.conf).
+
 - [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
 
 # Todo
