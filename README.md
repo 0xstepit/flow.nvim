@@ -5,7 +5,7 @@
 Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
 [Lua](https://www.lua.org/). It features carefully designed colors to help
 focusing during coding plus fluorescent details to provide a vibrant environment.
-Why fluo? Because it is cool!
+Why fluo? Because it's cool!
 
 ## Showcase
 
@@ -38,8 +38,20 @@ base color to provide different choices of based on the user preferences:
 
 |               |Base|Bright|Dark|Desaturate|
 |---------------|----|------|----|----------|
-|**Light**      |50  |75    |25  |70        |
+|**Light**      |X   |75    |25  |X
 |**Saturation** |80  |80    |50  |50        |
+
+Where X is equal to 70 if the dark theme is selected, or 30 if it is light. Flow allows a lot of
+customizability in terms of background, main colors, and fluo, but from a big design space come 
+big responsibilities! It is up to you to create a good atmosphere and an harmonic environment. In
+the short future, I will create pre-defined configurations, but for the moment please, just try to
+follow these guidelines:
+
+- When you set a transparent background, use a dark desktop image with the dark theme and a light one
+with the light theme.
+
+- Do not use the dark mode with the dark theme, and, consequently, don't use bright mode with the
+light theme.
 
 # Requirements
 
@@ -83,10 +95,11 @@ return {
   opts = {},
   config = function()
     require("flow").setup{
-      light_theme = false,      -- Set the theme with white background.
-      transparent = false,      -- Set transparent background.
-      fluo_color = "pink",      -- Color used as fluo. Available values are pink, yellow, orange, or green.
-      mode = "base",            -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+      dark_theme = true, -- Set the theme with dark background.
+      high_contrast = true, -- Make the dark background darker or the light background lighter.
+      transparent = false, -- Set transparent background.
+      fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
+      mode = "normal", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
       aggressive_spell = false, -- Use colors for spell check.
     }
 
@@ -108,8 +121,9 @@ return {
   opts = {},
   config = function()
     require("flow").setup{
-      light_theme = false,
-      transparent = true,
+      dark_theme = true,
+      transparent = false,
+      high_contrast = false,
       fluo_color = "pink",
       mode = "desaturate",
       aggressive_spell = false,
@@ -161,6 +175,8 @@ setting the background transparent.
 cd ./lua/flow/extra
 lua main.lua -v
 ```
+
+Now you copy the files in where your configuration is sourcing them.
 
 # Todo
 

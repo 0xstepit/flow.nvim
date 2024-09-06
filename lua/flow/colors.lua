@@ -4,7 +4,7 @@ M.colors = nil
 
 function M.setup(opts)
   local palette = require("flow.palette")
-  local default_palette = palette.get()
+  local default_palette = palette.get(opts)
 
   opts = opts or {}
 
@@ -17,12 +17,16 @@ function M.setup(opts)
     opts.fluo_color and default_palette.fluo[opts.fluo_color] or default_palette.fluo.pink
   )
 
-  colors.black = default_palette.black
-  colors.white = default_palette.white
-  colors.grey = default_palette.grey
+  if not opts.dark_theme then
+    colors.white = default_palette.black
+    colors.black = default_palette.white
+  else
+    colors.black = default_palette.black
+    colors.white = default_palette.white
+  end
 
-  -- Background colors
-  if opts.light_theme then
+  colors.grey = default_palette.grey
+  if not opts.dark_theme then
     local n_greys = #colors.grey
     for i = 1, math.floor(n_greys / 2) do
       local c = colors.grey[n_greys + 1 - i]
@@ -31,10 +35,19 @@ function M.setup(opts)
     end
   end
 
+  if opts.high_contrast then
+    local grey_1 = colors.grey[1]
+    colors.grey[1] = colors.grey[2]
+    colors.grey[2] = grey_1
+
+    local grey_6 = colors.grey[6]
+    colors.grey[6] = colors.grey[7]
+    colors.grey[7] = grey_6
+  end
+
   colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
   colors.bg_dark = default_palette.grey[6]
 
-  -- Foreground colors
   colors.fg = default_palette.grey[6] -- used for text in the colorscheme
   colors.fg_dark = colors.grey[4]
 
@@ -112,7 +125,7 @@ function M.setup(opts)
   colors.bg_statusline = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = default_palette.fluo.orange
+  colors.fg_highlight = colors.fluo
   colors.bg_highlight = colors.grey[1] -- used for colorcolumn, cursorline, ...
 
   -- Gutter
@@ -142,13 +155,6 @@ function M.setup(opts)
       change = colors.Light_blue.very_bright, -- background of changed lines
       text = colors.Cyan.very_bright, -- background of changed characters
     }
-
-    -- Diagnostics
-    colors.error = colors.Red.very_bright
-    colors.todo = colors.Light_blue.very_bright
-    colors.warning = colors.Yellow.very_bright
-    colors.info = colors.Cyan.very_bright
-    colors.hint = colors.Teal.very_bright
   else
     colors.diff = {
       add = colors.Green.very_dark, -- background of added lines
@@ -156,14 +162,14 @@ function M.setup(opts)
       change = colors.Light_blue.very_dark, -- background of changed lines
       text = colors.Cyan.very_dark, -- background of changed characters
     }
-
-    -- Diagnostics
-    colors.error = colors.Red.very_dark
-    colors.todo = colors.Light_blue.very_dark
-    colors.warning = colors.Yellow.very_dark
-    colors.info = colors.Cyan.very_dark
-    colors.hint = colors.Teal.very_dark
   end
+
+  -- Diagnostics
+  colors.error = colors.Red.base
+  colors.todo = colors.Teal.base
+  colors.warning = colors.Yellow.base
+  colors.info = colors.Cyan.base
+  colors.hint = colors.Light_blue.base
 
   -- Misc
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter

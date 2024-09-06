@@ -3,7 +3,8 @@ local M = {}
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
 local defaults = {
-  light_theme = false, -- Set the theme with white background.
+  dark_theme = true, -- Set the theme with dark background.
+  high_contrast = true, -- Make the dark background darker or the light background lighter.
   transparent = false, -- Set transparent background.
   fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
   mode = "normal", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.

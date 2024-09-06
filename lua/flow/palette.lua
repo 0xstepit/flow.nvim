@@ -6,7 +6,7 @@ local M = {}
 
 ---Generates and returns a color palette using HSL and HEX values.
 ---@return table
-function M.get()
+function M.get(opts)
   local very_dark = {
     S = 80,
     L = 15,
@@ -17,14 +17,19 @@ function M.get()
     L = 25,
   }
 
+  L_dyn = 70
+  if not opts.dark_theme then
+    L_dyn = 30
+  end
+
   local base = {
     S = 80,
-    L = 50,
+    L = L_dyn,
   }
 
   local base_desat = {
     S = 50,
-    L = 70,
+    L = L_dyn,
   }
 
   local bright = {
