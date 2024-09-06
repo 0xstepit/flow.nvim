@@ -2,20 +2,22 @@
 
 ![logo](./assets/flow-logo.png) 
 
-Flow is an [Nvim](https://github.com/neovim/neovim) color scheme designed for transparent or dark backgrounds. It features
-carefully designed colors to help focusing during coding plus fluorescent details to provide a vibrant environment. Why fluo? Because it is
-cool!
+Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
+[Lua](https://www.lua.org/). It features carefully designed colors to help
+focusing during coding plus fluorescent details to provide a vibrant environment.
+Why fluo? Because it's cool!
 
 ## Showcase
 
-![terminal](./assets/flow-single-terminal.png) 
+![flow-single-terminal](https://github.com/user-attachments/assets/69a1c7b3-5ea8-448a-9307-02f5aa0617ac)
 
-![terminals](./assets/flow-multiple-terminals.png)
+![flow-multiple-terminal](https://github.com/user-attachments/assets/0aff8ec7-81fb-4610-bcbe-f34b707a86f6)
+
 
 # Palette
 
-Flow has been designed using a palette based on nine colors selected through the HSL representation to
-create a cohesive ambiance. The principal color is light blue, and the additional colors have been chosen
+Flow has been designed using a palette based on 9 colors selected through the HSL representation to
+create a cohesive ambiance. The principal color is the light blue, and the additional colors have been chosen
 as follows:
 
 - **Analogous** (S+/-30): blue, cyan.
@@ -26,15 +28,30 @@ as follows:
 
 - **Slit comp** (S+/-150): yellow, red.
 
-Furthermore, teal has been included to enhance the blue tones, and a fluorescent color has been added for
-striking accents. The palette is defined across three different levels of light:
+Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been added for
+striking accents. 
 
-|Bright|Normal|Dim|
-|-|-|-|
-|80|70|30|
+![flow-palette](https://github.com/user-attachments/assets/c90da8b7-4269-4e60-8c52-55c937d2d022)
 
-![palette](./assets/flow-palette.png) 
+The palette is defined across four different levels of light and saturation of
+base color to provide different choices of based on the user preferences:
 
+|               |Base|Bright|Dark|Desaturate|
+|---------------|----|------|----|----------|
+|**Light**      |X   |75    |25  |X
+|**Saturation** |80  |80    |50  |50        |
+
+Where X is equal to 70 if the dark theme is selected, or 30 if it is light. Flow allows a lot of
+customizability in terms of background, main colors, and fluo, but from a big design space come 
+big responsibilities! It is up to you to create a good atmosphere and an harmonic environment. In
+the short future, I will create pre-defined configurations, but for the moment please, just try to
+follow these guidelines:
+
+- When you set a transparent background, use a dark desktop image with the dark theme and a light one
+with the light theme.
+
+- Do not use the dark mode with the dark theme, and, consequently, don't use bright mode with the
+light theme.
 
 # Requirements
 
@@ -57,7 +74,7 @@ Install the theme with your preferred package manager, such as
 
 # Usage
 
-## [Lua](https://www.lua.org)
+## Lua
 
 ```lua
 require("flow").setup{}
@@ -68,7 +85,7 @@ vim.cmd "colorscheme flow"
 
 ## Default
 
-The configuration allows to specify 4 different options:
+The configuration allows to specify 5 different options:
 
 ```lua 
 return {
@@ -78,10 +95,12 @@ return {
   opts = {},
   config = function()
     require("flow").setup{
+      dark_theme = true, -- Set the theme with dark background.
+      high_contrast = true, -- Make the dark background darker or the light background lighter.
       transparent = false, -- Set transparent background.
-      fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
-      mode = "normal", -- Intensity of the palette: normal, bright, desaturate, or dark. Notice that dark is ugly!
-      aggressive_spell = false, -- Display colors for spell check.
+      fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
+      mode = "normal", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+      aggressive_spell = false, -- Use colors for spell check.
     }
 
     vim.cmd "colorscheme flow"
@@ -102,9 +121,11 @@ return {
   opts = {},
   config = function()
     require("flow").setup{
-      transparent = true,
+      dark_theme = true,
+      transparent = false,
+      high_contrast = false,
       fluo_color = "pink",
-      mode = "normal",
+      mode = "desaturate",
       aggressive_spell = false,
     }
     vim.cmd "colorscheme flow"
@@ -142,6 +163,21 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
 
+The generation of extra is not automatic (I'm sorry, I'm working on it). If you want
+to generate the color scheme for extras, you need to perform the following steps:
+
+1. Change the config used for the extra theme generation in `lua/flow/extra/main.lua` without
+setting the background transparent.
+
+2. Generate the themes:
+
+```sh
+cd ./lua/flow/extra
+lua main.lua -v
+```
+
+Now you copy the files in where your configuration is sourcing them.
+
 # Todo
 
 This is still an ongoing project. Below are the next topics I will work on:
@@ -149,6 +185,11 @@ This is still an ongoing project. Below are the next topics I will work on:
 - [ ] Add docs.
 
 - [ ] Extra automatic generation.
+
+- [ ] Create predefined configurations of the theme.
+
+If you want to contribute to this project, please consider addressing one of the
+previous point :)
 
 # Contributing
 
@@ -162,6 +203,6 @@ This colorscheme is inspired by other amazing colorscheme:
 
 - [Tokyo Night](https://github.com/folke/tokyonight.nvim)
 
+- [Gruvbox](https://github.com/morhetz/gruvbox)
+
 - [Nordic](https://github.com/AlexvZyl/nordic.nvim)
-
-

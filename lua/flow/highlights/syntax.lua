@@ -11,7 +11,7 @@ function M.get(c, _)
     Conditional = { link = "Operator" }, -- if, then, else, endif, switch, etc.
     Constant = { fg = c.yellow }, -- Any constant.
     Delimiter = { fg = c.purple }, -- Character that needs attention.
-    Error = { bg = c.bg, fg = c.red.dim }, -- Any erroneous construct.
+    Error = { bg = c.bg, fg = c.error }, -- Any erroneous construct.
     Exception = { link = "Keyword" }, -- try, catch, throw.
     Float = { link = "Number" }, -- A floating point constant: 2.3e10.
     Function = { fg = c.blue }, -- Function name (also: methods for classes).
@@ -19,10 +19,10 @@ function M.get(c, _)
     Keyword = { fg = c.red }, -- Any other keyword.
     Label = { link = "Keyword" }, -- case, default, etc.
     Macro = { fg = c.grey[5] }, -- Heavily used in rust.
-    Note = { bg = c.bg, fg = c.light_blue.dim }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
+    Note = { bg = c.bg, fg = c.light_blue }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
-    PreCondit = { fg = c.to_check }, --  preprocessor #if, #else, #endif, etc.
+    PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
     Removed = { bg = c.diff.delete }, -- Removed line in a diff.
     Repeat = { link = "Operator" }, -- for, do, while, etc.
@@ -32,13 +32,13 @@ function M.get(c, _)
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.
     StorageClass = { fg = c.to_check }, -- Static, register, volatile, etc.
-    String = { fg = c.Cyan.dim }, -- A string constant: "this is a string".
+    String = { fg = c.cyan }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
     Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
-    Todo = { bg = c.bg, fg = c.teal.dim }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
+    Todo = { bg = c.bg, fg = c.todo }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
-    Warn = { bg = c.bg, fg = c.yellow.dim }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
+    Warn = { bg = c.bg, fg = c.warning }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
   }
 
   return theme
