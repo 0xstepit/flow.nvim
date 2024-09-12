@@ -32,7 +32,7 @@ function M.get(c, _)
     CmpItemKindClass = { link = "Type" },
     CmpItemKindModule = { fg = c.yellow },
     CmpItemKindOperator = { link = "Operator" },
-    CmpItemKindVariable = { fg = c.teal },
+    CmpItemKindVariable = { fg = c.sky_blue },
     CmpItemKindUnit = { link = "Constant" },
     CmpItemKindFile = { link = "Directory" },
     CmpItemKindFolder = { link = "Directory" },

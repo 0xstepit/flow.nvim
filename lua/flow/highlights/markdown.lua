@@ -26,7 +26,7 @@ function M.get(c, options)
       bg = options.light_theme and c.Cyan.very_bright or c.Cyan.very_dark,
     }, -- Text between ``.
     ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- Code snippet with language not known like Mermaid.
-    ["@markup.link"] = { fg = c.teal },
+    ["@markup.link"] = { fg = c.sky_blue },
     ["@markup.link.label"] = { link = "Function" },
     ["@markup.link.label.symbol"] = { link = "Identifier" },
     ["@markup"] = { link = "@none" },
@@ -52,7 +52,7 @@ function M.get(c, options)
     ObsidianRefText = { fg = c.blue },
   }
 
-  local headers = { c.purple, c.light_blue, c.blue, c.cyan, c.teal }
+  local headers = { c.purple, c.light_blue, c.blue, c.cyan, c.sky_blue }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
   end

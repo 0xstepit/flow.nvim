@@ -36,7 +36,7 @@ function M.get(c, options)
     DapUISource = { fg = c.grey[4] },
 
     DapUIDecoration = { fg = c.grey[5] },
-    DapUIModifiedValue = { fg = c.teal },
+    DapUIModifiedValue = { fg = c.sky_blue },
   }
 
   return theme

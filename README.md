@@ -13,7 +13,6 @@ Why fluo? Because it's cool!
 
 ![flow-multiple-terminal](https://github.com/user-attachments/assets/0aff8ec7-81fb-4610-bcbe-f34b707a86f6)
 
-
 # Palette
 
 Flow has been designed using a palette based on 9 colors selected through the HSL representation to
@@ -26,19 +25,19 @@ as follows:
 
 - **Tetradic** 60 (S+/-60): purple, green.
 
-- **Slit comp** (S+/-150): yellow, red.
+- **Split comp** (S+/-150): yellow, red.
 
 Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been added for
 striking accents. 
 
-![flow-palette](https://github.com/user-attachments/assets/c90da8b7-4269-4e60-8c52-55c937d2d022)
+![flow-palette](https://github.com/user-attachments/assets/8c7b90f0-f128-4c7c-849c-a7ab876339c8)
 
 The palette is defined across four different levels of light and saturation of
 base color to provide different choices of based on the user preferences:
 
 |               |Base|Bright|Dark|Desaturate|
 |---------------|----|------|----|----------|
-|**Light**      |X   |75    |25  |X
+|**Light**      |X   |75    |25  |X         |
 |**Saturation** |80  |80    |50  |50        |
 
 Where X is equal to 70 if the dark theme is selected, or 30 if it is light. Flow allows a lot of
@@ -96,10 +95,10 @@ return {
   config = function()
     require("flow").setup{
       dark_theme = true, -- Set the theme with dark background.
-      high_contrast = true, -- Make the dark background darker or the light background lighter.
+      high_contrast = false, -- Make the dark background darker or the light background lighter.
       transparent = false, -- Set transparent background.
       fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
-      mode = "normal", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
+      mode = "base", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
       aggressive_spell = false, -- Use colors for spell check.
     }
 

@@ -27,7 +27,7 @@ function M.get(c, _)
     Removed = { bg = c.diff.delete }, -- Removed line in a diff.
     Repeat = { link = "Operator" }, -- for, do, while, etc.
     Special = { fg = c.purple }, -- Any special symbol, like {} in lua.
-    SpecialChar = { fg = c.teal }, --  special character in a constant. Heavily used in markdown.
+    SpecialChar = { fg = c.sky_blue }, --  special character in a constant. Heavily used in markdown.
     SpecialComment = { fg = c.to_check }, -- special things inside a comment
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.

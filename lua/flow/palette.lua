@@ -140,14 +140,14 @@ function M.get(opts)
       very_bright = hsl(175, very_bright.S, very_bright.L),
     },
 
-    -- Teal shades
-    teal = {
-      very_dark = hsl(145, very_dark.S, very_dark.L),
-      dark = hsl(145, dark.S, dark.L),
-      base = hsl(145, base.S, base.L),
-      desaturate = hsl(145, base_desat.S, base_desat.L),
-      bright = hsl(145, bright.S, bright.L),
-      very_bright = hsl(145, very_bright.S, very_bright.L),
+    -- Sky blue shades
+    sky_blue = {
+      very_dark = hsl(190, very_dark.S, very_dark.L),
+      dark = hsl(190, dark.S, dark.L),
+      base = hsl(190, base.S, base.L),
+      desaturate = hsl(190, base_desat.S, base_desat.L),
+      bright = hsl(190, bright.S, bright.L),
+      very_bright = hsl(190, very_bright.S, very_bright.L),
     },
 
     -- Green shades

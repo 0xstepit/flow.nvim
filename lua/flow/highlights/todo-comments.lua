@@ -6,8 +6,8 @@ function M.get(c, options)
   local theme = {}
   if options.light_theme then
     theme = {
-      TodoBgTODO = { fg = c.bg, bg = c.Teal.very_dark },
-      TodoFgTODO = { bg = c.bg, fg = c.Teal.very_dark },
+      TodoBgTODO = { fg = c.bg, bg = c.Sky_blue.very_dark },
+      TodoFgTODO = { bg = c.bg, fg = c.Sky_blue.very_dark },
       TodoBgWARN = { fg = c.bg, bg = c.Yellow.very_dark },
       TodoFgWARN = { bg = c.bg, fg = c.Yellow.very_dark },
       TodoBgFIX = { fg = c.bg, bg = c.Red.very_dark },
@@ -17,8 +17,8 @@ function M.get(c, options)
     }
   else
     theme = {
-      TodoBgTODO = { fg = c.bg, bg = c.Teal.very_bright },
-      TodoFgTODO = { bg = c.bg, fg = c.Teal.very_bright },
+      TodoBgTODO = { fg = c.bg, bg = c.Sky_blue.very_bright },
+      TodoFgTODO = { bg = c.bg, fg = c.Sky_blue.very_bright },
       TodoBgWARN = { fg = c.bg, bg = c.Yellow.very_bright },
       TodoFgWARN = { bg = c.bg, fg = c.Yellow.very_bright },
       TodoBgFIX = { fg = c.bg, bg = c.Red.very_bright },

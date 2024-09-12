@@ -59,7 +59,7 @@ function M.setup(opts)
     colors.purple = default_palette.purple.dark
     colors.blue = default_palette.blue.dark
     colors.light_blue = default_palette.light_blue.dark
-    colors.teal = default_palette.teal.dark
+    colors.sky_blue = default_palette.sky_blue.dark
     colors.cyan = default_palette.cyan.dark
     colors.green = default_palette.green.dark
   elseif opts.mode == "bright" then
@@ -69,7 +69,7 @@ function M.setup(opts)
     colors.purple = default_palette.purple.bright
     colors.blue = default_palette.blue.bright
     colors.light_blue = default_palette.light_blue.bright
-    colors.teal = default_palette.teal.bright
+    colors.sky_blue = default_palette.sky_blue.bright
     colors.cyan = default_palette.cyan.bright
     colors.green = default_palette.green.bright
   elseif opts.mode == "desaturate" then
@@ -79,7 +79,7 @@ function M.setup(opts)
     colors.purple = default_palette.purple.desaturate
     colors.blue = default_palette.blue.desaturate
     colors.light_blue = default_palette.light_blue.desaturate
-    colors.teal = default_palette.teal.desaturate
+    colors.sky_blue = default_palette.sky_blue.desaturate
     colors.cyan = default_palette.cyan.desaturate
     colors.green = default_palette.green.desaturate
   else
@@ -93,7 +93,7 @@ function M.setup(opts)
     colors.purple = default_palette.purple.base
     colors.blue = default_palette.blue.base
     colors.light_blue = default_palette.light_blue.base
-    colors.teal = default_palette.teal.base
+    colors.sky_blue = default_palette.sky_blue.base
     colors.cyan = default_palette.cyan.base
     colors.green = default_palette.green.base
   end
@@ -104,7 +104,7 @@ function M.setup(opts)
   colors.Purple = default_palette.purple
   colors.Blue = default_palette.blue
   colors.Light_blue = default_palette.light_blue
-  colors.Teal = default_palette.teal
+  colors.Sky_blue = default_palette.sky_blue
   colors.Cyan = default_palette.cyan
   colors.Green = default_palette.green
 
@@ -146,7 +146,7 @@ function M.setup(opts)
     change = colors.yellow,
     delete = colors.red,
     ignore = colors.grey[4],
-    untrcked = colors.teal,
+    untrcked = colors.sky_blue,
   }
   if opts.light_theme then
     colors.diff = {
@@ -166,7 +166,7 @@ function M.setup(opts)
 
   -- Diagnostics
   colors.error = colors.Red.base
-  colors.todo = colors.Teal.base
+  colors.todo = colors.Sky_blue.base
   colors.warning = colors.Yellow.base
   colors.info = colors.Cyan.base
   colors.hint = colors.Light_blue.base
