@@ -14,6 +14,7 @@ local extras = {
   alacritty = { name = "alacritty", extension = "toml" },
   tmux = { name = "tmux", extension = "conf" },
   fzf = { name = "fzf", extension = "sh" },
+  kitty = { name = "kitty", extension = "conf" }
 }
 
 for _, e in pairs(extras) do
