@@ -82,6 +82,16 @@ function M.setup(opts)
     colors.sky_blue = default_palette.sky_blue.desaturate
     colors.cyan = default_palette.cyan.desaturate
     colors.green = default_palette.green.desaturate
+  elseif opts.mode == "base" then
+    colors.orange = default_palette.orange.base
+    colors.yellow = default_palette.yellow.base
+    colors.red = default_palette.red.base
+    colors.purple = default_palette.purple.base
+    colors.blue = default_palette.blue.base
+    colors.light_blue = default_palette.light_blue.base
+    colors.sky_blue = default_palette.sky_blue.base
+    colors.cyan = default_palette.cyan.base
+    colors.green = default_palette.green.base
   else
     vim.notify(
       "Invalid mode: '" .. opts.mode .. "'. Falling back to 'base' mode.",
