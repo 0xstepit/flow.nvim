@@ -21,8 +21,8 @@ function M.get(c, options)
     MatchParen = { fg = c.yellow, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
     Normal = { fg = c.fg, bg = options.transparent and c.none or c.bg }, -- Normal text.
     NormalFloat = { fg = c.fg_float, bg = options.transparent and c.none or c.bg_float }, -- Normal text in floating windows like documentation.
-    NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
-    NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
+    -- NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
+    -- NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
     EndOfBuffer = { fg = c.fg_highlight }, -- Filler lines (~) after the end of the buffer.
     NonText = { fg = c.grey[3] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
@@ -52,8 +52,9 @@ function M.get(c, options)
     -- Search and substitution
     IncSearch = { bg = c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
     Search = { bg = c.bg_visual, fg = c.fg_visual }, -- Used for 'incsearch' highlighting.
+    CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
-    Visual = { link = "IncSearch" }, -- Visual mode selection.
+    Visual = { bg = c.fg_visual, fg = c.bg_visual }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
     -- Messages
@@ -92,16 +93,21 @@ function M.get(c, options)
     -- Misc
     -- I'm not sure where these groups are set.
     Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
+
     IblIndent = { link = "LineNr" },
     IblWhiteSpace = { link = "LineNr" },
+
     Include = { fg = c.red }, --  preprocessor #include
     Menu = {}, -- Current font, background and foreground colors of the menus. Also used for the toolbar. Applicable highlight arguments: font, guibg, guifg.
     Question = { fg = c.fg_visual }, -- |hit-enter| prompt and yes/no questions.
     SnippetTabstop = {}, -- Tabstops in snippets. |vim.snippet|. Where you can add text in the snippet.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
-    WinBar = { bg = c.grey[3] }, -- Window bar,
-    WinBarNC = { bg = c.grey[2] }, -- Window bar in inactive windows, used by dap-ui.
+
+    WinBar = { bg = c.none }, -- Window bar,
+    WinBarNC = { bg = c.none }, -- Window bar in inactive windows, used by dap-ui.
+
     netrwClassify = { link = "Type" },
+    netrwHelpCmd = { fg = c.fluo },
   }
 
   return theme
