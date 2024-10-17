@@ -11,7 +11,7 @@ function M.setup(opts)
   local colors = {}
 
   colors.transparent = default_palette.transparent
-  colors.to_check = default_palette.fluo.green -- value used for hi that i don't know how they are applied.
+  colors.to_check = default_palette.fluo.green.normal -- value used for hi that i don't know how they are applied.
 
   colors.fluo = (
     opts.fluo_color and default_palette.fluo[opts.fluo_color].normal
