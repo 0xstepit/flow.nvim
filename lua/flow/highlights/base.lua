@@ -50,8 +50,7 @@ function M.get(c, options)
     TabLineSel = { link = "LineNr" }, -- Tab pages line, active tab page label. Used by Trouble for numbers.
 
     -- Search and substitution
-    CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
-    IncSearch = { bg = c.fg_visual, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
+    IncSearch = { bg = c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
     Search = { bg = c.bg_visual, fg = c.fg_visual }, -- Used for 'incsearch' highlighting.
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
     Visual = { link = "IncSearch" }, -- Visual mode selection.

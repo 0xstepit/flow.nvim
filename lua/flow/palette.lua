@@ -52,11 +52,30 @@ function M.get(opts)
 
     -- Fluorescent colors
     fluo = {
-      pink = hsl(331, 100, 50), -- Fluorescent pink
-      yellow = hsl(61, 100, 50), -- Fluorescent yellow
-      green = hsl(115, 100, 50), -- Fluorescent green
-      orange = hsl(25, 100, 50), -- Fluorescent orange
-      cyan = hsl(187, 100, 50), -- Fluorescent cyan
+      pink = {
+        normal = hsl(331, 100, 50), -- Fluorescent pink
+        light = hsl(331, 100, 90), -- Fluorescent pink light
+        dark = hsl(331, 100, 10), -- Fluorescent pink dark
+      },
+      yellow = {
+        normal = hsl(61, 100, 50), -- Fluorescent yellow
+        light = hsl(61, 100, 90), -- Fluorescent yellow light
+        dark = hsl(61, 100, 10), -- Fluorescent yellow dark
+      },
+      green = {
+        normal = hsl(115, 100, 50), -- Fluorescent green
+        light = hsl(115, 100, 90), -- Fluorescent green light
+        dark = hsl(115, 100, 10), -- Fluorescent green dark
+      },
+      orange = {
+        normal = hsl(25, 100, 50), -- Fluorescent orange
+        light = hsl(25, 100, 90), -- Fluorescent orange light
+        dark = hsl(25, 100, 50), -- Fluorescent orange dark
+      },
+      cyan = {
+        normal = hsl(187, 100, 50), -- Fluorescent cyan
+        light = hsl(187, 100, 90), -- Fluorescent cyan light
+        dark = hsl(187, 100, 10), -- Fluorescent cyan dark
     },
 
     -- Greyscale colors
