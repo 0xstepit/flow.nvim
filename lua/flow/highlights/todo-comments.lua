@@ -7,24 +7,24 @@ function M.get(c, options)
   if options.light_theme then
     theme = {
       TodoBgTODO = { fg = c.bg, bg = c.Sky_blue.very_dark },
-      TodoFgTODO = { bg = c.bg, fg = c.Sky_blue.very_dark },
+      TodoFgTODO = { link = "Comment" },
       TodoBgWARN = { fg = c.bg, bg = c.Yellow.very_dark },
-      TodoFgWARN = { bg = c.bg, fg = c.Yellow.very_dark },
+      TodoFgWARN = { link = "Comment" },
       TodoBgFIX = { fg = c.bg, bg = c.Red.very_dark },
-      TodoFgFIX = { bg = c.bg, fg = c.Red.very_dark },
+      TodoFgFIX = { link = "Comment" },
       TodoBgNOTE = { fg = c.bg, bg = c.Light_blue.very_dark },
-      TodoFgNOTE = { bg = c.bg, fg = c.Light_blue.very_dark },
+      TodoFgNOTE = { link = "Comment" },
     }
   else
     theme = {
       TodoBgTODO = { fg = c.bg, bg = c.Sky_blue.very_bright },
-      TodoFgTODO = { bg = c.bg, fg = c.Sky_blue.very_bright },
+      TodoFgTODO = { link = "Comment" },
       TodoBgWARN = { fg = c.bg, bg = c.Yellow.very_bright },
-      TodoFgWARN = { bg = c.bg, fg = c.Yellow.very_bright },
+      TodoFgWARN = { link = "Comment" },
       TodoBgFIX = { fg = c.bg, bg = c.Red.very_bright },
-      TodoFgFIX = { bg = c.bg, fg = c.Red.very_bright },
+      TodoFgFIX = { link = "Comment" },
       TodoBgNOTE = { fg = c.bg, bg = c.Light_blue.very_bright },
-      TodoFgNOTE = { bg = c.bg, fg = c.Light_blue.very_bright },
+      TodoFgNOTE = { link = "Comment" },
     }
   end
 
