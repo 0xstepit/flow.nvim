@@ -9,34 +9,45 @@ function M.get(c, options)
     debugBreakpoint = { fg = c.error }, -- used for breakpoint colors in terminal-debug
     DapBreakpoint = { link = "debugBreakpoint" },
 
-    Debug = { fg = c.orange }, --    debugging statements
-    DapUIFloatBorder = { fg = c.green, bg = c.bg },
+    -- Debug = { fg = c.orange }, -- debugging statements
+    -- DapUIFloatBorder = { fg = c.green, bg = c.bg },
+    --
+    -- -- Icons
+    DapUIStop = { fg = c.red },
+    DapUIRestart = { fg = c.green },
+    DapUIPlayPause = { link = "DapUIRestart" },
 
-    -- Icons
-    DapUIStop = { fg = c.grey[7], bold = true },
-    DapUIPlayPause = { link = "DapUIStop" },
-    DapUIStepInto = { link = "DapUIStop" },
-    DapUIStepOver = { link = "DapUIStop" },
-    DapUIStepOut = { link = "DapUIStop" },
-    DapUIStepBack = { link = "DapUIStop" },
-    DapUIRestart = { link = "DapUIStop" },
+    DapUIStepInto = { fg = c.light_blue },
+    DapUIStepOver = { link = "DapUIStepInto" },
+    DapUIStepOut = { link = "DapUIStepInto" },
+    DapUIStepBack = { link = "DapUIStepInto" },
+    --
+    DapUILineNumber = { fg = c.sky_blue },
+    DapUICurrentFrameName = { fg = c.yellow },
 
-    DapUIType = { fg = c.blue }, -- filename, types, ... in Locals
-    DapUILineNumber = { fg = c.purple },
-    DapUICurrentFrameName = { fg = c.light_blue },
-    DapUIWatchesValue = { fg = c.grey[4] },
-    DapUIWatchesEmpty = { link = "DapUIWatchesValue" },
-    DapUIThread = { fg = c.grey[5] },
-    DapUIStoppedThread = { fg = c.yellow },
-    DapUIScope = { fg = c.light_blue },
-    DapUIBreakpointsPath = { fg = c.light_blue },
-    DapUIValue = { fg = c.cyan },
+    DapUIWatchesValue = { fg = c.grey[5] },
+    DapUIWatchesError = { fg = c.error },
 
-    DapUIFrameName = { fg = c.grey[5] },
-    DapUISource = { fg = c.grey[4] },
+    -- DapUIWatchesEmpty = { link = "DapUIWatchesValue" },
+    --
+    -- -- Text
+    DapUIThread = { fg = c.cyan },
+    DapUIStoppedThread = { fg = c.light_blue },
+    -- DapUIFrameName = { fg = c.green },
+    --
+    DapUIScope = { link = "DapUIStoppedThread" }, -- Text like Locals
 
-    DapUIDecoration = { fg = c.grey[5] },
-    DapUIModifiedValue = { fg = c.sky_blue },
+    DapUIVariable = { fg = c.blue },
+    -- DapUIValue = { fg = c.cyan },
+
+    DapUIType = { fg = c.purple },
+    DapUISource = { fg = c.purple }, -- filename
+
+    DapUIBreakpointsPath = { fg = c.red },
+    DapUIBreakpointsLine = { fg = c.red },
+    --
+    DapUIDecoration = { fg = c.grey[5] }, -- arrow indicating vars
+    DapUIModifiedValue = { fg = c.yellow }, -- value of the last modified variables in the scope.
   }
 
   return theme
