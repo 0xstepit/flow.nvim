@@ -118,7 +118,7 @@ function M.setup(opts)
 
   -- Float
   colors.fg_float = colors.grey[5]
-  colors.bg_float = default_palette.transparent
+  colors.bg_float = opts.transparent and default_palette.transparent or colors.grey[6]
 
   -- Popups
   colors.fg_popup = default_palette.grey[6]
@@ -141,7 +141,7 @@ function M.setup(opts)
   colors.fg_visual = colors.fluo
 
   -- Borders
-  colors.fg_border = default_palette.grey[3]
+  colors.fg_border = default_palette.grey[4]
   colors.bg_border = default_palette.grey[3]
 
   -- Git
@@ -152,7 +152,7 @@ function M.setup(opts)
     ignore = colors.grey[4],
     untrcked = colors.sky_blue,
   }
-  if opts.light_theme then
+  if not opts.dark_theme then
     colors.diff = {
       add = colors.Green.very_bright, -- background of added lines
       delete = colors.Red.very_bright, -- background of deleted lines

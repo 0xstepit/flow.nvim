@@ -68,6 +68,7 @@ text = '${black}'
 foreground = '${fluo}'
 background = '${black}'
 
+# Purple color
 [[colors.indexed_colors]]
 index = 93
 color = '${purple}'

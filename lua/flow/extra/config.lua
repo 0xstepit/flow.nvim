@@ -5,32 +5,37 @@ local M = {}
 -- transparency should be set according to its documentation.
 function M.get_dark_theme(fluo_color)
   local eclipse = {
-    -- Themes colors
     name = "eclipse",
-    light_theme = false,
+    dark_theme = true,
     mode = "desaturate",
+    fluo_color = fluo_color,
+  }
 
-    -- Variables
+  local bloom = {
+    name = "bloom",
+    dark_theme = true,
+    mode = "desaturate",
     fluo_color = fluo_color,
   }
   local theme = {
     eclipse,
+    bloom,
   }
   return theme
 end
 
 function M.get_light_theme(fluo_color)
-  local eclipse = {
+  local light = {
     -- Themes colors
-    name = "bloom",
-    light_theme = true,
+    name = "light",
+    dark_theme = false,
     mode = "dark",
 
     -- Variables
     fluo_color = fluo_color,
   }
   local theme = {
-    eclipse,
+    light,
   }
   return theme
 end
