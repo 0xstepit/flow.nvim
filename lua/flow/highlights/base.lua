@@ -20,7 +20,7 @@ function M.get(c, options)
     FloatTitle = { fg = c.fg_float, bg = c.bg_float, bold = true }, -- Title of floating windows.
     MatchParen = { fg = c.yellow, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
     Normal = { fg = c.fg, bg = options.transparent and c.none or c.bg }, -- Normal text.
-    NormalFloat = { fg = c.fg_float, bg = options.transparent and c.none or c.bg_float }, -- Normal text in floating windows like documentation.
+    NormalFloat = { fg = c.fg_float, bg = c.bg_float }, -- Normal text in floating windows like documentation.
     -- NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
     -- NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.

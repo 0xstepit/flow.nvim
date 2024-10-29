@@ -12,6 +12,7 @@ function M.get(c, options)
     mkdCodeDelimiter = { bg = c.grey[4], fg = c.fg },
     mkdCodeStart = { fg = c.blue, bold = true },
     mkdCodeEnd = { fg = c.blue, bold = true },
+    mkdSnippetS = { bg = c.grey[2], fg = c.grey[3] },
 
     markdownHeadingDelimiter = { fg = c.orange, bold = true },
     markdownCodeBlock = { fg = c.blue },
@@ -23,7 +24,7 @@ function M.get(c, options)
     ["@markup.raw.markdown"] = { fg = c.cyan },
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = options.light_theme and c.Cyan.very_bright or c.Cyan.very_dark,
+      bg = c.grey[3],
     }, -- Text between ``.
     ["@markup.raw.block.markdown"] = { fg = c.grey[4] }, -- Code snippet with language not known like Mermaid.
     ["@markup.link"] = { fg = c.sky_blue },
@@ -40,7 +41,7 @@ function M.get(c, options)
     ["@markup.underline"] = { underline = true },
     ["@markup.heading"] = { link = "Title" },
     ["@markup.link.url"] = { link = "Underlined" },
-    ["@markup.list.markdown"] = { fg = c.orange, bold = true },
+    ["@markup.list.markdown"] = { fg = c.yellow, bold = true },
     ["@markup.list.unchecked"] = { fg = c.cyan }, -- For brackets and parens.
     ["@markup.list.checked"] = { fg = c.green }, -- For brackets and parens.
     ["@keyword.directive.markdown"] = { fg = c.yellow },
@@ -52,7 +53,7 @@ function M.get(c, options)
     ObsidianRefText = { fg = c.blue },
   }
 
-  local headers = { c.purple, c.light_blue, c.blue, c.cyan, c.sky_blue }
+  local headers = { c.fluo, c.blue, c.light_blue, c.cyan, c.sky_blue }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
   end
