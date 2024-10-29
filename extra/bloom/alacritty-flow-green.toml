@@ -30,33 +30,34 @@ white = '#f2f2f2'
 
 # Search colors
 [colors.search.matches]
-foreground = '#ff007b'
+foreground = '#15ff00'
 background = '#0d0d0d'
 
 [colors.search.focused_match]
 foreground = '#0d0d0d'
-background = '#ff007b'
+background = '#15ff00'
 
 # Selection colors
 [colors.selection]
-background = '#ff007b'
+background = '#15ff00'
 text = '#0d0d0d'
 
 # Cursors
 # If you don't want to override original behavior, which is nice,
 # remove [colors.cursor] and [colors.vi_mode_cursor].
 [colors.cursor]
-cursor = '#ff007b'
+cursor = '#15ff00'
 text = '#0d0d0d'
 
 [colors.vi_mode_cursor]
-cursor = '#ff007b'
+cursor = '#15ff00'
 text = '#0d0d0d'
 
 [colors.footer_bar]
-foreground = '#ff007b'
+foreground = '#15ff00'
 background = '#0d0d0d'
 
+# Purple color
 [[colors.indexed_colors]]
 index = 93
 color = '#ac8cd9'
@@ -64,4 +65,4 @@ color = '#ac8cd9'
 # Fluo Colors
 [[colors.indexed_colors]]
 index = 198
-color = '#ff007b'
+color = '#15ff00'

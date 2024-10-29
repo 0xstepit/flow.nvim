@@ -4,10 +4,6 @@ local M = {}
 -- @param c The available colors.
 function M.get(c, _)
   local theme = {
-    -- Documentation
-    CmpDocumentation = { fg = c.fg, bg = c.bg_float },
-    CmpDocumentationBorder = { fg = c.fg_border },
-
     CmpItemMenu = { fg = c.comment },
     CmpItemAbbr = { fg = c.grey[5] },
     CmpItemAbbrMatch = { fg = c.cyan },

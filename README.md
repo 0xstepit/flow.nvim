@@ -107,6 +107,9 @@ return {
 }
 ```
 
+Keep in mind that the `transparent` flags set the background of neovim
+transparent and, as a result, the terminal emulator background will be visible.
+
 ## Suggested
 
 <details>

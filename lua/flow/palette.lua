@@ -76,6 +76,7 @@ function M.get(opts)
         normal = hsl(187, 100, 50), -- Fluorescent cyan
         light = hsl(187, 100, 90), -- Fluorescent cyan light
         dark = hsl(187, 100, 10), -- Fluorescent cyan dark
+      },
     },
 
     -- Greyscale colors
