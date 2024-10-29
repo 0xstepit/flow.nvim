@@ -130,6 +130,9 @@ The configuration allows to specify 5 different options:
     }
 <
 
+Keep in mind that the `transparent` flags set the background of neovim
+transparent and, as a result, the terminal emulator background will be visible.
+
 
 SUGGESTED                                  *flow.nvim-configuration-suggested*
 
