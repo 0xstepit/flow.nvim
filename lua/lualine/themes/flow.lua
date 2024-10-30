@@ -20,8 +20,8 @@ flow.insert = {
 -- Command mode colors. a will be used also for x,
 -- b for y, and c for z to have a symmetrical coloration.
 flow.command = {
-  a = { bg = colors.teal, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.sky_blue },
+  a = { bg = colors.yellow, fg = colors.black },
+  b = { bg = colors.fg_gutter, fg = colors.yellow },
 }
 
 -- Visual mode colors. a will be used also for x,
