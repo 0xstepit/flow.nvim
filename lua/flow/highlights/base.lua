@@ -40,7 +40,7 @@ function M.get(c, options)
     CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
     CursorLineNr = { fg = c.fg_visual }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     Folded = { fg = c.Light_blue.dim }, -- Line used for closed folds.
-    LineNr = { fg = c.fg_gutter }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNr = { fg = c.grey[4] }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, above the cursor line.
     LineNrBelow = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, below the cursor line.
     StatusLine = { fg = c.fg_statusline, bg = c.bg_statusline }, -- Status line of current window.
@@ -94,8 +94,8 @@ function M.get(c, options)
     -- I'm not sure where these groups are set.
     Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
 
-    IblIndent = { link = "LineNr" },
-    IblWhiteSpace = { link = "LineNr" },
+    IblIndent = { link = "Comment" },
+    IblWhiteSpace = { link = "IblIndent" },
 
     Include = { fg = c.red }, --  preprocessor #include
     Menu = {}, -- Current font, background and foreground colors of the menus. Also used for the toolbar. Applicable highlight arguments: font, guibg, guifg.
