@@ -210,3 +210,9 @@ This colorscheme is inspired by other amazing colorscheme:
 - [Gruvbox](https://github.com/morhetz/gruvbox)
 
 - [Nordic](https://github.com/AlexvZyl/nordic.nvim)
+
+<p align="center">
+    <a href="https://github.com/AlexvZyl/nordic.nvim/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=AlexvZyl/nordic.nvim" />
+    </a>
+</p>

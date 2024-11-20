@@ -1,11 +1,14 @@
 local M = {}
 
-function M.get(colors, options)
+function M.get(colors, _)
   local theme = {
 
-    -- TreesitterContext = { bg = colors.grey[2] },
-    TreesitterContextBottom = { underline = true, sp = colors.red },
-    TreesitterContextLineNumberBottom = { underline = true, sp = colors.red },
+    TreesitterContext = { bg = colors.grey[1] },
+    TreesitterContextLineNumber = { link = "TreesitterContext" },
+    -- sp works only if the terminal support it.
+    TreesitterContextBottom = { sp = colors.fluo, underline = true },
+    TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
+
     -- Linked
     ["@annotation"] = { link = "PreProc" },
     ["@attribute"] = { link = "PreProc" },

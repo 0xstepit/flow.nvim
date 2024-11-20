@@ -38,10 +38,6 @@ function M.get(c, _)
     CmpItemKindInterface = { link = "Type" },
     CmpItemKindColor = { link = "Constant" },
     CmpItemKindTypeParameter = { link = "Type" },
-
-    -- AI
-    CmpItemKindTabNine = { fg = c.red },
-    CmpItemKindCopilot = { fg = c.red },
   }
 
   return theme

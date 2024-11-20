@@ -5,11 +5,15 @@ local M = {}
 
 M.name = "flow"
 
+--- This function is called to setup the colorscheme options.
+--- This function is not called when executing `vim.cmd("colorscheme flow")`
+M.config = config._setup
+
 --- This function is called when the colorscheme is activated.
 --- It sets up the colorscheme by clearing existing highlights,
 --- enabling true color support, setting the colorscheme name,
 --- and applying the highlight groups defined in the theme.
---- @param opts table: A table of options to customize the colorscheme setup.
+--- @param opts FlowConfig?
 function M.load(opts)
   -- Check if the current colorscheme is different from the one to be loaded.
   if vim.g.colors_name ~= M.name then
@@ -18,11 +22,12 @@ function M.load(opts)
     -- Enable true color support.
     vim.o.termguicolors = true
     -- Set the current colorscheme name.
+    -- `:lua print(vim.g.colors_name)`
     vim.g.colors_name = M.name
   end
 
   if opts then
-    M.setup(opts)
+    M.config(opts)
   end
 
   local highlights = theme.configure()
@@ -32,8 +37,5 @@ function M.load(opts)
     vim.api.nvim_set_hl(0, group, c)
   end
 end
-
---- This function is called to setup the colorscheme options.
-M.setup = config._setup
 
 return M

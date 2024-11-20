@@ -3,34 +3,40 @@ local M = {}
 M.colors = nil
 
 function M.setup(opts)
+  -- TODO: this is not the default
   local palette = require("flow.palette")
   local default_palette = palette.get(opts)
 
   opts = opts or {}
 
-  local colors = {}
+  local colors = {
+    transparent = default_palette.transparent,
+    -- Some hi are still a mystery for me, use fluo green to discover them.
+    to_check = default_palette.fluo.green.normal,
+    -- Setting up default fluo
+    fluo = default_palette.fluo.pink.normal,
+    -- Store all variations of the fluo colors. They are used instead of the fluo
+    -- normal in some cases to have a more pleasant result.
+    Fluo = default_palette.fluo.pink,
+    -- Standard colors
+    black = default_palette.black,
+    white = default_palette.white,
+    grey = default_palette.grey,
+  }
 
-  colors.transparent = default_palette.transparent
-  colors.to_check = default_palette.fluo.green.normal -- value used for hi that i don't know how they are applied.
-
-  colors.fluo = (
-    opts.fluo_color and default_palette.fluo[opts.fluo_color].normal
-    or default_palette.fluo.pink.normal
-  )
-  colors.Fluo = (
-    opts.fluo_color and default_palette.fluo[opts.fluo_color] or default_palette.fluo.pink
-  )
-
-  if not opts.dark_theme then
-    colors.white = default_palette.black
-    colors.black = default_palette.white
-  else
-    colors.black = default_palette.black
-    colors.white = default_palette.white
+  if opts.fluo_color then
+    colors.fluo = default_palette.fluo[opts.fluo_color].normal
+    colors.Fluo = default_palette.fluo[opts.fluo_color]
   end
 
-  colors.grey = default_palette.grey
+  -- Apply changes if the theme is not dark.
   if not opts.dark_theme then
+    -- TODO: given how they are used, it is better to call them fg and bg?
+    -- Invert black and white if the theme is not dark.
+    colors.white = default_palette.black
+    colors.black = default_palette.white
+
+    -- Invert the table of grey
     local n_greys = #colors.grey
     for i = 1, math.floor(n_greys / 2) do
       local c = colors.grey[n_greys + 1 - i]
@@ -39,88 +45,44 @@ function M.setup(opts)
     end
   end
 
+  -- If high contrast the darkest color is swap for the next color and the
+  -- lightest color is swap for the color before.
   if opts.high_contrast then
-    local grey_1 = colors.grey[1]
-    colors.grey[1] = colors.grey[2]
-    colors.grey[2] = grey_1
-
-    local grey_6 = colors.grey[6]
-    colors.grey[6] = colors.grey[7]
-    colors.grey[7] = grey_6
+    colors.grey[1], colors.grey[2] = colors.grey[2], colors.grey[1]
+    colors.grey[6], colors.grey[7] = colors.grey[7], colors.grey[6]
   end
 
   colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
-  colors.bg_dark = default_palette.grey[6]
-
   colors.fg = default_palette.grey[6] -- used for text in the colorscheme
-  colors.fg_dark = colors.grey[4]
 
-  -- Main colors
-  if opts.mode == "dark" then
-    colors.orange = default_palette.orange.dark
-    colors.yellow = default_palette.yellow.dark
-    colors.red = default_palette.red.dark
-    colors.purple = default_palette.purple.dark
-    colors.blue = default_palette.blue.dark
-    colors.light_blue = default_palette.light_blue.dark
-    colors.sky_blue = default_palette.sky_blue.dark
-    colors.cyan = default_palette.cyan.dark
-    colors.green = default_palette.green.dark
-  elseif opts.mode == "bright" then
-    colors.orange = default_palette.orange.bright
-    colors.yellow = default_palette.yellow.bright
-    colors.red = default_palette.red.bright
-    colors.purple = default_palette.purple.bright
-    colors.blue = default_palette.blue.bright
-    colors.light_blue = default_palette.light_blue.bright
-    colors.sky_blue = default_palette.sky_blue.bright
-    colors.cyan = default_palette.cyan.bright
-    colors.green = default_palette.green.bright
-  elseif opts.mode == "desaturate" then
-    colors.orange = default_palette.orange.desaturate
-    colors.yellow = default_palette.yellow.desaturate
-    colors.red = default_palette.red.desaturate
-    colors.purple = default_palette.purple.desaturate
-    colors.blue = default_palette.blue.desaturate
-    colors.light_blue = default_palette.light_blue.desaturate
-    colors.sky_blue = default_palette.sky_blue.desaturate
-    colors.cyan = default_palette.cyan.desaturate
-    colors.green = default_palette.green.desaturate
-  elseif opts.mode == "base" then
-    colors.orange = default_palette.orange.base
-    colors.yellow = default_palette.yellow.base
-    colors.red = default_palette.red.base
-    colors.purple = default_palette.purple.base
-    colors.blue = default_palette.blue.base
-    colors.light_blue = default_palette.light_blue.base
-    colors.sky_blue = default_palette.sky_blue.base
-    colors.cyan = default_palette.cyan.base
-    colors.green = default_palette.green.base
-  else
-    vim.notify(
-      "Invalid mode: '" .. opts.mode .. "'. Falling back to 'base' mode.",
-      vim.log.levels.WARN
-    )
-    colors.orange = default_palette.orange.base
-    colors.yellow = default_palette.yellow.base
-    colors.red = default_palette.red.base
-    colors.purple = default_palette.purple.base
-    colors.blue = default_palette.blue.base
-    colors.light_blue = default_palette.light_blue.base
-    colors.sky_blue = default_palette.sky_blue.base
-    colors.cyan = default_palette.cyan.base
-    colors.green = default_palette.green.base
+  -- Handle mode-specific colors.
+  local mode = opts.mode or "base"
+  local modes = { "base", "dark", "bright", "desaturate" }
+  if not vim.tbl_contains(modes, mode) then
+    vim.notify("Invalid mode: '" .. mode .. "'. Falling back to `base` mode.", vim.log.levels.WARN)
+    mode = "base"
   end
 
-  colors.Orange = default_palette.orange
-  colors.Yellow = default_palette.yellow
-  colors.Red = default_palette.red
-  colors.Purple = default_palette.purple
-  colors.Blue = default_palette.blue
-  colors.Light_blue = default_palette.light_blue
-  colors.Sky_blue = default_palette.sky_blue
-  colors.Cyan = default_palette.cyan
-  colors.Green = default_palette.green
+  local color_names = {
+    "orange",
+    "yellow",
+    "red",
+    "purple",
+    "blue",
+    "light_blue",
+    "sky_blue",
+    "cyan",
+    "green",
+  }
+
+  for _, key in ipairs(color_names) do
+    -- Set the specific mode of the colors.
+    colors[key] = default_palette[key][mode]
+    -- Store all the color variations. These variables are used for hi that
+    -- requires contrasts with the current theme, like git.
+    local Key = key:gsub("^%l", string.upper)
+    colors[Key] = default_palette[key]
+  end
 
   -- Sidebar
   colors.fg_sidebar = default_palette.grey[5] -- use by items on quickfix list and help text
@@ -128,7 +90,7 @@ function M.setup(opts)
 
   -- Float
   colors.fg_float = colors.grey[5]
-  colors.bg_float = opts.transparent and default_palette.transparent or colors.grey[6]
+  colors.bg_float = default_palette.transparent
 
   -- Popups
   colors.fg_popup = default_palette.grey[6]
@@ -162,19 +124,20 @@ function M.setup(opts)
     ignore = colors.grey[4],
     untrcked = colors.sky_blue,
   }
+
+  colors.diff = {
+    add = colors.Green.very_dark, -- background of added lines
+    delete = colors.Red.very_dark, -- background of deleted lines
+    change = colors.Light_blue.very_dark, -- background of changed lines
+    text = colors.Cyan.very_dark, -- background of changed characters
+  }
+
   if not opts.dark_theme then
     colors.diff = {
-      add = colors.Green.very_bright, -- background of added lines
-      delete = colors.Red.very_bright, -- background of deleted lines
-      change = colors.Light_blue.very_bright, -- background of changed lines
-      text = colors.Cyan.very_bright, -- background of changed characters
-    }
-  else
-    colors.diff = {
-      add = colors.Green.very_dark, -- background of added lines
-      delete = colors.Red.very_dark, -- background of deleted lines
-      change = colors.Light_blue.very_dark, -- background of changed lines
-      text = colors.Cyan.very_dark, -- background of changed characters
+      add = colors.Green.very_bright,
+      delete = colors.Red.very_bright,
+      change = colors.Light_blue.very_bright,
+      text = colors.Cyan.very_bright,
     }
   end
 
@@ -189,6 +152,7 @@ function M.setup(opts)
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter
 
   colors.terminal_black = default_palette.black
+  colors.terminal_white = default_palette.white
 
   M.colors = colors
 
