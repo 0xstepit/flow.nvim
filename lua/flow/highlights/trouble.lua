@@ -5,7 +5,7 @@ local M = {}
 function M.get(c, _)
   local theme = {
     -- LspTrouble
-    TroubleText = { fg = c.fg_dark },
+    TroubleText = { fg = c.to_check },
     TroubleCount = { fg = c.red, bg = c.fg_gutter },
     TroubleDiagnosticsBasename = { fg = c.light_blue },
   }
