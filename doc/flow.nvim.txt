@@ -1,4 +1,4 @@
-*flow.nvim.txt*        For Neovim >= 0.8.0        Last change: 2024 October 30
+*flow.nvim.txt*        For Neovim >= 0.8.0       Last change: 2024 November 20
 
 ==============================================================================
 Table of Contents                                *flow.nvim-table-of-contents*
@@ -240,6 +240,8 @@ This colorscheme is inspired by other amazing colorscheme:
 - Tokyo Night <https://github.com/folke/tokyonight.nvim>
 - Gruvbox <https://github.com/morhetz/gruvbox>
 - Nordic <https://github.com/AlexvZyl/nordic.nvim>
+
+
 
 ==============================================================================
 11. Links                                                    *flow.nvim-links*
