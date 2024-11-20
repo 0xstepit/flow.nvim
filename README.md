@@ -213,6 +213,6 @@ This colorscheme is inspired by other amazing colorscheme:
 
 <p align="center">
     <a href="https://github.com/AlexvZyl/nordic.nvim/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=AlexvZyl/nordic.nvim" />
+        <img src="https://contrib.rocks/image?repo=0xstepit/flow.nvim" />
     </a>
 </p>
