@@ -7,7 +7,7 @@ M.name = "flow"
 
 --- This function is called to setup the colorscheme options.
 --- This function is not called when executing `vim.cmd("colorscheme flow")`
-M.config = config._setup
+M.setup = config._setup
 
 --- This function is called when the colorscheme is activated.
 --- It sets up the colorscheme by clearing existing highlights,
