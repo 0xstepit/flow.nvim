@@ -1,6 +1,6 @@
 # 🌊 Flow
 
-![logo](./assets/flow-logo.png) 
+![logo](https://github.com/user-attachments/assets/d4a06c71-4f1b-4375-969a-77f8d30b1fb5) 
 
 Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
 [Lua](https://www.lua.org/). It features carefully designed colors to help
@@ -9,9 +9,9 @@ Why fluo? Because it's cool!
 
 ## Showcase
 
-![flow-single-terminal](https://github.com/user-attachments/assets/69a1c7b3-5ea8-448a-9307-02f5aa0617ac)
+![flow-single-terminal](https://github.com/user-attachments/assets/36f1fb1b-c4c1-41c3-910b-e0d0de4d1bfe)
 
-![flow-multiple-terminal](https://github.com/user-attachments/assets/0aff8ec7-81fb-4610-bcbe-f34b707a86f6)
+![flow-multiple-terminal](https://github.com/user-attachments/assets/9d1f367a-7a9d-478d-9fe0-a67bd33eca1a)
 
 # Palette
 
@@ -30,7 +30,7 @@ as follows:
 Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been added for
 striking accents. 
 
-![flow-palette](https://github.com/user-attachments/assets/8c7b90f0-f128-4c7c-849c-a7ab876339c8)
+![flow-palette](https://github.com/user-attachments/assets/0e1d89e3-852a-4efc-909b-72033777079f)
 
 The palette is defined across four different levels of light and saturation of
 base color to provide different choices of based on the user preferences:
@@ -180,24 +180,21 @@ cd ./lua/flow/extra
 lua main.lua -v
 ```
 
-Now you copy the files in where your configuration is sourcing them.
-
-# Todo
-
-This is still an ongoing project. Below are the next topics I will work on:
-
-- [ ] Add docs.
-
-- [ ] Extra automatic generation.
-
-- [ ] Create predefined configurations of the theme.
-
-If you want to contribute to this project, please consider addressing one of the
-previous point :)
+Now you can copy generated files where your configuration is sourcing them.
 
 # Contributing
 
-Pull requests and improvement suggestions are very welcome!
+Pull requests and improvement suggestions are very welcome! If you want to help
+developing the plugin, please consider addressing one of the issue marked as
+[`good-first-issue`](https://github.com/0xstepit/flow.nvim/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+
+## Contributors
+
+<p align="center">
+    <a href="https://github.com/AlexvZyl/nordic.nvim/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=0xstepit/flow.nvim" />
+    </a>
+</p>
 
 # References
 
@@ -210,9 +207,3 @@ This colorscheme is inspired by other amazing colorscheme:
 - [Gruvbox](https://github.com/morhetz/gruvbox)
 
 - [Nordic](https://github.com/AlexvZyl/nordic.nvim)
-
-<p align="center">
-    <a href="https://github.com/AlexvZyl/nordic.nvim/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=0xstepit/flow.nvim" />
-    </a>
-</p>
