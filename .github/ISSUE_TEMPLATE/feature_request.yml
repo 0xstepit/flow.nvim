@@ -5,29 +5,19 @@ labels: [enhancement]
 body:
   - type: checkboxes
     attributes:
-      label: Did you check the docs?
+      label: Did you check docs and existing feature requests?
       description: Make sure you read all the docs before submitting a feature request
       options:
-        - label: I have read all the fluo.nvim docs
+        - label: I have read all the flow.nvim docs
+          required: true
+        - label: I have searched the existing feature requests of flow.nvim
           required: true
   - type: textarea
     validations:
       required: true
     attributes:
-      label: Is your feature request related to a problem? Please describe.
-      description: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
-  - type: textarea
-    validations:
-      required: true
-    attributes:
-      label: Describe the solution you'd like
-      description: A clear and concise description of what you want to happen.
-  - type: textarea
-    validations:
-      required: true
-    attributes:
-      label: Describe alternatives you've considered
-      description: A clear and concise description of any alternative solutions or features you've considered.
+      label: Describe the feature you would like to see implemented in flow.nvim
+      description: A clear and concise description of what you want to see included.
   - type: textarea
     validations:
       required: false

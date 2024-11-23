@@ -1,5 +1,5 @@
 name: Bug Report
-description: File a bug/issue
+description: Report a bug or an issue
 title: "bug: "
 labels: [bug]
 body:
@@ -16,12 +16,10 @@ body:
           required: true
         - label: I have searched the existing issues of flow.nvim
           required: true
-        - label: I have searched the existing issues of plugins related to this issue
-          required: true
   - type: input
     attributes:
       label: "Neovim version (nvim -v)"
-      placeholder: "0.8.0 commit db1b0ee3b30f"
+      placeholder: "0.10.0"
     validations:
       required: true
   - type: input
@@ -33,7 +31,7 @@ body:
   - type: textarea
     attributes:
       label: Describe the bug
-      description: A clear and concise description of what the bug is. Please include any related errors you see in Neovim.
+      description: A clear and concise description of what the bug or the issue is. Please include any related errors you see in Neovim.
     validations:
       required: true
   - type: textarea
@@ -52,37 +50,3 @@ body:
       description: A concise description of what you expected to happen.
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: Repro
-      description: Minimal `init.lua` to reproduce this issue. Save as `repro.lua` and run with `nvim -u repro.lua`
-      value: |
-        -- DO NOT change the paths and don't remove the colorscheme
-        local root = vim.fn.fnamemodify("./.repro", ":p")
-
-        -- set stdpaths to use .repro
-        for _, name in ipairs({ "config", "data", "state", "cache" }) do
-          vim.env[("XDG_%s_HOME"):format(name:upper())] = root .. "/" .. name
-        end
-
-        -- bootstrap lazy
-        local lazypath = root .. "/plugins/lazy.nvim"
-        if not vim.loop.fs_stat(lazypath) then
-          vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath, })
-        end
-        vim.opt.runtimepath:prepend(lazypath)
-
-        -- install plugins
-        local plugins = {
-          "0xstepit/flow.nvim",
-          -- add any other plugins here
-        }
-        require("lazy").setup(plugins, {
-          root = root .. "/plugins",
-        })
-
-        vim.cmd.colorscheme("flow")
-        -- add anything else here
-      render: Lua
-    validations:
-      required: false
