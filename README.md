@@ -159,13 +159,15 @@ Below the list of supported plugins divided by category:
 
 Flow.nvim provides colorschemes also for the following tools:
 
-- [Tmux](https://github.com/tmux/tmux/wiki) at [tmux-flow.conf](./extra/tmux-flow.conf).
+- [Tmux](https://github.com/tmux/tmux/wiki) at [tmux-flow.conf](./extra/eclipse/tmux-flow-pink.conf).
 
-- [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/alacritty-flow.toml).
+- [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/eclipse/alacritty-flow-pink.toml).
 
-- [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/kitty-flow.conf).
+- [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/eclipse/kitty-flow-pink.conf).
 
-- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
+- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/eclipse/ghostty-flow-pink.config).
+
+- ghostty at [fzf-flow.sh](./extra/eclipse/ghostty-flow-pink.config).
 
 The generation of extra is not automatic (I'm sorry, I'm working on it). If you want
 to generate the color scheme for extras, you need to perform the following steps:
