@@ -17,7 +17,7 @@ function M.get(c, _)
     CmpItemKindFunction = { link = "Function" },
     CmpItemKindSnippet = { fg = c.red },
     CmpItemKindField = { link = "@field" },
-    CmpItemKindProperty = { link = "@property" },
+    CmpItemKindProperty = { fg = c.sky_blue },
     CmpItemKindEvent = { link = "Type" },
     CmpItemKindText = { fg = c.fg_popup },
     CmpItemKindEnum = { link = "Type" },

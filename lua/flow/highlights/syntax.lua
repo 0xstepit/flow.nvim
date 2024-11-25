@@ -32,7 +32,7 @@ function M.get(c, _)
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.
     StorageClass = { fg = c.to_check }, -- Static, register, volatile, etc.
-    String = { fg = c.cyan }, -- A string constant: "this is a string".
+    String = { fg = c.sky_blue }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
     Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Todo = { bg = c.bg, fg = c.todo }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.

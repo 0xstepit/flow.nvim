@@ -55,10 +55,20 @@ function M.setup(opts)
   colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
   colors.fg = default_palette.grey[6] -- used for text in the colorscheme
 
+  local function tbl_contains(tab, val)
+    for _, value in ipairs(tab) do
+      if value == val then
+        return true
+      end
+    end
+
+    return false
+  end
+
   -- Handle mode-specific colors.
   local mode = opts.mode or "base"
   local modes = { "base", "dark", "bright", "desaturate" }
-  if not vim.tbl_contains(modes, mode) then
+  if not tbl_contains(modes, mode) then
     vim.notify("Invalid mode: '" .. mode .. "'. Falling back to `base` mode.", vim.log.levels.WARN)
     mode = "base"
   end
