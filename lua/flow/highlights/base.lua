@@ -71,7 +71,7 @@ function M.get(c, options)
     PmenuExtraSel = {}, -- Popup menu: Selected item "kind".
     PmenuKindSel = { fg = c.to_check }, -- Popup menu: selected item.
     PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
-    PmenuSel = { bg = c.bg_popup, fg = c.fg_visual }, -- Popup menu: selected item.
+    PmenuSel = { bg = c.bg_visual, fg = c.fg_visual }, -- Popup menu: selected item.
     PmenuThumb = { bg = c.comment, bold = true }, -- Popup menu: Thumb of the scrollbar.
 
     -- Floating

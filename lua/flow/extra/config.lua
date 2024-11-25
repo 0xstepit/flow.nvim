@@ -7,7 +7,7 @@ function M.get_dark_theme(fluo_color)
   local eclipse = {
     name = "eclipse",
     dark_theme = true,
-    mode = "desaturate",
+    mode = "base",
     fluo_color = fluo_color,
   }
 
