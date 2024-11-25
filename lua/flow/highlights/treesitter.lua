@@ -144,6 +144,9 @@ function M.get(colors, _)
 
     -- Rust
     -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[5] },
+
+    -- YAML
+    ["@property.yaml"] = { fg = colors.yellow },
   }
 
   return theme
