@@ -40,8 +40,8 @@ palette = 7=${white}
 palette = 15=${white}
 
 cursor-color = ${fluo}
-selection-background = ${black}
-selection-foreground = ${fluo}
+selection-background = ${fluo}
+selection-foreground = ${black}
 ]=]
 
 return M
