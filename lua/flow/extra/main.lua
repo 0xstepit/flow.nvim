@@ -10,6 +10,7 @@ local extras = {
   tmux = { name = "tmux", extension = "conf" },
   fzf = { name = "fzf", extension = "sh" },
   kitty = { name = "kitty", extension = "conf" },
+  ghostty = { name = "ghostty", extension = "config" },
 }
 
 local function create_folder_if_not_exists(path)
