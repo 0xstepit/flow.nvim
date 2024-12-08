@@ -165,9 +165,9 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/eclipse/kitty-flow-pink.conf).
 
-- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/eclipse/ghostty-flow-pink.config).
+- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/eclipse/fzf-flow-pink.sh).
 
-- ghostty at [fzf-flow.sh](./extra/eclipse/ghostty-flow-pink.config).
+- ghostty at [ghostty-flow.config](./extra/eclipse/ghostty-flow-pink.config).
 
 The generation of extra is not automatic (I'm sorry, I'm working on it). If you want
 to generate the color scheme for extras, you need to perform the following steps:
@@ -193,7 +193,7 @@ developing the plugin, please consider addressing one of the issue marked as
 ## Contributors
 
 <p align="center">
-    <a href="https://github.com/AlexvZyl/nordic.nvim/graphs/contributors">
+    <a href="https://github.com/0xstepit/flow.nvim/graphs/contributors">
         <img src="https://contrib.rocks/image?repo=0xstepit/flow.nvim" />
     </a>
 </p>
