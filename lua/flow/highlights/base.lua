@@ -11,11 +11,9 @@ function M.get(c, options)
     Cursor = { fg = c.bg, bg = c.fg }, -- Character under the cursor.
     lCursor = { fg = c.bg, bg = c.fg }, -- The character under the cursor when |language-mapping| is used (see 'guicursor').
     CursorIM = { fg = c.bg, bg = c.fg }, -- Like Cursor, but used when in IME mode |CursorIM|.
-    TermCursors = {}, -- Cursor in a focused terminal.
-    TermCursorsNC = {}, -- Cursor in a unfocused terminal.
 
     -- Text
-    Conceal = { fg = c.fg_visual, bold = true }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
+    Conceal = { fg = c.fg, bold = true }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
     Directory = { fg = c.blue }, -- Directory names.
     FloatTitle = {
       fg = c.fg_float,
@@ -31,20 +29,9 @@ function M.get(c, options)
     -- NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
     -- NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
-    EndOfBuffer = { fg = c.fg_highlight }, -- Filler lines (~) after the end of the buffer.
+    EndOfBuffer = { fg = c.fluo }, -- Filler lines (~) after the end of the buffer.
     NonText = { fg = c.grey[3] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Whitespace = { link = "LineNr" }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
-
-    --Columns
-    ColorColumn = { link = "CursorLine" }, -- Used for the columns set with 'colorcolumn'.
-    CursorColumn = { link = "CursorLine" }, -- Used with the column set with 'cursorcolumn'.
-    FoldColumn = {
-      bg = options.transparent and c.none or c.bg_gutter,
-      fg = c.fg_gutter,
-    }, -- Info displayed in 'foldcolumn'.
-    SignColumn = { link = "FoldColumn" }, -- Column where |signs| are displayed.
-    VertSplit = { fg = c.fg_border, bold = true }, -- The column separating vertically split windows.
-    WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
 
     -- Lines
     CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
@@ -61,6 +48,17 @@ function M.get(c, options)
     TabLine = { bg = c.bg_statusline, fg = c.fg_statusline },
     TabLineFill = { bg = c.bg_statusline },
     TabLineSel = { bg = c.fg_gutter, fg = c.light_blue }, -- Tab pages line, active tab page label. Used by Trouble for numbers.
+
+    --Columns
+    ColorColumn = { link = "CursorLine" }, -- Used for the columns set with 'colorcolumn'.
+    CursorColumn = { link = "CursorLine" }, -- Used with the column set with 'cursorcolumn'.
+    FoldColumn = {
+      bg = options.transparent and c.none or c.bg_gutter,
+      fg = c.fg_gutter,
+    }, -- Info displayed in 'foldcolumn'.
+    SignColumn = { link = "FoldColumn" }, -- Column where |signs| are displayed.
+    VertSplit = { fg = c.fg_border, bold = true }, -- The column separating vertically split windows.
+    WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
 
     -- Search and substitution
     IncSearch = { bg = c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').

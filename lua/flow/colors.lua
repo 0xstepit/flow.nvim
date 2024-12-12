@@ -8,8 +8,21 @@ M._color_names =
 -- Setup the colorscheme colors based on the options and palette.
 --- @param opts FlowConfig: The options to setup the colorscheme.
 function M.setup(opts)
-  local palette = require("flow.palette")
-  local default_palette = palette.get(opts)
+  local default_palette = require("flow.palette").get()
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
+    callback = function()
+      vim.schedule(function()
+        vim.api.nvim_win_set_option(0, "winhighlight", "Normal:NormalFloat,FoldColumn:NormalFloat")
+      end)
+
+      -- Additional debugging
+      print("Current window: " .. vim.api.nvim_get_current_win())
+      print("Current buffer type: " .. vim.bo.buftype)
+      print("Is quickfix: " .. tostring(vim.bo.buftype == "quickfix"))
+    end,
+  })
 
   local colors = {
     -- Core colors
