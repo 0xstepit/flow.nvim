@@ -2,7 +2,7 @@ local M = {}
 
 -- Defines the highlight group colors for git.
 -- @param c The available colors.
-function M.get(c, options)
+function M.get(c, _)
   local theme = {
 
     gitCommitSummary = { fg = c.fg_visual },

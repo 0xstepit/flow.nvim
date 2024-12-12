@@ -10,9 +10,9 @@ function M.get(c, _)
     LazyProgressDone = { bold = true, fg = c.fluo },
     LazyProgressTodo = { bold = true, fg = c.light_blue },
 
-    LazyButton = { bg = c.bg_highlight, fg = c.grey[7] },
     LazyNormal = { fg = c.light_blue },
-    LazyButtonActive = { bold = true, bg = c.fluo, fg = c.black },
+    LazyButton = { bg = c.grey[4], fg = c.grey[2] },
+    LazyButtonActive = { bg = c.light_blue, fg = c.grey[2], bold = true },
 
     LazyReasonStart = { fg = c.purple },
     LazyReasonSource = { link = "LazyReasonStart" },
@@ -21,7 +21,7 @@ function M.get(c, _)
     LazyReasonEvent = { fg = c.red },
     LazyReasonCmd = { fg = c.sky_blue },
 
-    LazySpecial = { fg = c.yellow },
+    LazySpecial = { fg = c.grey[2] },
     LazyDimmed = { fg = c.grey[7] },
   }
 

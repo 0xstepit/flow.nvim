@@ -2,6 +2,7 @@ local M = {}
 
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
+--- TODO: add @field description
 local defaults = {
   dark_theme = true, -- Set the theme with dark background.
   high_contrast = false, -- Make the dark background darker or the light background lighter.
@@ -11,6 +12,7 @@ local defaults = {
   aggressive_spell = false, -- Use colors for spell check.
 }
 
+--- @type FlowConfig
 M.options = vim.deepcopy(defaults)
 
 --- This is the entry point of the configuration before loading the plugin.

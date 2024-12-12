@@ -19,7 +19,6 @@ function M.get(c, _)
     Keyword = { fg = c.red }, -- Any other keyword.
     Label = { link = "Keyword" }, -- case, default, etc.
     Macro = { fg = c.grey[5] }, -- Heavily used in rust.
-    Note = { bg = c.bg, fg = c.light_blue }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
     PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
@@ -35,10 +34,16 @@ function M.get(c, _)
     String = { fg = c.sky_blue }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
     Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
-    Todo = { bg = c.bg, fg = c.todo }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
-    Warn = { bg = c.bg, fg = c.warning }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
+    Bold = { fg = c.grey[5], bold = true },
+
+    -- Todo
+    Todo = { fg = c.todo, bg = c.comment },
+    Fixme = { fg = c.fixme, bg = c.comment },
+    Note = { fg = c.note, bg = c.comment },
+    Hack = { fg = c.hack, bg = c.comment },
+    Warn = { fg = c.warning, bg = c.comment }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
   }
 
   return theme

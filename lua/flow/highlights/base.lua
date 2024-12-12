@@ -17,9 +17,16 @@ function M.get(c, options)
     -- Text
     Conceal = { fg = c.fg_visual, bold = true }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
     Directory = { fg = c.blue }, -- Directory names.
-    FloatTitle = { fg = c.fg_float, bg = c.bg_float, bold = true }, -- Title of floating windows.
-    MatchParen = { fg = c.yellow, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
-    Normal = { fg = c.fg, bg = options.transparent and c.none or c.bg }, -- Normal text.
+    FloatTitle = {
+      fg = c.fg_float,
+      bg = c.bg_float,
+      bold = true,
+    }, -- Title of floating windows.
+    MatchParen = { fg = c.fluo, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
+    Normal = {
+      fg = c.fg,
+      bg = options.transparent and c.none or c.bg,
+    }, -- Normal text.
     NormalFloat = { fg = c.fg_float, bg = c.bg_float }, -- Normal text in floating windows like documentation.
     -- NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
     -- NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
@@ -31,7 +38,10 @@ function M.get(c, options)
     --Columns
     ColorColumn = { link = "CursorLine" }, -- Used for the columns set with 'colorcolumn'.
     CursorColumn = { link = "CursorLine" }, -- Used with the column set with 'cursorcolumn'.
-    FoldColumn = { bg = options.transparent and c.none or c.bg_gutter, fg = c.fg_gutter }, -- Info displayed in 'foldcolumn'.
+    FoldColumn = {
+      bg = options.transparent and c.none or c.bg_gutter,
+      fg = c.fg_gutter,
+    }, -- Info displayed in 'foldcolumn'.
     SignColumn = { link = "FoldColumn" }, -- Column where |signs| are displayed.
     VertSplit = { fg = c.fg_border, bold = true }, -- The column separating vertically split windows.
     WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
@@ -44,10 +54,13 @@ function M.get(c, options)
     LineNrAbove = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, above the cursor line.
     LineNrBelow = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, below the cursor line.
     StatusLine = { fg = c.fg_statusline, bg = c.bg_statusline }, -- Status line of current window.
-    StatusLineNC = { fg = c.fg_statusline, bg = c.bg_statusline }, -- Status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    TabLine = { bg = c.fluo, fg = c.fg_gutter }, -- Tab pages line, not active tab page label.
-    TabLineFill = { bg = c.fluo }, -- Tab pages line, where there are no labels.
-    TabLineSel = { link = "LineNr" }, -- Tab pages line, active tab page label. Used by Trouble for numbers.
+    StatusLineNC = {
+      fg = c.fg_statusline,
+      bg = c.bg_statusline,
+    }, -- Status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    TabLine = { bg = c.bg_statusline, fg = c.fg_statusline },
+    TabLineFill = { bg = c.bg_statusline },
+    TabLineSel = { bg = c.fg_gutter, fg = c.light_blue }, -- Tab pages line, active tab page label. Used by Trouble for numbers.
 
     -- Search and substitution
     IncSearch = { bg = c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
@@ -78,17 +91,33 @@ function M.get(c, options)
     FloatBorder = { fg = c.fg_border, bg = c.bg_float }, -- Border of floating windows, like completion.
 
     -- Quickfix
-    QuickFixLine = { bg = c.bg_visual, fg = c.fg_visual, bold = true }, -- Current |quickfix| item in the quickfix window.
+    QuickFixLine = {
+      bg = c.bg_visual,
+      fg = c.fg_visual,
+      bold = true,
+    }, -- Current |quickfix| item in the quickfix window.
     qfLineNr = { fg = c.grey[5] }, -- Line number in the quickfix.
     qfFileName = { link = "Directory" }, -- Name of the file in the quickfix.
     qfSeparator = { fg = c.fg_sidebar }, -- Separator between quickfix line number and filename.
     qfInfo = { fg = c.to_check },
 
     -- Spelling
-    SpellBad = { fg = options.aggressive_spell_visual and c.error or c.comment, undercurl = true }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap = { fg = options.aggressive_spell_visual and c.warning or c.comment, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal = { fg = options.aggressive_spell_visual and c.info or c.comment, undercurl = true }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare = { fg = options.aggressive_spell_visual and c.hint or c.comment, undercurl = true }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    SpellBad = {
+      fg = options.aggressive_spell_visual and c.error or c.comment,
+      undercurl = true,
+    }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellCap = {
+      fg = options.aggressive_spell_visual and c.warning or c.comment,
+      undercurl = true,
+    }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellLocal = {
+      fg = options.aggressive_spell_visual and c.info or c.comment,
+      undercurl = true,
+    }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+    SpellRare = {
+      fg = options.aggressive_spell_visual and c.hint or c.comment,
+      undercurl = true,
+    }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 
     -- Misc
     -- I'm not sure where these groups are set.
@@ -106,7 +135,7 @@ function M.get(c, options)
     WinBar = { bg = c.none }, -- Window bar,
     WinBarNC = { bg = c.none }, -- Window bar in inactive windows, used by dap-ui.
 
-    netrwClassify = { link = "Type" },
+    netrwClassify = { link = "Keyword" },
     netrwHelpCmd = { fg = c.fluo },
   }
 

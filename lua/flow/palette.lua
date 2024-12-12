@@ -4,8 +4,13 @@ local hsl = util.hsl_to_hex
 
 local M = {}
 
+-- TODO:
+-- [ ] Define a specific color for virtual text
+
 ---Generates and returns a color palette using HSL and HEX values.
+---@param opts FlowConfig
 ---@return table
+-- TODO: should not receive opts
 function M.get(opts)
   local very_dark = {
     S = 80,
@@ -28,7 +33,7 @@ function M.get(opts)
   }
 
   local base_desat = {
-    S = 50,
+    S = 70,
     L = L_dyn,
   }
 
@@ -41,6 +46,11 @@ function M.get(opts)
     S = 50,
     L = 85,
   }
+
+  local yellow_hue = 60
+  local purple_hue = 270
+  local cyan_hue = 165
+  local blue_hue = 230
 
   local palette = {
     -- Transparent color
@@ -81,13 +91,13 @@ function M.get(opts)
 
     -- Greyscale colors
     grey = {
-      [1] = hsl(207, 22, 10), -- Very dark grey
-      [2] = hsl(204, 20, 13), -- Dark grey
-      [3] = hsl(205, 20, 30), -- Medium dark grey
-      [4] = hsl(206, 20, 40), -- Medium grey
-      [5] = hsl(205, 20, 65), -- Medium light grey
-      [6] = hsl(205, 20, 75), -- Light grey
-      [7] = hsl(204, 19, 85), -- Very light grey
+      [1] = hsl(203, 20, 5), -- Very dark grey
+      [2] = hsl(203, 20, 13), -- Dark grey
+      [3] = hsl(203, 20, 30), -- Medium dark grey
+      [4] = hsl(203, 20, 40), -- Medium grey
+      [5] = hsl(203, 20, 65), -- Medium light grey
+      [6] = hsl(203, 20, 75), -- Light grey
+      [7] = hsl(203, 20, 85), -- Very light grey
     },
 
     -- Orange shades
@@ -102,12 +112,12 @@ function M.get(opts)
 
     -- Yellow shades
     yellow = {
-      very_dark = hsl(55, very_dark.S, very_dark.L),
-      dark = hsl(55, dark.S, dark.L),
-      base = hsl(55, base.S, base.L),
-      desaturate = hsl(55, base_desat.S, base_desat.L),
-      bright = hsl(55, bright.S, bright.L),
-      very_bright = hsl(55, very_bright.S, very_bright.L),
+      very_dark = hsl(yellow_hue, very_dark.S, very_dark.L),
+      dark = hsl(yellow_hue, dark.S, dark.L),
+      base = hsl(yellow_hue, base.S, base.L),
+      desaturate = hsl(yellow_hue, base_desat.S, base_desat.L),
+      bright = hsl(yellow_hue, bright.S, bright.L),
+      very_bright = hsl(yellow_hue, very_bright.S, very_bright.L),
     },
 
     -- Red shades
@@ -122,22 +132,22 @@ function M.get(opts)
 
     -- Purple shades
     purple = {
-      very_dark = hsl(265, very_dark.S, very_dark.L),
-      dark = hsl(265, dark.S, dark.L),
-      base = hsl(265, base.S, base.L),
-      desaturate = hsl(265, base_desat.S, base_desat.L),
-      bright = hsl(265, bright.S, bright.L),
-      very_bright = hsl(265, very_bright.S, very_bright.L),
+      very_dark = hsl(purple_hue, very_dark.S, very_dark.L),
+      dark = hsl(purple_hue, dark.S, dark.L),
+      base = hsl(purple_hue, base.S, base.L),
+      desaturate = hsl(purple_hue, base_desat.S, base_desat.L),
+      bright = hsl(purple_hue, bright.S, bright.L),
+      very_bright = hsl(purple_hue, very_bright.S, very_bright.L),
     },
 
     -- Blue shades
     blue = {
-      very_dark = hsl(235, very_dark.S, very_dark.L),
-      dark = hsl(235, dark.S, dark.L),
-      base = hsl(235, base.S, base.L),
-      desaturate = hsl(235, base_desat.S, base_desat.L),
-      bright = hsl(235, bright.S, bright.L),
-      very_bright = hsl(235, very_bright.S, very_bright.L),
+      very_dark = hsl(blue_hue, very_dark.S, very_dark.L),
+      dark = hsl(blue_hue, dark.S, dark.L),
+      base = hsl(blue_hue, base.S, base.L),
+      desaturate = hsl(blue_hue, base_desat.S, base_desat.L),
+      bright = hsl(blue_hue, bright.S, bright.L),
+      very_bright = hsl(blue_hue, very_bright.S, very_bright.L),
     },
 
     -- Light blue shades
@@ -150,16 +160,6 @@ function M.get(opts)
       very_bright = hsl(205, very_bright.S, very_bright.L),
     },
 
-    -- Cyan shades
-    cyan = {
-      very_dark = hsl(175, very_dark.S, very_dark.L),
-      dark = hsl(175, dark.S, dark.L),
-      base = hsl(175, base.S, base.L),
-      desaturate = hsl(175, base_desat.S, base_desat.L),
-      bright = hsl(175, bright.S, bright.L),
-      very_bright = hsl(175, very_bright.S, very_bright.L),
-    },
-
     -- Sky blue shades
     sky_blue = {
       very_dark = hsl(190, very_dark.S, very_dark.L),
@@ -168,6 +168,16 @@ function M.get(opts)
       desaturate = hsl(190, base_desat.S, base_desat.L),
       bright = hsl(190, bright.S, bright.L),
       very_bright = hsl(190, very_bright.S, very_bright.L),
+    },
+
+    -- Cyan shades
+    cyan = {
+      very_dark = hsl(cyan_hue, very_dark.S, very_dark.L),
+      dark = hsl(cyan_hue, dark.S, dark.L),
+      base = hsl(cyan_hue, base.S, base.L),
+      desaturate = hsl(cyan_hue, base_desat.S, base_desat.L),
+      bright = hsl(cyan_hue, bright.S, bright.L),
+      very_bright = hsl(cyan_hue, very_bright.S, very_bright.L),
     },
 
     -- Green shades

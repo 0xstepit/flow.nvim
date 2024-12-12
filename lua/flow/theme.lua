@@ -7,19 +7,24 @@ local M = {}
 --- @type string[]
 M.active_highlights = {
   "base",
+  "syntax",
+  "markdown",
   "completion",
   "dap",
   "diagnostic",
   "git",
   "lazy",
   "lsp",
-  "markdown",
-  "syntax",
+  "mini-hipatterns",
+  "render-markdown",
   "telescope",
   "todo-comments",
   "treesitter",
   "trouble",
   "whichkey",
+  "undotree",
+  "mason",
+  "avante",
 }
 
 M.b = {}
