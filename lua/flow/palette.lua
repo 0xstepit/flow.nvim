@@ -1,19 +1,15 @@
-local util = require("flow.util")
-
-local hsl = util.hsl_to_hex
+local hsl = require("flow.util").hsl_to_hex
 
 local M = {}
-
--- TODO:
--- [ ] Define a specific color for virtual text
 
 ---Generates and returns a color palette using HSL and HEX values.
 ---@return table
 function M.get()
+  -- The colorscheme support 5 shades of colors.
   local shade = {
     very_dark = { S = 27, L = 20 },
     dark = { S = 50, L = 25 },
-    default = { S = 70, L = 70 },
+    default = { S = 50, L = 60 },
     bright = { S = 80, L = 75 },
     very_bright = { S = 50, L = 85 },
   }
@@ -43,46 +39,46 @@ function M.get()
     transparent = "NONE",
 
     -- Base colors
-    black = hsl(0, 0, 5), -- Dark black
-    white = hsl(0, 0, 95), -- Light white
+    black = hsl(0, 0, 5),
+    white = hsl(0, 0, 95),
 
     -- Greyscale colors
     grey = {
       [1] = hsl(203, 20, 10), -- Very dark grey
-      [2] = hsl(203, 20, 15), -- Dark grey
-      [3] = hsl(203, 20, 30), -- Medium dark grey
-      [4] = hsl(203, 20, 40), -- Medium grey
-      [5] = hsl(203, 20, 65), -- Medium light grey
-      [6] = hsl(203, 20, 75), -- Light grey
-      [7] = hsl(203, 20, 85), -- Very light grey
+      [2] = hsl(203, 20, 15),
+      [3] = hsl(203, 20, 30),
+      [4] = hsl(203, 20, 40),
+      [5] = hsl(203, 20, 65),
+      [6] = hsl(203, 20, 75),
+      [7] = hsl(203, 20, 85), -- Very bright grey
     },
 
     -- Fluorescent colors
     fluo = {
       pink = {
-        default = hsl(fluo_hue.pink, 100, 50), -- Fluorescent pink
-        light = hsl(fluo_hue.pink, 100, 90), -- Fluorescent pink light
-        dark = hsl(fluo_hue.pink, 100, 10), -- Fluorescent pink dark
+        default = hsl(fluo_hue.pink, 100, 50),
+        light = hsl(fluo_hue.pink, 100, 90),
+        dark = hsl(fluo_hue.pink, 100, 10),
       },
       cyan = {
-        default = hsl(fluo_hue.cyan, 100, 50), -- Fluorescent cyan
-        light = hsl(fluo_hue.cyan, 100, 90), -- Fluorescent cyan light
-        dark = hsl(fluo_hue.cyan, 100, 10), -- Fluorescent cyan dark
+        default = hsl(fluo_hue.cyan, 100, 50),
+        light = hsl(fluo_hue.cyan, 100, 90),
+        dark = hsl(fluo_hue.cyan, 100, 10),
       },
       green = {
-        default = hsl(fluo_hue.green, 100, 50), -- Fluorescent green
-        light = hsl(fluo_hue.green, 100, 90), -- Fluorescent green light
-        dark = hsl(fluo_hue.green, 100, 10), -- Fluorescent green dark
+        default = hsl(fluo_hue.green, 100, 50),
+        light = hsl(fluo_hue.green, 100, 90),
+        dark = hsl(fluo_hue.green, 100, 10),
       },
       orange = {
-        default = hsl(fluo_hue.orange, 100, 50), -- Fluorescent orange
-        light = hsl(fluo_hue.orange, 100, 90), -- Fluorescent orange light
-        dark = hsl(fluo_hue.orange, 100, 10), -- Fluorescent orange dark
+        default = hsl(fluo_hue.orange, 100, 50),
+        light = hsl(fluo_hue.orange, 100, 90),
+        dark = hsl(fluo_hue.orange, 100, 10),
       },
       yellow = {
-        default = hsl(fluo_hue.yellow, 100, 50), -- Fluorescent yellow
-        light = hsl(fluo_hue.yellow, 100, 90), -- Fluorescent yellow light
-        dark = hsl(fluo_hue.yellow, 100, 10), -- Fluorescent yellow dark
+        default = hsl(fluo_hue.yellow, 100, 50),
+        light = hsl(fluo_hue.yellow, 100, 90),
+        dark = hsl(fluo_hue.yellow, 100, 10),
       },
     },
 
