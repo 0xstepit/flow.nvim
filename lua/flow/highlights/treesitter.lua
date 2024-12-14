@@ -3,7 +3,7 @@ local M = {}
 function M.get(colors, _)
   local theme = {
 
-    TreesitterContext = { bg = colors.grey[1] },
+    TreesitterContext = { bg = colors.grey[2] },
     TreesitterContextLineNumber = { link = "TreesitterContext" },
     -- TODO: verify the sp with another terminal.
     -- sp works only if the terminal support it.

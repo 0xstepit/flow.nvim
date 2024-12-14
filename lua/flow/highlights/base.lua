@@ -4,7 +4,6 @@ local M = {}
 -- @param c The available colors.
 function M.get(c, options)
   local theme = {
-
     -- Cursors
     -- These highlights groups are superseeded by the terminal colors used. For example,
     -- the colors used for the cursor are defined with Alacritty.
@@ -29,14 +28,14 @@ function M.get(c, options)
     -- NormalNC = { fg = c.grey[6], bg = options.transparent and c.none or c.bg }, -- Normal text in non-current windows.
     -- NormalSB = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg_sidebar }, -- Normal text in sidebar.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
-    EndOfBuffer = { fg = c.fluo }, -- Filler lines (~) after the end of the buffer.
+    EndOfBuffer = { link = "LineNr" }, -- Filler lines (~) after the end of the buffer.
     NonText = { fg = c.grey[3] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Whitespace = { link = "LineNr" }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
 
     -- Lines
     CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
     CursorLineNr = { fg = c.fg_visual }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    Folded = { fg = c.Light_blue.dim }, -- Line used for closed folds.
+    Folded = { bg = c.bg_highlight, fg = c.comment }, -- Line used for closed folds.
     LineNr = { fg = c.grey[4] }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, above the cursor line.
     LineNrBelow = { link = "LineNr" }, -- Line number for when the 'relativenumber' option is set, below the cursor line.
@@ -94,7 +93,7 @@ function M.get(c, options)
       fg = c.fg_visual,
       bold = true,
     }, -- Current |quickfix| item in the quickfix window.
-    qfLineNr = { fg = c.grey[5] }, -- Line number in the quickfix.
+    qfLineNr = { fg = c.grey[4] }, -- Line number in the quickfix.
     qfFileName = { link = "Directory" }, -- Name of the file in the quickfix.
     qfSeparator = { fg = c.fg_sidebar }, -- Separator between quickfix line number and filename.
     qfInfo = { fg = c.to_check },
@@ -120,9 +119,6 @@ function M.get(c, options)
     -- Misc
     -- I'm not sure where these groups are set.
     Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
-
-    IblIndent = { link = "Comment" },
-    IblWhiteSpace = { link = "IblIndent" },
 
     Include = { fg = c.red }, --  preprocessor #include
     Menu = {}, -- Current font, background and foreground colors of the menus. Also used for the toolbar. Applicable highlight arguments: font, guibg, guifg.

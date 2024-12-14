@@ -15,12 +15,8 @@ function M.setup(opts)
     callback = function()
       vim.schedule(function()
         vim.api.nvim_win_set_option(0, "winhighlight", "Normal:NormalFloat,FoldColumn:NormalFloat")
+        vim.opt.colorcolumn = ""
       end)
-
-      -- Additional debugging
-      print("Current window: " .. vim.api.nvim_get_current_win())
-      print("Current buffer type: " .. vim.bo.buftype)
-      print("Is quickfix: " .. tostring(vim.bo.buftype == "quickfix"))
     end,
   })
 
@@ -32,12 +28,12 @@ function M.setup(opts)
     grey = default_palette.grey,
 
     -- Fluo colors
-    fluo = default_palette.fluo.pink.normal,
+    fluo = default_palette.fluo.pink.default,
     -- Full palette of the fluo colors.
     Fluo = default_palette.fluo.pink,
 
     -- Debug: some hi are still a mystery to me, use fluo green to discover them.
-    to_check = default_palette.fluo.green.normal,
+    to_check = default_palette.fluo.green.default,
   }
 
   opts = opts or {}
@@ -46,11 +42,14 @@ function M.setup(opts)
   colors.fg = default_palette.grey[6] -- used for text in the colorscheme
 
   -- Handle mode-specific colors.
-  local mode = opts.mode or "base"
-  local modes = { "base", "dark", "bright", "desaturate" }
+  local mode = opts.mode or "default"
+  local modes = { "default", "dark", "bright" }
   if not M._tbl_contains(modes, mode) then
-    vim.notify("Invalid mode: '" .. mode .. "'. Falling back to `base` mode.", vim.log.levels.WARN)
-    mode = "base"
+    vim.notify(
+      "Invalid mode: '" .. mode .. "'. Falling back to `default` mode.",
+      vim.log.levels.WARN
+    )
+    mode = "default"
   end
 
   for _, key in ipairs(M._color_names) do
@@ -130,21 +129,21 @@ function M.setup(opts)
   colors.diff = {
     add = not opts.dark_theme and colors.Green.very_bright or colors.Green.very_dark,
     delete = not opts.dark_theme and colors.Red.very_bright or colors.Red.very_dark,
-    change = not opts.dark_theme and colors.Light_blue.very_bright or colors.Light_blue.very_dark,
+    change = not opts.dark_theme and colors.Light_blue.very_bright or colors.Sky_blue.very_dark,
     text = not opts.dark_theme and colors.Cyan.very_bright or colors.Cyan.very_dark,
   }
 
   -- LSP diagnostics
-  colors.error = colors.Red.base -- Error messages
-  colors.warning = colors.Yellow.base -- Warning messages
-  colors.info = colors.Cyan.base -- Information messages
-  colors.hint = colors.Light_blue.base -- Hints and suggestions
+  colors.error = colors.Red.default -- Error messages
+  colors.warning = colors.Yellow.default -- Warning messages
+  colors.info = colors.Cyan.default -- Information messages
+  colors.hint = colors.Light_blue.default -- Hints and suggestions
 
   -- Special Comments
-  colors.todo = colors.Sky_blue.base -- TODO comments
-  colors.note = colors.Green.base -- NOTE comments
-  colors.fixme = colors.Red.base -- FIXME comments
-  colors.hack = colors.Yellow.base -- HACK comments
+  colors.todo = colors.Sky_blue.default -- TODO comments
+  colors.note = colors.Green.default -- NOTE comments
+  colors.fixme = colors.Red.default -- FIXME comments
+  colors.hack = colors.Yellow.default -- HACK comments
 
   M.colors = colors
 
@@ -170,7 +169,7 @@ end
 
 function M._apply_opts(default_palette, colors, opts)
   if opts.fluo_color then
-    colors.fluo = default_palette.fluo[opts.fluo_color].normal
+    colors.fluo = default_palette.fluo[opts.fluo_color].default
     colors.Fluo = default_palette.fluo[opts.fluo_color]
   end
 
