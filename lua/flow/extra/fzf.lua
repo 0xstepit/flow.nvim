@@ -5,7 +5,7 @@ local util = require("util")
 local M = {}
 
 function M.generate(colors)
-    return util.interpolate(M.template, colors)
+  return util.interpolate(M.template, colors)
 end
 
 M.template = [[
