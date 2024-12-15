@@ -9,7 +9,7 @@ function M.get()
   local shade = {
     very_dark = { S = 27, L = 20 },
     dark = { S = 50, L = 25 },
-    default = { S = 50, L = 60 },
+    default = { S = 50, L = 65 },
     bright = { S = 80, L = 75 },
     very_bright = { S = 50, L = 85 },
   }
@@ -49,8 +49,8 @@ function M.get()
       [3] = hsl(203, 20, 30),
       [4] = hsl(203, 20, 40),
       [5] = hsl(203, 20, 65),
-      [6] = hsl(203, 20, 75),
-      [7] = hsl(203, 20, 85), -- Very bright grey
+      [6] = hsl(203, 20, 88),
+      [7] = hsl(203, 20, 90), -- Very bright grey
     },
 
     -- Fluorescent colors

@@ -17,8 +17,8 @@ M.options = {}
 
 --- Valid values for configuration options
 M.valid_options = {
-  fluo_colors = { "pink", "yellow", "orange", "green" },
-  modes = { "dark", "bright", "default" },
+  fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
+  modes = { "default", "dark", "bright" },
 }
 
 --- Validate configuration options
