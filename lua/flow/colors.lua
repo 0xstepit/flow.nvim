@@ -10,15 +10,15 @@ M._color_names =
 function M.setup(opts)
   local default_palette = require("flow.palette").get()
 
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
-    callback = function()
-      vim.schedule(function()
-        vim.api.nvim_win_set_option(0, "winhighlight", "Normal:NormalFloat,FoldColumn:NormalFloat")
-        vim.opt.colorcolumn = ""
-      end)
-    end,
-  })
+  -- vim.api.nvim_create_autocmd("FileType", {
+  --   pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
+  --   callback = function()
+  --     vim.schedule(function()
+  --       vim.api.nvim_win_set_option(0, "winhighlight", "Normal:NormalFloat,FoldColumn:NormalFloat")
+  --       vim.opt.colorcolumn = ""
+  --     end)
+  --   end,
+  -- })
 
   local colors = {
     -- Core colors

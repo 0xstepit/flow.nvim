@@ -1,5 +1,15 @@
-fmt:
-	@echo "Formatting codebase ..."
-	@stylua lua/ --config-path=.stylua.toml
+.PHONY: fmt extras
 
-all: fmt
+fmt:
+	@echo "----------------------------------------------------------------------------------------"
+	@echo "Formatting codebase ...\n"
+	@stylua lua/ --config-path=.stylua.toml
+	@echo "Code formatted successfully!"
+
+extras:
+	@echo "----------------------------------------------------------------------------------------"
+	@echo "Generating extra files ...\n"
+	@lua scripts/generate-extras.lua all
+	@echo "\nExtra files generated successfully!\n"
+
+all: fmt extras

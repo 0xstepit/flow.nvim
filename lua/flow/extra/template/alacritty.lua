@@ -1,6 +1,4 @@
-package.path = package.path .. ";../?.lua;../flow/?.lua"
-
-local util = require("util")
+local util = require("flow.util")
 
 local M = {}
 
