@@ -9,6 +9,7 @@ M.defaults = {
   transparent = false, -- Set transparent background.
   fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
   mode = "default", -- Mode of the colors. Available values are: default, dark, or bright.
+  borders = "light", -- Border style. Available values are: light, dark, fluo, none.
   aggressive_spell = false, -- Use colors for spell check.
 }
 
@@ -19,6 +20,7 @@ M.options = {}
 M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
   modes = { "default", "dark", "bright" },
+  borders = { "light", "dark", "fluo", "none" },
 }
 
 --- Validate configuration options
@@ -31,6 +33,10 @@ local function validate_options(opts)
 
   if opts.mode and not vim.tbl_contains(M.valid_options.modes, opts.mode) then
     return false, string.format("Invalid mode: %s", opts.mode)
+  end
+
+  if opts.borders and not vim.tbl_contains(M.valid_options.borders, opts.borders) then
+    return false, string.format("Invalid border: %s", opts.borders)
   end
 
   return true
