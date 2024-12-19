@@ -51,7 +51,7 @@ function M.configure()
     highlights = util.merge(highlights, hi)
   end
 
-  util.autocmds()
+  -- util.autocmds()
 
   return highlights
 end
