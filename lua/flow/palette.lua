@@ -45,12 +45,14 @@ function M.get()
     -- Greyscale colors
     grey = {
       [1] = hsl(203, 20, 10), -- Very dark grey
-      [2] = hsl(203, 20, 15),
-      [3] = hsl(203, 20, 30),
-      [4] = hsl(203, 20, 40),
-      [5] = hsl(203, 20, 65),
-      [6] = hsl(203, 20, 88),
-      [7] = hsl(203, 20, 90), -- Very bright grey
+      [2] = hsl(203, 20, 13), -- Very dark grey
+      [3] = hsl(203, 20, 15),
+      [4] = hsl(203, 20, 30),
+      [5] = hsl(203, 20, 35),
+      [6] = hsl(203, 20, 65),
+      [7] = hsl(203, 20, 85),
+      [8] = hsl(203, 20, 88),
+      [9] = hsl(203, 20, 90), -- Very bright grey
     },
 
     -- Fluorescent colors

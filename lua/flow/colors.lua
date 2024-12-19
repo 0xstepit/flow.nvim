@@ -7,6 +7,7 @@ M._color_names =
 
 -- Setup the colorscheme colors based on the options and palette.
 --- @param opts FlowConfig: The options to setup the colorscheme.
+--- @return table: The colors used by the colorscheme.
 function M.setup(opts)
   local default_palette = require("flow.palette").get()
 
@@ -14,7 +15,11 @@ function M.setup(opts)
   --   pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
   --   callback = function()
   --     vim.schedule(function()
-  --       vim.api.nvim_win_set_option(0, "winhighlight", "Normal:NormalFloat,FoldColumn:NormalFloat")
+  --       vim.api.nvim_win_set_option(
+  --         0,
+  --         "winhighlight",
+  --         "Normal:NormalSidebar,FoldColumn:NormalSidebar"
+  --       )
   --       vim.opt.colorcolumn = ""
   --     end)
   --   end,
@@ -63,35 +68,36 @@ function M.setup(opts)
 
   colors.comment = default_palette.grey[4] -- slightly brighter than gutter
 
-  -- +------------------------------------------------------------+
-  -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)              | <- Sidebar
-  -- |                                                            |
-  -- | Folder1/                                                   |
-  -- | ├─ file1.txt                                               |
-  -- | ├─ file2.txt                                               |
-  -- |                                                            |
-  -- +------------------------------------------------------------+
-  -- | Gutter | Main Buffer Area                                  |
-  -- |        |                                                   |
-  -- |  1     | fn main() {                                       |
-  -- |  + Git |     println!("Hello, Neovim!");                   | <- Main Buffer
-  -- |  3     | }                                                 |
-  -- |        |                                                   |
-  -- |  5     | // Additional code here                           |
-  -- |        |                                                   |
-  -- +------------------------------------------------------------+
-  -- | Statusline: [Mode] [Filename] [Cursor Position]            | <- Statusline
-  -- +------------------------------------------------------------+
-  -- | Command Line/Prompt Area                                   | <- Command Line
-  -- +------------------------------------------------------------+
+  -- +----------------------------------------------------------------------------------------+
+  -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
+  -- |                                                                                        |
+  -- | Folder1/                                                                               |
+  -- | ├─ file1.txt                                                                           |
+  -- | ├─ file2.txt                                                                           |
+  -- |                                                                                        |
+  -- +----------------------------------------------------------------------------------------+
+  -- | Gutter | Main Buffer Area                           ▐ <- Highlight                     |
+  -- |        |                                            ▐                                  |
+  -- |  1     | fn main() {                                ▐                                  |
+  -- |  + Git |     println!("Flow!");                     ▐                                  | <- Main Buffer
+  -- |  3     | }                                          ▐                                  |
+  -- |        |                                            ▐                                  |
+  -- |  5     |                                            ▐                                  |
+  -- |        |                                            ▐                                  |
+  -- +--------------------------------------------------------------------------------------- +
+  -- | Statusline: [Mode] [Filename] [Cursor Position]                                        | <- Statusline
+  -- +--------------------------------------------------------------------------------------- +
+  -- | Command Line/Prompt Area                                                               | <- Command Line
+  -- +--------------------------------------------------------------------------------------- +
 
   -- Sidebar: used by the quickfix list, help, and explorer windows.
+  -- NOTE: not used.
   colors.fg_sidebar = default_palette.grey[5]
   colors.bg_sidebar = colors.bg
 
   -- Gutter: used for line numbers, signs, and fold column.
-  colors.fg_gutter = colors.grey[3]
-  colors.bg_gutter = colors.bg
+  colors.fg_gutter = colors.grey[4]
+  colors.bg_gutter = (opts.transparent and default_palette.transparent) or colors.bg
 
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[5]
@@ -105,17 +111,13 @@ function M.setup(opts)
   colors.fg_statusline = colors.grey[3]
   colors.bg_statusline = colors.grey[1]
 
-  -- Borders
-  colors.fg_border = default_palette.grey[4]
-  colors.bg_border = default_palette.grey[3]
-
   -- Visual
-  colors.bg_visual = colors.grey[1]
   colors.fg_visual = colors.fluo
+  colors.bg_visual = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = colors.fluo
-  colors.bg_highlight = colors.grey[1]
+  colors.fg_highlight = colors.grey[3]
+  colors.bg_highlight = colors.grey[8]
 
   -- Git
   colors.git = {
@@ -186,6 +188,14 @@ function M._apply_opts(default_palette, colors, opts)
   end
 
   colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
+
+  -- Borders
+  colors.fg_border = (opts.border == "none" and colors.bg)
+    or (opts.border == "fluo" and colors.fluo)
+    or (opts.border == "dark" and colors.grey[1])
+    or colors.grey[4]
+  -- NOTE bg_border is currently not used.
+  colors.bg_border = colors.grey[4]
 end
 
 function M._invert_colors_for_theme(colors)
