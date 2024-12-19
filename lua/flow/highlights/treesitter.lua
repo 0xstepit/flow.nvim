@@ -1,13 +1,15 @@
 local M = {}
 
-function M.get(colors, _)
+--- @param c table: The available colors.
+--- @return table: Treesitter plugin highlights.
+function M.get(c, _)
   local theme = {
 
-    TreesitterContext = { bg = colors.grey[2] },
+    TreesitterContext = { bg = c.grey[2] },
     TreesitterContextLineNumber = { link = "TreesitterContext" },
     -- TODO: verify the sp with another terminal.
     -- sp works only if the terminal support it.
-    TreesitterContextBottom = { sp = colors.fluo, underline = true },
+    TreesitterContextBottom = { sp = c.fluo, underline = true },
     TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
 
     -- Linked
@@ -46,12 +48,12 @@ function M.get(colors, _)
     ["@tag.attribute"] = { link = "@property" },
     ["@tag.delimiter"] = { link = "Delimiter" },
 
-    ["@comment.note"] = { fg = colors.hint },
-    ["@comment.error"] = { fg = colors.error },
-    ["@comment.hint"] = { fg = colors.hint },
-    ["@comment.info"] = { fg = colors.info },
-    ["@comment.warning"] = { fg = colors.warning },
-    ["@comment.todo"] = { fg = colors.todo },
+    ["@comment.note"] = { fg = c.hint },
+    ["@comment.error"] = { fg = c.error },
+    ["@comment.hint"] = { fg = c.hint },
+    ["@comment.info"] = { fg = c.info },
+    ["@comment.warning"] = { fg = c.warning },
+    ["@comment.todo"] = { fg = c.todo },
 
     ["@type"] = { link = "Type" },
     ["@type.definition"] = { link = "Typedef" },
@@ -60,18 +62,18 @@ function M.get(colors, _)
 
     --- Punctuation
     ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters ie: `.`
-    ["@punctuation.bracket"] = { fg = colors.purple }, -- For brackets and parens.
+    ["@punctuation.bracket"] = { fg = c.purple }, -- For brackets and parens.
     ["@punctuation.special"] = { link = "Special" }, -- For special symbols (e.g. `{}` in string interpolation)
 
     --- Literals
-    ["@string.documentation"] = { fg = colors.yellow },
-    ["@string.regexp"] = { fg = colors.cyan }, -- For regexes.
-    ["@string.escape"] = { fg = colors.cyan }, -- For escape characters within a string.
+    ["@string.documentation"] = { fg = c.yellow },
+    ["@string.regexp"] = { fg = c.cyan }, -- For regexes.
+    ["@string.escape"] = { fg = c.cyan }, -- For escape characters within a string.
 
     --- Functions
-    ["@constructor"] = { fg = colors.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-    ["@variable.parameter"] = { fg = colors.yellow }, -- For parameters of a function.
-    ["@variable.parameter.builtin"] = { fg = colors.yellow }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
+    ["@constructor"] = { fg = c.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+    ["@variable.parameter"] = { fg = c.yellow }, -- For parameters of a function.
+    ["@variable.parameter.builtin"] = { fg = c.yellow }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
 
     --- Keywords
     ["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
@@ -80,15 +82,15 @@ function M.get(colors, _)
     ["@label"] = { link = "Label" }, -- For labels: `label:` in C and `:label:` in Lua.
 
     --- Types
-    ["@type.builtin"] = { fg = colors.cyan },
+    ["@type.builtin"] = { fg = c.cyan },
     -- the two below should be equal because the last substitute former
-    ["@variable.member"] = { fg = colors.cyan }, -- For fields.
-    ["@property"] = { fg = colors.cyan },
+    ["@variable.member"] = { fg = c.cyan }, -- For fields.
+    ["@property"] = { fg = c.cyan },
 
     --- Identifiers
-    ["@variable"] = { fg = colors.fg }, -- any variable name that does not have another highlight, like in go "local util"
-    ["@variable.builtin"] = { fg = colors.red }, -- Variable names that are defined by the languages, like `this` or `self`.
-    ["@module.builtin"] = { fg = colors.red }, -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@variable"] = { fg = c.fg }, -- any variable name that does not have another highlight, like in go "local util"
+    ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@module.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
 
     ["@diff.plus"] = { link = "DiffAdd" },
     ["@diff.minus"] = { link = "DiffDelete" },
@@ -107,7 +109,7 @@ function M.get(colors, _)
     ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
     ["@lsp.type.formatSpecifier"] = { link = "@markup.list" },
     ["@lsp.type.generic"] = { link = "@variable" },
-    ["@lsp.type.interface"] = { fg = colors.cyan },
+    ["@lsp.type.interface"] = { fg = c.cyan },
     ["@lsp.type.keyword"] = { link = "@keyword" },
     ["@lsp.type.lifetime"] = { link = "@keyword.storage" },
     ["@lsp.type.namespace"] = { link = "@module" },
@@ -120,7 +122,7 @@ function M.get(colors, _)
     ["@lsp.type.selfTypeKeyword"] = { link = "@variable.builtin" },
     ["@lsp.type.string"] = { link = "@string" },
     ["@lsp.type.typeAlias"] = { link = "@type.definition" },
-    ["@lsp.type.unresolvedReference"] = { undercurl = true, sp = colors.error },
+    ["@lsp.type.unresolvedReference"] = { undercurl = true, sp = c.error },
     ["@lsp.type.variable"] = {}, -- use treesitter styles for regular variables
     ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
     ["@lsp.typemod.enum.defaultLibrary"] = { link = "@type.builtin" },
@@ -133,22 +135,22 @@ function M.get(colors, _)
     ["@lsp.typemod.operator.injected"] = { link = "@operator" },
     ["@lsp.typemod.string.injected"] = { link = "@string" },
     ["@lsp.typemod.struct.defaultLibrary"] = { link = "@type.builtin" },
-    ["@lsp.typemod.type.defaultLibrary"] = { fg = colors.cyan },
-    ["@lsp.typemod.typeAlias.defaultLibrary"] = { fg = colors.cyan },
+    ["@lsp.typemod.type.defaultLibrary"] = { fg = c.cyan },
+    ["@lsp.typemod.typeAlias.defaultLibrary"] = { fg = c.cyan },
     ["@lsp.typemod.variable.callable"] = { link = "@function" },
     ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
     ["@lsp.typemod.variable.injected"] = { link = "@variable" },
     ["@lsp.typemod.variable.static"] = { link = "@constant" },
 
     -- Golang
-    ["@module.go"] = { fg = colors.cyan },
+    ["@module.go"] = { fg = c.cyan },
     ["@keyword.function.go"] = { link = "Statement" },
 
     -- Rust
     -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[5] },
 
     -- YAML
-    ["@property.yaml"] = { fg = colors.yellow },
+    ["@property.yaml"] = { fg = c.yellow },
   }
 
   return theme

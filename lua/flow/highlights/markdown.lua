@@ -1,8 +1,9 @@
 local M = {}
 
 -- Defines the highlight group colors for markdown
--- @param c The available colors.
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @return table: Markdown highlights.
+function M.get(c, _)
   local theme = {
     htmlH1 = { fg = c.purple, bold = true },
     htmlH2 = { fg = c.blue, bold = true },
@@ -55,7 +56,7 @@ function M.get(c, options)
     ["@label.markdown"] = { link = "Keyword" }, -- Used for the language specified in codeblocks.
 
     ["@markup.raw.block"] = {
-      bg = c.grey[1],
+      bg = c.grey[8],
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,

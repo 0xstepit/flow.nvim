@@ -1,6 +1,9 @@
 local M = {}
 
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @param o table: The available options.
+--- @return table: Render markdown plugin highlights.
+function M.get(c, o)
   local theme = {
     RenderMarkdownCode = { link = "@markup.raw.block" }, -- Code blocks.
     RenderMarkdownCodeInline = { link = "@markup.raw.markdown_inline" }, -- Code inline.
@@ -26,7 +29,7 @@ function M.get(c, options)
     c.Cyan.very_bright,
     c.Sky_blue.very_bright,
   }
-  if options.dark_theme then
+  if o.dark_theme then
     headersBg = {
       c.Fluo.dark,
       c.Blue.very_dark,

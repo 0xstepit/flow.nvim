@@ -2,7 +2,8 @@ local M = {}
 
 -- Defines the highlight group colors for
 -- the lazy plugin manager.
--- @param c The available colors.
+--- @param c table: The available colors.
+--- @return table: Lazy plugin highlights.
 function M.get(c, _)
   local theme = {
     LazyH1 = { bg = c.fluo, fg = c.grey[2] },

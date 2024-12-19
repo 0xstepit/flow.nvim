@@ -1,7 +1,8 @@
 local M = {}
 
 -- Defines the highlight group colors for trouble.
--- @param c The available colors.
+--- @param c table: The available colors.
+--- @return table: Trouble plugin highlights.
 function M.get(c, _)
   local theme = {
     -- LspTrouble

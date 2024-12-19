@@ -1,8 +1,10 @@
 local M = {}
 
-function M.get(colors, _)
+--- @param c table: The available colors.
+--- @return table: Oil plugin highlights.
+function M.get(c, _)
   local theme = {
-    OilFile = { fg = colors.cyan },
+    OilFile = { fg = c.cyan },
   }
   return theme
 end

@@ -1,5 +1,7 @@
 local M = {}
 
+--- @param c table: The available colors.
+--- @return table: Mason plugin highlights.
 function M.get(c, _)
   local theme = {
     MasonHeader = { bg = c.fluo, fg = c.grey[2] },

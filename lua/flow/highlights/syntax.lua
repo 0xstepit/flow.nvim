@@ -1,11 +1,11 @@
 local M = {}
 
--- @param c The available colors.
+--- @param c table: The available colors.
+--- @return table: Syntax highlights.
 function M.get(c, _)
   local theme = {
-    Added = { bg = c.diff.add }, -- Added line in a diff.
+
     Boolean = { link = "Constant" }, -- A boolean constant: TRUE, false.
-    Changed = { bg = c.diff.change }, -- Changed line in a diff.
     Character = { link = "String" }, -- A character constant: 'c', '\n'.
     Comment = { fg = c.comment }, -- Any comment.
     Conditional = { link = "Operator" }, -- if, then, else, endif, switch, etc.
@@ -23,7 +23,6 @@ function M.get(c, _)
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
     PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
     PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
-    Removed = { bg = c.diff.delete }, -- Removed line in a diff.
     Repeat = { link = "Operator" }, -- for, do, while, etc.
     Special = { fg = c.purple }, -- Any special symbol, like {} in lua.
     SpecialChar = { fg = c.sky_blue }, --  special character in a constant. Heavily used in markdown.
@@ -37,6 +36,11 @@ function M.get(c, _)
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
     Bold = { fg = c.grey[5], bold = true },
+
+    -- Git
+    Added = { bg = c.diff.add }, -- Added line in a diff.
+    Removed = { bg = c.diff.delete }, -- Removed line in a diff.
+    Changed = { bg = c.diff.change }, -- Changed line in a diff.
 
     -- Todo
     Todo = { fg = c.todo, bg = c.comment },

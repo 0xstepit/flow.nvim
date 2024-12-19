@@ -1,9 +1,8 @@
 local M = {}
 
--- Defines the highlight group colors for
--- the whichkey plugin.
--- @param c The available colors.
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @return table: Whichkey plugin highlights.
+function M.get(c, _)
   local theme = {
     WhichKey = { fg = c.fg_visual },
     WhichKeyGroup = { fg = c.light_blue },

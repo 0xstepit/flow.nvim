@@ -1,7 +1,5 @@
 local M = {}
 
--- Defines the highlight group colors for diagnostic.
--- @param c The available colors.
 function M.get(_, _)
   local theme = {}
   theme = {

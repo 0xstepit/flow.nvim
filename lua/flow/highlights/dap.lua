@@ -2,10 +2,11 @@ local M = {}
 
 -- Defines the highlight group colors for
 -- the debug adapter
--- @param c The available colors.
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @return table: Debug highlights.
+function M.get(c, _)
   local theme = {
-    debugPC = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
+    debugPC = { bg = c.to_check }, -- used for highlighting the current line in terminal-debug
     debugBreakpoint = { fg = c.error }, -- used for breakpoint colors in terminal-debug
     DapBreakpoint = { link = "debugBreakpoint" },
 
