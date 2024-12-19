@@ -14,7 +14,7 @@ function M.get(c, _)
 
     LspCodeLens = { fg = c.comment },
 
-    LspInlayHint = { fg = c.grey[5] },
+    LspInlayHint = { fg = c.grey[6] },
 
     LspInfoBorder = { fg = c.fg_border, bg = c.bg_float },
     LspKindSnippet = { fg = c.to_check },

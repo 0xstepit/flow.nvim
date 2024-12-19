@@ -18,7 +18,7 @@ function M.get(c, _)
     Identifier = { fg = c.cyan }, -- Any variable name.
     Keyword = { fg = c.red }, -- Any other keyword.
     Label = { link = "Keyword" }, -- case, default, etc.
-    Macro = { fg = c.grey[5] }, -- Heavily used in rust.
+    Macro = { fg = c.grey[6] }, -- Heavily used in rust.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
     PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
@@ -35,7 +35,7 @@ function M.get(c, _)
     Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
-    Bold = { fg = c.grey[5], bold = true },
+    Bold = { fg = c.grey[6], bold = true },
 
     -- Git
     Added = { bg = c.diff.add }, -- Added line in a diff.

@@ -5,7 +5,7 @@ local M = {}
 function M.get(c, _)
   local theme = {
     AvanteInlineHint = { fg = c.fluo },
-    AvanteTitle = { bg = c.fluo, fg = c.grey[2] },
+    AvanteTitle = { bg = c.fluo, fg = c.grey[3] },
     AvanteReversedTitle = { bg = c.bg, fg = c.fluo },
     AvanteSubtitle = { fg = c.fluo },
     AvanteReversedSubtitle = { fg = c.bg },

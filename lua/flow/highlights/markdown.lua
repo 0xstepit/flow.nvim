@@ -9,11 +9,11 @@ function M.get(c, _)
     htmlH2 = { fg = c.blue, bold = true },
 
     -- Code snippet
-    markdownCode = { fg = c.grey[4] },
-    mkdCodeDelimiter = { bg = c.grey[4], fg = c.fg },
+    markdownCode = { fg = c.grey[5] },
+    mkdCodeDelimiter = { bg = c.grey[5], fg = c.fg },
     mkdCodeStart = { fg = c.blue, bold = true },
     mkdCodeEnd = { fg = c.blue, bold = true },
-    mkdSnippetS = { bg = c.grey[2], fg = c.grey[3] },
+    mkdSnippetS = { bg = c.grey[3], fg = c.grey[4] },
 
     markdownHeadingDelimiter = { fg = c.orange, bold = true },
     markdownCodeBlock = { fg = c.blue },
@@ -56,11 +56,11 @@ function M.get(c, _)
     ["@label.markdown"] = { link = "Keyword" }, -- Used for the language specified in codeblocks.
 
     ["@markup.raw.block"] = {
-      bg = c.grey[8],
+      bg = c.grey[2],
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = c.grey[3],
+      bg = c.grey[4],
     }, --
     -- Obsidian
     ObsidianRefText = { fg = c.blue },

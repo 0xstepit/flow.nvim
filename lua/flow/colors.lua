@@ -9,7 +9,7 @@ M._color_names =
 --- @param opts FlowConfig: The options to setup the colorscheme.
 --- @return table: The colors used by the colorscheme.
 function M.setup(opts)
-  local default_palette = require("flow.palette").get()
+  local default_palette = require("flow.palette").get(opts or {})
 
   -- vim.api.nvim_create_autocmd("FileType", {
   --   pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
@@ -44,7 +44,7 @@ function M.setup(opts)
   opts = opts or {}
   M._apply_opts(default_palette, colors, opts)
 
-  colors.fg = default_palette.grey[6] -- used for text in the colorscheme
+  colors.fg = default_palette.grey[7] -- used for text in the colorscheme
 
   -- Handle mode-specific colors.
   local mode = opts.mode or "default"
@@ -66,7 +66,7 @@ function M.setup(opts)
     colors[Key] = default_palette[key]
   end
 
-  colors.comment = default_palette.grey[4] -- slightly brighter than gutter
+  colors.comment = default_palette.grey[5] -- slightly brighter than gutter
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
@@ -92,23 +92,23 @@ function M.setup(opts)
 
   -- Sidebar: used by the quickfix list, help, and explorer windows.
   -- NOTE: not used.
-  colors.fg_sidebar = default_palette.grey[5]
+  colors.fg_sidebar = default_palette.grey[6]
   colors.bg_sidebar = colors.bg
 
   -- Gutter: used for line numbers, signs, and fold column.
-  colors.fg_gutter = colors.grey[4]
+  colors.fg_gutter = colors.grey[5]
   colors.bg_gutter = (opts.transparent and default_palette.transparent) or colors.bg
 
   -- Float: used for visual elements that are floating and triggered by the user.
-  colors.fg_float = colors.grey[5]
+  colors.fg_float = colors.grey[6]
   colors.bg_float = default_palette.transparent
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
-  colors.fg_popup = default_palette.grey[6]
+  colors.fg_popup = default_palette.grey[7]
   colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
 
   -- Statusline and tabline
-  colors.fg_statusline = colors.grey[3]
+  colors.fg_statusline = colors.grey[4]
   colors.bg_statusline = colors.grey[1]
 
   -- Visual
@@ -116,15 +116,15 @@ function M.setup(opts)
   colors.bg_visual = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = colors.grey[3]
-  colors.bg_highlight = colors.grey[8]
+  colors.fg_highlight = colors.grey[4]
+  colors.bg_highlight = colors.grey[2]
 
   -- Git
   colors.git = {
     add = colors.green, -- Added files/lines
     change = colors.yellow, -- Modified files/lines
     delete = colors.red, -- Deleted files/lines
-    ignore = colors.grey[4], -- Ignored files
+    ignore = colors.grey[5], -- Ignored files
     untrcked = colors.sky_blue, -- New untracked files
   }
 
@@ -187,15 +187,15 @@ function M._apply_opts(default_palette, colors, opts)
     M._invert_colors_for_contrast(colors)
   end
 
-  colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
+  colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
 
   -- Borders
   colors.fg_border = (opts.border == "none" and colors.bg)
     or (opts.border == "fluo" and colors.fluo)
     or (opts.border == "dark" and colors.grey[1])
-    or colors.grey[4]
+    or colors.grey[5]
   -- NOTE bg_border is currently not used.
-  colors.bg_border = colors.grey[4]
+  colors.bg_border = colors.grey[5]
 end
 
 function M._invert_colors_for_theme(colors)
@@ -210,8 +210,8 @@ function M._invert_colors_for_theme(colors)
 end
 
 function M._invert_colors_for_contrast(colors)
-  colors.grey[1], colors.grey[2] = colors.grey[2], colors.grey[1]
-  colors.grey[6], colors.grey[7] = colors.grey[7], colors.grey[6]
+  colors.grey[1], colors.grey[3] = colors.grey[3], colors.grey[1]
+  colors.grey[7], colors.grey[8] = colors.grey[8], colors.grey[7]
 end
 
 return M

@@ -30,10 +30,10 @@ function M.get(c, _)
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|
     GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
     GitSignsDelete = { fg = c.git.delete }, -- diff mode: Deleted line |diff.txt|
-    GitSignsCurrentLineBlame = { fg = c.grey[3] },
+    GitSignsCurrentLineBlame = { fg = c.grey[4] },
 
     -- Fugitive
-    fugitiveHeader = { fg = c.grey[5] },
+    fugitiveHeader = { fg = c.grey[6] },
     fugitiveHelpHeader = { link = "fugitiveHeader" },
     fugitiveUntrackedHeading = { fg = c.yellow },
     fugitiveUntrackedModifier = { link = "fugitiveUntrackedHeading" },
@@ -41,7 +41,7 @@ function M.get(c, _)
     fugitiveUnstagedModifier = { link = "fugitiveUnstagedHeading" },
     fugitiveStagedHeading = { fg = c.green },
     fugitiveStagedModifier = { link = "fugitiveStagedHeading" },
-    fugitiveCount = { fg = c.grey[4] },
+    fugitiveCount = { fg = c.grey[5] },
 
     -- Git-conflict
     GitConflictCurrentLabel = { bg = c.Light_blue.dark },

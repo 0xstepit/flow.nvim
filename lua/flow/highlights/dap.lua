@@ -26,7 +26,7 @@ function M.get(c, _)
     DapUILineNumber = { fg = c.sky_blue },
     DapUICurrentFrameName = { fg = c.yellow },
 
-    DapUIWatchesValue = { fg = c.grey[5] },
+    DapUIWatchesValue = { fg = c.grey[6] },
     DapUIWatchesError = { fg = c.error },
 
     -- DapUIWatchesEmpty = { link = "DapUIWatchesValue" },
@@ -47,7 +47,7 @@ function M.get(c, _)
     DapUIBreakpointsPath = { fg = c.red },
     DapUIBreakpointsLine = { fg = c.red },
     --
-    DapUIDecoration = { fg = c.grey[5] }, -- arrow indicating vars
+    DapUIDecoration = { fg = c.grey[6] }, -- arrow indicating vars
     DapUIModifiedValue = { fg = c.yellow }, -- value of the last modified variables in the scope.
   }
 

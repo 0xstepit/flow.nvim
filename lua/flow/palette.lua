@@ -4,12 +4,15 @@ local M = {}
 
 ---Generates and returns a color palette using HSL and HEX values.
 ---@return table
-function M.get()
+function M.get(opts)
   -- The colorscheme support 5 shades of colors.
   local shade = {
     very_dark = { S = 27, L = 20 },
-    dark = { S = 50, L = 25 },
-    default = { S = 50, L = 65 },
+    dark = { S = 50, L = 35 },
+    default = {
+      S = (not opts.dark_theme and 40) or 50,
+      L = (not opts.dark_theme and 55) or 65,
+    },
     bright = { S = 80, L = 75 },
     very_bright = { S = 50, L = 85 },
   }
@@ -45,14 +48,14 @@ function M.get()
     -- Greyscale colors
     grey = {
       [1] = hsl(203, 20, 10), -- Very dark grey
-      [2] = hsl(203, 20, 15),
-      [3] = hsl(203, 20, 30),
-      [4] = hsl(203, 20, 35),
-      [5] = hsl(203, 20, 65),
-      [6] = hsl(203, 20, 88),
-      [7] = hsl(203, 20, 90), -- Very bright grey
-      -- TODO: refacotr order
-      [8] = hsl(203, 20, 13), -- Very dark grey
+      [2] = hsl(203, 20, 13), -- Very dark grey
+      [3] = hsl(203, 20, 15),
+      [4] = hsl(203, 20, 30),
+      [5] = hsl(203, 20, 35),
+      [6] = hsl(203, 20, 65),
+      [7] = hsl(203, 20, 85),
+      [8] = hsl(203, 20, 88),
+      [9] = hsl(203, 20, 90), -- Very bright grey
     },
 
     -- Fluorescent colors
@@ -60,27 +63,27 @@ function M.get()
       pink = {
         default = hsl(fluo_hue.pink, 100, 50),
         light = hsl(fluo_hue.pink, 100, 90),
-        dark = hsl(fluo_hue.pink, 100, 10),
+        dark = hsl(fluo_hue.pink, 100, 30),
       },
       cyan = {
         default = hsl(fluo_hue.cyan, 100, 50),
         light = hsl(fluo_hue.cyan, 100, 90),
-        dark = hsl(fluo_hue.cyan, 100, 10),
+        dark = hsl(fluo_hue.cyan, 100, 30),
       },
       green = {
         default = hsl(fluo_hue.green, 100, 50),
         light = hsl(fluo_hue.green, 100, 90),
-        dark = hsl(fluo_hue.green, 100, 10),
+        dark = hsl(fluo_hue.green, 100, 30),
       },
       orange = {
         default = hsl(fluo_hue.orange, 100, 50),
         light = hsl(fluo_hue.orange, 100, 90),
-        dark = hsl(fluo_hue.orange, 100, 10),
+        dark = hsl(fluo_hue.orange, 100, 30),
       },
       yellow = {
         default = hsl(fluo_hue.yellow, 100, 50),
         light = hsl(fluo_hue.yellow, 100, 90),
-        dark = hsl(fluo_hue.yellow, 100, 10),
+        dark = hsl(fluo_hue.yellow, 100, 30),
       },
     },
 

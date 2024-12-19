@@ -55,7 +55,7 @@ function M.get(c, o)
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
+    IncSearch = { bg = (not o.dark_theme and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
     Search = { link = "IncSearch" }, -- Used for 'incsearch' highlighting.
     CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
@@ -102,7 +102,7 @@ function M.get(c, o)
 
     -- Misc
     -- I'm not sure where these groups are set.
-    Define = { fg = c.grey[5] }, -- Preprocessor #define. Used in rust.
+    Define = { fg = c.grey[7] }, -- Preprocessor #define. Used in rust.
     Include = { fg = c.red }, --  preprocessor #include
     Question = { fg = c.fg_visual }, -- |hit-enter| prompt and yes/no questions.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion

@@ -5,7 +5,7 @@ local M = {}
 function M.get(c, _)
   local theme = {
 
-    TreesitterContext = { bg = c.grey[2] },
+    TreesitterContext = { bg = c.grey[3] },
     TreesitterContextLineNumber = { link = "TreesitterContext" },
     -- TODO: verify the sp with another terminal.
     -- sp works only if the terminal support it.
@@ -147,7 +147,7 @@ function M.get(c, _)
     ["@keyword.function.go"] = { link = "Statement" },
 
     -- Rust
-    -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[5] },
+    -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[6] },
 
     -- YAML
     ["@property.yaml"] = { fg = c.yellow },
