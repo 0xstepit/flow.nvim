@@ -2,10 +2,11 @@ local M = {}
 
 -- Defines the highlight group colors for diagnostic.
 --- @param c table: The available colors.
+--- @param o FlowConfig: The available options.
 --- @return table: Diagnostic highlights.
-function M.get(c, opts)
+function M.get(c, o)
   local background_tone = "very_dark"
-  if not opts.dark_theme then
+  if not o.theme.style == "dark" then
     background_tone = "very_bright"
   end
   local theme = {

@@ -2,15 +2,28 @@ local M = {}
 
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
---- TODO: add @field description
 M.defaults = {
-  dark_theme = true, -- Set the theme with dark background.
-  high_contrast = false, -- Make the dark background darker or the light background lighter.
-  transparent = false, -- Set transparent background.
-  fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
-  mode = "default", -- Mode of the colors. Available values are: default, dark, or bright.
-  borders = "light", -- Border style. Available values are: light, dark, fluo, none.
-  aggressive_spell = false, -- Use colors for spell check.
+  --- @class Theme
+  theme = {
+    ---@alias Style "dark" | "light"
+    style = "dark",
+    ---@alias Contrast "default" | "high"
+    contrast = "default",
+    ---@boolean
+    transparent = false,
+  },
+  colors = {
+    ---@alias Mode "default" | "dark" | "bright"
+    mode = "default",
+    ---@alias Fluo "pink" | "cyan" | "yellow" | "orange" | "green"
+    fluo = "pink",
+  },
+  ui = {
+    ---@alias Border "light" | "dark" | "fluo" | "none"
+    borders = "light",
+    ---@boolean
+    aggressive_spell = false,
+  },
 }
 
 --- @type FlowConfig
@@ -21,24 +34,39 @@ M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
   modes = { "default", "dark", "bright" },
   borders = { "light", "dark", "fluo", "none" },
+  contrast = { "default", "high" },
 }
 
 --- Validate configuration options
 --- @param opts FlowConfig
 --- @return boolean, string?
 local function validate_options(opts)
-  if opts.fluo_color and not vim.tbl_contains(M.valid_options.fluo_colors, opts.fluo_color) then
-    return false, string.format("Invalid fluo color: %s", opts.fluo_color)
+  -- Validate theme options.
+  if opts.theme then
+    if
+      opts.theme.contrast and not vim.tbl_contains(M.valid_options.contrast, opts.theme.contrast)
+    then
+      return false, string.format("Invalid border: %s", opts.theme.contrast)
+    end
   end
 
-  if opts.mode and not vim.tbl_contains(M.valid_options.modes, opts.mode) then
-    return false, string.format("Invalid mode: %s", opts.mode)
+  -- Validate color options.
+  if opts.colors then
+    if opts.colors.fluo and not vim.tbl_contains(M.valid_options.fluo_colors, opts.colors.fluo) then
+      return false, string.format("Invalid fluo color: %s", opts.colors.fluo)
+    end
+
+    if opts.colors.mode and not vim.tbl_contains(M.valid_options.modes, opts.colors.mode) then
+      return false, string.format("Invalid mode: %s", opts.colors.mode)
+    end
   end
 
-  if opts.borders and not vim.tbl_contains(M.valid_options.borders, opts.borders) then
-    return false, string.format("Invalid border: %s", opts.borders)
+  -- Validate ui options
+  if opts.ui then
+    if opts.ui.borders and not vim.tbl_contains(M.valid_options.borders, opts.ui.borders) then
+      return false, string.format("Invalid border: %s", opts.ui.borders)
+    end
   end
-
   return true
 end
 
@@ -47,8 +75,8 @@ end
 --- the default configuration.
 --- @param opts FlowConfig? Optional table to customize the colorscheme setup.
 function M._setup(opts)
-  -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
-  -- the plugin manager because first set the options,and then set the colorscheme.
+  -- -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
+  -- -- the plugin manager because first set the options,and then set the colorscheme.
   if not vim.tbl_isempty(M.options) then
     return
   end

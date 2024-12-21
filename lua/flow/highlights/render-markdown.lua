@@ -1,7 +1,7 @@
 local M = {}
 
 --- @param c table: The available colors.
---- @param o table: The available options.
+--- @param o FlowConfig: The available options.
 --- @return table: Render markdown plugin highlights.
 function M.get(c, o)
   local theme = {
@@ -29,7 +29,7 @@ function M.get(c, o)
     c.Cyan.very_bright,
     c.Sky_blue.very_bright,
   }
-  if o.dark_theme then
+  if o.theme.style == "dark" then
     headersBg = {
       c.Fluo.dark,
       c.Blue.very_dark,

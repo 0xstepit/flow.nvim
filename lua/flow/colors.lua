@@ -47,7 +47,7 @@ function M.setup(opts)
   colors.fg = colors.grey[6]
 
   -- Handle mode-specific colors.
-  local mode = opts.mode or "default"
+  local mode = opts.colors.mode or "default"
   local modes = { "default", "dark", "bright" }
   if not M._tbl_contains(modes, mode) then
     vim.notify(
@@ -95,9 +95,11 @@ function M.setup(opts)
   colors.fg_sidebar = default_palette.grey[6]
   colors.bg_sidebar = colors.bg
 
+  local is_transparent = opts.theme.transparent == true
+
   -- Gutter: used for line numbers, signs, and fold column.
   colors.fg_gutter = colors.grey[5]
-  colors.bg_gutter = (opts.transparent and default_palette.transparent) or colors.bg
+  colors.bg_gutter = (is_transparent and default_palette.transparent) or colors.bg
 
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[6]
@@ -105,7 +107,7 @@ function M.setup(opts)
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
   colors.fg_popup = default_palette.grey[7]
-  colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
+  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.grey[1]
 
   -- Statusline and tabline
   colors.fg_statusline = colors.grey[4]
@@ -128,11 +130,12 @@ function M.setup(opts)
     untrcked = colors.sky_blue, -- New untracked files
   }
 
+  local is_dark = opts.theme.style == "dark"
   colors.diff = {
-    add = not opts.dark_theme and colors.Green.very_bright or colors.Green.very_dark,
-    delete = not opts.dark_theme and colors.Red.very_bright or colors.Red.very_dark,
-    change = not opts.dark_theme and colors.Light_blue.very_bright or colors.Sky_blue.very_dark,
-    text = not opts.dark_theme and colors.Cyan.very_bright or colors.Cyan.very_dark,
+    add = not is_dark and colors.Green.very_bright or colors.Green.very_dark,
+    delete = not is_dark and colors.Red.very_bright or colors.Red.very_dark,
+    change = not is_dark and colors.Light_blue.very_bright or colors.Sky_blue.very_dark,
+    text = not is_dark and colors.Cyan.very_bright or colors.Cyan.very_dark,
   }
 
   -- LSP diagnostics
@@ -169,30 +172,31 @@ function M._swap(t, a, b)
   t[a], t[b] = t[b], t[a]
 end
 
+--- @param opts FlowConfig
 function M._apply_opts(default_palette, colors, opts)
-  if opts.fluo_color then
-    colors.fluo = default_palette.fluo[opts.fluo_color].default
-    colors.Fluo = default_palette.fluo[opts.fluo_color]
+  if opts.colors.fluo then
+    colors.fluo = default_palette.fluo[opts.colors.fluo].default
+    colors.Fluo = default_palette.fluo[opts.colors.fluo]
   end
 
   -- Apply changes if the theme is not dark.
   -- HACK: this has to be executed before all changes that involves white, black, and grey.
-  if not opts.dark_theme then
+  if opts.theme.style ~= "dark" then
     M._invert_colors_for_theme(colors)
   end
 
   -- If high contrast the darkest color is swap for the next color and the
   -- lightest color is swap for the color before.
-  if opts.high_contrast then
+  if opts.theme.contrast == "high" then
     M._invert_colors_for_contrast(colors)
   end
 
-  colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
+  colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
 
   -- Borders
-  colors.fg_border = (opts.border == "none" and colors.bg)
-    or (opts.border == "fluo" and colors.fluo)
-    or (opts.border == "dark" and colors.grey[1])
+  colors.fg_border = (opts.ui.borders == "none" and colors.bg)
+    or (opts.ui.borders == "fluo" and colors.fluo)
+    or (opts.ui.borders == "dark" and colors.grey[1])
     or colors.grey[5]
   -- NOTE bg_border is currently not used.
   colors.bg_border = colors.grey[5]

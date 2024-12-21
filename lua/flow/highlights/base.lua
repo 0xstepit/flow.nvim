@@ -2,9 +2,11 @@ local M = {}
 
 -- Defines the highlight for base color groups.
 --- @param c table: The available colors.
---- @param o table: The available options.
+--- @param o FlowConfig: The available options.
 --- @return table: Base highlights.
 function M.get(c, o)
+  local is_dark = o.theme.style == "dark"
+  local is_aggressive_spell = o.ui.aggressive_spell
   local theme = {
     -- Windows
     Normal = { fg = c.fg, bg = c.bg }, -- Normal text.
@@ -55,7 +57,7 @@ function M.get(c, o)
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = (not o.dark_theme and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
+    IncSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
     Search = { link = "IncSearch" }, -- Used for 'incsearch' highlighting.
     CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
@@ -84,25 +86,25 @@ function M.get(c, o)
 
     -- Spelling
     SpellBad = {
-      fg = o.aggressive_spell_visual and c.error or c.comment,
+      fg = is_aggressive_spell and c.error or c.comment,
       undercurl = true,
     }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap = {
-      fg = o.aggressive_spell_visual and c.warning or c.comment,
+      fg = is_aggressive_spell and c.warning or c.comment,
       undercurl = true,
     }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal = {
-      fg = o.aggressive_spell_visual and c.info or c.comment,
+      fg = is_aggressive_spell and c.info or c.comment,
       undercurl = true,
     }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare = {
-      fg = o.aggressive_spell_visual and c.hint or c.comment,
+      fg = is_aggressive_spell and c.hint or c.comment,
       undercurl = true,
     }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 
     -- Misc
     -- I'm not sure where these groups are set.
-    Define = { fg = c.grey[7] }, -- Preprocessor #define. Used in rust.
+    Define = { fg = c.grey[6] }, -- Preprocessor #define. Used in rust.
     Include = { fg = c.red }, --  preprocessor #include
     Question = { fg = c.fg_visual }, -- |hit-enter| prompt and yes/no questions.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion

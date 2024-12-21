@@ -3,17 +3,19 @@ local hsl = require("flow.util").hsl_to_hex
 local M = {}
 
 ---Generates and returns a color palette using HSL and HEX values.
+--- @param o FlowConfig: The available options.
 ---@return table
-function M.get(opts)
+function M.get(o)
+  local is_dark = o.theme.style == "dark"
   -- The colorscheme support 5 shades of colors.
   local shade = {
     very_dark = { S = 27, L = 20 },
     dark = { S = 50, L = 35 },
     default = {
-      S = (not opts.dark_theme and 40) or 50,
-      L = (not opts.dark_theme and 55) or 65,
+      S = (not is_dark and 40) or 60,
+      L = (not is_dark and 55) or 65,
     },
-    bright = { S = 80, L = 75 },
+    bright = { S = 100, L = 75 },
     very_bright = { S = 50, L = 85 },
   }
 
@@ -62,7 +64,7 @@ function M.get(opts)
     fluo = {
       pink = {
         default = hsl(fluo_hue.pink, 100, 50),
-        light = hsl(fluo_hue.pink, 100, 80),
+        light = hsl(fluo_hue.pink, 100, 100),
         dark = hsl(fluo_hue.pink, 100, 35),
       },
       cyan = {
