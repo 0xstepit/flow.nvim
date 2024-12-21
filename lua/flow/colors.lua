@@ -44,8 +44,6 @@ function M.setup(opts)
   opts = opts or {}
   M._apply_opts(default_palette, colors, opts)
 
-  colors.fg = colors.grey[6]
-
   -- Handle mode-specific colors.
   local mode = opts.colors.mode or "default"
   local modes = { "default", "dark", "bright" }
@@ -192,6 +190,7 @@ function M._apply_opts(default_palette, colors, opts)
   end
 
   colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
+  colors.fg = (opts.theme.style == "dark" and colors.grey[7]) or colors.grey[6]
 
   -- Borders
   colors.fg_border = (opts.ui.borders == "none" and colors.bg)
