@@ -44,7 +44,7 @@ function M.setup(opts)
   opts = opts or {}
   M._apply_opts(default_palette, colors, opts)
 
-  colors.fg = default_palette.grey[7] -- used for text in the colorscheme
+  colors.fg = colors.grey[6]
 
   -- Handle mode-specific colors.
   local mode = opts.mode or "default"
@@ -66,7 +66,7 @@ function M.setup(opts)
     colors[Key] = default_palette[key]
   end
 
-  colors.comment = default_palette.grey[5] -- slightly brighter than gutter
+  colors.comment = default_palette.grey[4]
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
@@ -111,13 +111,13 @@ function M.setup(opts)
   colors.fg_statusline = colors.grey[4]
   colors.bg_statusline = colors.grey[1]
 
-  -- Visual
-  colors.fg_visual = colors.fluo
-  colors.bg_visual = colors.grey[1]
-
   -- Highlights
   colors.fg_highlight = colors.grey[4]
   colors.bg_highlight = colors.grey[2]
+
+  -- Visual
+  colors.fg_visual = colors.fluo
+  colors.bg_visual = colors.grey[1]
 
   -- Git
   colors.git = {

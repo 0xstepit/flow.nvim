@@ -62,8 +62,8 @@ function M.get(opts)
     fluo = {
       pink = {
         default = hsl(fluo_hue.pink, 100, 50),
-        light = hsl(fluo_hue.pink, 100, 90),
-        dark = hsl(fluo_hue.pink, 100, 30),
+        light = hsl(fluo_hue.pink, 100, 80),
+        dark = hsl(fluo_hue.pink, 100, 35),
       },
       cyan = {
         default = hsl(fluo_hue.cyan, 100, 50),
@@ -72,13 +72,13 @@ function M.get(opts)
       },
       green = {
         default = hsl(fluo_hue.green, 100, 50),
-        light = hsl(fluo_hue.green, 100, 90),
+        light = hsl(fluo_hue.green, 100, 100),
         dark = hsl(fluo_hue.green, 100, 30),
       },
       orange = {
         default = hsl(fluo_hue.orange, 100, 50),
         light = hsl(fluo_hue.orange, 100, 90),
-        dark = hsl(fluo_hue.orange, 100, 30),
+        dark = hsl(fluo_hue.orange, 100, 35),
       },
       yellow = {
         default = hsl(fluo_hue.yellow, 100, 50),
