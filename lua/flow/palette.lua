@@ -64,7 +64,7 @@ function M.get(o)
     fluo = {
       pink = {
         default = hsl(fluo_hue.pink, 100, 50),
-        light = hsl(fluo_hue.pink, 100, 100),
+        light = hsl(fluo_hue.pink, 100, 90),
         dark = hsl(fluo_hue.pink, 100, 35),
       },
       cyan = {
