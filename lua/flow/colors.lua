@@ -143,10 +143,10 @@ function M.setup(opts)
   colors.hint = colors.Light_blue.default -- Hints and suggestions
 
   -- Special Comments
-  colors.todo = colors.Sky_blue.default -- TODO comments
-  colors.note = colors.Green.default -- NOTE comments
-  colors.fixme = colors.Red.default -- FIXME comments
-  colors.hack = colors.Yellow.default -- HACK comments
+  colors.todo = is_dark and colors.Sky_blue.default or colors.Sky_blue.dark -- TODO comments
+  colors.note = is_dark and colors.Green.default or colors.Green.dark -- NOTE comments
+  colors.fixme = is_dark and colors.Red.default or colors.Red.dark -- FIXME comments
+  colors.hack = is_dark and colors.Yellow.default or colors.Yellow.dark -- HACK comments
 
   M.colors = colors
 
