@@ -15,7 +15,7 @@ function M.get(o)
       S = (not is_dark and 40) or 60,
       L = (not is_dark and 55) or 65,
     },
-    bright = { S = 100, L = 75 },
+    bright = { S = 40, L = 65 },
     very_bright = { S = 50, L = 85 },
   }
 
@@ -50,7 +50,7 @@ function M.get(o)
     -- Greyscale colors
     grey = {
       [1] = hsl(203, 20, 10), -- Very dark grey
-      [2] = hsl(203, 20, 13), -- Very dark grey
+      [2] = hsl(203, 20, 13),
       [3] = hsl(203, 20, 15),
       [4] = hsl(203, 20, 30),
       [5] = hsl(203, 20, 35),

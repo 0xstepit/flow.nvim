@@ -19,7 +19,7 @@ M.defaults = {
     fluo = "pink",
   },
   ui = {
-    ---@alias Border "light" | "dark" | "fluo" | "none"
+    ---@alias Borders "theme" | "inverse" | "fluo" | "none"
     borders = "light",
     ---@boolean
     aggressive_spell = false,
@@ -33,7 +33,7 @@ M.options = {}
 M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
   modes = { "default", "dark", "bright" },
-  borders = { "light", "dark", "fluo", "none" },
+  borders = { "theme", "inverse", "fluo", "none" },
   contrast = { "default", "high" },
 }
 

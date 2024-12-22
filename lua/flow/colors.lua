@@ -195,7 +195,7 @@ function M._apply_opts(default_palette, colors, opts)
   -- Borders
   colors.fg_border = (opts.ui.borders == "none" and colors.bg)
     or (opts.ui.borders == "fluo" and colors.fluo)
-    or (opts.ui.borders == "dark" and colors.grey[1])
+    or (opts.ui.borders == "theme" and colors.grey[1])
     or colors.grey[5]
   -- NOTE bg_border is currently not used.
   colors.bg_border = colors.grey[5]
