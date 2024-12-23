@@ -3,10 +3,10 @@
 ![logo](https://github.com/user-attachments/assets/d4a06c71-4f1b-4375-969a-77f8d30b1fb5)
 
 Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
-[Lua](https://www.lua.org/). It features carefully designed colors to help
-focusing during coding plus fluorescent details to provide a vibrant environment.
+[Lua](https://www.lua.org/). It features a carefully curated palette to enhance
+focus during coding, complemented by fluorescent accents for a vibrant and dynamic look.
 
-Why fluo? Because it's cool!
+Why fluo? Because it's simply cool!
 
 ## Showcase
 
@@ -16,20 +16,19 @@ Why fluo? Because it's cool!
 
 ## Palette
 
-Flow has been designed using a palette based on 9 colors selected through the HSL representation to
-create a cohesive ambiance. The principal color is the light blue, and the additional colors have
-been chosen as follows with minor changes have a more pleasant looking:
+Flow uses a palette of nine HSL-based colors, chosen to create a cohesive and visually appealing
+environment. The primary color is light blue, with supporting tones selected as follows based on
+the saturation value:
 
-- **Analogous** (S+/-30): blue, cyan.
+- **Analogous** (±30°): blue, cyan.
 
-- **Complementary** (S+/-180): orange.
+- **Complementary** (±180°): orange.
 
-- **Tetradic** 60 (S+/-60): purple, green.
+- **Tetradic** 60 (±60°): purple, green.
 
-- **Split comp** (S+/-150): yellow, red.
+- **Split comp** (±150°): yellow, red.
 
-Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been
-added for striking accents.
+Additionally, sky blue enhances the blue tones, and a fluorescent color provides striking accents.
 
 ## Requirements
 
@@ -38,7 +37,7 @@ added for striking accents.
 
 ## Installation
 
-Install the theme with your preferred package manager, such as
+Install Flow with your preferred package manager, such as
 [folke/lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
@@ -46,21 +45,20 @@ Install the theme with your preferred package manager, such as
   "0xstepit/flow.nvim",
   lazy = false,
   priority = 1000,
-  tag = "v1.0.0",
+  tag = "vX.0.0",
   opts = {
         -- Your configuration options here.
     },
 }
 ```
 
-Please, set the tag field if you don't want to automatically update the colorscheme introducing
-breaking changes.
+> Use the tag field to prevent breaking changes from automatic updates.
 
 ## Usage
 
 ### Lua
 
-To install and start using the plugin with default options:
+Setup and start using Flow with default options:
 
 ```lua
 require("flow").setup{}
@@ -69,11 +67,9 @@ vim.cmd "colorscheme flow"
 
 ## Configuration
 
-The following section describes as how to configure the plugin using Lazy plugin manager.
+The following section describes how to configure the plugin using Lazy plugin manager.
 
 ### Default
-
-The configuration allows you to specify 5 different options:
 
 ```lua
 return {
@@ -82,12 +78,19 @@ return {
   priority = 1000,
   tag = "v1.0.0",
     opts = {
-      dark_theme = true, -- true | false
-      transparent = true, -- true | false
-      high_contrast = false, -- true | false
-      fluo_color = "pink", -- "pink" | "cyan" | "yellow" | "green" | "orange"
-      mode = "default", -- "default" | "bright" | "dark"
-      aggressive_spell = false, -- true | false
+      theme = {
+        style = "dark", --  "dark" | "light"
+        contrast = "default", -- "default" | "high"
+        transparent = false, -- true | false
+      },
+      colors = {
+        mode = "default", -- "default" | "dark" | "light"
+        fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
+      },
+      ui = {
+        borders = "light", -- "theme" | "inverse" | "fluo" | "none"
+        aggressive_spell = false, -- true | false
+      },
     },
     config = function(_, opts)
       require("flow").setup(opts)
@@ -97,36 +100,9 @@ return {
 }
 ```
 
-Keep in mind that the `transparent` flags set the background of neovim transparent and, as a
+Keep in mind that the `transparent` flag sets the background of neovim transparent and, as a
 result, the terminal emulator background will be visible. It is suggested to always add some bluur
 to the terminal emulator when the background is transparent.
-
-## Suggested
-
-<details>
-<summary>My favorite config</summary>
-
-```lua
-return {
-  "0xstepit/flow.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  config = function()
-    require("flow").setup{
-      dark_theme = true,
-      transparent = true,
-      high_contrast = false,
-      fluo_color = "pink",
-      mode = "default",
-      aggressive_spell = false,
-    }
-    vim.cmd "colorscheme flow"
-  end,
-}
-```
-
-</details>
 
 ## Supported plugins
 
@@ -138,13 +114,21 @@ Below the list of supported plugins divided by category:
 
 - **Debug**: [nvim-dap](https://github.com/mfussenegger/nvim-dap).
 
-- **Plugins**: [lazy](https://github.com/folke/lazy.nvim).
+- **Plugins & Utils**: [lazy](https://github.com/folke/lazy.nvim),
+  [mason](https://github.com/williamboman/mason.nvim)
 
-- **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim), [treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+- **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim),
+  [treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
+  [ibl](https://github.com/lukas-reineke/indent-blankline.nvim),
+  [oil](https://github.com/stevearc/oil.nvim)
+
+- **AI**: [avante](https://github.com/yetone/avante.nvim)
 
 - **Utils**: [trouble](https://github.com/folke/trouble.nvim),
   [todo-comments](https://github.com/folke/todo-comments.nvim),
-  [which-key](https://github.com/folke/which-key.nvim).
+  [which-key](https://github.com/folke/which-key.nvim),
+  [render-markdwon](https://github.com/MeanderingProgrammer/render-markdown.nvim),
+  [mini-hipatterns](https://github.com/echasnovski/mini.hipatterns)
 
 - **Base Nvim**: diagnostic, lsp, markdown.
 

@@ -7,7 +7,7 @@ local M = {}
 function M.get(c, o)
   local background_tone = "very_dark"
   if not o.theme.style == "dark" then
-    background_tone = "very_bright"
+    background_tone = "very_light"
   end
   local theme = {
     DiagnosticError = { fg = c.error },

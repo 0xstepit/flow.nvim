@@ -44,20 +44,9 @@ function M.setup(opts)
   opts = opts or {}
   M._apply_opts(default_palette, colors, opts)
 
-  -- Handle mode-specific colors.
-  local mode = opts.colors.mode or "default"
-  local modes = { "default", "dark", "bright" }
-  if not M._tbl_contains(modes, mode) then
-    vim.notify(
-      "Invalid mode: '" .. mode .. "'. Falling back to `default` mode.",
-      vim.log.levels.WARN
-    )
-    mode = "default"
-  end
-
   for _, key in ipairs(M._color_names) do
     -- Set the specific mode of the colors.
-    colors[key] = default_palette[key][mode]
+    colors[key] = default_palette[key][opts.colors.mode]
     -- Store all the color variations. These variables are used for hi that
     -- requires contrasts with the current theme, like git.
     local Key = key:gsub("^%l", string.upper)
@@ -130,10 +119,10 @@ function M.setup(opts)
 
   local is_dark = opts.theme.style == "dark"
   colors.diff = {
-    add = not is_dark and colors.Green.very_bright or colors.Green.very_dark,
-    delete = not is_dark and colors.Red.very_bright or colors.Red.very_dark,
-    change = not is_dark and colors.Light_blue.very_bright or colors.Sky_blue.very_dark,
-    text = not is_dark and colors.Cyan.very_bright or colors.Cyan.very_dark,
+    add = not is_dark and colors.Green.very_light or colors.Green.very_dark,
+    delete = not is_dark and colors.Red.very_light or colors.Red.very_dark,
+    change = not is_dark and colors.Light_blue.very_light or colors.Sky_blue.very_dark,
+    text = not is_dark and colors.Cyan.very_light or colors.Cyan.very_dark,
   }
 
   -- LSP diagnostics

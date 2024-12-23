@@ -15,8 +15,8 @@ function M.get(o)
       S = (not is_dark and 40) or 60,
       L = (not is_dark and 55) or 65,
     },
-    bright = { S = 40, L = 65 },
-    very_bright = { S = 50, L = 85 },
+    light = { S = 40, L = 65 },
+    very_light = { S = 50, L = 85 },
   }
 
   local hue = {
@@ -57,7 +57,7 @@ function M.get(o)
       [6] = hsl(203, 20, 65),
       [7] = hsl(203, 20, 85),
       [8] = hsl(203, 20, 88),
-      [9] = hsl(203, 20, 90), -- Very bright grey
+      [9] = hsl(203, 20, 90), -- Very light grey
     },
 
     -- Fluorescent colors
@@ -94,8 +94,8 @@ function M.get(o)
       very_dark = hsl(hue.red, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.red, shade.dark.S, shade.dark.L),
       default = hsl(hue.red, shade.default.S, shade.default.L),
-      bright = hsl(hue.red, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.red, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.red, shade.light.S, shade.light.L),
+      very_light = hsl(hue.red, shade.very_light.S, shade.very_light.L),
     },
 
     -- Purple shades
@@ -103,8 +103,8 @@ function M.get(o)
       very_dark = hsl(hue.purple, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.purple, shade.dark.S, shade.dark.L),
       default = hsl(hue.purple, shade.default.S, shade.default.L),
-      bright = hsl(hue.purple, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.purple, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.purple, shade.light.S, shade.light.L),
+      very_light = hsl(hue.purple, shade.very_light.S, shade.very_light.L),
     },
 
     -- Blue shades
@@ -112,8 +112,8 @@ function M.get(o)
       very_dark = hsl(hue.blue, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.blue, shade.dark.S, shade.dark.L),
       default = hsl(hue.blue, shade.default.S, shade.default.L),
-      bright = hsl(hue.blue, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.blue, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.blue, shade.light.S, shade.light.L),
+      very_light = hsl(hue.blue, shade.very_light.S, shade.very_light.L),
     },
 
     -- Light blue shades
@@ -121,8 +121,8 @@ function M.get(o)
       very_dark = hsl(hue.light_blue, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.light_blue, shade.dark.S, shade.dark.L),
       default = hsl(hue.light_blue, shade.default.S, shade.default.L),
-      bright = hsl(hue.light_blue, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.light_blue, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.light_blue, shade.light.S, shade.light.L),
+      very_light = hsl(hue.light_blue, shade.very_light.S, shade.very_light.L),
     },
 
     -- Sky blue shades
@@ -130,8 +130,8 @@ function M.get(o)
       very_dark = hsl(hue.sky_blue, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.sky_blue, shade.dark.S, shade.dark.L),
       default = hsl(hue.sky_blue, shade.default.S, shade.default.L),
-      bright = hsl(hue.sky_blue, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.sky_blue, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.sky_blue, shade.light.S, shade.light.L),
+      very_light = hsl(hue.sky_blue, shade.very_light.S, shade.very_light.L),
     },
 
     -- Cyan shades
@@ -139,8 +139,8 @@ function M.get(o)
       very_dark = hsl(hue.cyan, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.cyan, shade.dark.S, shade.dark.L),
       default = hsl(hue.cyan, shade.default.S, shade.default.L),
-      bright = hsl(hue.cyan, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.cyan, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.cyan, shade.light.S, shade.light.L),
+      very_light = hsl(hue.cyan, shade.very_light.S, shade.very_light.L),
     },
 
     -- Green shades
@@ -148,8 +148,8 @@ function M.get(o)
       very_dark = hsl(hue.green, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.green, shade.dark.S, shade.dark.L),
       default = hsl(hue.green, shade.default.S, shade.default.L),
-      bright = hsl(hue.green, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.green, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.green, shade.light.S, shade.light.L),
+      very_light = hsl(hue.green, shade.very_light.S, shade.very_light.L),
     },
 
     -- Orange shades
@@ -157,8 +157,8 @@ function M.get(o)
       very_dark = hsl(hue.orange, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.orange, shade.dark.S, shade.dark.L),
       default = hsl(hue.orange, shade.default.S, shade.default.L),
-      bright = hsl(hue.orange, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.orange, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.orange, shade.light.S, shade.light.L),
+      very_light = hsl(hue.orange, shade.very_light.S, shade.very_light.L),
     },
 
     -- Yellow shades
@@ -166,8 +166,8 @@ function M.get(o)
       very_dark = hsl(hue.yellow, shade.very_dark.S, shade.very_dark.L),
       dark = hsl(hue.yellow, shade.dark.S, shade.dark.L),
       default = hsl(hue.yellow, shade.default.S, shade.default.L),
-      bright = hsl(hue.yellow, shade.bright.S, shade.bright.L),
-      very_bright = hsl(hue.yellow, shade.very_bright.S, shade.very_bright.L),
+      light = hsl(hue.yellow, shade.light.S, shade.light.L),
+      very_light = hsl(hue.yellow, shade.very_light.S, shade.very_light.L),
     },
   }
 

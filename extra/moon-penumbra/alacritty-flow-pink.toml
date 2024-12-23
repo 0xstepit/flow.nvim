@@ -1,0 +1,68 @@
+# Flow colorscheme | Alacritty
+# https://github.com/0xstepit/flow.nvim
+
+# Black and white
+[colors.primary]
+background = '#1f282e'
+foreground = '#d1dbe0'
+
+# Normal colors
+[colors.normal]
+black = '#0d0d0d'
+red = '#c98288'
+green = '#88c982'
+yellow = '#c9c982'
+blue = '#82acc9'
+magenta = '#a682c9'
+cyan = '#82c9b8'
+white = '#f2f2f2'
+
+# Bright colors
+[colors.bright]
+black = '#0d0d0d'
+red = '#c98288'
+green = '#88c982'
+yellow = '#c9c982'
+blue = '#82acc9'
+magenta = '#a682c9'
+cyan = '#82c9b8'
+white = '#f2f2f2'
+
+# Search colors
+[colors.search.matches]
+foreground = '#ff007b'
+background = '#0d0d0d'
+
+[colors.search.focused_match]
+foreground = '#0d0d0d'
+background = '#ff007b'
+
+# Selection colors
+[colors.selection]
+background = '#ff007b'
+text = '#0d0d0d'
+
+# Cursors
+# If you don't want to override original behavior, which is nice,
+# remove [colors.cursor] and [colors.vi_mode_cursor].
+[colors.cursor]
+cursor = '#ff007b'
+text = '#0d0d0d'
+
+[colors.vi_mode_cursor]
+cursor = '#ff007b'
+text = '#0d0d0d'
+
+[colors.footer_bar]
+foreground = '#ff007b'
+background = '#0d0d0d'
+
+# Purple color
+[[colors.indexed_colors]]
+index = 93
+color = '#a682c9'
+
+# Fluo Colors
+[[colors.indexed_colors]]
+index = 198
+color = '#ff007b'

@@ -24,10 +24,10 @@ function M.get(c, o)
   -- Sequentially define headers background colors.
   local headersBg = {
     c.Fluo.light,
-    c.Blue.very_bright,
-    c.Light_blue.very_bright,
-    c.Cyan.very_bright,
-    c.Sky_blue.very_bright,
+    c.Blue.very_light,
+    c.Light_blue.very_light,
+    c.Cyan.very_light,
+    c.Sky_blue.very_light,
   }
   if o.theme.style == "dark" then
     headersBg = {

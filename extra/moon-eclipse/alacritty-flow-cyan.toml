@@ -4,65 +4,65 @@
 # Black and white
 [colors.primary]
 background = '#1f282e'
-foreground = '#b3c2cc'
+foreground = '#d1dbe0'
 
 # Normal colors
 [colors.normal]
 black = '#0d0d0d'
-red = '#cc666e'
-green = '#6fcc66'
-yellow = '#cccc66'
-blue = '#66a2cc'
-magenta = '#9966cc'
-cyan = '#66ccb3'
+red = '#db7079'
+green = '#79db70'
+yellow = '#dbdb70'
+blue = '#70afdb'
+magenta = '#a670db'
+cyan = '#70dbc1'
 white = '#f2f2f2'
 
 # Bright colors
 [colors.bright]
 black = '#0d0d0d'
-red = '#cc666e'
-green = '#6fcc66'
-yellow = '#cccc66'
-blue = '#66a2cc'
-magenta = '#9966cc'
-cyan = '#66ccb3'
+red = '#db7079'
+green = '#79db70'
+yellow = '#dbdb70'
+blue = '#70afdb'
+magenta = '#a670db'
+cyan = '#70dbc1'
 white = '#f2f2f2'
 
 # Search colors
 [colors.search.matches]
-foreground = '#fbff00'
+foreground = '#00e1ff'
 background = '#0d0d0d'
 
 [colors.search.focused_match]
 foreground = '#0d0d0d'
-background = '#fbff00'
+background = '#00e1ff'
 
 # Selection colors
 [colors.selection]
-background = '#fbff00'
+background = '#00e1ff'
 text = '#0d0d0d'
 
 # Cursors
 # If you don't want to override original behavior, which is nice,
 # remove [colors.cursor] and [colors.vi_mode_cursor].
 [colors.cursor]
-cursor = '#fbff00'
+cursor = '#00e1ff'
 text = '#0d0d0d'
 
 [colors.vi_mode_cursor]
-cursor = '#fbff00'
+cursor = '#00e1ff'
 text = '#0d0d0d'
 
 [colors.footer_bar]
-foreground = '#fbff00'
+foreground = '#00e1ff'
 background = '#0d0d0d'
 
 # Purple color
 [[colors.indexed_colors]]
 index = 93
-color = '#9966cc'
+color = '#a670db'
 
 # Fluo Colors
 [[colors.indexed_colors]]
 index = 198
-color = '#fbff00'
+color = '#00e1ff'

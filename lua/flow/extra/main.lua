@@ -8,9 +8,9 @@ local fluo_colors = { "pink", "yellow", "green", "orange", "cyan" }
 local template_path = "flow.extra.template"
 local extras = {
   alacritty = { name = template_path .. ".alacritty", extension = "toml" },
-  -- tmux = { name = template_path .. ".tmux", extension = "conf" },
-  -- fzf = { name = template_path .. ".fzf", extension = "sh" },
-  -- kitty = { name = template_path .. ".kitty", extension = "conf" },
+  tmux = { name = template_path .. ".tmux", extension = "conf" },
+  fzf = { name = template_path .. ".fzf", extension = "sh" },
+  kitty = { name = template_path .. ".kitty", extension = "conf" },
 }
 
 local function create_folder_if_not_exists(path)
@@ -23,11 +23,11 @@ local function create_folder_if_not_exists(path)
 end
 
 local function generate_extras(theme, fluo_color)
-  local palette = flow_colors.setup(theme)
+  local palette = flow_colors.setup(theme.config)
 
   -- theme_folder defines where the extra themes will be saved.
   -- It is relative to the root of the project.
-  local theme_folder = "../extra/" .. theme.name
+  local theme_folder = "./extra/" .. theme.name
   for template_name, template_info in pairs(extras) do
     local template = require(template_info.name)
     local colorscheme = template.generate(palette)
@@ -77,10 +77,8 @@ function M.generate(theme_type, fluo_color)
 end
 
 function M.generate_all()
-  -- Generate dark themes
   M.generate("dark")
-  -- Uncomment when light theme is ready
-  -- M.generate("light")
+  M.generate("light")
 end
 
 return M

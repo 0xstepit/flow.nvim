@@ -13,14 +13,14 @@ M.defaults = {
     transparent = false,
   },
   colors = {
-    ---@alias Mode "default" | "dark" | "bright"
+    ---@alias Mode "default" | "dark" | "light"
     mode = "default",
     ---@alias Fluo "pink" | "cyan" | "yellow" | "orange" | "green"
     fluo = "pink",
   },
   ui = {
     ---@alias Borders "theme" | "inverse" | "fluo" | "none"
-    borders = "light",
+    borders = "inverse",
     ---@boolean
     aggressive_spell = false,
   },
@@ -32,7 +32,7 @@ M.options = {}
 --- Valid values for configuration options
 M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
-  modes = { "default", "dark", "bright" },
+  modes = { "default", "dark", "light" },
   borders = { "theme", "inverse", "fluo", "none" },
   contrast = { "default", "high" },
 }
