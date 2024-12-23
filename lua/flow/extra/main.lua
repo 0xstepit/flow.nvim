@@ -11,6 +11,7 @@ local extras = {
   tmux = { name = template_path .. ".tmux", extension = "conf" },
   fzf = { name = template_path .. ".fzf", extension = "sh" },
   kitty = { name = template_path .. ".kitty", extension = "conf" },
+  ghostty = { name = template_path .. ".ghostty", extension = "config" },
 }
 
 local function create_folder_if_not_exists(path)

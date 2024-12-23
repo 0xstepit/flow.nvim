@@ -136,13 +136,15 @@ Below the list of supported plugins divided by category:
 
 Flow.nvim provides colorschemes also for the following tools:
 
-- [Tmux](https://github.com/tmux/tmux/wiki) at [tmux-flow.conf](./extra/tmux-flow.conf).
+- [Tmux](https://github.com/tmux/tmux/wiki) at [tmux-flow.conf](./extra/eclipse/tmux-flow-pink.conf).
 
-- [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/alacritty-flow.toml).
+- [Alacritty](https://alacritty.org/) at [alacritty-flow.toml](./extra/eclipse/alacritty-flow-pink.toml).
 
-- [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/kitty-flow.conf).
+- [Kitty](https://sw.kovidgoyal.net/kitty/) at [kitty-flow.conf](./extra/eclipse/kitty-flow-pink.conf).
 
-- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/fzf-flow.sh).
+- [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/eclipse/fzf-flow-pink.sh).
+
+- ghostty at [ghostty-flow.config](./extra/eclipse/ghostty-flow-pink.config).
 
 To generate extra themes you can use the `Makefile`:
 
