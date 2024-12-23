@@ -2,171 +2,208 @@ local M = {}
 
 M.colors = nil
 
-function M.setup(opts)
-  -- TODO: this is not the default
-  local palette = require("flow.palette")
-  local default_palette = palette.get(opts)
+M._color_names =
+  { "orange", "yellow", "red", "purple", "blue", "light_blue", "sky_blue", "cyan", "green" }
 
-  opts = opts or {}
+-- Setup the colorscheme colors based on the options and palette.
+--- @param opts FlowConfig: The options to setup the colorscheme.
+--- @return table: The colors used by the colorscheme.
+function M.setup(opts)
+  local default_palette = require("flow.palette").get(opts or {})
+
+  -- vim.api.nvim_create_autocmd("FileType", {
+  --   pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
+  --   callback = function()
+  --     vim.schedule(function()
+  --       vim.api.nvim_win_set_option(
+  --         0,
+  --         "winhighlight",
+  --         "Normal:NormalSidebar,FoldColumn:NormalSidebar"
+  --       )
+  --       vim.opt.colorcolumn = ""
+  --     end)
+  --   end,
+  -- })
 
   local colors = {
+    -- Core colors
     transparent = default_palette.transparent,
-    -- Some hi are still a mystery for me, use fluo green to discover them.
-    to_check = default_palette.fluo.green.normal,
-    -- Setting up default fluo
-    fluo = default_palette.fluo.pink.normal,
-    -- Store all variations of the fluo colors. They are used instead of the fluo
-    -- normal in some cases to have a more pleasant result.
-    Fluo = default_palette.fluo.pink,
-    -- Standard colors
     black = default_palette.black,
     white = default_palette.white,
     grey = default_palette.grey,
+
+    -- Fluo colors
+    fluo = default_palette.fluo.pink.default,
+    -- Full palette of the fluo colors.
+    Fluo = default_palette.fluo.pink,
+
+    -- Debug: some hi are still a mystery to me, use fluo green to discover them.
+    to_check = default_palette.fluo.green.default,
   }
 
-  if opts.fluo_color then
-    colors.fluo = default_palette.fluo[opts.fluo_color].normal
-    colors.Fluo = default_palette.fluo[opts.fluo_color]
-  end
+  opts = opts or {}
+  M._apply_opts(default_palette, colors, opts)
 
-  -- Apply changes if the theme is not dark.
-  if not opts.dark_theme then
-    -- TODO: given how they are used, it is better to call them fg and bg?
-    -- Invert black and white if the theme is not dark.
-    colors.white = default_palette.black
-    colors.black = default_palette.white
-
-    -- Invert the table of grey
-    local n_greys = #colors.grey
-    for i = 1, math.floor(n_greys / 2) do
-      local c = colors.grey[n_greys + 1 - i]
-      colors.grey[n_greys + 1 - i] = colors.grey[i]
-      colors.grey[i] = c
-    end
-  end
-
-  -- If high contrast the darkest color is swap for the next color and the
-  -- lightest color is swap for the color before.
-  if opts.high_contrast then
-    colors.grey[1], colors.grey[2] = colors.grey[2], colors.grey[1]
-    colors.grey[6], colors.grey[7] = colors.grey[7], colors.grey[6]
-  end
-
-  colors.bg = (opts.transparent and default_palette.transparent) or default_palette.grey[2] -- used for theme background
-  colors.fg = default_palette.grey[6] -- used for text in the colorscheme
-
-  local function tbl_contains(tab, val)
-    for _, value in ipairs(tab) do
-      if value == val then
-        return true
-      end
-    end
-
-    return false
-  end
-
-  -- Handle mode-specific colors.
-  local mode = opts.mode or "base"
-  local modes = { "base", "dark", "bright", "desaturate" }
-  if not tbl_contains(modes, mode) then
-    vim.notify("Invalid mode: '" .. mode .. "'. Falling back to `base` mode.", vim.log.levels.WARN)
-    mode = "base"
-  end
-
-  local color_names = {
-    "orange",
-    "yellow",
-    "red",
-    "purple",
-    "blue",
-    "light_blue",
-    "sky_blue",
-    "cyan",
-    "green",
-  }
-
-  for _, key in ipairs(color_names) do
+  for _, key in ipairs(M._color_names) do
     -- Set the specific mode of the colors.
-    colors[key] = default_palette[key][mode]
+    colors[key] = default_palette[key][opts.colors.mode]
     -- Store all the color variations. These variables are used for hi that
     -- requires contrasts with the current theme, like git.
     local Key = key:gsub("^%l", string.upper)
     colors[Key] = default_palette[key]
   end
 
-  -- Sidebar
-  colors.fg_sidebar = default_palette.grey[5] -- use by items on quickfix list and help text
+  colors.comment = default_palette.grey[4]
+
+  -- +----------------------------------------------------------------------------------------+
+  -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
+  -- |                                                                                        |
+  -- | Folder1/                                                                               |
+  -- | ├─ file1.txt                                                                           |
+  -- | ├─ file2.txt                                                                           |
+  -- |                                                                                        |
+  -- +----------------------------------------------------------------------------------------+
+  -- | Gutter | Main Buffer Area                           ▐ <- Highlight                     |
+  -- |        |                                            ▐                                  |
+  -- |  1     | fn main() {                                ▐                                  |
+  -- |  + Git |     println!("Flow!");                     ▐                                  | <- Main Buffer
+  -- |  3     | }                                          ▐                                  |
+  -- |        |                                            ▐                                  |
+  -- |  5     |                                            ▐                                  |
+  -- |        |                                            ▐                                  |
+  -- +--------------------------------------------------------------------------------------- +
+  -- | Statusline: [Mode] [Filename] [Cursor Position]                                        | <- Statusline
+  -- +--------------------------------------------------------------------------------------- +
+  -- | Command Line/Prompt Area                                                               | <- Command Line
+  -- +--------------------------------------------------------------------------------------- +
+
+  -- Sidebar: used by the quickfix list, help, and explorer windows.
+  -- NOTE: not used.
+  colors.fg_sidebar = default_palette.grey[6]
   colors.bg_sidebar = colors.bg
 
-  -- Float
-  colors.fg_float = colors.grey[5]
+  local is_transparent = opts.theme.transparent == true
+
+  -- Gutter: used for line numbers, signs, and fold column.
+  colors.fg_gutter = colors.grey[5]
+  colors.bg_gutter = (is_transparent and default_palette.transparent) or colors.bg
+
+  -- Float: used for visual elements that are floating and triggered by the user.
+  colors.fg_float = colors.grey[6]
   colors.bg_float = default_palette.transparent
 
-  -- Popups
-  colors.fg_popup = default_palette.grey[6]
-  colors.bg_popup = (opts.transparent and default_palette.transparent) or colors.grey[1]
+  -- Popups: use for completion menu and all visual components that appears autonomously.
+  colors.fg_popup = default_palette.grey[7]
+  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.grey[1]
 
-  -- Statusline
-  colors.fg_statusline = colors.grey[3]
+  -- Statusline and tabline
+  colors.fg_statusline = colors.grey[4]
   colors.bg_statusline = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = colors.fluo
-  colors.bg_highlight = colors.grey[1] -- used for colorcolumn, cursorline, ...
-
-  -- Gutter
-  colors.fg_gutter = colors.grey[3] -- used for nontext, signcolumn, foldcolumn, ...
-  colors.bg_gutter = colors.bg -- signcolumn, foldcolumn, ...
+  colors.fg_highlight = colors.grey[4]
+  colors.bg_highlight = colors.grey[2]
 
   -- Visual
-  colors.bg_visual = colors.black
   colors.fg_visual = colors.fluo
-
-  -- Borders
-  colors.fg_border = default_palette.grey[4]
-  colors.bg_border = default_palette.grey[3]
+  colors.bg_visual = colors.grey[1]
 
   -- Git
   colors.git = {
-    add = colors.green,
-    change = colors.yellow,
-    delete = colors.red,
-    ignore = colors.grey[4],
-    untrcked = colors.sky_blue,
+    add = colors.green, -- Added files/lines
+    change = colors.yellow, -- Modified files/lines
+    delete = colors.red, -- Deleted files/lines
+    ignore = colors.grey[5], -- Ignored files
+    untrcked = colors.sky_blue, -- New untracked files
   }
 
+  local is_dark = opts.theme.style == "dark"
   colors.diff = {
-    add = colors.Green.very_dark, -- background of added lines
-    delete = colors.Red.very_dark, -- background of deleted lines
-    change = colors.Light_blue.very_dark, -- background of changed lines
-    text = colors.Cyan.very_dark, -- background of changed characters
+    add = not is_dark and colors.Green.very_light or colors.Green.very_dark,
+    delete = not is_dark and colors.Red.very_light or colors.Red.very_dark,
+    change = not is_dark and colors.Light_blue.very_light or colors.Sky_blue.very_dark,
+    text = not is_dark and colors.Cyan.very_light or colors.Cyan.very_dark,
   }
 
-  if not opts.dark_theme then
-    colors.diff = {
-      add = colors.Green.very_bright,
-      delete = colors.Red.very_bright,
-      change = colors.Light_blue.very_bright,
-      text = colors.Cyan.very_bright,
-    }
-  end
+  -- LSP diagnostics
+  colors.error = colors.Red.default -- Error messages
+  colors.warning = colors.Yellow.default -- Warning messages
+  colors.info = colors.Cyan.default -- Information messages
+  colors.hint = colors.Light_blue.default -- Hints and suggestions
 
-  -- Diagnostics
-  colors.error = colors.Red.base
-  colors.todo = colors.Sky_blue.base
-  colors.warning = colors.Yellow.base
-  colors.info = colors.Cyan.base
-  colors.hint = colors.Light_blue.base
-
-  -- Misc
-  colors.comment = default_palette.grey[4] -- slightly brighter than gutter
-
-  colors.terminal_black = default_palette.black
-  colors.terminal_white = default_palette.white
+  -- Special Comments
+  colors.todo = is_dark and colors.Sky_blue.default or colors.Sky_blue.dark -- TODO comments
+  colors.note = is_dark and colors.Green.default or colors.Green.dark -- NOTE comments
+  colors.fixme = is_dark and colors.Red.default or colors.Red.dark -- FIXME comments
+  colors.hack = is_dark and colors.Yellow.default or colors.Yellow.dark -- HACK comments
 
   M.colors = colors
 
   return colors
+end
+
+function M._tbl_contains(tab, val)
+  for _, value in ipairs(tab) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
+--- @param t table: The table to swap elements.
+--- @param a number: The index of the first element to swap.
+--- @param b number: The index of the second element to swap.
+function M._swap(t, a, b)
+  t[a], t[b] = t[b], t[a]
+end
+
+--- @param opts FlowConfig
+function M._apply_opts(default_palette, colors, opts)
+  if opts.colors.fluo then
+    colors.fluo = default_palette.fluo[opts.colors.fluo].default
+    colors.Fluo = default_palette.fluo[opts.colors.fluo]
+  end
+
+  -- Apply changes if the theme is not dark.
+  -- HACK: this has to be executed before all changes that involves white, black, and grey.
+  if opts.theme.style ~= "dark" then
+    M._invert_colors_for_theme(colors)
+  end
+
+  -- If high contrast the darkest color is swap for the next color and the
+  -- lightest color is swap for the color before.
+  if opts.theme.contrast == "high" then
+    M._invert_colors_for_contrast(colors)
+  end
+
+  colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
+  colors.fg = (opts.theme.style == "dark" and colors.grey[7]) or colors.grey[6]
+
+  -- Borders
+  colors.fg_border = (opts.ui.borders == "none" and colors.bg)
+    or (opts.ui.borders == "fluo" and colors.fluo)
+    or (opts.ui.borders == "theme" and colors.grey[1])
+    or colors.grey[5]
+  -- NOTE bg_border is currently not used.
+  colors.bg_border = colors.grey[5]
+end
+
+function M._invert_colors_for_theme(colors)
+  -- TODO: given how they are used, it is better to call them fg and bg?
+  -- Invert black and white if the theme is not dark.
+  colors.white, colors.black = colors.black, colors.white
+  local n_greys = #colors.grey
+
+  for i = 1, math.floor(n_greys / 2) do
+    M._swap(colors.grey, i, n_greys + 1 - i)
+  end
+end
+
+function M._invert_colors_for_contrast(colors)
+  colors.grey[1], colors.grey[3] = colors.grey[3], colors.grey[1]
+  colors.grey[7], colors.grey[8] = colors.grey[8], colors.grey[7]
 end
 
 return M

@@ -2,7 +2,8 @@ local M = {}
 
 -- Defines the highlight group colors for
 -- the language server protocols.
--- @param c The available colors.
+--- @param c table: The available colors.
+--- @return table: Nvim lsp highlights.
 function M.get(c, _)
   local theme = {
     LspSignatureActiveParameter = { fg = c.fg_visual, bold = true }, -- Parameter highlighter in signature help.
@@ -13,7 +14,7 @@ function M.get(c, _)
 
     LspCodeLens = { fg = c.comment },
 
-    LspInlayHint = { fg = c.grey[5] },
+    LspInlayHint = { fg = c.grey[6] },
 
     LspInfoBorder = { fg = c.fg_border, bg = c.bg_float },
     LspKindSnippet = { fg = c.to_check },

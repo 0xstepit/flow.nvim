@@ -1,7 +1,8 @@
 local M = {}
 
 -- Defines the highlight group colors for completion.
--- @param c The available colors.
+--- @param c table: The available colors.
+--- @return table: Nvim cmp highlights.
 function M.get(c, _)
   local theme = {
     CmpItemMenu = { fg = c.comment },

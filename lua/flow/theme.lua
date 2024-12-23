@@ -7,19 +7,26 @@ local M = {}
 --- @type string[]
 M.active_highlights = {
   "base",
+  "syntax",
+  "markdown",
   "completion",
   "dap",
   "diagnostic",
   "git",
+  "ibl",
   "lazy",
   "lsp",
-  "markdown",
-  "syntax",
+  "mini-hipatterns",
+  "oil",
+  "render-markdown",
   "telescope",
   "todo-comments",
   "treesitter",
   "trouble",
   "whichkey",
+  "undotree",
+  "mason",
+  "avante",
 }
 
 M.b = {}
@@ -44,7 +51,7 @@ function M.configure()
     highlights = util.merge(highlights, hi)
   end
 
-  util.autocmds()
+  -- util.autocmds()
 
   return highlights
 end

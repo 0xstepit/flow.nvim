@@ -5,8 +5,8 @@ local flow = {}
 -- Normal mode colors. a will be used also for x,
 -- b for y, and c for z to have a symmetrical coloration.
 flow.normal = {
-  a = { bg = colors.light_blue, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.light_blue },
+  a = { bg = colors.blue, fg = colors.grey[4] },
+  b = { bg = colors.grey[4], fg = colors.blue },
   c = { bg = colors.bg_statusline, fg = colors.fg_statusline },
 }
 
@@ -20,7 +20,7 @@ flow.insert = {
 -- Command mode colors. a will be used also for x,
 -- b for y, and c for z to have a symmetrical coloration.
 flow.command = {
-  a = { bg = colors.yellow, fg = colors.black },
+  a = { bg = colors.yellow, fg = colors.fg_gutter },
   b = { bg = colors.fg_gutter, fg = colors.yellow },
 }
 

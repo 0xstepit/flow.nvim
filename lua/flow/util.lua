@@ -60,31 +60,6 @@ function M.hsl_to_rbg(h, s, l)
   return math.floor(0.5 + r * 255), math.floor(0.5 + g * 255), math.floor(0.5 + b * 255)
 end
 
-function M.autocmds()
-  local group = vim.api.nvim_create_augroup("flow", { clear = true })
-
-  vim.api.nvim_create_autocmd("ColorSchemePre", {
-    group = group,
-    callback = function()
-      vim.api.nvim_del_augroup_by_id(group)
-    end,
-  })
-  local function set_whl()
-    local win = vim.api.nvim_get_current_win()
-    local whl = vim.split(vim.wo[win].winhighlight, ",")
-    vim.list_extend(whl, { "Normal:NormalSB", "SignColumn:SignColumnSB" })
-    whl = vim.tbl_filter(function(hl)
-      return hl ~= ""
-    end, whl)
-    vim.opt_local.winhighlight = table.concat(whl, ",")
-  end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    group = group,
-    callback = set_whl,
-  })
-end
-
 -- TODO: complete
 function M.terminal(colors)
   -- dark

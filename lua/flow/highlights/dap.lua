@@ -2,10 +2,11 @@ local M = {}
 
 -- Defines the highlight group colors for
 -- the debug adapter
--- @param c The available colors.
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @return table: Debug highlights.
+function M.get(c, _)
   local theme = {
-    debugPC = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
+    debugPC = { bg = c.to_check }, -- used for highlighting the current line in terminal-debug
     debugBreakpoint = { fg = c.error }, -- used for breakpoint colors in terminal-debug
     DapBreakpoint = { link = "debugBreakpoint" },
 
@@ -25,7 +26,7 @@ function M.get(c, options)
     DapUILineNumber = { fg = c.sky_blue },
     DapUICurrentFrameName = { fg = c.yellow },
 
-    DapUIWatchesValue = { fg = c.grey[5] },
+    DapUIWatchesValue = { fg = c.grey[6] },
     DapUIWatchesError = { fg = c.error },
 
     -- DapUIWatchesEmpty = { link = "DapUIWatchesValue" },
@@ -46,7 +47,7 @@ function M.get(c, options)
     DapUIBreakpointsPath = { fg = c.red },
     DapUIBreakpointsLine = { fg = c.red },
     --
-    DapUIDecoration = { fg = c.grey[5] }, -- arrow indicating vars
+    DapUIDecoration = { fg = c.grey[6] }, -- arrow indicating vars
     DapUIModifiedValue = { fg = c.yellow }, -- value of the last modified variables in the scope.
   }
 

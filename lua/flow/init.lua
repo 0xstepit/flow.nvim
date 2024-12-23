@@ -6,7 +6,7 @@ local M = {}
 M.name = "flow"
 
 --- This function is called to setup the colorscheme options.
---- This function is not called when executing `vim.cmd("colorscheme flow")`
+--- NOTE: this function is not called when executing `vim.cmd("colorscheme flow")`
 M.setup = config._setup
 
 --- This function is called when the colorscheme is activated.

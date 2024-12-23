@@ -1,6 +1,8 @@
 local M = {}
 
-function M.get(c, options)
+--- @param c table: The available colors.
+--- @return table: Telescope plugin highlights.
+function M.get(c, _)
   local theme = {
     -- Normal text
     -- TODO: maybe remove bg. Is it used?

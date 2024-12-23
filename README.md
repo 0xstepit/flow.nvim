@@ -1,11 +1,12 @@
 # 🌊 Flow
 
-![logo](https://github.com/user-attachments/assets/d4a06c71-4f1b-4375-969a-77f8d30b1fb5) 
+![logo](https://github.com/user-attachments/assets/d4a06c71-4f1b-4375-969a-77f8d30b1fb5)
 
 Flow is an [Nvim](https://github.com/neovim/neovim) color scheme written in
-[Lua](https://www.lua.org/). It features carefully designed colors to help
-focusing during coding plus fluorescent details to provide a vibrant environment.
-Why fluo? Because it's cool!
+[Lua](https://www.lua.org/). It features a carefully curated palette to enhance
+focus during coding, complemented by fluorescent accents for a vibrant and dynamic look.
+
+Why fluo? Because it's simply cool!
 
 ## Showcase
 
@@ -13,53 +14,30 @@ Why fluo? Because it's cool!
 
 ![flow-multiple-terminal](https://github.com/user-attachments/assets/9d1f367a-7a9d-478d-9fe0-a67bd33eca1a)
 
-# Palette
+## Palette
 
-Flow has been designed using a palette based on 9 colors selected through the HSL representation to
-create a cohesive ambiance. The principal color is the light blue, and the additional colors have been chosen
-as follows:
+Flow uses a palette of nine HSL-based colors, chosen to create a cohesive and visually appealing
+environment. The primary color is light blue, with supporting tones selected as follows based on
+the saturation value:
 
-- **Analogous** (S+/-30): blue, cyan.
+- **Analogous** (±30°): blue, cyan.
 
-- **Complementary** (S+/-180): orange.
+- **Complementary** (±180°): orange.
 
-- **Tetradic** 60 (S+/-60): purple, green.
+- **Tetradic** 60 (±60°): purple, green.
 
-- **Split comp** (S+/-150): yellow, red.
+- **Split comp** (±150°): yellow, red.
 
-Furthermore, sky blue has been included to enhance the blue tones, and a fluorescent color has been added for
-striking accents. 
+Additionally, sky blue enhances the blue tones, and a fluorescent color provides striking accents.
 
-![flow-palette](https://github.com/user-attachments/assets/0e1d89e3-852a-4efc-909b-72033777079f)
-
-The palette is defined across four different levels of light and saturation of
-base color to provide different choices of based on the user preferences:
-
-|               |Base|Bright|Dark|Desaturate|
-|---------------|----|------|----|----------|
-|**Light**      |X   |75    |25  |X         |
-|**Saturation** |80  |80    |50  |50        |
-
-Where X is equal to 70 if the dark theme is selected, or 30 if it is light. Flow allows a lot of
-customizability in terms of background, main colors, and fluo, but from a big design space come 
-big responsibilities! It is up to you to create a good atmosphere and an harmonic environment. In
-the short future, I will create pre-defined configurations, but for the moment please, just try to
-follow these guidelines:
-
-- When you set a transparent background, use a dark desktop image with the dark theme and a light one
-with the light theme.
-
-- Do not use the dark mode with the dark theme, and, consequently, don't use bright mode with the
-light theme.
-
-# Requirements
+## Requirements
 
 - [Neovim](https://github.com/neovim/neovim) >=
   [0.8.0](https://github.com/neovim/neovim/releases/tag/v0.8.0)
 
 ## Installation
 
-Install the theme with your preferred package manager, such as
+Install Flow with your preferred package manager, such as
 [folke/lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
@@ -67,77 +45,66 @@ Install the theme with your preferred package manager, such as
   "0xstepit/flow.nvim",
   lazy = false,
   priority = 1000,
-  opts = {},
+  tag = "vX.0.0",
+  opts = {
+        -- Your configuration options here.
+    },
 }
 ```
 
-# Usage
+> Use the tag field to prevent breaking changes from automatic updates.
 
-## Lua
+## Usage
+
+### Lua
+
+Setup and start using Flow with default options:
 
 ```lua
 require("flow").setup{}
 vim.cmd "colorscheme flow"
 ```
 
-# Configuration
+## Configuration
 
-## Default
+The following section describes how to configure the plugin using Lazy plugin manager.
 
-The configuration allows to specify 5 different options:
-
-```lua 
-return {
-  "0xstepit/flow.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  config = function()
-    require("flow").setup{
-      dark_theme = true, -- Set the theme with dark background.
-      high_contrast = false, -- Make the dark background darker or the light background lighter.
-      transparent = false, -- Set transparent background.
-      fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
-      mode = "base", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
-      aggressive_spell = false, -- Use colors for spell check.
-    }
-
-    vim.cmd "colorscheme flow"
-  end,
-}
-```
-
-Keep in mind that the `transparent` flags set the background of neovim
-transparent and, as a result, the terminal emulator background will be visible.
-
-## Suggested
-
-<details>
-<summary>My favorite config</summary>
+### Default
 
 ```lua
 return {
   "0xstepit/flow.nvim",
   lazy = false,
   priority = 1000,
-  opts = {},
-  config = function()
-    require("flow").setup{
-      dark_theme = true,
-      transparent = false,
-      high_contrast = false,
-      fluo_color = "pink",
-      mode = "desaturate",
-      aggressive_spell = false,
-    }
-    vim.cmd "colorscheme flow"
-  end,
+  tag = "v1.0.0",
+    opts = {
+      theme = {
+        style = "dark", --  "dark" | "light"
+        contrast = "default", -- "default" | "high"
+        transparent = false, -- true | false
+      },
+      colors = {
+        mode = "default", -- "default" | "dark" | "light"
+        fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
+      },
+      ui = {
+        borders = "light", -- "theme" | "inverse" | "fluo" | "none"
+        aggressive_spell = false, -- true | false
+      },
+    },
+    config = function(_, opts)
+      require("flow").setup(opts)
+      vim.cmd("colorscheme flow")
+    end,
+  },
 }
 ```
-</details>
 
+Keep in mind that the `transparent` flag sets the background of neovim transparent and, as a
+result, the terminal emulator background will be visible. It is suggested to always add some bluur
+to the terminal emulator when the background is transparent.
 
-# Supported plugins
+## Supported plugins
 
 Below the list of supported plugins divided by category:
 
@@ -147,15 +114,25 @@ Below the list of supported plugins divided by category:
 
 - **Debug**: [nvim-dap](https://github.com/mfussenegger/nvim-dap).
 
-- **Plugins**: [lazy](https://github.com/folke/lazy.nvim).
+- **Plugins & Utils**: [lazy](https://github.com/folke/lazy.nvim),
+  [mason](https://github.com/williamboman/mason.nvim)
 
-- **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim), [treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+- **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim),
+  [treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
+  [ibl](https://github.com/lukas-reineke/indent-blankline.nvim),
+  [oil](https://github.com/stevearc/oil.nvim)
 
-- **Utils**: [trouble](https://github.com/folke/trouble.nvim), [todo-comments](https://github.com/folke/todo-comments.nvim), [which-key](https://github.com/folke/which-key.nvim).
+- **AI**: [avante](https://github.com/yetone/avante.nvim)
+
+- **Utils**: [trouble](https://github.com/folke/trouble.nvim),
+  [todo-comments](https://github.com/folke/todo-comments.nvim),
+  [which-key](https://github.com/folke/which-key.nvim),
+  [render-markdwon](https://github.com/MeanderingProgrammer/render-markdown.nvim),
+  [mini-hipatterns](https://github.com/echasnovski/mini.hipatterns)
 
 - **Base Nvim**: diagnostic, lsp, markdown.
 
-# Extras
+## Extras
 
 Flow.nvim provides colorschemes also for the following tools:
 
@@ -169,26 +146,21 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - ghostty at [ghostty-flow.config](./extra/eclipse/ghostty-flow-pink.config).
 
-The generation of extra is not automatic (I'm sorry, I'm working on it). If you want
-to generate the color scheme for extras, you need to perform the following steps:
-
-1. Change the config used for the extra theme generation in `lua/flow/extra/main.lua` without
-setting the background transparent.
-
-2. Generate the themes:
+To generate extra themes you can use the `Makefile`:
 
 ```sh
-cd ./lua/flow/extra
-lua main.lua -v
+make extras
 ```
 
-Now you can copy generated files where your configuration is sourcing them.
+Now you can copy generated files at `./extras/` where your configuration is sourcing them.
 
-# Contributing
+## Contributing
 
 Pull requests and improvement suggestions are very welcome! If you want to help
 developing the plugin, please consider addressing one of the issue marked as
 [`good-first-issue`](https://github.com/0xstepit/flow.nvim/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+
+Or create a PR with improvements you would like to see!
 
 ## Contributors
 
@@ -198,11 +170,11 @@ developing the plugin, please consider addressing one of the issue marked as
     </a>
 </p>
 
-# References
+## References
 
-My dot config [0xstepit/dotfiles](https://github.com/0xstepit/dotfiles).
+My dotfile: [0xstepit/dotfiles](https://github.com/0xstepit/dotfiles).
 
-This colorscheme is inspired by other amazing colorscheme:
+This project is inspired by other amazing colorscheme:
 
 - [Tokyo Night](https://github.com/folke/tokyonight.nvim)
 
