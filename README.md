@@ -76,7 +76,7 @@ return {
   "0xstepit/flow.nvim",
   lazy = false,
   priority = 1000,
-  tag = "v1.0.0",
+  tag = "v2.0.0",
     opts = {
       theme = {
         style = "dark", --  "dark" | "light"
@@ -84,7 +84,7 @@ return {
         transparent = false, -- true | false
       },
       colors = {
-        mode = "default", -- "default" | "dark" | "light"
+        mode = "default", -- "default" | "dark" | "light" | "bright"
         fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
       },
       ui = {

@@ -32,7 +32,7 @@ M.options = {}
 --- Valid values for configuration options
 M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
-  modes = { "default", "dark", "light" },
+  modes = { "default", "dark", "light", "bright" },
   borders = { "theme", "inverse", "fluo", "none" },
   contrast = { "default", "high" },
 }
