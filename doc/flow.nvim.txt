@@ -1,4 +1,4 @@
-*flow.nvim.txt*        For Neovim >= 0.8.0       Last change: 2024 December 23
+*flow.nvim.txt*        For Neovim >= 0.8.0       Last change: 2024 December 25
 
 ==============================================================================
 Table of Contents                                *flow.nvim-table-of-contents*
@@ -110,7 +110,7 @@ DEFAULT ~
             fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
           },
           ui = {
-            borders = "light", -- "theme" | "inverse" | "fluo" | "none"
+            borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
             aggressive_spell = false, -- true | false
           },
         },
