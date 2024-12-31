@@ -13,6 +13,7 @@ function M.get_dark_themes(fluo_color)
       colors = {
         mode = "default",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
@@ -29,6 +30,7 @@ function M.get_dark_themes(fluo_color)
       colors = {
         mode = "light",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
@@ -45,6 +47,7 @@ function M.get_dark_themes(fluo_color)
       colors = {
         mode = "dark",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
@@ -70,6 +73,7 @@ function M.get_light_themes(fluo_color)
       colors = {
         mode = "default",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
@@ -86,6 +90,7 @@ function M.get_light_themes(fluo_color)
       colors = {
         mode = "light",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
@@ -102,6 +107,7 @@ function M.get_light_themes(fluo_color)
       colors = {
         mode = "dark",
         fluo = fluo_color,
+        custom = { saturation = "", light = "" },
       },
       ui = {
         borders = "none",
