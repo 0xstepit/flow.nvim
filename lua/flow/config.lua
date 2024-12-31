@@ -17,6 +17,10 @@ M.defaults = {
     mode = "default",
     ---@alias Fluo "pink" | "cyan" | "yellow" | "orange" | "green"
     fluo = "pink",
+    custom = {
+      saturation = "", -- Custom sturation value (0-360)
+      light = "", -- Custom lightness value (0-100)
+    },
   },
   ui = {
     ---@alias Borders "theme" | "inverse" | "fluo" | "none"
@@ -35,6 +39,10 @@ M.valid_options = {
   modes = { "default", "dark", "light" },
   borders = { "theme", "inverse", "fluo", "none" },
   contrast = { "default", "high" },
+  custom_ranges = {
+    saturation = { min = 0, max = 100 },
+    light = { min = 0, max = 100 },
+  },
 }
 
 --- Validate configuration options
@@ -59,6 +67,42 @@ local function validate_options(opts)
     if opts.colors.mode and not vim.tbl_contains(M.valid_options.modes, opts.colors.mode) then
       return false, string.format("Invalid mode: %s", opts.colors.mode)
     end
+
+    -- Validate custom color values for hue and light
+    if opts.colors.custom then
+      if opts.colors.custom.saturation and opts.colors.custom.saturation ~= "" then
+        local s = tonumber(opts.colors.custom.saturation)
+        if
+          not s
+          or s < M.valid_options.custom_ranges.saturation.min
+          or s > M.valid_options.custom_ranges.saturation.max
+        then
+          return false,
+            string.format(
+              "Invalid saturation value: %s (must be between %d and %d)",
+              opts.colors.custom.saturation,
+              M.valid_options.custom_ranges.saturation.min,
+              M.valid_options.custom_ranges.saturation.max
+            )
+        end
+      end
+      if opts.colors.custom.light and opts.colors.custom.light ~= "" then
+        local l = tonumber(opts.colors.custom.light)
+        if
+          not l
+          or l < M.valid_options.custom_ranges.light.min
+          or l > M.valid_options.custom_ranges.light.max
+        then
+          return false,
+            string.format(
+              "Invalid light value: %s (must be between %d and %d)",
+              opts.colors.custom.light,
+              M.valid_options.custom_ranges.light.min,
+              M.valid_options.custom_ranges.light.max
+            )
+        end
+      end
+    end
   end
 
   -- Validate ui options
@@ -67,6 +111,7 @@ local function validate_options(opts)
       return false, string.format("Invalid border: %s", opts.ui.borders)
     end
   end
+
   return true
 end
 
