@@ -17,8 +17,12 @@ M.defaults = {
     mode = "default",
     ---@alias Fluo "pink" | "cyan" | "yellow" | "orange" | "green"
     fluo = "pink",
+    ---@alias CustomSaturation string A number between 0-100 as string or empty string
+    ---@alias CustomLight string A number between 0-100 as string or empty string
     custom = {
-      saturation = "", -- Custom sturation value (0-360)
+      ---@type CustomSaturation
+      saturation = "", -- Custom saturation value (0-100)
+      ---@type CustomLight
       light = "", -- Custom lightness value (0-100)
     },
   },
