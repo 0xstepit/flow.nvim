@@ -76,7 +76,7 @@ return {
   "0xstepit/flow.nvim",
   lazy = false,
   priority = 1000,
-  tag = "v1.0.0",
+  tag = "v2.0.1",
     opts = {
       theme = {
         style = "dark", --  "dark" | "light"
@@ -86,6 +86,10 @@ return {
       colors = {
         mode = "default", -- "default" | "dark" | "light"
         fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
+        custom = {
+          saturation = "", -- "" | string representing an integer between 0 and 100
+          light = "", -- "" | string representing an integer between 0 and 100
+        },
       },
       ui = {
         borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
@@ -144,7 +148,7 @@ Flow.nvim provides colorschemes also for the following tools:
 
 - [fzf](https://github.com/junegunn/fzf) at [fzf-flow.sh](./extra/eclipse/fzf-flow-pink.sh).
 
-- ghostty at [ghostty-flow.config](./extra/eclipse/ghostty-flow-pink.config).
+- [ghostty](https://github.com/ghostty-org/ghostty) at [ghostty-flow.config](./extra/eclipse/ghostty-flow-pink.config).
 
 To generate extra themes you can use the `Makefile`:
 
