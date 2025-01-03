@@ -3,7 +3,7 @@ local M = {}
 -- Defines the highlight group colors for the flash.nvim plugins.
 --- @param c table: The available colors.
 --- @param o FlowConfig: The available options.
---- @return table: Diagnostic highlights.
+--- @return table: Plugin highlights.
 function M.get(c, o)
   local is_dark = o.theme.style == "dark"
 
