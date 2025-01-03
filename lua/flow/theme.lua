@@ -12,6 +12,7 @@ M.active_highlights = {
   "completion",
   "dap",
   "diagnostic",
+  "flash",
   "git",
   "ibl",
   "lazy",
