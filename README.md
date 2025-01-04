@@ -118,17 +118,17 @@ Below the list of supported plugins divided by category:
 
 - **Debug**: [nvim-dap](https://github.com/mfussenegger/nvim-dap).
 
-- **Plugins & Utils**: [lazy](https://github.com/folke/lazy.nvim),
-  [mason](https://github.com/williamboman/mason.nvim)
-
 - **Coding**: [telescope](https://github.com/nvim-telescope/telescope.nvim),
   [treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
   [ibl](https://github.com/lukas-reineke/indent-blankline.nvim),
   [oil](https://github.com/stevearc/oil.nvim)
+  [flash](https://github.com/folke/flash.nvim)
 
 - **AI**: [avante](https://github.com/yetone/avante.nvim)
 
-- **Utils**: [trouble](https://github.com/folke/trouble.nvim),
+- **Utils**: [lazy](https://github.com/folke/lazy.nvim),
+  [mason](https://github.com/williamboman/mason.nvim)
+  [trouble](https://github.com/folke/trouble.nvim),
   [todo-comments](https://github.com/folke/todo-comments.nvim),
   [which-key](https://github.com/folke/which-key.nvim),
   [render-markdwon](https://github.com/MeanderingProgrammer/render-markdown.nvim),
