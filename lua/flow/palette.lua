@@ -21,13 +21,11 @@ function M.get(o)
 
   if o.colors.custom.light ~= "" then
     ---@diagnostic disable-next-line: assign-type-mismatch
-    --- Options are validated here
     shade[o.colors.mode].L = tonumber(o.colors.custom.light)
   end
 
   if o.colors.custom.saturation ~= "" then
     ---@diagnostic disable-next-line: assign-type-mismatch
-    --- Options are validated here
     shade[o.colors.mode].S = tonumber(o.colors.custom.saturation)
   end
 
