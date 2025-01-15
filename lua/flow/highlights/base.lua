@@ -57,10 +57,11 @@ function M.get(c, o)
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
-    Search = { bg = c.grey[5], fg = c.bg_visual }, -- Used for 'incsearch' highlighting.
-    CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
+    IncSearch = { bg = c.fluo, fg = c.bg_visual },
+    Search = { bg = c.grey[6], fg = c.bg_visual },
+    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
+
     Visual = { bg = c.fg_visual, fg = c.bg_visual }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
