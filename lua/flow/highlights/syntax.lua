@@ -1,8 +1,9 @@
 local M = {}
 
 --- @param c table: The available colors.
+--- @param o FlowConfig: The available options.
 --- @return table: Syntax highlights.
-function M.get(c, _)
+function M.get(c, o)
   local theme = {
 
     Boolean = { link = "Constant" }, -- A boolean constant: TRUE, false.
@@ -49,6 +50,19 @@ function M.get(c, _)
     Hack = { fg = c.hack, bg = c.comment },
     Warn = { fg = c.warning, bg = c.comment }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
   }
+
+  -- Special comments
+  if o.ui.aggressive_special_comment then
+    theme.Todo = { bg = c.todo, fg = c.comment }
+    theme.Fixme = { bg = c.fixme, fg = c.comment }
+    theme.Note = { bg = c.note, fg = c.comment }
+    theme.Hack = { bg = c.hack, fg = c.comment }
+  else
+    theme.Todo = { fg = c.todo, bg = c.comment }
+    theme.Fixme = { fg = c.fixme, bg = c.comment }
+    theme.Note = { fg = c.note, bg = c.comment }
+    theme.Hack = { fg = c.hack, bg = c.comment }
+  end
 
   return theme
 end
