@@ -2,7 +2,7 @@ local options = require("flow.config").options
 local c = require("flow.colors").setup(options)
 
 local M = {
-  normal = { bg = c.none, fg = c.fg_dark },
+  normal = { bg = c.none, fg = c.grey[4] },
 
   ellipsis = { fg = c.fg_gutter },
   separator = { fg = c.fg_gutter },
