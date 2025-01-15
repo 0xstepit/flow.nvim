@@ -5,8 +5,8 @@ local flow = {}
 -- Normal mode colors. a will be used also for x,
 -- b for y, and c for z to have a symmetrical coloration.
 flow.normal = {
-  a = { bg = colors.blue, fg = colors.grey[4] },
-  b = { bg = colors.grey[4], fg = colors.blue },
+  a = { bg = colors.light_blue, fg = colors.grey[4] },
+  b = { bg = colors.grey[4], fg = colors.light_blue },
   c = { bg = colors.bg_statusline, fg = colors.fg_statusline },
 }
 
