@@ -53,7 +53,7 @@ function M.setup(opts)
     colors[Key] = default_palette[key]
   end
 
-  colors.comment = default_palette.grey[4]
+  colors.comment = default_palette.grey[5]
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
