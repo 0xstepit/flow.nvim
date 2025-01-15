@@ -61,7 +61,8 @@ function M.get(c, _)
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
       bg = c.grey[4],
-    }, --
+    },
+
     -- Obsidian
     ObsidianRefText = { fg = c.blue },
   }
