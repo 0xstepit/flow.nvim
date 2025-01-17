@@ -56,7 +56,7 @@ function M.get(c, _)
     ["@label.markdown"] = { link = "Keyword" }, -- Used for the language specified in codeblocks.
 
     ["@markup.raw.block"] = {
-      bg = c.grey[2],
+      bg = c.bg,
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,

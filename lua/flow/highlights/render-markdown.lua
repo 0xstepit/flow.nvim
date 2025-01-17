@@ -5,7 +5,7 @@ local M = {}
 --- @return table: Render markdown plugin highlights.
 function M.get(c, o)
   local theme = {
-    RenderMarkdownCode = { link = "@markup.raw.block" }, -- Code blocks.
+    RenderMarkdownCode = { bg = c.grey[2] }, -- Code blocks.
     RenderMarkdownCodeInline = { link = "@markup.raw.markdown_inline" }, -- Code inline.
     RenderMarkdownBullet = { link = "@markup.list" },
     RenderMarkdownDash = { link = "Comment" },
