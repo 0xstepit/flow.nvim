@@ -8,7 +8,7 @@ local M = {
   separator = { fg = c.fg_gutter },
   modified = { fg = c.yellow },
 
-  dirname = { fg = c.comment },
+  dirname = { fg = c.grey[4] },
   basename = { fg = c.light_blue },
   context = { fg = c.grey[6] },
 

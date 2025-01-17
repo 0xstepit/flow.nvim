@@ -10,7 +10,8 @@ function M.get(c, o)
   local theme = {
     FlashBackdrop = { fg = c.comment },
     FlashLabel = {
-      bg = (not is_dark and c.Fluo.dark) or c.Fluo.light,
+      -- bg = (not is_dark and c.Fluo.dark) or c.Fluo.light,
+      bg = c.blue,
       fg = c.grey[2],
     },
   }

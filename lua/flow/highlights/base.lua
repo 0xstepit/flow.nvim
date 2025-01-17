@@ -58,7 +58,7 @@ function M.get(c, o)
 
     -- Search and substitution
     IncSearch = { bg = c.fluo, fg = c.bg_visual },
-    Search = { bg = c.grey[6], fg = c.bg_visual },
+    Search = { bg = c.grey[5], fg = c.bg_visual },
     CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
 
