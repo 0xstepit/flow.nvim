@@ -22,7 +22,7 @@ function M.get(c, o)
 
     -- Highlighted elements
     CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
-    ColorColumn = { bg = c.bg_highlight, fg = c.fg_highlight }, -- Used for the columns set with 'colorcolumn'.
+    ColorColumn = { bg = c.bg_highlight }, -- Used for the columns set with 'colorcolumn'.
     CursorColumn = { link = "ColorColumn" }, -- Used with the column set with 'cursorcolumn'.
     Folded = { link = "ColorColumn" }, -- Line used for closed folds.
     CursorLineNr = { fg = c.fluo },
@@ -51,16 +51,17 @@ function M.get(c, o)
     MatchParen = { fg = c.fluo, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
     FloatTitle = { fg = c.fg_float, bg = c.bg_float, bold = true }, -- Title of floating windows.
-    Whitespace = { fg = c.bg }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
+    Whitespace = { link = "Comment" }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
     NonText = { fg = c.fg_gutter }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     EndOfBuffer = { link = "NonText" }, -- Filler lines (~) after the end of the buffer.
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Last search pattern highlighting (see 'hlsearch').
-    Search = { bg = c.grey[5], fg = c.bg_visual }, -- Used for 'incsearch' highlighting.
-    CurSearch = { link = "IncSearch" }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
+    IncSearch = { bg = c.fluo, fg = c.bg_visual },
+    Search = { bg = c.grey[5], fg = c.bg_visual },
+    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
+
     Visual = { bg = c.fg_visual, fg = c.bg_visual }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 

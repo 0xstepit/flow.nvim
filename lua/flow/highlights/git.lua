@@ -9,7 +9,8 @@ function M.get(c, _)
     gitKeyword = { fg = c.blue },
     gitIdentityKeyword = { link = "gitKeyword" },
     gitCommitSummary = { fg = c.fg_visual },
-    gitDate = { link = "Comment" },
+    gitDate = { fg = c.light_blue },
+    gitDiff = { fg = c.grey[4] },
 
     -- Diff
     diffAdded = { fg = c.git.add, bg = c.diff.add },
@@ -17,9 +18,9 @@ function M.get(c, _)
     diffChanged = { fg = c.git.change, bg = c.diff.change },
     diffOldFile = { fg = c.git.delete },
     diffNewFile = { fg = c.git.add },
-    diffFile = { fg = c.cyan },
+    diffFile = { fg = c.yellow },
     diffLine = { fg = c.comment },
-    diffIndexLine = { fg = c.blue },
+    diffIndexLine = { fg = c.fg },
 
     DiffAdd = { link = "Added" }, -- Diff mode: Added line |diff.txt|.
     DiffChange = { link = "Changed" }, -- Diff mode: Changed line |diff.txt|.
@@ -28,6 +29,7 @@ function M.get(c, _)
 
     -- GitSigns
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|
+    GitSignsAddPreview = { bg = c.diff.add },
     GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
     GitSignsDelete = { fg = c.git.delete }, -- diff mode: Deleted line |diff.txt|
     GitSignsCurrentLineBlame = { fg = c.grey[4] },
@@ -42,6 +44,7 @@ function M.get(c, _)
     fugitiveStagedHeading = { fg = c.green },
     fugitiveStagedModifier = { link = "fugitiveStagedHeading" },
     fugitiveCount = { fg = c.grey[5] },
+    FugitiveblameTime = { link = "gitDate" },
 
     -- Git-conflict
     GitConflictCurrentLabel = { bg = c.Light_blue.dark },

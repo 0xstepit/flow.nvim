@@ -4,11 +4,14 @@ local M = {}
 --- @param o FlowConfig: The available options.
 --- @return table: Render markdown plugin highlights.
 function M.get(c, o)
+  local is_transparent = o.theme.transparent
+  print(is_transparent)
+
   local theme = {
-    RenderMarkdownCode = { link = "@markup.raw.block" }, -- Code blocks.
     RenderMarkdownCodeInline = { link = "@markup.raw.markdown_inline" }, -- Code inline.
     RenderMarkdownBullet = { link = "@markup.list" },
     RenderMarkdownDash = { link = "Comment" },
+    RenderMarkdownCode = { link = "@markup.raw.block" }, -- Code blocks.
 
     -- TODO: complete
     -- | RenderMarkdownTableHead       | @markup.heading                    | Pipe table heading rows    |

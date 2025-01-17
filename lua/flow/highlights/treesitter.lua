@@ -9,8 +9,9 @@ function M.get(c, _)
     TreesitterContextLineNumber = { link = "TreesitterContext" },
     -- TODO: verify the sp with another terminal.
     -- sp works only if the terminal support it.
-    TreesitterContextBottom = { sp = c.fluo, underline = true },
-    TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
+    -- TreesitterContextBottom = { fg = c.comment, sp = c.fluo, underline = false },
+    -- TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
+    TreesitterContextSeparator = { fg = c.fg_border },
 
     -- Linked
     ["@annotation"] = { link = "PreProc" },
