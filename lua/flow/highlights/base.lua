@@ -42,8 +42,8 @@ function M.get(c, o)
     -- Cursors
     -- NOTE: these highlights groups are superseeded by the terminal colors used. For example,
     -- the colors used for the cursor are defined in the Alacritty's config.
-    Cursor = { fg = c.bg, bg = c.fg }, -- Character under the cursor.
-    lCursor = { fg = c.bg, bg = c.fg }, -- The character under the cursor when |language-mapping| is used (see 'guicursor').
+    Cursor = { fg = c.flow, bg = c.fg }, -- Character under the cursor.
+    lCursor = { fg = c.flow, bg = c.fg }, -- The character under the cursor when |language-mapping| is used (see 'guicursor').
     CursorIM = { fg = c.bg, bg = c.fg }, -- Like Cursor, but used when in IME mode |CursorIM|.
 
     -- Text
@@ -57,30 +57,30 @@ function M.get(c, o)
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = c.fluo, fg = c.bg_visual },
-    Search = { bg = c.grey[5], fg = c.bg_visual },
-    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
+    IncSearch = { bg = c.fluo, fg = c.fg_visual },
+    Search = { bg = c.grey[5], fg = c.fg_visual },
+    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.fg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
 
-    Visual = { bg = c.fg_visual, fg = c.bg_visual }, -- Visual mode selection.
+    Visual = { bg = c.bg_visual, fg = c.fg_visual }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
     -- Messages
     MsgArea = { link = "Normal" }, -- Area for messages and cmdline.
-    ModeMsg = { fg = c.fg_visual }, -- 'showmode' message (e.g., "-- INSERT -- ").
-    MoreMsg = { fg = c.fg_visual }, -- |more-prompt|.
+    ModeMsg = { fg = c.bg_visual }, -- 'showmode' message (e.g., "-- INSERT -- ").
+    MoreMsg = { fg = c.bg_visual }, -- |more-prompt|.
     ErrorMsg = { fg = c.error }, -- Error messages on the command line.
     WarningMsg = { fg = c.warning }, -- Warning messages.
     MsgSeparator = { fg = c.to_check }, -- Separator for scrolled messages |msgsep|.
 
     -- Popup menu
     Pmenu = { bg = c.bg_popup, fg = c.fg_popup }, -- Popup menu: normal item triggered for example when listing plugin commands in terminal.
-    PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
     PmenuSel = { bg = c.bg_visual, fg = c.fg_visual }, -- Popup menu: selected item.
-    PmenuThumb = { bg = c.comment, bold = true }, -- Popup menu: Thumb of the scrollbar.
+    PmenuThumb = { bg = c.grey[4], bold = true }, -- Popup menu: Thumb of the scrollbar.
+    PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
 
     -- Quickfix
-    QuickFixLine = { bg = c.fg_visual, fg = c.bg_visual }, -- Current |quickfix| item in the quickfix window.
+    QuickFixLine = { bg = c.bg_visual, fg = c.fg_visual }, -- Current |quickfix| item in the quickfix window.
     qfLineNr = { link = "LineNr" }, -- Line number in the quickfix.
     qfFileName = { link = "Directory" }, -- Name of the file in the quickfix.
     qfSeparator = { link = "qfLineNr" }, -- Separator between quickfix line number and filename.
@@ -107,7 +107,7 @@ function M.get(c, o)
     -- I'm not sure where these groups are set.
     Define = { fg = c.grey[6] }, -- Preprocessor #define. Used in rust.
     Include = { fg = c.red }, --  preprocessor #include
-    Question = { fg = c.fg_visual }, -- |hit-enter| prompt and yes/no questions.
+    Question = { fg = c.bg_visual }, -- |hit-enter| prompt and yes/no questions.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
     WinBar = { bg = c.none }, -- Window bar,
     WinBarNC = { bg = c.none }, -- Window bar in inactive windows, used by dap-ui.

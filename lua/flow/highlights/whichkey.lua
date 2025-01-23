@@ -4,7 +4,7 @@ local M = {}
 --- @return table: Whichkey plugin highlights.
 function M.get(c, _)
   local theme = {
-    WhichKey = { fg = c.fg_visual },
+    WhichKey = { fg = c.bg_visual },
     WhichKeyGroup = { fg = c.light_blue },
     WhichKeyDesc = { fg = c.fg_popup },
     WhichKeyFloat = { bg = c.bg_popup },

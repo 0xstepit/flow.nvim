@@ -8,7 +8,7 @@ function M.get(c, _)
 
     gitKeyword = { fg = c.blue },
     gitIdentityKeyword = { link = "gitKeyword" },
-    gitCommitSummary = { fg = c.fg_visual },
+    gitCommitSummary = { fg = c.bg_visual },
     gitDate = { fg = c.light_blue },
     gitDiff = { fg = c.grey[4] },
 
@@ -43,7 +43,7 @@ function M.get(c, _)
     fugitiveUnstagedModifier = { link = "fugitiveUnstagedHeading" },
     fugitiveStagedHeading = { fg = c.green },
     fugitiveStagedModifier = { link = "fugitiveStagedHeading" },
-    fugitiveCount = { fg = c.grey[5] },
+    fugitiveCount = { fg = c.yellow },
     FugitiveblameTime = { link = "gitDate" },
 
     -- Git-conflict

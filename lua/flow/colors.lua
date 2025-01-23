@@ -94,7 +94,7 @@ function M.setup(opts)
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
   colors.fg_popup = default_palette.grey[7]
-  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.grey[1]
+  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.bg
 
   -- Statusline and tabline
   colors.fg_statusline = colors.grey[4]
@@ -105,8 +105,8 @@ function M.setup(opts)
   colors.bg_highlight = colors.grey[2]
 
   -- Visual
-  colors.fg_visual = colors.fluo
-  colors.bg_visual = colors.grey[1]
+  colors.bg_visual = colors.fluo
+  colors.fg_visual = colors.grey[2]
 
   -- Git
   colors.git = {

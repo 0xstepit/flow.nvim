@@ -33,7 +33,7 @@ function M.get(c, o)
     StorageClass = { fg = c.to_check }, -- Static, register, volatile, etc.
     String = { fg = c.sky_blue }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
-    Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
+    Tag = { fg = c.bg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
     Bold = { fg = c.grey[6], bold = true },
