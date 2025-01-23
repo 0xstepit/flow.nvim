@@ -2,8 +2,11 @@ local M = {}
 
 -- Defines the highlight group colors for markdown
 --- @param c table: The available colors.
+--- @param o FlowConfig: The available options.
 --- @return table: Markdown highlights.
-function M.get(c, _)
+function M.get(c, o)
+  local is_transparent = o.theme.transparent
+
   local theme = {
     htmlH1 = { fg = c.purple, bold = true },
     htmlH2 = { fg = c.blue, bold = true },
@@ -56,7 +59,7 @@ function M.get(c, _)
     ["@label.markdown"] = { link = "Keyword" }, -- Used for the language specified in codeblocks.
 
     ["@markup.raw.block"] = {
-      bg = c.bg,
+      bg = (is_transparent and c.transparent) or c.grey[2],
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
