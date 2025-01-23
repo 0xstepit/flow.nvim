@@ -6,7 +6,7 @@ local M = {}
 --- @return table: Nvim lsp highlights.
 function M.get(c, _)
   local theme = {
-    LspSignatureActiveParameter = { fg = c.grey[2], bg = c.fg_visual, bold = true }, -- Parameter highlighter in signature help.
+    LspSignatureActiveParameter = { bg = c.Cyan.very_dark, bold = true }, -- Parameter highlighter in signature help.
 
     LspReferenceText = { bg = c.Cyan.very_dark }, -- Used for highlighting "text" references.
     LspReferenceRead = { link = "LspReferenceText" }, -- Used for highlighting "read" references.
@@ -18,6 +18,8 @@ function M.get(c, _)
 
     LspInfoBorder = { fg = c.fg_border, bg = c.bg_float },
     LspKindSnippet = { fg = c.to_check },
+
+    SnippetTabstop = { bg = c.Purple.very_dark },
   }
 
   return theme
