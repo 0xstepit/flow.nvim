@@ -152,6 +152,10 @@ function M.get(c, _)
 
     -- YAML
     ["@property.yaml"] = { fg = c.yellow },
+
+    -- Just
+    ["@function.just"] = { link = "Function" },
+    ["@function.call.just"] = { link = "@variable.parameter" },
   }
 
   return theme
