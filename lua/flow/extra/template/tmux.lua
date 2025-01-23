@@ -21,8 +21,8 @@ setw -g window-status-separator " "
 set -g window-status-current-style fg=colour198
 set -g window-status-format "(#I) #W"
 set -g window-status-current-format "(#I) #W"
-set -g status-left "#[fg=${black},bg=${light_blue}] #S #[bg=${fg_gutter},fg=${light_blue}] #h #[bg=${bg_statusline}] "
-set -g status-right "#[bg=${fg_gutter},fg=${light_blue}] %H:%M #[fg=${black},bg=${light_blue}] %A %d. %b %Y "
+set -g status-left "#[fg=${bg_highlight},bg=${light_blue}] #S #[bg=${bg_highlight},fg=${light_blue}] #h #[bg=${bg_statusline}] "
+set -g status-right "#[bg=${bg_highlight},fg=${light_blue}] %H:%M #[fg=${bg_highlight},bg=${light_blue}] %A %d. %b %Y "
 
 set -g message-command-style fg=${fluo}
 set -g message-style "fg=${fluo}, bg=${bg_statusline}" # color used in the message popup.
