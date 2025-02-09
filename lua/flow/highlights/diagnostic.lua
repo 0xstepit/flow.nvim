@@ -14,7 +14,7 @@ function M.get(c, o)
     DiagnosticWarn = { fg = c.warning },
     DiagnosticInfo = { fg = c.info },
     DiagnosticHint = { fg = c.hint },
-    DiagnosticUnnecessary = { fg = c.comment, undercurl = true },
+    DiagnosticUnnecessary = { undercurl = false },
 
     DiagnosticVirtualTextError = { fg = c.error, bg = c.Red[background_tone] },
     DiagnosticVirtualTextWarn = { fg = c.warning, bg = c.Yellow[background_tone] },

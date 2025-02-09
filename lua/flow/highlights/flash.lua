@@ -8,7 +8,7 @@ function M.get(c, o)
   local is_dark = o.theme.style == "dark"
 
   local theme = {
-    FlashBackdrop = { fg = c.comment },
+    -- FlashBackdrop = { fg = c.comment },
     FlashLabel = {
       -- bg = (not is_dark and c.Fluo.dark) or c.Fluo.light,
       bg = c.blue,
