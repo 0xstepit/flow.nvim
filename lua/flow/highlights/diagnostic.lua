@@ -27,8 +27,8 @@ function M.get(c, o)
     DiagnosticFloatingHint = { link = "DiagnosticHint" },
     DiagnosticFloatingOk = { fg = c.fg_viusual },
 
-    DiagnosticUnderlineError = { fg = c.error, undercurl = true, sp = c.error },
-    DiagnosticUnderlineWarn = { fg = c.warning, undercurl = true, sp = c.warning },
+    DiagnosticUnderlineError = { undercurl = true, sp = c.error },
+    DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning },
     DiagnosticUnderlineInfo = { undercurl = true, sp = c.info },
     DiagnosticUnderlineHint = { undercurl = true, sp = c.hint },
   }

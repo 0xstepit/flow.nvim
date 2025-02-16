@@ -146,6 +146,7 @@ function M.get(c, _)
     -- Golang
     ["@module.go"] = { fg = c.cyan },
     ["@keyword.function.go"] = { link = "Statement" },
+    ["@lsp.type.namespace.go"] = { link = "@module.go" },
 
     -- Rust
     -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[6] },
