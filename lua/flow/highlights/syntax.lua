@@ -1,8 +1,9 @@
 local M = {}
 
 --- @param c table: The available colors.
+--- @param o FlowConfig: The available options.
 --- @return table: Syntax highlights.
-function M.get(c, _)
+function M.get(c, o)
   local theme = {
 
     Boolean = { link = "Constant" }, -- A boolean constant: TRUE, false.
@@ -29,10 +30,10 @@ function M.get(c, _)
     SpecialComment = { fg = c.to_check }, -- special things inside a comment
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.
-    StorageClass = { fg = c.to_check }, -- Static, register, volatile, etc.
+    StorageClass = { fg = c.red }, -- Static, register, volatile, etc. (rust lifetimes)
     String = { fg = c.sky_blue }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
-    Tag = { fg = c.fg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
+    Tag = { fg = c.bg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
     Bold = { fg = c.grey[6], bold = true },
@@ -49,6 +50,19 @@ function M.get(c, _)
     Hack = { fg = c.hack, bg = c.comment },
     Warn = { fg = c.warning, bg = c.comment }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
   }
+
+  -- Special comments
+  if o.ui.aggressive_special_comment then
+    theme.Todo = { bg = c.todo, fg = c.comment }
+    theme.Fixme = { bg = c.fixme, fg = c.comment }
+    theme.Note = { bg = c.note, fg = c.comment }
+    theme.Hack = { bg = c.hack, fg = c.comment }
+  else
+    theme.Todo = { fg = c.todo, bg = c.comment }
+    theme.Fixme = { fg = c.fixme, bg = c.comment }
+    theme.Note = { fg = c.note, bg = c.comment }
+    theme.Hack = { fg = c.hack, bg = c.comment }
+  end
 
   return theme
 end

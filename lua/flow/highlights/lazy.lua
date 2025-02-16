@@ -8,8 +8,8 @@ function M.get(c, _)
   local theme = {
     LazyH1 = { bg = c.fluo, fg = c.grey[3] },
 
-    LazyProgressDone = { bold = true, fg = c.fluo },
-    LazyProgressTodo = { bold = true, fg = c.light_blue },
+    LazyProgressDone = { bold = true, fg = c.purple },
+    LazyProgressTodo = { bold = true, fg = c.cyan },
 
     LazyNormal = { fg = c.light_blue },
     LazyButton = { bg = c.grey[5], fg = c.grey[3] },

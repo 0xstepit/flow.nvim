@@ -5,12 +5,13 @@ local M = {}
 function M.get(c, _)
   local theme = {
 
-    TreesitterContext = { bg = c.grey[3] },
+    TreesitterContext = { bg = c.grey[2] },
     TreesitterContextLineNumber = { link = "TreesitterContext" },
     -- TODO: verify the sp with another terminal.
     -- sp works only if the terminal support it.
-    TreesitterContextBottom = { sp = c.fluo, underline = true },
-    TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
+    -- TreesitterContextBottom = { fg = c.comment, sp = c.fluo, underline = false },
+    -- TreesitterContextLineNumberBottom = { link = "TreesitterContextBottom" },
+    TreesitterContextSeparator = { fg = c.fg_border },
 
     -- Linked
     ["@annotation"] = { link = "PreProc" },
@@ -145,12 +146,17 @@ function M.get(c, _)
     -- Golang
     ["@module.go"] = { fg = c.cyan },
     ["@keyword.function.go"] = { link = "Statement" },
+    ["@lsp.type.namespace.go"] = { link = "@module.go" },
 
     -- Rust
     -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[6] },
 
     -- YAML
     ["@property.yaml"] = { fg = c.yellow },
+
+    -- Just
+    ["@function.just"] = { link = "Function" },
+    ["@function.call.just"] = { link = "@variable.parameter" },
   }
 
   return theme

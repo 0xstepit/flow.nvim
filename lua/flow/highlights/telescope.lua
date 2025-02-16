@@ -12,13 +12,13 @@ function M.get(c, _)
     TelescopeResultsNormal = { link = "TelescopeNormal" },
 
     -- Selection
-    TelescopeSelectionCaret = { fg = c.fg_visual, bold = true },
-    TelescopeSelection = { fg = c.fg_visual, bold = true },
-    TelescopeMultiSelection = { fg = c.bg_visual, bg = c.fg_visual, bold = true }, -- Open telescope and press TAB on files.
+    TelescopeSelectionCaret = { fg = c.bg_visual, bold = true },
+    TelescopeSelection = { fg = c.bg_visual, bold = true },
+    TelescopeMultiSelection = { fg = c.fg_visual, bg = c.bg_visual, bold = true }, -- Open telescope and press TAB on files.
     TelescopeMultiIcon = { link = "TelescopeMultiSelection" }, -- Icon of selected items.
-    TelescopeMatching = { fg = c.comment, bold = true },
+    TelescopeMatching = { fg = c.blue, bold = true },
 
-    TelescopePromptPrefix = { bg = c.transparent, fg = c.fg_visual },
+    TelescopePromptPrefix = { bg = c.transparent, fg = c.bg_visual },
 
     -- Titles
     TelescopeResultsTitle = { bg = c.transparent, fg = c.fg_border },

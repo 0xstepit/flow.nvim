@@ -7,6 +7,7 @@ local M = {}
 --- @type string[]
 M.active_highlights = {
   "base",
+  "blink",
   "syntax",
   "markdown",
   "completion",

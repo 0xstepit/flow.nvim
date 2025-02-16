@@ -31,6 +31,8 @@ M.defaults = {
     borders = "inverse",
     ---@boolean
     aggressive_spell = false,
+    ---@boolean
+    aggressive_special_comment = false,
   },
 }
 

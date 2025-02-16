@@ -21,13 +21,11 @@ function M.get(o)
 
   if o.colors.custom.light ~= "" then
     ---@diagnostic disable-next-line: assign-type-mismatch
-    --- Options are validated here
     shade[o.colors.mode].L = tonumber(o.colors.custom.light)
   end
 
   if o.colors.custom.saturation ~= "" then
     ---@diagnostic disable-next-line: assign-type-mismatch
-    --- Options are validated here
     shade[o.colors.mode].S = tonumber(o.colors.custom.saturation)
   end
 
@@ -64,7 +62,7 @@ function M.get(o)
       [1] = hsl(203, 20, 10), -- Very dark grey
       [2] = hsl(203, 20, 13),
       [3] = hsl(203, 20, 15),
-      [4] = hsl(203, 20, 30),
+      [4] = hsl(203, 20, 29),
       [5] = hsl(203, 20, 35),
       [6] = hsl(203, 20, 65),
       [7] = hsl(203, 20, 85),
