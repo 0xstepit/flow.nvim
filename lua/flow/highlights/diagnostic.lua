@@ -27,10 +27,10 @@ function M.get(c, o)
     DiagnosticFloatingHint = { link = "DiagnosticHint" },
     DiagnosticFloatingOk = { fg = c.fg_viusual },
 
-    DiagnosticUnderlineError = { undercurl = true, sp = c.error },
-    DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning },
-    DiagnosticUnderlineInfo = { undercurl = true, sp = c.info },
-    DiagnosticUnderlineHint = { undercurl = true, sp = c.hint },
+    DiagnosticUnderlineError = { undercurl = false, sp = c.error },
+    DiagnosticUnderlineWarn = { undercurl = false, sp = c.warning },
+    DiagnosticUnderlineInfo = { undercurl = false, sp = c.info },
+    DiagnosticUnderlineHint = { undercurl = false, sp = c.hint },
   }
 
   return theme
