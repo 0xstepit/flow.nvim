@@ -29,9 +29,13 @@ function M.get(c, _)
 
     -- GitSigns
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|
-    GitSignsAddPreview = { bg = c.diff.add },
-    GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
+    GitSignsAddInline = { fg = c.Green.light },
+    GitSignsAddPreview = { bg = c.Green.very_dark },
     GitSignsDelete = { fg = c.git.delete }, -- diff mode: Deleted line |diff.txt|
+    GitSignsDeleteInline = { fg = c.Red.light }, -- diff mode: Deleted line |diff.txt|
+    GitSignsDeletePreview = { bg = c.Red.very_dark }, -- diff mode: Deleted line |diff.txt|
+    GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
+
     GitSignsCurrentLineBlame = { fg = c.grey[4] },
 
     -- Fugitive
