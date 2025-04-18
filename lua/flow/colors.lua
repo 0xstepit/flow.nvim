@@ -122,7 +122,7 @@ function M.setup(opts)
     add = not is_dark and colors.Green.very_light or colors.Green.very_dark,
     delete = not is_dark and colors.Red.very_light or colors.Red.very_dark,
     change = not is_dark and colors.Light_blue.very_light or colors.Sky_blue.very_dark,
-    text = not is_dark and colors.Cyan.very_light or colors.Cyan.very_dark,
+    text = not is_dark and colors.Green.very_light or colors.Green.very_dark,
   }
 
   -- LSP diagnostics
