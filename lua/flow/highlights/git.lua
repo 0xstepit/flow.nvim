@@ -29,12 +29,14 @@ function M.get(c, _)
 
     -- GitSigns
     GitSignsAdd = { fg = c.git.add }, -- diff mode: Added line |diff.txt|
-    GitSignsAddInline = { fg = c.Green.light },
     GitSignsAddPreview = { bg = c.Green.very_dark },
     GitSignsDelete = { fg = c.git.delete }, -- diff mode: Deleted line |diff.txt|
-    GitSignsDeleteInline = { fg = c.Red.light }, -- diff mode: Deleted line |diff.txt|
     GitSignsDeletePreview = { bg = c.Red.very_dark }, -- diff mode: Deleted line |diff.txt|
     GitSignsChange = { fg = c.git.change }, -- diff mode: Changed line |diff.txt|
+    -- colors shown when using :Gitsigns toggle_word_diff
+    GitSignsDeleteInline = { fg = c.Red.light, bg = c.Red.very_dark }, -- diff mode: Deleted line |diff.txt|
+    GitSignsAddInline = { fg = c.Green.light, bg = c.Green.very_dark },
+    GitSignsChangeInline = { fg = c.Light_blue.light, bg = c.Light_blue.very_dark }, -- diff mode: Changed line |diff.txt|
 
     GitSignsCurrentLineBlame = { fg = c.grey[4] },
 

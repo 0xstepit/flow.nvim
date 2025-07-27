@@ -111,10 +111,10 @@ function M.setup(opts)
   -- Git
   colors.git = {
     add = colors.green, -- Added files/lines
-    change = colors.yellow, -- Modified files/lines
+    change = colors.light_blue, -- Modified files/lines
     delete = colors.red, -- Deleted files/lines
     ignore = colors.grey[5], -- Ignored files
-    untrcked = colors.sky_blue, -- New untracked files
+    untracked = colors.sky_blue, -- New untracked files
   }
 
   local is_dark = opts.theme.style == "dark"
