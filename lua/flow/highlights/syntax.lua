@@ -15,7 +15,7 @@ function M.get(c, o)
     Error = { bg = c.bg, fg = c.error }, -- Any erroneous construct.
     Exception = { link = "Keyword" }, -- try, catch, throw.
     Float = { link = "Number" }, -- A floating point constant: 2.3e10.
-    Function = { fg = c.blue }, -- Function name (also: methods for classes).
+    Function = { fg = c.light_blue }, -- Function name (also: methods for classes).
     Identifier = { fg = c.cyan }, -- Any variable name.
     Keyword = { fg = c.red }, -- Any other keyword.
     Label = { link = "Keyword" }, -- case, default, etc.
@@ -31,7 +31,7 @@ function M.get(c, o)
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.
     StorageClass = { fg = c.red }, -- Static, register, volatile, etc. (rust lifetimes)
-    String = { fg = c.sky_blue }, -- A string constant: "this is a string".
+    String = { fg = c.grey[7] }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
     Tag = { fg = c.bg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
@@ -39,9 +39,9 @@ function M.get(c, o)
     Bold = { fg = c.grey[6], bold = true },
 
     -- Git
-    Added = { bg = c.diff.add }, -- Added line in a diff.
-    Removed = { bg = c.diff.delete }, -- Removed line in a diff.
-    Changed = { bg = c.diff.change }, -- Changed line in a diff.
+    Added = { bg = c.diff.add },
+    Removed = { fg = c.git.delete, bg = c.diff.delete },
+    Changed = { fg = c.git.change, bg = c.diff.change },
 
     -- Todo
     Todo = { fg = c.todo, bg = c.comment },

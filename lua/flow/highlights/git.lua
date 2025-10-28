@@ -13,9 +13,9 @@ function M.get(c, _)
     gitDiff = { fg = c.grey[4] },
 
     -- Diff
-    diffAdded = { fg = c.git.add, bg = c.diff.add },
-    diffRemoved = { fg = c.git.delete, bg = c.diff.delete },
-    diffChanged = { fg = c.git.change, bg = c.diff.change },
+    diffAdded = { link = "Added" },
+    diffRemoved = { link = "Removed" },
+    diffChanged = { link = "Changed" },
     diffOldFile = { fg = c.git.delete },
     diffNewFile = { fg = c.git.add },
     diffFile = { fg = c.yellow },
@@ -57,6 +57,8 @@ function M.get(c, _)
     GitConflictCurrent = { bg = c.diff.change },
     GitConflictIncomngLabled = { bg = c.Green.dark },
     GitConflictIncoming = { bg = c.diff.add },
+    GitConflictAncestor = { bg = c.diff.parent },
+    GitConflictAncestorLabel = { bg = c.Cyan.dark },
   }
 
   return theme

@@ -70,7 +70,7 @@ function M.get(c, o)
     ObsidianRefText = { fg = c.blue },
   }
 
-  local headers = { c.fluo, c.blue, c.light_blue, c.cyan, c.sky_blue }
+  local headers = { c.purple, c.blue, c.light_blue, c.cyan, c.sky_blue }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
   end
