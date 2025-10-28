@@ -123,6 +123,7 @@ function M.setup(opts)
     delete = not is_dark and colors.Red.very_light or colors.Red.very_dark,
     change = not is_dark and colors.Light_blue.very_light or colors.Sky_blue.very_dark,
     text = not is_dark and colors.Green.very_light or colors.Green.very_dark,
+    parent = not is_dark and colors.Cyan.very_light or colors.Cyan.very_dark,
   }
 
   -- LSP diagnostics
@@ -179,7 +180,7 @@ function M._apply_opts(default_palette, colors, opts)
   end
 
   colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
-  colors.fg = (opts.theme.style == "dark" and colors.grey[7]) or colors.grey[6]
+  colors.fg = (opts.theme.style == "dark" and colors.grey[6]) or colors.grey[6]
 
   -- Borders
   colors.fg_border = (opts.ui.borders == "none" and colors.bg)

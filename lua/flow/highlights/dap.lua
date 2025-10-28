@@ -6,7 +6,7 @@ local M = {}
 --- @return table: Debug highlights.
 function M.get(c, _)
   local theme = {
-    debugPC = { bg = c.to_check }, -- used for highlighting the current line in terminal-debug
+    debugPC = { bg = c.grey[2] }, -- used for highlighting the current line in terminal-debug
     debugBreakpoint = { fg = c.error }, -- used for breakpoint colors in terminal-debug
     DapBreakpoint = { link = "debugBreakpoint" },
 

@@ -5,12 +5,15 @@ local M = {}
 function M.get(c, _)
   local theme = {
     AvanteInlineHint = { fg = c.fluo },
-    AvanteTitle = { bg = c.fluo, fg = c.grey[3] },
-    AvanteReversedTitle = { bg = c.bg, fg = c.fluo },
-    AvanteSubtitle = { fg = c.fluo },
-    AvanteReversedSubtitle = { fg = c.bg },
-    AvanteThirdTitle = { fg = c.light_blue },
+
+    AvanteTitle = { bg = c.transparent, fg = c.fg_border },
+    AvanteReversedTitle = { link = "AvanteTitle" },
+    AvanteSubtitle = { link = "AvanteTitle" },
+    AvanteReversedSubtitle = { link = "AvanteTitle" },
+    AvanteThirdTitle = { link = "AvanteTitle" },
+
     AvanteReversedThirdTitle = { fg = c.bg },
+    AvanteSidebarWinSeparator = { link = "TelescopeBorder" },
   }
 
   return theme

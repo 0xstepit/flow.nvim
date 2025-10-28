@@ -19,6 +19,7 @@ function M.get(c, _)
     TelescopeMatching = { fg = c.blue, bold = true },
 
     TelescopePromptPrefix = { bg = c.transparent, fg = c.bg_visual },
+    TelescopeResultsSpecialComment = { link = "gitDate" }, -- example: date in telescope git branches.
 
     -- Titles
     TelescopeResultsTitle = { bg = c.transparent, fg = c.fg_border },

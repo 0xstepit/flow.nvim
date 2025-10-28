@@ -1,3 +1,5 @@
+local hsl = require("flow.util").hsl_to_hex
+
 local M = {}
 
 -- Defines the highlight for base color groups.
@@ -21,7 +23,8 @@ function M.get(c, o)
     LineNrBelow = { link = "LineNr" },
 
     -- Highlighted elements
-    CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
+    -- CursorLine = { bg = c.bg_highlight }, -- Used with the line set with 'cursorline'.
+    CursorLine = { bg = hsl(331, 20, 13) }, -- Used with the column set with 'cursorcolumn'.
     ColorColumn = { bg = c.bg_highlight }, -- Used for the columns set with 'colorcolumn'.
     CursorColumn = { link = "ColorColumn" }, -- Used with the column set with 'cursorcolumn'.
     Folded = { link = "ColorColumn" }, -- Line used for closed folds.
@@ -115,6 +118,9 @@ function M.get(c, o)
     -- Netrw
     netrwClassify = { link = "Keyword" },
     netrwHelpCmd = { fg = c.fluo },
+
+    -- UI
+    Border = { bg = c.transparent, fg = c.fg_border, bold = true },
   }
 
   return theme

@@ -73,7 +73,7 @@ function M.get(c, _)
 
     --- Functions
     ["@constructor"] = { fg = c.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-    ["@variable.parameter"] = { fg = c.yellow }, -- For parameters of a function.
+    ["@variable.parameter"] = { fg = c.grey[6] }, -- For parameters of a function.
     ["@variable.parameter.builtin"] = { fg = c.yellow }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
 
     --- Keywords
@@ -118,7 +118,7 @@ function M.get(c, _)
     ["@lsp.type.number"] = { link = "@number" },
     ["@lsp.type.operator"] = { link = "@operator" },
     ["@lsp.type.parameter"] = { link = "@variable.parameter" },
-    ["@lsp.type.property"] = { link = "@property" },
+    -- ["@lsp.type.property"] = { link = "@property" },
     ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
     ["@lsp.type.selfTypeKeyword"] = { link = "@variable.builtin" },
     ["@lsp.type.string"] = { link = "@string" },
@@ -144,7 +144,7 @@ function M.get(c, _)
     ["@lsp.typemod.variable.static"] = { link = "@constant" },
 
     -- Golang
-    ["@module.go"] = { fg = c.cyan },
+    ["@module.go"] = { fg = c.blue },
     ["@keyword.function.go"] = { link = "Statement" },
     ["@lsp.type.namespace.go"] = { link = "@module.go" },
 

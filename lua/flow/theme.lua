@@ -14,6 +14,7 @@ M.active_highlights = {
   "dap",
   "diagnostic",
   "flash",
+  "fzf-lua",
   "git",
   "ibl",
   "lazy",
@@ -21,12 +22,15 @@ M.active_highlights = {
   "mini-hipatterns",
   "oil",
   "render-markdown",
+  "statusline",
   "telescope",
   "todo-comments",
   "treesitter",
   "trouble",
   "whichkey",
+  "winbar",
   "undotree",
+  "vim-highlighturl",
   "mason",
   "avante",
 }
@@ -52,6 +56,8 @@ function M.configure()
     local hi = group.get(colors, options)
     highlights = util.merge(highlights, hi)
   end
+
+  vim.api.nvim_set_hl(0, "@lsp.type.property.lua", {})
 
   -- util.autocmds()
 

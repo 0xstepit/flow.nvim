@@ -21,6 +21,11 @@ function M.get(c, o)
     DiagnosticVirtualTextInfo = { fg = c.info, bg = c.Cyan[background_tone] },
     DiagnosticVirtualTextHint = { fg = c.hint, bg = c.Light_blue[background_tone] },
 
+    DiagnosticVirtualLinesError = { link = "DiagnosticVirtualTextError" },
+    DiagnosticVirtualLinesWarn = { link = "DiagnosticVirtualTextWarn" },
+    DiagnosticVirtualLinesInfo = { link = "DiagnosticVirtualTextInfo" },
+    DiagnosticVirtualLinesHint = { link = "DiagnosticVirtualTextHint" },
+
     DiagnosticFloatingError = { link = "DiagnostictError" },
     DiagnosticFloatingWarn = { link = "DiagnosticWarn" },
     DiagnosticFloatingInfo = { link = "DiagnosticInfo" },
