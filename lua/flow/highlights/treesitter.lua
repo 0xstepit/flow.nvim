@@ -85,7 +85,7 @@ function M.get(c, _)
     --- Types
     ["@type.builtin"] = { fg = c.cyan },
     -- the two below should be equal because the last substitute former
-    ["@variable.member"] = { fg = c.cyan }, -- For fields.
+    ["@variable.member"] = { fg = c.light_blue }, -- For fields.
     ["@property"] = { fg = c.cyan },
 
     --- Identifiers

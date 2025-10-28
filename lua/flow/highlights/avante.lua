@@ -7,12 +7,6 @@ function M.get(c, _)
     AvanteInlineHint = { fg = c.fluo },
 
     AvanteTitle = { link = "FlowPluginTitle" },
-    AvanteReversedTitle = { link = "AvanteTitle" },
-    AvanteSubtitle = { link = "AvanteTitle" },
-    AvanteReversedSubtitle = { link = "AvanteTitle" },
-    AvanteThirdTitle = { link = "AvanteTitle" },
-
-    AvanteReversedThirdTitle = { fg = c.bg },
     AvanteSidebarWinSeparator = { link = "Border" },
   }
 
