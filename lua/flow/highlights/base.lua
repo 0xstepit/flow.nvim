@@ -40,6 +40,7 @@ function M.get(c, o)
     -- Borders
     VertSplit = { fg = c.fg_border }, -- The column separating vertically split windows.
     WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
+    Border = { bg = c.transparent, fg = c.fg_border, bold = true }, -- Transparent border for plugin UIs
     FloatBorder = { fg = c.fg_border, bg = c.bg_float }, -- Border of floating windows, like completion.
 
     -- Cursors
@@ -54,14 +55,15 @@ function M.get(c, o)
     MatchParen = { fg = c.fluo, bold = true }, -- The character under the cursor if it is a paired bracket, and its match. |pi_paren.txt|.
     Title = { fg = c.purple, bold = true }, -- Titles for output from ":set all", ":autocmd" etc.
     FloatTitle = { fg = c.fg_float, bg = c.bg_float, bold = true }, -- Title of floating windows.
+    FlowPluginTitle = { bg = c.transparent, fg = c.fg_border }, -- Titles for plugin UIs (Telescope, Avante)
     Whitespace = { link = "Comment" }, -- "nbsp", "space", "tab" and "trail" in 'listchars'. Set as bg to not show them.
-    NonText = { fg = c.fg_gutter }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText = { fg = c.grey[4] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     EndOfBuffer = { link = "NonText" }, -- Filler lines (~) after the end of the buffer.
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
     IncSearch = { bg = c.fluo, fg = c.grey[2] },
-    Search = { bg = c.grey[5], fg = c.light_blue },
+    Search = { bg = c.grey[7], fg = c.light_blue },
     CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
 
@@ -79,7 +81,7 @@ function M.get(c, o)
     -- Popup menu
     Pmenu = { bg = c.bg_popup, fg = c.fg_popup }, -- Popup menu: normal item triggered for example when listing plugin commands in terminal.
     PmenuSel = { bg = c.bg_visual }, -- Popup menu: selected item.
-    PmenuThumb = { bg = c.grey[4], bold = true }, -- Popup menu: Thumb of the scrollbar.
+    PmenuThumb = { bg = c.grey[6], bold = true }, -- Popup menu: Thumb of the scrollbar.
     PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
 
     -- Quickfix
@@ -108,7 +110,7 @@ function M.get(c, o)
 
     -- Misc
     -- I'm not sure where these groups are set.
-    Define = { fg = c.grey[6] }, -- Preprocessor #define. Used in rust.
+    Define = { fg = c.grey[8] }, -- Preprocessor #define. Used in rust.
     Include = { fg = c.red }, --  preprocessor #include
     Question = { fg = c.bg_visual }, -- |hit-enter| prompt and yes/no questions.
     WildMenu = { bg = c.to_check }, -- current match in 'wildmenu' completion
@@ -119,8 +121,20 @@ function M.get(c, o)
     netrwClassify = { link = "Keyword" },
     netrwHelpCmd = { fg = c.fluo },
 
-    -- UI
-    Border = { bg = c.transparent, fg = c.fg_border, bold = true },
+    -- Flow Base Groups - Semantic groups for consistent UI across plugins
+    -- Headers and titles used by plugin UIs
+    FlowHeader = { bg = c.fluo, fg = c.grey[3] }, -- Main header for plugin UIs (Lazy, Mason)
+    FlowHighlightBlock = { bg = c.light_blue, fg = c.grey[3], bold = true }, -- Highlighted/active block
+
+    -- Interactive elements
+    FlowButton = { bg = c.grey[7], fg = c.grey[3] }, -- Standard button
+    FlowButtonActive = { bg = c.light_blue, fg = c.grey[3], bold = true }, -- Active/selected button
+
+    -- State indicators - consistent colors for success/error/warning/info across plugins
+    FlowSuccess = { fg = c.green }, -- Success state (git add, DAP play)
+    FlowError = { fg = c.error }, -- Error state (git delete, DAP stop, breakpoints)
+    FlowWarning = { fg = c.warning }, -- Warning state
+    FlowInfo = { fg = c.light_blue }, -- Info/neutral action state
   }
 
   return theme

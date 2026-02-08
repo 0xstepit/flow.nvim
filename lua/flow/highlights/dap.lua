@@ -7,18 +7,18 @@ local M = {}
 function M.get(c, _)
   local theme = {
     debugPC = { bg = c.grey[2] }, -- used for highlighting the current line in terminal-debug
-    debugBreakpoint = { fg = c.error }, -- used for breakpoint colors in terminal-debug
+    debugBreakpoint = { link = "FlowError" }, -- used for breakpoint colors in terminal-debug
     DapBreakpoint = { link = "debugBreakpoint" },
 
     -- Debug = { fg = c.orange }, -- debugging statements
     -- DapUIFloatBorder = { fg = c.green, bg = c.bg },
     --
     -- -- Icons
-    DapUIStop = { fg = c.red },
-    DapUIRestart = { fg = c.green },
+    DapUIStop = { link = "FlowError" },
+    DapUIRestart = { link = "FlowSuccess" },
     DapUIPlayPause = { link = "DapUIRestart" },
 
-    DapUIStepInto = { fg = c.light_blue },
+    DapUIStepInto = { link = "FlowInfo" },
     DapUIStepOver = { link = "DapUIStepInto" },
     DapUIStepOut = { link = "DapUIStepInto" },
     DapUIStepBack = { link = "DapUIStepInto" },
@@ -26,8 +26,8 @@ function M.get(c, _)
     DapUILineNumber = { fg = c.sky_blue },
     DapUICurrentFrameName = { fg = c.yellow },
 
-    DapUIWatchesValue = { fg = c.grey[6] },
-    DapUIWatchesError = { fg = c.error },
+    DapUIWatchesValue = { fg = c.grey[8] },
+    DapUIWatchesError = { link = "FlowError" },
 
     -- DapUIWatchesEmpty = { link = "DapUIWatchesValue" },
     --
@@ -38,16 +38,16 @@ function M.get(c, _)
     --
     DapUIScope = { link = "DapUIStoppedThread" }, -- Text like Locals
 
-    DapUIVariable = { fg = c.blue },
+    DapUIVariable = { link = "FlowKindVariable" },
     -- DapUIValue = { fg = c.cyan },
 
-    DapUIType = { fg = c.purple },
+    DapUIType = { link = "FlowKindType" },
     DapUISource = { fg = c.purple }, -- filename
 
-    DapUIBreakpointsPath = { fg = c.red },
-    DapUIBreakpointsLine = { fg = c.red },
+    DapUIBreakpointsPath = { link = "FlowError" },
+    DapUIBreakpointsLine = { link = "FlowError" },
     --
-    DapUIDecoration = { fg = c.grey[6] }, -- arrow indicating vars
+    DapUIDecoration = { fg = c.grey[8] }, -- arrow indicating vars
     DapUIModifiedValue = { fg = c.yellow }, -- value of the last modified variables in the scope.
   }
 

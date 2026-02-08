@@ -22,12 +22,12 @@ function M.get(c, _)
     TelescopeResultsSpecialComment = { link = "gitDate" }, -- example: date in telescope git branches.
 
     -- Titles
-    TelescopeResultsTitle = { bg = c.transparent, fg = c.fg_border },
+    TelescopeResultsTitle = { link = "FlowPluginTitle" },
     TelescopePromptTitle = { link = "TelescopeResultsTitle" },
     TelescopePreviewTitle = { link = "TelescopeResultsTitle" },
 
     -- Borders
-    TelescopeBorder = { bg = c.transparent, fg = c.fg_border, bold = true },
+    TelescopeBorder = { link = "Border" },
     TelescopePromptBorder = { link = "TelescopeBorder" },
     TelescopePreviewBorder = { link = "TelescopeBorder" },
     TelescopeResultsBorder = { link = "TelescopeBorder" },

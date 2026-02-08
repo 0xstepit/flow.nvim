@@ -12,11 +12,11 @@ function M.get(c, o)
     htmlH2 = { fg = c.blue, bold = true },
 
     -- Code snippet
-    markdownCode = { fg = c.grey[5] },
-    mkdCodeDelimiter = { bg = c.grey[5], fg = c.fg },
+    markdownCode = { fg = c.grey[7] },
+    mkdCodeDelimiter = { bg = c.grey[7], fg = c.fg },
     mkdCodeStart = { fg = c.blue, bold = true },
     mkdCodeEnd = { fg = c.blue, bold = true },
-    mkdSnippetS = { bg = c.grey[3], fg = c.grey[4] },
+    mkdSnippetS = { bg = c.grey[3], fg = c.grey[6] },
 
     markdownHeadingDelimiter = { fg = c.orange, bold = true },
     markdownCodeBlock = { fg = c.blue },
@@ -63,7 +63,7 @@ function M.get(c, o)
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = c.grey[4],
+      bg = c.grey[6],
     },
 
     -- Obsidian

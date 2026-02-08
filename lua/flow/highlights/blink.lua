@@ -2,9 +2,8 @@ local M = {}
 
 -- Defines the highlight group colors for Blink completion.
 --- @param c table: The available colors.
---- @param o FlowConfig: The available options.
 --- @return table: Nvim cmp highlights.
-function M.get(c, o)
+function M.get(c, _)
   local ret = {
     BlinkCmpDoc = { fg = c.fg, bg = c.bg_float },
     BlinkCmpGhostText = { fg = c.red },
@@ -19,7 +18,7 @@ function M.get(c, o)
 
     BlinkCmpScrollBarGutter = { fg = c.to_check, bg = c.red },
 
-    BlinkCmpMenuBorder = { fg = c.fg_border, bg = c.bg_float },
+    BlinkCmpMenuBorder = { link = "FloatBorder" },
     BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
     BlinkCmpSignatureHelpBorder = { link = "BlinkCmpMenuBorder" },
 
@@ -27,31 +26,31 @@ function M.get(c, o)
 
     -- Kind
     BlinkCmpKindDefault = { fg = c.fg_visual },
-    BlinkCmpKindKeyword = { link = "Keyword" },
-    BlinkCmpKindFunction = { link = "Function" },
+    BlinkCmpKindKeyword = { link = "FlowKindKeyword" },
+    BlinkCmpKindFunction = { link = "FlowKindFunction" },
     BlinkCmpKindSnippet = { fg = c.light_blue },
-    BlinkCmpKindField = { link = "@field" },
-    BlinkCmpKindProperty = { fg = c.sky_blue },
-    BlinkCmpKindEvent = { link = "Type" },
-    BlinkCmpKindText = { fg = c.fg_popup },
-    BlinkCmpKindEnum = { link = "Type" },
-    BlinkCmpKindConstant = { link = "Constant" },
-    BlinkCmpKindConstructor = { link = "Function" },
-    BlinkCmpKindReference = { fg = c.cyan },
-    BlinkCmpKindStruct = { link = "Structure" },
-    BlinkCmpKindClass = { link = "Type" },
-    BlinkCmpKindModule = { fg = c.yellow },
-    BlinkCmpKindOperator = { link = "Operator" },
-    BlinkCmpKindVariable = { fg = c.sky_blue },
-    BlinkCmpKindUnit = { link = "Constant" },
+    BlinkCmpKindField = { link = "FlowKindField" },
+    BlinkCmpKindProperty = { link = "FlowKindProperty" },
+    BlinkCmpKindEvent = { link = "FlowKindEvent" },
+    BlinkCmpKindText = { link = "FlowKindText" },
+    BlinkCmpKindEnum = { link = "FlowKindEnum" },
+    BlinkCmpKindConstant = { link = "FlowKindConstant" },
+    BlinkCmpKindConstructor = { link = "FlowKindConstructor" },
+    BlinkCmpKindReference = { link = "FlowKindReference" },
+    BlinkCmpKindStruct = { link = "FlowKindStruct" },
+    BlinkCmpKindClass = { link = "FlowKindClass" },
+    BlinkCmpKindModule = { link = "FlowKindModule" },
+    BlinkCmpKindOperator = { link = "FlowKindOperator" },
+    BlinkCmpKindVariable = { link = "FlowKindVariable" },
+    BlinkCmpKindUnit = { link = "FlowKindUnit" },
     BlinkCmpKindFile = { link = "Directory" },
     BlinkCmpKindFolder = { link = "Directory" },
-    BlinkCmpKindMethod = { link = "Function" },
-    BlinkCmpKindValue = { link = "Constant" },
-    BlinkCmpKindEnumMember = { link = "Type" },
-    BlinkCmpKindInterface = { link = "Type" },
-    BlinkCmpKindColor = { link = "Constant" },
-    BlinkCmpKindTypeParameter = { link = "Type" },
+    BlinkCmpKindMethod = { link = "FlowKindMethod" },
+    BlinkCmpKindValue = { link = "FlowKindValue" },
+    BlinkCmpKindEnumMember = { link = "FlowKindEnumMember" },
+    BlinkCmpKindInterface = { link = "FlowKindInterface" },
+    BlinkCmpKindColor = { link = "FlowKindColor" },
+    BlinkCmpKindTypeParameter = { link = "FlowKindTypeParameter" },
   }
 
   -- require("tokyonight.groups.kinds").kinds(ret, "BlinkCmpKind%s")

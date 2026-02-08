@@ -73,7 +73,7 @@ function M.get(c, _)
 
     --- Functions
     ["@constructor"] = { fg = c.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-    ["@variable.parameter"] = { fg = c.grey[6] }, -- For parameters of a function.
+    ["@variable.parameter"] = { fg = c.grey[8] }, -- For parameters of a function.
     ["@variable.parameter.builtin"] = { fg = c.yellow }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
 
     --- Keywords
@@ -149,7 +149,7 @@ function M.get(c, _)
     ["@lsp.type.namespace.go"] = { link = "@module.go" },
 
     -- Rust
-    -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[6] },
+    -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[8] },
     ["@lsp.type.namespace.rust"] = { fg = c.blue },
 
     -- YAML

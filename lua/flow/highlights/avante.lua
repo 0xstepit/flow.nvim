@@ -6,14 +6,14 @@ function M.get(c, _)
   local theme = {
     AvanteInlineHint = { fg = c.fluo },
 
-    AvanteTitle = { bg = c.transparent, fg = c.fg_border },
+    AvanteTitle = { link = "FlowPluginTitle" },
     AvanteReversedTitle = { link = "AvanteTitle" },
     AvanteSubtitle = { link = "AvanteTitle" },
     AvanteReversedSubtitle = { link = "AvanteTitle" },
     AvanteThirdTitle = { link = "AvanteTitle" },
 
     AvanteReversedThirdTitle = { fg = c.bg },
-    AvanteSidebarWinSeparator = { link = "TelescopeBorder" },
+    AvanteSidebarWinSeparator = { link = "Border" },
   }
 
   return theme

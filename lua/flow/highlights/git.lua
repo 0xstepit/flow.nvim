@@ -10,7 +10,7 @@ function M.get(c, _)
     gitIdentityKeyword = { link = "gitKeyword" },
     gitCommitSummary = { fg = c.fluo },
     gitDate = { fg = c.light_blue },
-    gitDiff = { fg = c.grey[4] },
+    gitDiff = { fg = c.grey[6] },
 
     -- Diff
     diffAdded = { link = "Added" },
@@ -38,10 +38,10 @@ function M.get(c, _)
     GitSignsAddInline = { fg = c.Green.light, bg = c.Green.very_dark },
     GitSignsChangeInline = { fg = c.Light_blue.light, bg = c.Light_blue.very_dark }, -- diff mode: Changed line |diff.txt|
 
-    GitSignsCurrentLineBlame = { fg = c.grey[4] },
+    GitSignsCurrentLineBlame = { fg = c.grey[6] },
 
     -- Fugitive
-    fugitiveHeader = { fg = c.grey[6] },
+    fugitiveHeader = { fg = c.grey[8] },
     fugitiveHelpHeader = { link = "fugitiveHeader" },
     fugitiveUntrackedHeading = { fg = c.yellow },
     fugitiveUntrackedModifier = { link = "fugitiveUntrackedHeading" },
