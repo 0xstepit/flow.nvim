@@ -60,17 +60,17 @@ function M.get(c, o)
     Conceal = { fg = c.fg }, -- Placeholder characters substituted for concealed text (see 'conceallevel').
 
     -- Search and substitution
-    IncSearch = { bg = c.fluo, fg = c.fg_visual },
-    Search = { bg = c.grey[5], fg = c.fg_visual },
-    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.fg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
+    IncSearch = { bg = c.fluo, fg = c.grey[2] },
+    Search = { bg = c.grey[5], fg = c.light_blue },
+    CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
 
-    Visual = { bg = c.bg_visual, fg = c.fg_visual }, -- Visual mode selection.
+    Visual = { bg = c.bg_visual }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
     -- Messages
     MsgArea = { link = "Normal" }, -- Area for messages and cmdline.
-    ModeMsg = { fg = c.bg_visual }, -- 'showmode' message (e.g., "-- INSERT -- ").
+    ModeMsg = { fg = c.fluo }, -- 'showmode' message (e.g., "-- INSERT -- ").
     MoreMsg = { fg = c.bg_visual }, -- |more-prompt|.
     ErrorMsg = { fg = c.error }, -- Error messages on the command line.
     WarningMsg = { fg = c.warning }, -- Warning messages.
@@ -78,12 +78,12 @@ function M.get(c, o)
 
     -- Popup menu
     Pmenu = { bg = c.bg_popup, fg = c.fg_popup }, -- Popup menu: normal item triggered for example when listing plugin commands in terminal.
-    PmenuSel = { bg = c.bg_visual, fg = c.fg_visual }, -- Popup menu: selected item.
+    PmenuSel = { bg = c.bg_visual }, -- Popup menu: selected item.
     PmenuThumb = { bg = c.grey[4], bold = true }, -- Popup menu: Thumb of the scrollbar.
     PmenuSbar = { bg = c.bg_popup }, -- Popup menu: scrollbar.
 
     -- Quickfix
-    QuickFixLine = { bg = c.bg_visual, fg = c.fg_visual }, -- Current |quickfix| item in the quickfix window.
+    QuickFixLine = { bg = c.bg_visual }, -- Current |quickfix| item in the quickfix window.
     qfLineNr = { link = "LineNr" }, -- Line number in the quickfix.
     qfFileName = { link = "Directory" }, -- Name of the file in the quickfix.
     qfSeparator = { link = "qfLineNr" }, -- Separator between quickfix line number and filename.

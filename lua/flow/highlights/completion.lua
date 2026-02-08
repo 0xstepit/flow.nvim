@@ -10,10 +10,10 @@ function M.get(c, _)
     CmpItemAbbrMatch = { fg = c.cyan },
     CmpItemAbbrMatchFuzzy = { fg = c.cyan },
     CmpItemAbbrDeprecated = { fg = c.fg_gutter, bg = c.none, strikethrough = true },
-    CmpCompletionSel = { fg = c.fg_visual },
+    -- CmpCompletionSel = { fg = c.fg_visual },
 
     -- Kind
-    CmpItemKindDefault = { fg = c.fg_visual },
+    -- CmpItemKindDefault = { fg = c.fg_visual },
     CmpItemKindKeyword = { link = "Keyword" },
     CmpItemKindFunction = { link = "Function" },
     CmpItemKindSnippet = { fg = c.red },
