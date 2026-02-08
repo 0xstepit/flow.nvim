@@ -1,3 +1,5 @@
+local hsl = require("flow.util").hsl_to_hex
+
 local M = {}
 
 M.colors = nil
@@ -90,7 +92,7 @@ function M.setup(opts)
 
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[6]
-  colors.bg_float = default_palette.transparent
+  colors.bg_float = hsl(203, 20, 18)
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
   colors.fg_popup = default_palette.grey[7]
@@ -105,7 +107,7 @@ function M.setup(opts)
   colors.bg_highlight = colors.grey[2]
 
   -- Visual
-  colors.bg_visual = colors.fluo
+  colors.bg_visual = hsl(331, 90, 23)
   colors.fg_visual = colors.grey[2]
 
   -- Git

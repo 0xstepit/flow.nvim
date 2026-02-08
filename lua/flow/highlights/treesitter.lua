@@ -150,6 +150,7 @@ function M.get(c, _)
 
     -- Rust
     -- ["@lsp.type.enumMembers.rust"] = { fg = colors.grey[6] },
+    ["@lsp.type.namespace.rust"] = { fg = c.blue },
 
     -- YAML
     ["@property.yaml"] = { fg = c.yellow },

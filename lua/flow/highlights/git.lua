@@ -8,7 +8,7 @@ function M.get(c, _)
 
     gitKeyword = { fg = c.blue },
     gitIdentityKeyword = { link = "gitKeyword" },
-    gitCommitSummary = { fg = c.bg_visual },
+    gitCommitSummary = { fg = c.fluo },
     gitDate = { fg = c.light_blue },
     gitDiff = { fg = c.grey[4] },
 
