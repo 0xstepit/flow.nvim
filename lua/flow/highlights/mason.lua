@@ -1,13 +1,12 @@
 local M = {}
 
---- @param c table: The available colors.
 --- @return table: Mason plugin highlights.
-function M.get(c, _)
+function M.get(_, _)
   local theme = {
-    MasonHeader = { bg = c.fluo, fg = c.grey[3] },
+    MasonHeader = { link = "FlowHeader" },
     MasonHeading = { link = "Bold" },
-    MasonMutedBlock = { bg = c.grey[5], fg = c.grey[3] },
-    MasonHighlightBlockBold = { bg = c.light_blue, fg = c.grey[3], bold = true },
+    MasonMutedBlock = { link = "FlowButton" },
+    MasonHighlightBlockBold = { link = "FlowHighlightBlock" },
   }
 
   return theme

@@ -8,8 +8,8 @@ function M.get(c, _)
     WhichKeyGroup = { fg = c.light_blue },
     WhichKeyDesc = { fg = c.fg_popup },
     WhichKeyFloat = { bg = c.bg_popup },
-    WhichKeyBorder = { fg = c.fg_border }, -- Popup border: requires border to be activated in the plugin.
-    WhichKeyTitle = { fg = c.fb_border },
+    WhichKeyBorder = { link = "FloatBorder" },
+    WhichKeyTitle = { link = "FlowPluginTitle" },
   }
 
   return theme

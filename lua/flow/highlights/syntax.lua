@@ -19,7 +19,7 @@ function M.get(c, o)
     Identifier = { fg = c.cyan }, -- Any variable name.
     Keyword = { fg = c.red }, -- Any other keyword.
     Label = { link = "Keyword" }, -- case, default, etc.
-    Macro = { fg = c.grey[6] }, -- Heavily used in rust.
+    Macro = { fg = c.grey[8] }, -- Heavily used in rust.
     Number = { link = "Constant" }, -- A number constant: 234, 0xff.
     Operator = { fg = c.red }, -- "sizeof", "+", "*", etc.
     PreCondit = { link = "Operator" }, --  preprocessor #if, #else, #endif, etc. (used in Makefile)
@@ -31,12 +31,12 @@ function M.get(c, o)
     SpecialKey = { fg = c.fluo }, -- Unprintable characters: text displayed differently from what it really is. Like pressing Ctrl + k in insert mode.
     Statement = { fg = c.purple }, -- Any statement.
     StorageClass = { fg = c.red }, -- Static, register, volatile, etc. (rust lifetimes)
-    String = { fg = c.grey[7] }, -- A string constant: "this is a string".
+    String = { fg = c.grey[9] }, -- A string constant: "this is a string".
     Structure = { link = "Type" }, -- A struct, union, enum, etc.
     Tag = { fg = c.bg_visual }, -- You can use CTRL-] on this. Like Help tag in fugitive.
     Type = { fg = c.light_blue }, -- Types like int, long, char, etc.
     Typedef = { link = "Type" }, -- A typedef.
-    Bold = { fg = c.grey[6], bold = true },
+    Bold = { fg = c.grey[8], bold = true },
 
     -- Git
     Added = { bg = c.diff.add },
@@ -49,6 +49,36 @@ function M.get(c, o)
     Note = { fg = c.note, bg = c.comment },
     Hack = { fg = c.hack, bg = c.comment },
     Warn = { fg = c.warning, bg = c.comment }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX.
+
+    -- LSP/Completion Kind Groups - Semantic code elements for completion plugins
+    -- These provide consistent, vibrant highlighting for LSP completion items across nvim-cmp, blink, etc.
+    -- Color mapping designed for maximum visual distinction in completion menus
+    FlowKindText = { fg = c.green }, -- Text completions
+    FlowKindMethod = { fg = c.yellow }, -- Methods - distinct from functions
+    FlowKindFunction = { fg = c.orange }, -- Functions
+    FlowKindConstructor = { fg = c.red }, -- Constructors
+    FlowKindField = { fg = c.cyan }, -- Object fields
+    FlowKindVariable = { fg = c.purple }, -- Variables
+    FlowKindClass = { fg = c.red }, -- Classes
+    FlowKindInterface = { fg = c.red }, -- Interfaces
+    FlowKindModule = { fg = c.blue }, -- Modules/namespaces
+    FlowKindProperty = { fg = c.cyan }, -- Properties
+    FlowKindUnit = { fg = c.purple }, -- Units
+    FlowKindValue = { fg = c.grey[9] }, -- Values
+    FlowKindEnum = { fg = c.red }, -- Enums
+    FlowKindKeyword = { fg = c.purple }, -- Keywords
+    FlowKindSnippet = { fg = c.green }, -- Snippets
+    FlowKindColor = { fg = c.purple }, -- Color values
+    FlowKindFile = { fg = c.blue }, -- Files
+    FlowKindReference = { fg = c.grey[8] }, -- References
+    FlowKindFolder = { fg = c.blue }, -- Folders
+    FlowKindEnumMember = { fg = c.red }, -- Enum members
+    FlowKindConstant = { fg = c.yellow }, -- Constants
+    FlowKindStruct = { fg = c.red }, -- Structs
+    FlowKindEvent = { fg = c.purple }, -- Events
+    FlowKindOperator = { fg = c.cyan }, -- Operators
+    FlowKindTypeParameter = { fg = c.grey[8] }, -- Type parameters
+    FlowKindType = { fg = c.light_blue }, -- Generic types
   }
 
   -- Special comments

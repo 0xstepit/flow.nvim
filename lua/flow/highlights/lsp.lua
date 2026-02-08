@@ -22,9 +22,9 @@ function M.get(c, o)
 
     LspCodeLens = { fg = c.comment },
 
-    LspInlayHint = { fg = c.grey[5] },
+    LspInlayHint = { fg = c.grey[7] },
 
-    LspInfoBorder = { fg = c.fg_border, bg = c.bg_float },
+    LspInfoBorder = { link = "FloatBorder" },
     LspKindSnippet = { fg = c.to_check },
 
     SnippetTabstop = {

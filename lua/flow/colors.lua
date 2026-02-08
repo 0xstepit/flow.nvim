@@ -55,7 +55,7 @@ function M.setup(opts)
     colors[Key] = default_palette[key]
   end
 
-  colors.comment = default_palette.grey[5]
+  colors.comment = default_palette.grey[7]
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
@@ -81,7 +81,7 @@ function M.setup(opts)
 
   -- Sidebar: used by the quickfix list, help, and explorer windows.
   -- NOTE: not used.
-  colors.fg_sidebar = default_palette.grey[6]
+  colors.fg_sidebar = default_palette.grey[8]
   colors.bg_sidebar = colors.bg
 
   local is_transparent = opts.theme.transparent == true
@@ -91,19 +91,19 @@ function M.setup(opts)
   colors.bg_gutter = (is_transparent and default_palette.transparent) or colors.bg
 
   -- Float: used for visual elements that are floating and triggered by the user.
-  colors.fg_float = colors.grey[6]
+  colors.fg_float = colors.grey[8]
   colors.bg_float = hsl(203, 20, 18)
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
-  colors.fg_popup = default_palette.grey[7]
+  colors.fg_popup = default_palette.grey[9]
   colors.bg_popup = (is_transparent and default_palette.transparent) or colors.bg
 
   -- Statusline and tabline
-  colors.fg_statusline = colors.grey[4]
+  colors.fg_statusline = colors.grey[6]
   colors.bg_statusline = colors.grey[1]
 
   -- Highlights
-  colors.fg_highlight = colors.grey[4]
+  colors.fg_highlight = colors.grey[6]
   colors.bg_highlight = colors.grey[2]
 
   -- Visual
@@ -115,7 +115,7 @@ function M.setup(opts)
     add = colors.green, -- Added files/lines
     change = colors.light_blue, -- Modified files/lines
     delete = colors.red, -- Deleted files/lines
-    ignore = colors.grey[5], -- Ignored files
+    ignore = colors.grey[7], -- Ignored files
     untracked = colors.sky_blue, -- New untracked files
   }
 
@@ -182,15 +182,15 @@ function M._apply_opts(default_palette, colors, opts)
   end
 
   colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
-  colors.fg = (opts.theme.style == "dark" and colors.grey[6]) or colors.grey[6]
+  colors.fg = (opts.theme.style == "dark" and colors.grey[8]) or colors.grey[8]
 
   -- Borders
   colors.fg_border = (opts.ui.borders == "none" and colors.bg)
     or (opts.ui.borders == "fluo" and colors.fluo)
     or (opts.ui.borders == "theme" and colors.grey[1])
-    or colors.grey[5]
+    or colors.grey[4]
   -- NOTE bg_border is currently not used.
-  colors.bg_border = colors.grey[5]
+  colors.bg_border = colors.grey[7]
 end
 
 function M._invert_colors_for_theme(colors)
@@ -206,7 +206,7 @@ end
 
 function M._invert_colors_for_contrast(colors)
   colors.grey[1], colors.grey[3] = colors.grey[3], colors.grey[1]
-  colors.grey[7], colors.grey[8] = colors.grey[8], colors.grey[7]
+  colors.grey[9], colors.grey[10] = colors.grey[10], colors.grey[9]
 end
 
 return M
