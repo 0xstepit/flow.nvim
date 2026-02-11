@@ -49,6 +49,10 @@ function M.get(o)
     orange = 25,
   }
 
+  -- Get the configured fluo color
+  local configured_fluo = (o.colors and o.colors.fluo) or "pink"
+  local fluo_hue_value = fluo_hue[configured_fluo]
+
   local palette = {
     -- Transparent color
     transparent = "NONE",
@@ -70,6 +74,18 @@ function M.get(o)
       [9] = hsl(203, 20, 85),
       [10] = hsl(203, 20, 88),
       [11] = hsl(203, 20, 90), -- Very light grey
+    },
+
+    -- CursorLine background - uses configured fluo color hue
+    cursorline_bg = {
+      dark = hsl(fluo_hue_value, 20, 13),  -- For dark theme
+      light = hsl(fluo_hue_value, 20, 87), -- For light theme
+    },
+
+    -- Visual selection background - uses configured fluo color hue
+    visual_bg = {
+      dark = hsl(fluo_hue_value, 90, 23),  -- For dark theme
+      light = hsl(fluo_hue_value, 90, 77), -- For light theme (inverted lightness)
     },
 
     -- Fluorescent colors
