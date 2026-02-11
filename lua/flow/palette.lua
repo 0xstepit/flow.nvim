@@ -62,8 +62,8 @@ function M.get(o)
       [1] = hsl(203, 20, 10), -- Very dark grey
       [2] = hsl(203, 20, 13),
       [3] = hsl(203, 20, 15),
-      [4] = hsl(203, 12, 18), -- Very subtle (for separators and ~)
-      [5] = hsl(203, 15, 24), -- Subtle but visible (for line numbers)
+      [4] = hsl(203, 12, 18),
+      [5] = hsl(203, 15, 24),
       [6] = hsl(203, 20, 29),
       [7] = hsl(203, 20, 50),
       [8] = hsl(203, 20, 65),

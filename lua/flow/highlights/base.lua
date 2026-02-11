@@ -38,10 +38,10 @@ function M.get(c, o)
     TabLineSel = { bg = c.bg, fg = c.light_blue }, -- Tab pages line, active tab page label. Used by Trouble for numbers.
 
     -- Borders
-    VertSplit = { fg = c.fg_border }, -- The column separating vertically split windows.
+    VertSplit = { fg = c.fg_vsplit }, -- The column separating vertically split windows.
     WinSeparator = { link = "VertSplit" }, -- The column separating split windows.
     Border = { bg = c.transparent, fg = c.fg_border, bold = true }, -- Transparent border for plugin UIs
-    FloatBorder = { fg = c.fg_border, bg = c.bg_float }, -- Border of floating windows, like completion.
+    FloatBorder = { bg = c.transparent, fg = c.fg_border }, -- Border of floating windows, like completion.
 
     -- Cursors
     -- NOTE: these highlights groups are superseeded by the terminal colors used. For example,
