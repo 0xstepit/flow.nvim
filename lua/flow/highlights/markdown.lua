@@ -6,6 +6,7 @@ local M = {}
 --- @return table: Markdown highlights.
 function M.get(c, o)
   local is_transparent = o.theme.transparent
+  local is_dark = o.theme.style == "dark"
 
   local theme = {
     htmlH1 = { fg = c.purple, bold = true },
@@ -63,7 +64,7 @@ function M.get(c, o)
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = c.grey[6],
+      bg = is_dark and c.grey[2] or c.grey[9],
     },
 
     -- Obsidian

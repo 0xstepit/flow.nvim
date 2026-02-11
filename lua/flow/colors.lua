@@ -13,6 +13,11 @@ M._color_names =
 function M.setup(opts)
   local default_palette = require("flow.palette").get(opts or {})
 
+  opts = opts or {}
+
+  -- Get the configured fluo color (with fallback to default)
+  local fluo_color = (opts.colors and opts.colors.fluo) or "pink"
+
   local colors = {
     -- Core colors
     transparent = default_palette.transparent,
@@ -21,15 +26,14 @@ function M.setup(opts)
     grey = default_palette.grey,
 
     -- Fluo colors
-    fluo = default_palette.fluo.pink.default,
+    fluo = default_palette.fluo[fluo_color].default,
     -- Full palette of the fluo colors.
-    Fluo = default_palette.fluo.pink,
+    Fluo = default_palette.fluo[fluo_color],
 
     -- Debug: some hi are still a mystery to me, use fluo green to discover them.
     to_check = default_palette.fluo.green.default,
   }
 
-  opts = opts or {}
   M._apply_opts(default_palette, colors, opts)
 
   for _, key in ipairs(M._color_names) do
@@ -92,8 +96,10 @@ function M.setup(opts)
   colors.fg_highlight = colors.grey[6]
   colors.bg_highlight = colors.grey[2]
 
-  -- Visual
-  colors.bg_visual = hsl(331, 90, 23)
+  -- Visual - uses configured fluo color
+  colors.bg_visual = opts.theme.style == "dark"
+    and default_palette.visual_bg.dark
+    or default_palette.visual_bg.light
   colors.fg_visual = colors.grey[2]
 
   -- Git
@@ -181,6 +187,11 @@ function M._apply_opts(default_palette, colors, opts)
 
   -- Vertical separator - always visible, slightly darker than background
   colors.fg_vsplit = colors.grey[4]
+
+  -- CursorLine background - uses configured fluo color
+  colors.bg_cursorline = opts.theme.style == "dark"
+    and default_palette.cursorline_bg.dark
+    or default_palette.cursorline_bg.light
 
   -- NOTE bg_border is currently not used.
   colors.bg_border = colors.grey[7]
