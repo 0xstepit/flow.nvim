@@ -5,7 +5,7 @@ local M = {}
 function M.get(c, _)
   local theme = {
     WinBarSpecial = { fg = c.blue },
-    FzfLuaBorder = { link = "Border" },
+    FzfLuaBorder = { link = "FloatBorder" },
   }
 
   return theme

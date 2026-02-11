@@ -13,20 +13,6 @@ M._color_names =
 function M.setup(opts)
   local default_palette = require("flow.palette").get(opts or {})
 
-  -- vim.api.nvim_create_autocmd("FileType", {
-  --   pattern = { "qf" }, -- 'qf' is the filetype for Quickfix
-  --   callback = function()
-  --     vim.schedule(function()
-  --       vim.api.nvim_win_set_option(
-  --         0,
-  --         "winhighlight",
-  --         "Normal:NormalSidebar,FoldColumn:NormalSidebar"
-  --       )
-  --       vim.opt.colorcolumn = ""
-  --     end)
-  --   end,
-  -- })
-
   local colors = {
     -- Core colors
     transparent = default_palette.transparent,
@@ -185,10 +171,17 @@ function M._apply_opts(default_palette, colors, opts)
   colors.fg = (opts.theme.style == "dark" and colors.grey[8]) or colors.grey[8]
 
   -- Borders
-  colors.fg_border = (opts.ui.borders == "none" and colors.bg)
-    or (opts.ui.borders == "fluo" and colors.fluo)
-    or (opts.ui.borders == "theme" and colors.grey[1])
-    or colors.grey[4]
+  if opts.ui.borders == "none" then
+    colors.fg_border = colors.bg -- Match background to make borders invisible
+  elseif opts.ui.borders == "light" then
+    colors.fg_border = colors.grey[4]
+  else -- dark (default)
+    colors.fg_border = colors.grey[1]
+  end
+
+  -- Vertical separator - always visible, slightly darker than background
+  colors.fg_vsplit = colors.grey[4]
+
   -- NOTE bg_border is currently not used.
   colors.bg_border = colors.grey[7]
 end
