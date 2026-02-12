@@ -88,6 +88,12 @@ function M.get(o)
       light = hsl(fluo_hue_value, 90, 77), -- For light theme (inverted lightness)
     },
 
+    -- Float window colors
+    float_bg = {
+      dark = hsl(203, 20, 18),  -- For dark theme
+      light = hsl(203, 20, 82), -- For light theme (inverted lightness)
+    },
+
     -- Fluorescent colors
     fluo = {
       pink = {
