@@ -64,7 +64,7 @@ function M.get(c, o)
     }, --
     ["@markup.raw.markdown_inline"] = {
       fg = c.cyan,
-      bg = is_dark and c.grey[2] or c.grey[9],
+      bg = c.grey[2],
     },
 
     -- Obsidian
