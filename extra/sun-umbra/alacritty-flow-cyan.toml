@@ -4,7 +4,7 @@
 # Black and white
 [colors.primary]
 background = '#d1dbe0'
-foreground = '#3d505c'
+foreground = '#282f33'
 
 # Normal colors
 [colors.normal]
