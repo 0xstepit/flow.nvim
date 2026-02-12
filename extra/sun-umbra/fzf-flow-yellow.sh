@@ -6,8 +6,8 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --height 40% \
 --layout=reverse \
 --color=bg+:#dae2e7 \
---color=fg:#3d505c \
---color=fg+:#3d505c \
+--color=fg:#282f33 \
+--color=fg+:#282f33 \
 --color=hl:#94aab8 \
 --color=hl+:#94aab8 \
 --color=border:#d1dbe0 \
