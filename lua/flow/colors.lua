@@ -1,5 +1,3 @@
-local hsl = require("flow.util").hsl_to_hex
-
 local M = {}
 
 M.colors = nil
@@ -45,7 +43,9 @@ function M.setup(opts)
     colors[Key] = default_palette[key]
   end
 
-  colors.comment = default_palette.grey[7]
+  -- Comments - use lighter grey for light theme
+  colors.comment = opts.theme.style == "dark" and colors.grey[7] -- Dark theme: 50% lightness
+    or colors.grey[4] -- Light theme: inverts to 65% lightness (less dark)
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
@@ -82,11 +82,12 @@ function M.setup(opts)
 
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[8]
-  colors.bg_float = hsl(203, 20, 18)
+  colors.bg_float = opts.theme.style == "dark" and default_palette.float_bg.dark
+    or default_palette.float_bg.light
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
   colors.fg_popup = default_palette.grey[9]
-  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.bg
+  colors.bg_popup = (is_transparent and default_palette.transparent) or colors.bg_float
 
   -- Statusline and tabline
   colors.fg_statusline = colors.grey[6]
@@ -97,8 +98,7 @@ function M.setup(opts)
   colors.bg_highlight = colors.grey[2]
 
   -- Visual - uses configured fluo color
-  colors.bg_visual = opts.theme.style == "dark"
-    and default_palette.visual_bg.dark
+  colors.bg_visual = opts.theme.style == "dark" and default_palette.visual_bg.dark
     or default_palette.visual_bg.light
   colors.fg_visual = colors.grey[2]
 
@@ -179,18 +179,17 @@ function M._apply_opts(default_palette, colors, opts)
   -- Borders
   if opts.ui.borders == "none" then
     colors.fg_border = colors.bg -- Match background to make borders invisible
+    colors.fg_vsplit = colors.grey[2]
   elseif opts.ui.borders == "light" then
     colors.fg_border = colors.grey[4]
+    colors.fg_vsplit = colors.grey[4]
   else -- dark (default)
     colors.fg_border = colors.grey[1]
+    colors.fg_vsplit = colors.grey[1]
   end
 
-  -- Vertical separator - always visible, slightly darker than background
-  colors.fg_vsplit = colors.grey[4]
-
   -- CursorLine background - uses configured fluo color
-  colors.bg_cursorline = opts.theme.style == "dark"
-    and default_palette.cursorline_bg.dark
+  colors.bg_cursorline = opts.theme.style == "dark" and default_palette.cursorline_bg.dark
     or default_palette.cursorline_bg.light
 
   -- NOTE bg_border is currently not used.
