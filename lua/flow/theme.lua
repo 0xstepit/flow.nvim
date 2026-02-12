@@ -20,6 +20,7 @@ M.active_highlights = {
   "lazy",
   "lsp",
   "mini-hipatterns",
+  "mini-files",
   "oil",
   "render-markdown",
   "statusline",
