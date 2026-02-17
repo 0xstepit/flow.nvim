@@ -4,7 +4,7 @@ local M = {}
 --- @return table:
 function M.get(c, _)
   local theme = {
-    HighlightUrl = { fg = c.cyan, undercurl = true },
+    HighlightUrl = { fg = c.grey[8], undercurl = true },
   }
 
   return theme
