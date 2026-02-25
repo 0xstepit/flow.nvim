@@ -10,11 +10,9 @@ M.template = [=[
 # Flow colorscheme | Ghostty
 # https://github.com/0xstepit/flow.nvim
 
-background = ${bg}
-foreground = ${fg}
 # black
-palette = 0=${black}
-palette = 8=${black}
+palette = 0=${grey7}
+palette = 8=${grey7}
 # red
 palette = 1=${red}
 palette = 9=${red}
@@ -37,7 +35,10 @@ palette = 14=${cyan}
 palette = 7=${white}
 palette = 15=${white}
 
+background = ${bg}
+foreground = ${fg}
 cursor-color = ${fluo}
+cursor-text = ${fg}
 selection-background = ${fluo}
 selection-foreground = ${black}
 ]=]

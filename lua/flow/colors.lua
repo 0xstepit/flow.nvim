@@ -5,7 +5,7 @@ M.colors = nil
 M._color_names =
   { "orange", "yellow", "red", "purple", "blue", "light_blue", "sky_blue", "cyan", "green" }
 
--- Setup the colorscheme colors based on the options and palette.
+--- Setup the colorscheme colors based on the options and palette.
 --- @param opts FlowConfig: The options to setup the colorscheme.
 --- @return table: The colors used by the colorscheme.
 function M.setup(opts)

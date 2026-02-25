@@ -26,6 +26,11 @@ end
 local function generate_extras(theme, fluo_color)
   local palette = flow_colors.setup(theme.config)
 
+  -- Flatten grey array so templates can reference individual shades as ${grey1}..${grey11}
+  for i, v in ipairs(palette.grey) do
+    palette["grey" .. i] = v
+  end
+
   -- theme_folder defines where the extra themes will be saved.
   -- It is relative to the root of the project.
   local theme_folder = "./extra/" .. theme.name

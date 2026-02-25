@@ -9,10 +9,10 @@ local function print_usage()
 Usage: generate-extras [options]
 
 Options:
-  all                     Generate all themes and colors
+  all                    Generate all themes and colors
   dark [color]           Generate dark themes (optionally with specific color)
   light [color]          Generate light themes (optionally with specific color)
-  
+ 
 Available colors: pink, yellow, green, orange, cyan
 
 Examples:
