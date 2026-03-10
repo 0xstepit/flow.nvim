@@ -3,35 +3,44 @@ local M = {}
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
 M.defaults = {
-  --- @class Theme
   theme = {
-    ---@alias Style "dark" | "light"
+    --- Defines the colorscheme theme style.
+    --- @type "dark" | "light"
     style = "dark",
-    ---@alias Contrast "default" | "high"
+    --- Defines whether details contrasts should be accentuated or not.
+    --- @type "default" | "high"
     contrast = "default",
-    ---@boolean
+    --- @boolean
     transparent = false,
+    --- @boolean Internal flag set by flow-mono entry point
+    mono = false,
   },
   colors = {
-    ---@alias Mode "default" | "dark" | "light"
+    --- Defines the colors used in the syntax and UI.
+    ---@type "default" | "dark" | "light"
     mode = "default",
-    ---@alias Fluo "pink" | "cyan" | "yellow" | "orange" | "green"
+    --- Fluo color to use in the theme.
+    ---@type "pink" | "cyan" | "yellow" | "orange" | "green"
     fluo = "pink",
-    ---@alias CustomSaturation string A number between 0-100 as string or empty string
-    ---@alias CustomLight string A number between 0-100 as string or empty string
+    --- Allows to specify custom saturation and light for theme. Despite the option is present for
+    --- maximum customizability, it is recommended to use defaults.
     custom = {
-      ---@type CustomSaturation
-      saturation = "", -- Custom saturation value (0-100)
-      ---@type CustomLight
-      light = "", -- Custom lightness value (0-100)
+      --- A number between 0-100 as string or empty string.
+      --- @type string
+      saturation = "",
+      --- A number between 0-100 as string or empty string.
+      --- @type string
+      light = "",
     },
   },
   ui = {
-    ---@alias Borders "light" | "dark" | "none"
+    --- @type "light" | "dark" | "none"
     borders = "dark",
-    ---@boolean
+    --- Defines if spell errors have to be highlighted with a more outstanding color.
+    --- @boolean
     aggressive_spell = false,
-    ---@boolean
+    --- Defines if special comments (TODO, FIX, etc.) has to be highlighted with different colors.
+    --- @boolean
     aggressive_special_comment = false,
   },
 }
@@ -39,7 +48,7 @@ M.defaults = {
 --- @type FlowConfig
 M.options = {}
 
---- Valid values for configuration options
+--- Valid values for configuration options.
 M.valid_options = {
   fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
   modes = { "default", "dark", "light" },
@@ -51,33 +60,36 @@ M.valid_options = {
   },
 }
 
---- Validate configuration options
---- @param opts FlowConfig
+--- Validate configuration options.
+--- @param config FlowConfig
 --- @return boolean, string?
-local function validate_options(opts)
+local function validate_options(config)
   -- Validate theme options.
-  if opts.theme then
+  if config.theme then
     if
-      opts.theme.contrast and not vim.tbl_contains(M.valid_options.contrast, opts.theme.contrast)
+      config.theme.contrast
+      and not vim.tbl_contains(M.valid_options.contrast, config.theme.contrast)
     then
-      return false, string.format("Invalid border: %s", opts.theme.contrast)
+      return false, string.format("Invalid border: %s", config.theme.contrast)
     end
   end
 
   -- Validate color options.
-  if opts.colors then
-    if opts.colors.fluo and not vim.tbl_contains(M.valid_options.fluo_colors, opts.colors.fluo) then
-      return false, string.format("Invalid fluo color: %s", opts.colors.fluo)
+  if config.colors then
+    if
+      config.colors.fluo and not vim.tbl_contains(M.valid_options.fluo_colors, config.colors.fluo)
+    then
+      return false, string.format("Invalid fluo color: %s", config.colors.fluo)
     end
 
-    if opts.colors.mode and not vim.tbl_contains(M.valid_options.modes, opts.colors.mode) then
-      return false, string.format("Invalid mode: %s", opts.colors.mode)
+    if config.colors.mode and not vim.tbl_contains(M.valid_options.modes, config.colors.mode) then
+      return false, string.format("Invalid mode: %s", config.colors.mode)
     end
 
-    -- Validate custom color values for hue and light
-    if opts.colors.custom then
-      if opts.colors.custom.saturation and opts.colors.custom.saturation ~= "" then
-        local s = tonumber(opts.colors.custom.saturation)
+    -- Validate custom color values for hue and light.
+    if config.colors.custom then
+      if config.colors.custom.saturation and config.colors.custom.saturation ~= "" then
+        local s = tonumber(config.colors.custom.saturation)
         if
           not s
           or s < M.valid_options.custom_ranges.saturation.min
@@ -86,14 +98,14 @@ local function validate_options(opts)
           return false,
             string.format(
               "Invalid saturation value: %s (must be between %d and %d)",
-              opts.colors.custom.saturation,
+              config.colors.custom.saturation,
               M.valid_options.custom_ranges.saturation.min,
               M.valid_options.custom_ranges.saturation.max
             )
         end
       end
-      if opts.colors.custom.light and opts.colors.custom.light ~= "" then
-        local l = tonumber(opts.colors.custom.light)
+      if config.colors.custom.light and config.colors.custom.light ~= "" then
+        local l = tonumber(config.colors.custom.light)
         if
           not l
           or l < M.valid_options.custom_ranges.light.min
@@ -102,7 +114,7 @@ local function validate_options(opts)
           return false,
             string.format(
               "Invalid light value: %s (must be between %d and %d)",
-              opts.colors.custom.light,
+              config.colors.custom.light,
               M.valid_options.custom_ranges.light.min,
               M.valid_options.custom_ranges.light.max
             )
@@ -111,10 +123,10 @@ local function validate_options(opts)
     end
   end
 
-  -- Validate ui options
-  if opts.ui then
-    if opts.ui.borders and not vim.tbl_contains(M.valid_options.borders, opts.ui.borders) then
-      return false, string.format("Invalid border: %s", opts.ui.borders)
+  -- Validate UI options.
+  if config.ui then
+    if config.ui.borders and not vim.tbl_contains(M.valid_options.borders, config.ui.borders) then
+      return false, string.format("Invalid border: %s", config.ui.borders)
     end
   end
 
@@ -122,23 +134,23 @@ local function validate_options(opts)
 end
 
 --- This is the entry point of the configuration before loading the plugin.
---- It sets up the colorscheme options by merging the provided options with
+--- It sets the colorscheme options by merging the user provided ones with
 --- the default configuration.
---- @param opts FlowConfig? Optional table to customize the colorscheme setup.
-function M._setup(opts)
-  -- -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
-  -- -- the plugin manager because first set the options,and then set the colorscheme.
+--- @param config FlowConfig? Optional table to customize the colorscheme setup.
+function M._setup(config)
+  -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
+  -- the plugin manager because it first set the options, and then set the colorscheme.
   if not vim.tbl_isempty(M.options) then
     return
   end
 
-  local ok, err = validate_options(opts or {})
+  local ok, err = validate_options(config or {})
   if not ok then
-    opts = {}
+    config = {}
     vim.notify("Error setting user options, fallback to defaults: " .. err, vim.log.levels.WARN)
   end
 
-  M.options = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
+  M.options = vim.tbl_deep_extend("force", {}, M.defaults, config or {})
 end
 
 return M
