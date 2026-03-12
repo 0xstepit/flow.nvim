@@ -3,13 +3,12 @@ local util = require("flow.util")
 
 local M = {}
 
---- List of active highlight groups to be configured.
+--- List of active pulugins highlight groups to be configured.
 --- @type string[]
 M.active_highlights = {
+  "avante",
   "base",
   "blink",
-  "syntax",
-  "markdown",
   "completion",
   "dap",
   "diagnostic",
@@ -21,9 +20,12 @@ M.active_highlights = {
   "lsp",
   "mini-hipatterns",
   "mini-files",
+  "markdown",
+  "mason",
   "oil",
   "render-markdown",
   "statusline",
+  "syntax",
   "telescope",
   "todo-comments",
   "treesitter",
@@ -32,8 +34,6 @@ M.active_highlights = {
   "winbar",
   "undotree",
   "vim-highlighturl",
-  "mason",
-  "avante",
 }
 
 M.b = {}
