@@ -38,9 +38,10 @@ local M = {
   b = {},
 }
 
---- This function sets up the highlight groups by merging the colors
+--- Sets the highlight groups up by merging the colors
 --- and options for each active highlight group.
---- @return table: A table of configured highlight groups.
+--- @return table Highlight groups.
+--- @return table Flow colors.
 function M.configure()
   -- Options retrieved can be the default one or those modified by the call to
   -- `require("flow").config{}`
@@ -59,9 +60,7 @@ function M.configure()
 
   vim.api.nvim_set_hl(0, "@lsp.type.property.lua", {})
 
-  -- util.autocmds()
-
-  return highlights
+  return highlights, colors
 end
 
 return M
