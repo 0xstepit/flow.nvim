@@ -36,6 +36,8 @@ function M.load(cfg)
   for group, hi in pairs(highlights) do
     vim.api.nvim_set_hl(0, group, hi)
   end
+
+  util.terminal(colors)
 end
 
 return M
