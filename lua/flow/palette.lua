@@ -1,4 +1,5 @@
-local hsl_to_hex = require("flow.util").hsl_to_hex
+local util = require("flow.util")
+local hsl_to_hex = util.hsl_to_hex
 
 --- @class HSL
 --- @field h number Hue (0-360)
@@ -64,7 +65,7 @@ local M = {
   },
 
   --- Default grey lightness steps used by both chromatic and monochrome palettes.
-  grey_lightness = n_chebyshev_values(15, 10, 90),
+  grey_lightness = util.n_chebyshev_values(15, 10, 90),
 
   --- Default grey hue for the chromatic palette.
   grey_hue = 203,
