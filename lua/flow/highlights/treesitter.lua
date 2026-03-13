@@ -1,8 +1,9 @@
 local M = {}
 
 --- @param c table: The available colors.
+--- @param o FlowConfig: The available options.
 --- @return table: Treesitter plugin highlights.
-function M.get(c, _)
+function M.get(c, o)
   local theme = {
 
     TreesitterContext = { bg = c.grey[2] },
@@ -159,6 +160,12 @@ function M.get(c, _)
     ["@function.just"] = { link = "Function" },
     ["@function.call.just"] = { link = "@variable.parameter" },
   }
+
+  -- Monochrome: italic fields/properties to distinguish from comments.
+  if o.theme.mono then
+    theme["@variable.member"] = { fg = c.light_blue, italic = true }
+    theme["@property"] = { fg = c.cyan, italic = true }
+  end
 
   return theme
 end
