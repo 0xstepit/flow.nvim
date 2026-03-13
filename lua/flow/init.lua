@@ -1,5 +1,6 @@
 local config = require("flow.config")
 local theme = require("flow.theme")
+local util = require("flow.util")
 
 local M = {}
 
@@ -30,7 +31,7 @@ function M.load(cfg)
     M.config(cfg)
   end
 
-  local highlights = theme.configure()
+  local highlights, colors = theme.configure()
 
   -- The heart of the plugin, where highlight groups are set.
   for group, hi in pairs(highlights) do
