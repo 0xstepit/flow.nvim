@@ -60,34 +60,38 @@ function M.hsl_to_rbg(h, s, l)
   return math.floor(0.5 + r * 255), math.floor(0.5 + g * 255), math.floor(0.5 + b * 255)
 end
 
--- TODO: complete
 function M.terminal(colors)
-  -- dark
+  -- black
   vim.g.terminal_color_0 = colors.black
-  vim.g.terminal_color_8 = colors.terminal_black
+  vim.g.terminal_color_8 = colors.grey[5]
 
-  -- light
-  vim.g.terminal_color_7 = colors.terminal_white
-  vim.g.terminal_color_15 = colors.fg
+  -- red
+  vim.g.terminal_color_1 = colors.Red.dark
+  vim.g.terminal_color_9 = colors.Red.light
 
-  -- colors
-  vim.g.terminal_color_1 = colors.red
-  vim.g.terminal_color_9 = colors.red
+  -- green
+  vim.g.terminal_color_2 = colors.Green.dark
+  vim.g.terminal_color_10 = colors.Green.light
 
-  vim.g.terminal_color_2 = colors.cyan
-  vim.g.terminal_color_10 = colors.cyan
+  -- yellow
+  vim.g.terminal_color_3 = colors.Yellow.dark
+  vim.g.terminal_color_11 = colors.Yellow.light
 
-  vim.g.terminal_color_3 = colors.yellow
-  vim.g.terminal_color_11 = colors.yellow
+  -- blue
+  vim.g.terminal_color_4 = colors.Blue.dark
+  vim.g.terminal_color_12 = colors.Blue.light
 
-  vim.g.terminal_color_4 = colors.blue
-  vim.g.terminal_color_12 = colors.blue
+  -- magenta
+  vim.g.terminal_color_5 = colors.Purple.dark
+  vim.g.terminal_color_13 = colors.Purple.light
 
-  vim.g.terminal_color_5 = colors.purple
-  vim.g.terminal_color_13 = colors.purple
+  -- cyan
+  vim.g.terminal_color_6 = colors.Cyan.dark
+  vim.g.terminal_color_14 = colors.Cyan.light
 
-  vim.g.terminal_color_6 = colors.cyan
-  vim.g.terminal_color_14 = colors.cyan
+  -- white
+  vim.g.terminal_color_7 = colors.grey[7]
+  vim.g.terminal_color_15 = colors.white
 end
 
 --- Interpolates a string by replacing placeholders with corresponding values from a table.
