@@ -144,6 +144,21 @@ function M.get(c, o)
     ["@lsp.typemod.variable.injected"] = { link = "@variable" },
     ["@lsp.typemod.variable.static"] = { link = "@constant" },
 
+    -- Lua: clear LSP semantic tokens inside doc comments so luadoc
+    -- captures (linked to Comment above) are not overridden.
+    ["@lsp.type.keyword.lua"] = {},
+    ["@lsp.type.type.lua"] = {},
+    ["@lsp.type.variable.lua"] = {},
+    -- Lua docstrings: keep all luadoc captures as comments so annotations
+    -- like @param, @return, @type don't mix syntax colors into docstrings.
+    ["@keyword.luadoc"] = { link = "Comment" },
+    ["@type.luadoc"] = { link = "Comment" },
+    ["@variable.parameter.luadoc"] = { link = "Comment" },
+    ["@operator.luadoc"] = { link = "Comment" },
+    ["@punctuation.delimiter.luadoc"] = { link = "Comment" },
+    ["@punctuation.bracket.luadoc"] = { link = "Comment" },
+    ["@string.luadoc"] = { link = "Comment" },
+
     -- Golang
     ["@module.go"] = { fg = c.blue },
     ["@keyword.function.go"] = { link = "Statement" },
