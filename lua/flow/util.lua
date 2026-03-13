@@ -9,6 +9,34 @@ function M.merge(left, right)
   return left
 end
 
+function M.n_equidistant_values(n, range)
+  assert(n >= 2, "number of points should be >= 2")
+  local step = math.floor(range / n)
+
+  local values = {}
+  for i = 0, n do
+    values[i + 1] = i * step + step
+  end
+
+  return values
+end
+
+--- Generate n+1 Chebyshev-spaced values over [low, high].
+--- Nodes cluster near both endpoints, giving finer gradation in the
+--- darks and lights with wider spacing through the mid-tones.
+function M.n_chebyshev_values(n, low, high)
+  assert(n >= 2, "number of points should be >= 2")
+
+  local values = {}
+  for i = 0, n do
+    -- Chebyshev nodes on [-1, 1]: cos(i * pi / n), mapped to [low, high]
+    local node = math.cos(i * math.pi / n)
+    values[i + 1] = math.floor((1 - node) / 2 * (high - low) + low + 0.5)
+  end
+
+  return values
+end
+
 function M.hsl_to_hex(h, s, l)
   local r, g, b = M.hsl_to_rbg(h, s, l)
   return M.rgb_to_hex(r, g, b)
