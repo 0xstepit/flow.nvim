@@ -1,20 +1,31 @@
-local M = {}
+local palette = require("flow.palette")
 
-M.colors = nil
+local M = {
+  _color_names = {
+    "blue",
+    "cyan",
+    "green",
+    "light_blue",
+    "orange",
+    "purple",
+    "red",
+    "sky_blue",
+    "yellow",
+  },
 
-M._color_names =
-  { "orange", "yellow", "red", "purple", "blue", "light_blue", "sky_blue", "cyan", "green" }
+  colors = nil,
+}
 
 --- Setup the colorscheme colors based on the options and palette.
---- @param opts FlowConfig: The options to setup the colorscheme.
---- @return table: The colors used by the colorscheme.
-function M.setup(opts)
-  local default_palette = require("flow.palette").get(opts or {})
+--- @param config FlowConfig The configuration options to setup the colorscheme.
+--- @return table The colors used by the colorscheme.
+function M.setup(config)
+  local default_palette = palette.get(config or {})
 
-  opts = opts or {}
+  config = config or {}
 
   -- Get the configured fluo color (with fallback to default)
-  local fluo_color = (opts.colors and opts.colors.fluo) or "pink"
+  local fluo_color = (config.colors and config.colors.fluo) or "pink"
 
   local colors = {
     -- Core colors
@@ -32,11 +43,11 @@ function M.setup(opts)
     to_check = default_palette.fluo.green.default,
   }
 
-  M._apply_opts(default_palette, colors, opts)
+  M._apply_opts(default_palette, colors, config)
 
   for _, key in ipairs(M._color_names) do
     -- Set the specific mode of the colors.
-    colors[key] = default_palette[key][opts.colors.mode]
+    colors[key] = default_palette[key][config.colors.mode]
     -- Store all the color variations. These variables are used for hi that
     -- requires contrasts with the current theme, like git.
     local Key = key:gsub("^%l", string.upper)
@@ -44,7 +55,7 @@ function M.setup(opts)
   end
 
   -- Comments - use lighter grey for light theme
-  colors.comment = opts.theme.style == "dark" and colors.grey[7] -- Dark theme: 50% lightness
+  colors.comment = config.theme.style == "dark" and colors.grey[7] -- Dark theme: 50% lightness
     or colors.grey[4] -- Light theme: inverts to 65% lightness (less dark)
 
   -- +----------------------------------------------------------------------------------------+
@@ -74,7 +85,7 @@ function M.setup(opts)
   colors.fg_sidebar = default_palette.grey[8]
   colors.bg_sidebar = colors.bg
 
-  local is_transparent = opts.theme.transparent == true
+  local is_transparent = config.theme.transparent == true
 
   -- Gutter: used for line numbers, signs, and fold column.
   colors.fg_gutter = colors.grey[5]
@@ -82,7 +93,7 @@ function M.setup(opts)
 
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[8]
-  colors.bg_float = opts.theme.style == "dark" and default_palette.float_bg.dark
+  colors.bg_float = config.theme.style == "dark" and default_palette.float_bg.dark
     or default_palette.float_bg.light
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
@@ -98,7 +109,7 @@ function M.setup(opts)
   colors.bg_highlight = colors.grey[2]
 
   -- Visual - uses configured fluo color
-  colors.bg_visual = opts.theme.style == "dark" and default_palette.visual_bg.dark
+  colors.bg_visual = config.theme.style == "dark" and default_palette.visual_bg.dark
     or default_palette.visual_bg.light
   colors.fg_visual = colors.grey[2]
 
@@ -111,7 +122,7 @@ function M.setup(opts)
     untracked = colors.sky_blue, -- New untracked files
   }
 
-  local is_dark = opts.theme.style == "dark"
+  local is_dark = config.theme.style == "dark"
   colors.diff = {
     add = not is_dark and colors.Green.very_light or colors.Green.very_dark,
     delete = not is_dark and colors.Red.very_light or colors.Red.very_dark,
@@ -131,6 +142,11 @@ function M.setup(opts)
   colors.note = is_dark and colors.Green.default or colors.Green.dark -- NOTE comments
   colors.fixme = is_dark and colors.Red.default or colors.Red.dark -- FIXME comments
   colors.hack = is_dark and colors.Yellow.default or colors.Yellow.dark -- HACK comments
+
+  -- Apply monochrome transformation if enabled
+  if config.theme.mono then
+    require("flow.mono").apply(colors, config)
+  end
 
   M.colors = colors
 

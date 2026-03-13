@@ -94,6 +94,15 @@ function M.get(c, o)
     theme.Hack = { fg = c.hack, bg = c.comment }
   end
 
+  -- Monochrome: bold keywords/operators, italic comments/delimiters/special.
+  if o.theme.mono then
+    theme.Comment = { fg = c.comment, italic = true }
+    theme.Keyword = { fg = c.red, bold = true }
+    theme.Operator = { fg = c.red, bold = true }
+    theme.Delimiter = { fg = c.purple, italic = true }
+    theme.Special = { fg = c.purple, italic = true }
+  end
+
   return theme
 end
 

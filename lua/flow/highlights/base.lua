@@ -135,6 +135,47 @@ function M.get(c, o)
     FlowInfo = { fg = c.light_blue }, -- Info/neutral action state
   }
 
+  -- Monochrome: collapse FlowKind groups to ~6 grey lightness tiers.
+  if o.theme.mono then
+    -- Tier 1: Keywords/constructors/classes
+    theme.FlowKindKeyword = { fg = c.red, bold = true }
+    theme.FlowKindConstructor = { fg = c.red, bold = true }
+    theme.FlowKindClass = { fg = c.red, bold = true }
+    theme.FlowKindInterface = { fg = c.red, bold = true }
+    theme.FlowKindStruct = { fg = c.red, bold = true }
+    theme.FlowKindEnum = { fg = c.red, bold = true }
+    theme.FlowKindEnumMember = { fg = c.red, bold = true }
+
+    -- Tier 2: Functions/methods.
+    theme.FlowKindFunction = { fg = c.light_blue }
+    theme.FlowKindMethod = { fg = c.light_blue }
+
+    -- Tier 3: Variables/fields/properties.
+    theme.FlowKindVariable = { fg = c.cyan }
+    theme.FlowKindField = { fg = c.cyan }
+    theme.FlowKindProperty = { fg = c.cyan }
+
+    -- Tier 4: Constants/values.
+    theme.FlowKindConstant = { fg = c.yellow }
+    theme.FlowKindValue = { fg = c.yellow }
+    theme.FlowKindUnit = { fg = c.yellow }
+
+    -- Tier 5: Modules/files.
+    theme.FlowKindModule = { fg = c.blue }
+    theme.FlowKindFile = { fg = c.blue }
+    theme.FlowKindFolder = { fg = c.blue }
+
+    -- Tier 6: Others.
+    theme.FlowKindText = { fg = c.purple, italic = true }
+    theme.FlowKindSnippet = { fg = c.purple, italic = true }
+    theme.FlowKindColor = { fg = c.purple, italic = true }
+    theme.FlowKindEvent = { fg = c.purple, italic = true }
+    theme.FlowKindOperator = { fg = c.cyan }
+    theme.FlowKindReference = { fg = c.grey[8] }
+    theme.FlowKindTypeParameter = { fg = c.grey[8] }
+    theme.FlowKindType = { fg = c.light_blue }
+  end
+
   return theme
 end
 

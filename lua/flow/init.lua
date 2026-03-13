@@ -13,8 +13,8 @@ M.setup = config._setup
 --- It sets up the colorscheme by clearing existing highlights,
 --- enabling true color support, setting the colorscheme name,
 --- and applying the highlight groups defined in the theme.
---- @param opts FlowConfig?
-function M.load(opts)
+--- @param cfg FlowConfig?
+function M.load(cfg)
   -- Check if the current colorscheme is different from the one to be loaded.
   if vim.g.colors_name ~= M.name then
     -- Clear existing highlights.
@@ -26,15 +26,15 @@ function M.load(opts)
     vim.g.colors_name = M.name
   end
 
-  if opts then
-    M.config(opts)
+  if cfg then
+    M.config(cfg)
   end
 
   local highlights = theme.configure()
 
   -- The heart of the plugin, where highlight groups are set.
-  for group, c in pairs(highlights) do
-    vim.api.nvim_set_hl(0, group, c)
+  for group, hi in pairs(highlights) do
+    vim.api.nvim_set_hl(0, group, hi)
   end
 end
 
