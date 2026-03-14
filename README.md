@@ -21,8 +21,10 @@ Flow colorscheme family offers two variants:
 - `default`: is the original version of the colorscheme providing a wide range of colors.
   This variant is recommended for people that likes selected colors for every semantic syntax in the UI.
 
-- `mono`: the mono variant is designed to be minimal, offering only shades of grey and the selected
-  fluo. This variant is recommended for people that want a super focusing environment.
+- `mono`: the mono variant desaturates all syntax colors to metallic grey shades with a cool blue
+  hue, while mapping keywords and operators to the selected fluo accent color. Diagnostics also use
+  fluo shades. This variant is recommended for people that want a super focusing environment where
+  the accent color draws attention to what matters most.
 
 To variant can be selected by loading the colorscheme with the specific name:
 
@@ -114,7 +116,7 @@ return {
         },
       },
       ui = {
-        borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
+        borders = "none", -- "light" | "dark" | "none"
         aggressive_spell = false, -- true | false
       },
     },

@@ -5,6 +5,7 @@ Table of Contents                                *flow.nvim-table-of-contents*
 
 1. 🌊 Flow                                             |flow.nvim-🌊-flow|
   - Showcase                                    |flow.nvim-🌊-flow-showcase|
+  - Variants                                    |flow.nvim-🌊-flow-variants|
   - Palette                                      |flow.nvim-🌊-flow-palette|
   - Requirements                            |flow.nvim-🌊-flow-requirements|
   - Installation                            |flow.nvim-🌊-flow-installation|
@@ -29,6 +30,33 @@ Why fluo? Because it’s simply cool!
 
 
 SHOWCASE                                        *flow.nvim-🌊-flow-showcase*
+
+
+VARIANTS                                        *flow.nvim-🌊-flow-variants*
+
+Flow colorscheme family offers two variants:
+
+- `default`: is the original version of the colorscheme providing a wide range
+    of colors. This variant is recommended for people that likes selected colors
+    for every semantic syntax in the UI.
+
+- `mono`: the mono variant desaturates all syntax colors to metallic grey shades
+    with a cool blue hue, while mapping keywords and operators to the selected
+    fluo accent color. Diagnostics also use fluo shades. This variant is
+    recommended for people that want a super focusing environment where the
+    accent color draws attention to what matters most.
+
+The variant can be selected by loading the colorscheme with the specific name:
+
+>lua
+    vim.cmd("colorscheme flow")
+<
+
+Or:
+
+>lua
+    vim.cmd("colorscheme flow-mono")
+<
 
 
 PALETTE                                          *flow.nvim-🌊-flow-palette*
@@ -114,7 +142,7 @@ DEFAULT ~
             },
           },
           ui = {
-            borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
+            borders = "none", -- "light" | "dark" | "none"
             aggressive_spell = false, -- true | false
           },
         },
