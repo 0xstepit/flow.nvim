@@ -91,7 +91,7 @@ function M.apply(colors, opts)
   colors.bracket = is_dark and colors.Fluo.dark or colors.Fluo.light
 
   -- Comments: use a grey that's clearly dimmer than syntax elements
-  colors.comment = is_dark and colors.grey[6] or colors.grey[6]
+  colors.comment = is_dark and colors.grey[7] or colors.grey[6]
 
   -- Special comments: fluo for fixme (urgent), grey for others
   colors.fixme = colors.Fluo.default

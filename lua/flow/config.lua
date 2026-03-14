@@ -112,8 +112,6 @@ end
 --- the default configuration.
 --- @param config FlowConfig? Optional table to customize the colorscheme configuration.
 function M._setup(config)
-  vim.notify("Flow configuration setup", vim.log.levels.DEBUG)
-
   -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
   -- the plugin manager because it first set the options, and then set the colorscheme.
   if not vim.tbl_isempty(M.options) then
@@ -124,7 +122,6 @@ function M._setup(config)
     local ok, err = M.validate_options(config)
     if not ok then
       config = {}
-      vim.notify("Error setting user options, fallback to defaults: " .. err, vim.log.levels.WARN)
     end
   end
 
