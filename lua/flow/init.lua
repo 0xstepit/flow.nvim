@@ -19,11 +19,10 @@ M.setup = config._setup
 --- and applying the highlight groups defined in the theme.
 --- This method is called with `vim.cmd("colorscheme flow")`.
 --- @param variant string
+---
 function M.load(variant)
-  vim.notify("Calling load with variant: " .. variant, vim.log.levels.WARN)
   -- Check if the current colorscheme is different from the one to be loaded.
   if not vim.tbl_contains(M.names, vim.g.colors_name) then
-    vim.notify("Entering", vim.log.levels.WARN)
     -- Clear existing highlights.
     vim.cmd("hi clear")
     -- Enable true color support.
