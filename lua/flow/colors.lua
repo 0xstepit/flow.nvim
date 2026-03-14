@@ -1,7 +1,8 @@
 local palette = require("flow.palette")
 
 local M = {
-  _color_names = {
+  --- Names of the colors used in the colorscheme.
+  names = {
     "blue",
     "cyan",
     "green",
@@ -20,15 +21,15 @@ local M = {
 --- @param config FlowConfig The configuration options to setup the colorscheme.
 --- @return table The colors used by the colorscheme.
 function M.setup(config)
-  local default_palette = palette.get(config or {})
-
   config = config or {}
+
+  local default_palette = palette.get(config)
 
   -- Get the configured fluo color (with fallback to default)
   local fluo_color = (config.colors and config.colors.fluo) or "pink"
 
   local colors = {
-    -- Core colors
+    -- Core colors.
     transparent = default_palette.transparent,
     black = default_palette.black,
     white = default_palette.white,
@@ -45,18 +46,23 @@ function M.setup(config)
 
   M._apply_opts(default_palette, colors, config)
 
-  for _, key in ipairs(M._color_names) do
+  for _, key in ipairs(M.names) do
     -- Set the specific mode of the colors.
     colors[key] = default_palette[key][config.colors.mode]
     -- Store all the color variations. These variables are used for hi that
-    -- requires contrasts with the current theme, like git.
+    -- require contrasts with the current theme, like git.
     local Key = key:gsub("^%l", string.upper)
     colors[Key] = default_palette[key]
   end
 
+  -- Yellow is perceptually too light for light backgrounds, use the dark shade instead.
+  if config.theme.style ~= "dark" then
+    colors.yellow = colors.Yellow.dark
+  end
+
   -- Comments - use lighter grey for light theme
   colors.comment = config.theme.style == "dark" and colors.grey[7] -- Dark theme: 50% lightness
-    or colors.grey[4] -- Light theme: inverts to 65% lightness (less dark)
+    or colors.grey[6] -- Light theme: darker grey for readability against light background
 
   -- +----------------------------------------------------------------------------------------+
   -- | Sidebar (e.g., NERDTree, Telescope, Quickfix)                                          | <- Sidebar
@@ -90,11 +96,24 @@ function M.setup(config)
   -- Gutter: used for line numbers, signs, and fold column.
   colors.fg_gutter = colors.grey[5]
   colors.bg_gutter = (is_transparent and default_palette.transparent) or colors.bg
+  --
+  -- -- CursorLine background.
+  --
+  -- -- Visual selection background.
+  -- visual_bg = {
+  --   dark = hsl_to_hex(fluo_hue_value, 90, 23), -- For dark theme
+  --   light = hsl_to_hex(fluo_hue_value, 90, 77), -- For light theme
+  -- },
+  --
 
+  -- -- Float window colors.
+  -- float_bg = {
+  --   dark = hsl_to_hex(203, 20, 18), -- For dark theme
+  --   light = hsl_to_hex(203, 20, 82), -- For light theme
+  -- },
   -- Float: used for visual elements that are floating and triggered by the user.
   colors.fg_float = colors.grey[8]
-  colors.bg_float = config.theme.style == "dark" and default_palette.float_bg.dark
-    or default_palette.float_bg.light
+  colors.bg_float = default_palette.grey[2]
 
   -- Popups: use for completion menu and all visual components that appears autonomously.
   colors.fg_popup = default_palette.grey[9]
@@ -108,9 +127,12 @@ function M.setup(config)
   colors.fg_highlight = colors.grey[6]
   colors.bg_highlight = colors.grey[2]
 
+  -- visual_bg = {
+  --   dark = hsl_to_hex(fluo_hue_value, 90, 23), -- For dark theme
+  --   light = hsl_to_hex(fluo_hue_value, 90, 77), -- For light theme
+  -- },
   -- Visual - uses configured fluo color
-  colors.bg_visual = config.theme.style == "dark" and default_palette.visual_bg.dark
-    or default_palette.visual_bg.light
+  colors.bg_visual = config.theme.style == "dark" and colors.Fluo.dark or colors.Fluo.light
   colors.fg_visual = colors.grey[2]
 
   -- Git
@@ -144,7 +166,7 @@ function M.setup(config)
   colors.hack = is_dark and colors.Yellow.default or colors.Yellow.dark -- HACK comments
 
   -- Apply monochrome transformation if enabled
-  if config.theme.mono then
+  if config.variant == "mono" then
     require("flow.mono").apply(colors, config)
   end
 
@@ -170,33 +192,35 @@ function M._swap(t, a, b)
   t[a], t[b] = t[b], t[a]
 end
 
---- @param opts FlowConfig
-function M._apply_opts(default_palette, colors, opts)
-  if opts.colors.fluo then
-    colors.fluo = default_palette.fluo[opts.colors.fluo].default
-    colors.Fluo = default_palette.fluo[opts.colors.fluo]
+--- @param default_palette table
+--- @param colors table
+--- @param config FlowConfig
+function M._apply_opts(default_palette, colors, config)
+  if config.colors.fluo then
+    colors.fluo = default_palette.fluo[config.colors.fluo].default
+    colors.Fluo = default_palette.fluo[config.colors.fluo]
   end
 
   -- Apply changes if the theme is not dark.
   -- HACK: this has to be executed before all changes that involves white, black, and grey.
-  if opts.theme.style ~= "dark" then
+  if config.theme.style ~= "dark" then
     M._invert_colors_for_theme(colors)
   end
 
   -- If high contrast the darkest color is swap for the next color and the
   -- lightest color is swap for the color before.
-  if opts.theme.contrast == "high" then
+  if config.theme.contrast == "high" then
     M._invert_colors_for_contrast(colors)
   end
 
-  colors.bg = (opts.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
-  colors.fg = (opts.theme.style == "dark" and colors.grey[8]) or colors.grey[8]
+  colors.bg = (config.theme.transparent and default_palette.transparent) or default_palette.grey[3] -- used for theme background
+  colors.fg = (config.theme.style == "dark" and colors.grey[8]) or colors.grey[8]
 
   -- Borders
-  if opts.ui.borders == "none" then
+  if config.ui.borders == "none" then
     colors.fg_border = colors.bg -- Match background to make borders invisible
     colors.fg_vsplit = colors.grey[2]
-  elseif opts.ui.borders == "light" then
+  elseif config.ui.borders == "light" then
     colors.fg_border = colors.grey[4]
     colors.fg_vsplit = colors.grey[4]
   else -- dark (default)
@@ -204,9 +228,13 @@ function M._apply_opts(default_palette, colors, opts)
     colors.fg_vsplit = colors.grey[1]
   end
 
+  -- cursorline_bg = {
+  --   dark = hsl_to_hex(fluo_hue_value, 20, 13), -- For dark theme
+  --   light = hsl_to_hex(fluo_hue_value, 20, 87), -- For light theme
+  -- },
   -- CursorLine background - uses configured fluo color
-  colors.bg_cursorline = opts.theme.style == "dark" and default_palette.cursorline_bg.dark
-    or default_palette.cursorline_bg.light
+  colors.bg_cursorline = config.theme.style == "dark" and colors.Fluo.very_dark
+    or colors.Fluo.very_light
 
   -- NOTE bg_border is currently not used.
   colors.bg_border = colors.grey[7]

@@ -87,6 +87,9 @@ function M.apply(colors, opts)
     parent = is_dark and colors.grey[5] or colors.grey[n - 4],
   }
 
+  -- Parentheses/brackets: use fluo accent, dark shade for dark theme, light for light.
+  colors.bracket = is_dark and colors.Fluo.dark or colors.Fluo.light
+
   -- Comments: use a grey that's clearly dimmer than syntax elements
   colors.comment = is_dark and colors.grey[6] or colors.grey[6]
 

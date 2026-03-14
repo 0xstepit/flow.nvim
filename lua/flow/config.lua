@@ -70,8 +70,8 @@ M.options = {}
 --- Validate configuration options.
 --- @param config FlowConfig
 --- @return boolean, string?
-function M:validate_options(config)
-  for _, v in ipairs(self.enum_values) do
+function M.validate_options(config)
+  for _, v in ipairs(M.enum_values) do
     local val = config
     for _, key in ipairs(v.path) do
       val = val and val[key]
@@ -111,7 +111,7 @@ end
 --- It sets the colorscheme options by merging the user provided ones with
 --- the default configuration.
 --- @param config FlowConfig? Optional table to customize the colorscheme configuration.
-function M:_setup(config)
+function M._setup(config)
   vim.notify("Flow configuration setup", vim.log.levels.DEBUG)
 
   -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
@@ -121,7 +121,7 @@ function M:_setup(config)
   end
 
   if config then
-    local ok, err = self:validate_options(config)
+    local ok, err = M.validate_options(config)
     if not ok then
       config = {}
       vim.notify("Error setting user options, fallback to defaults: " .. err, vim.log.levels.WARN)

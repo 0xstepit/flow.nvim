@@ -178,9 +178,10 @@ function M.get(c, o)
   }
 
   -- Monochrome: italic fields/properties to distinguish from comments.
-  if o.theme.mono then
+  if o.variant == "mono" then
     theme["@variable.member"] = { fg = c.light_blue, italic = true }
     theme["@property"] = { fg = c.cyan, italic = true }
+    theme["@punctuation.bracket"] = { fg = c.bracket }
   end
 
   return theme

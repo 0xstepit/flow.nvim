@@ -95,11 +95,11 @@ function M.get(c, o)
   end
 
   -- Monochrome: bold keywords/operators, italic comments/delimiters/special.
-  if o.theme.mono then
+  if o.variant == "mono" then
     theme.Comment = { fg = c.comment, italic = true }
     theme.Keyword = { fg = c.red, bold = true }
     theme.Operator = { fg = c.red, bold = true }
-    theme.Delimiter = { fg = c.purple, italic = true }
+    theme.Delimiter = { fg = c.bracket }
     theme.Special = { fg = c.purple, italic = true }
   end
 
