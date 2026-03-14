@@ -147,6 +147,7 @@ function M.get(c, o)
     -- Lua: clear LSP semantic tokens inside doc comments so luadoc
     -- captures (linked to Comment above) are not overridden.
     ["@lsp.type.keyword.lua"] = {},
+    ["@lsp.type.property.lua"] = {},
     ["@lsp.type.type.lua"] = {},
     ["@lsp.type.variable.lua"] = {},
     -- Lua docstrings: keep all luadoc captures as comments so annotations

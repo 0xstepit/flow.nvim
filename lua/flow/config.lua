@@ -1,132 +1,106 @@
-local M = {}
+--- Stores allowed values for configuration options.
+--- @class ConfigEnum
+--- @field name string The name of the enum.
+--- @field path string[] The path to get the enum field in the config.
+--- @field valid string[] Valid values.
+
+local M = {
+  --- ConfigEnum[]
+  enum_values = {
+    { name = "style", path = { "theme", "style" }, valid = { "dark", "light" } },
+    {
+      name = "contrast",
+      path = { "theme", "contrast" },
+      valid = { "default", "high" },
+    },
+    { name = "mode", path = { "colors", "mode" }, valid = { "default", "dark", "light" } },
+    {
+      path = { "colors", "fluo" },
+      valid = { "pink", "cyan", "yellow", "orange", "green" },
+      name = "fluo color",
+    },
+    {
+      name = "borders",
+      path = { "ui", "borders" },
+      valid = { "light", "dark", "none" },
+    },
+  },
+}
 
 --- Default configuration options for the colorscheme.
 --- @class FlowConfig
 M.defaults = {
+  --- @class FlowThemeConfig
+  --- @field style "dark" | "light" Defines the colorscheme theme style.
+  --- @field contrast "default" | "high" Defines whether details contrasts should be accentuated or not.
+  --- @field transparent boolean Defines whether neovim background should be transparent (fallback to terminal value) or not.
   theme = {
-    --- Defines the colorscheme theme style.
-    --- @type "dark" | "light"
     style = "dark",
-    --- Defines whether details contrasts should be accentuated or not.
-    --- @type "default" | "high"
     contrast = "default",
-    --- @boolean
     transparent = false,
-    --- @boolean Internal flag set by flow-mono entry point
-    mono = false,
   },
+  --- @class FlowColorsConfig
+  --- @field mode "default" | "dark" | "light" Defines the colors used in the syntax and UI.
+  --- @field fluo "pink" | "cyan" | "yellow" | "orange" | "green" Fluo color used in the theme.
+  --- @field custom { saturation: string, lightness: string } Allows to specify custom saturation
+  --- (0, 100) and lightness (0, 100) for theme. Despite the option is present for maximum
+  --- customizability, it is recommended to use defaults.
   colors = {
-    --- Defines the colors used in the syntax and UI.
-    ---@type "default" | "dark" | "light"
     mode = "default",
-    --- Fluo color to use in the theme.
-    ---@type "pink" | "cyan" | "yellow" | "orange" | "green"
     fluo = "pink",
-    --- Allows to specify custom saturation and light for theme. Despite the option is present for
-    --- maximum customizability, it is recommended to use defaults.
-    custom = {
-      --- A number between 0-100 as string or empty string.
-      --- @type string
-      saturation = "",
-      --- A number between 0-100 as string or empty string.
-      --- @type string
-      light = "",
-    },
+    custom = { saturation = "", lightness = "" },
   },
+  --- @class FlowUiConfig
+  --- @field borders "light" | "dark" | "none" Defines how borders of elements are displayed.
+  --- @field aggressive_spell boolean Defines if spell errors have to be highlighted with
+  --- a more outstanding color.
+  --- @field aggressive_special_comment boolean Defines if special comments (TODO, FIX, etc.)
+  --- has to be highlighted with different colors.
   ui = {
-    --- @type "light" | "dark" | "none"
-    borders = "dark",
-    --- Defines if spell errors have to be highlighted with a more outstanding color.
-    --- @boolean
+    borders = "none",
     aggressive_spell = false,
-    --- Defines if special comments (TODO, FIX, etc.) has to be highlighted with different colors.
-    --- @boolean
     aggressive_special_comment = false,
   },
 }
 
+--- Used to store colorscheme configuration with user provided custom values.
 --- @type FlowConfig
 M.options = {}
-
---- Valid values for configuration options.
-M.valid_options = {
-  fluo_colors = { "pink", "cyan", "yellow", "orange", "green" },
-  modes = { "default", "dark", "light" },
-  borders = { "light", "dark", "none" },
-  contrast = { "default", "high" },
-  custom_ranges = {
-    saturation = { min = 0, max = 100 },
-    light = { min = 0, max = 100 },
-  },
-}
 
 --- Validate configuration options.
 --- @param config FlowConfig
 --- @return boolean, string?
-local function validate_options(config)
-  -- Validate theme options.
-  if config.theme then
-    if
-      config.theme.contrast
-      and not vim.tbl_contains(M.valid_options.contrast, config.theme.contrast)
-    then
-      return false, string.format("Invalid border: %s", config.theme.contrast)
+function M:validate_options(config)
+  for _, v in ipairs(self.enum_values) do
+    local val = config
+    for _, key in ipairs(v.path) do
+      val = val and val[key]
+    end
+    if val and not vim.tbl_contains(v.valid, val) then
+      return false, string.format("Invalid %s: %s", v.name, val)
     end
   end
 
-  -- Validate color options.
-  if config.colors then
-    if
-      config.colors.fluo and not vim.tbl_contains(M.valid_options.fluo_colors, config.colors.fluo)
-    then
-      return false, string.format("Invalid fluo color: %s", config.colors.fluo)
-    end
+  -- Validate custom color values for hue and light.
+  if config.colors and config.colors.custom then
+    local sl = { saturation = { 0, 100 }, lightness = { 0, 100 } }
+    for property, range in pairs(sl) do
+      local min, max = range[1], range[2]
 
-    if config.colors.mode and not vim.tbl_contains(M.valid_options.modes, config.colors.mode) then
-      return false, string.format("Invalid mode: %s", config.colors.mode)
-    end
-
-    -- Validate custom color values for hue and light.
-    if config.colors.custom then
-      if config.colors.custom.saturation and config.colors.custom.saturation ~= "" then
-        local s = tonumber(config.colors.custom.saturation)
-        if
-          not s
-          or s < M.valid_options.custom_ranges.saturation.min
-          or s > M.valid_options.custom_ranges.saturation.max
-        then
+      local custom_val = config.colors.custom[property]
+      if custom_val and custom_val ~= "" then
+        local val = tonumber(custom_val)
+        if not val or val < min or val > max then
           return false,
             string.format(
-              "Invalid saturation value: %s (must be between %d and %d)",
-              config.colors.custom.saturation,
-              M.valid_options.custom_ranges.saturation.min,
-              M.valid_options.custom_ranges.saturation.max
+              "Invalid %s value: %s (must be between %d and %d)",
+              property,
+              custom_val,
+              min,
+              max
             )
         end
       end
-      if config.colors.custom.light and config.colors.custom.light ~= "" then
-        local l = tonumber(config.colors.custom.light)
-        if
-          not l
-          or l < M.valid_options.custom_ranges.light.min
-          or l > M.valid_options.custom_ranges.light.max
-        then
-          return false,
-            string.format(
-              "Invalid light value: %s (must be between %d and %d)",
-              config.colors.custom.light,
-              M.valid_options.custom_ranges.light.min,
-              M.valid_options.custom_ranges.light.max
-            )
-        end
-      end
-    end
-  end
-
-  -- Validate UI options.
-  if config.ui then
-    if config.ui.borders and not vim.tbl_contains(M.valid_options.borders, config.ui.borders) then
-      return false, string.format("Invalid border: %s", config.ui.borders)
     end
   end
 
@@ -136,20 +110,25 @@ end
 --- This is the entry point of the configuration before loading the plugin.
 --- It sets the colorscheme options by merging the user provided ones with
 --- the default configuration.
---- @param config FlowConfig? Optional table to customize the colorscheme setup.
-function M._setup(config)
+--- @param config FlowConfig? Optional table to customize the colorscheme configuration.
+function M:_setup(config)
+  vim.notify("Flow configuration setup", vim.log.levels.DEBUG)
+
   -- Short circuit if options have been already set. This happen when the colorscheme is loaded from
   -- the plugin manager because it first set the options, and then set the colorscheme.
   if not vim.tbl_isempty(M.options) then
     return
   end
 
-  local ok, err = validate_options(config or {})
-  if not ok then
-    config = {}
-    vim.notify("Error setting user options, fallback to defaults: " .. err, vim.log.levels.WARN)
+  if config then
+    local ok, err = self:validate_options(config)
+    if not ok then
+      config = {}
+      vim.notify("Error setting user options, fallback to defaults: " .. err, vim.log.levels.WARN)
+    end
   end
 
+  -- Set to the table the default config updated with the user provided one.
   M.options = vim.tbl_deep_extend("force", {}, M.defaults, config or {})
 end
 

@@ -168,7 +168,7 @@ function M.get(config)
   shade = M.update_light_and_saturation(
     shade,
     config.colors.mode,
-    config.colors.custom.light,
+    config.colors.custom.lightness,
     config.colors.custom.saturation
   )
 

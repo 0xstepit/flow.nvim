@@ -1,1 +1,1 @@
-require("flow").load()
+require("flow").load("classic")
