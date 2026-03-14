@@ -1,4 +1,4 @@
-local flow_colors = require("flow.colors")
+local colors = require("flow.colors")
 local util = require("flow.util")
 
 local M = {
@@ -34,8 +34,6 @@ local M = {
     "undotree",
     "vim-highlighturl",
   },
-
-  b = {},
 }
 
 --- Sets the highlight groups up by merging the colors
@@ -44,23 +42,21 @@ local M = {
 --- @return table Flow colors.
 function M.configure()
   -- Options retrieved can be the default one or those modified by the call to
-  -- `require("flow").config{}`
+  -- `require("flow").setup{}`
   local options = require("flow.config").options
 
-  local colors = flow_colors.setup(options)
+  local flow_colors = colors.setup(options)
 
   local highlights = {}
 
   for _, h in ipairs(M.active_highlights) do
     local group_path = "flow.highlights." .. h
     local group = require(group_path)
-    local hi = group.get(colors, options)
+    local hi = group.get(flow_colors, options)
     highlights = util.merge(highlights, hi)
   end
 
-  vim.api.nvim_set_hl(0, "@lsp.type.property.lua", {})
-
-  return highlights, colors
+  return highlights, flow_colors
 end
 
 return M

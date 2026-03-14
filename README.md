@@ -14,6 +14,28 @@ Why fluo? Because it's simply cool!
 
 ![flow-multiple-terminal](https://github.com/user-attachments/assets/9d1f367a-7a9d-478d-9fe0-a67bd33eca1a)
 
+## Variants
+
+Flow colorscheme family offers two variants:
+
+- `default`: is the original version of the colorscheme providing a wide range of colors.
+  This variant is recommended for people that likes selected colors for every semantic syntax in the UI.
+
+- `mono`: the mono variant is designed to be minimal, offering only shades of grey and the selected
+  fluo. This variant is recommended for people that want a super focusing environment.
+
+To variant can be selected by loading the colorscheme with the specific name:
+
+```lua
+ vim.cmd("colorscheme flow")
+```
+
+Or:
+
+```lua
+ vim.cmd("colorscheme flow-mono")
+```
+
 ## Palette
 
 Flow uses a palette of nine HSL-based colors, chosen to create a cohesive and visually appealing
