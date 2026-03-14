@@ -1,4 +1,4 @@
-*flow.nvim.txt*        For Neovim >= 0.8.0       Last change: 2026 February 25
+*flow.nvim.txt*         For Neovim >= 0.8.0         Last change: 2026 March 14
 
 ==============================================================================
 Table of Contents                                *flow.nvim-table-of-contents*
@@ -36,26 +36,25 @@ VARIANTS                                        *flow.nvim-🌊-flow-variants*
 
 Flow colorscheme family offers two variants:
 
-- `default`: is the original version of the colorscheme providing a wide range
-    of colors. This variant is recommended for people that likes selected colors
-    for every semantic syntax in the UI.
-
+- `default`: is the original version of the colorscheme providing a wide range of
+    colors. This variant is recommended for people that likes selected colors for
+    every semantic syntax in the UI.
 - `mono`: the mono variant desaturates all syntax colors to metallic grey shades
-    with a cool blue hue, while mapping keywords and operators to the selected
-    fluo accent color. Diagnostics also use fluo shades. This variant is
-    recommended for people that want a super focusing environment where the
-    accent color draws attention to what matters most.
+    with a cool blue hue, while mapping keywords and operators to the selected fluo
+    accent color. Diagnostics also use fluo shades. This variant is recommended for
+    people that want a super focusing environment where the accent color draws
+    attention to what matters most.
 
-The variant can be selected by loading the colorscheme with the specific name:
+To variant can be selected by loading the colorscheme with the specific name:
 
 >lua
-    vim.cmd("colorscheme flow")
+     vim.cmd("colorscheme flow")
 <
 
 Or:
 
 >lua
-    vim.cmd("colorscheme flow-mono")
+     vim.cmd("colorscheme flow-mono")
 <
 
 
