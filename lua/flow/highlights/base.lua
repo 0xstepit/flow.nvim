@@ -136,7 +136,7 @@ function M.get(c, o)
   }
 
   -- Monochrome: collapse FlowKind groups to ~6 grey lightness tiers.
-  if o.theme.mono then
+  if o.variant == "mono" then
     -- Tier 1: Keywords/constructors/classes
     theme.FlowKindKeyword = { fg = c.red, bold = true }
     theme.FlowKindConstructor = { fg = c.red, bold = true }

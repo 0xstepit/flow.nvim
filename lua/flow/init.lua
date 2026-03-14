@@ -33,6 +33,9 @@ function M.load(variant)
     vim.g.colors_name = M.names[variant]
   end
 
+  -- Set the variant on the config so highlight modules can check it.
+  config.options.variant = variant
+
   local highlights, colors = theme.configure()
 
   -- The heart of the plugin, where highlight groups are set.
