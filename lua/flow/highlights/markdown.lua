@@ -51,7 +51,6 @@ function M.get(c, o)
     ["@markup.link.url"] = { link = "Underlined" },
     ["@keyword.directive.markdown"] = { fg = c.light_blue }, -- used for `---`
     ["@punctuation.special.markdown"] = { link = "@keyword.directive.markdown" },
-    ["@spell.markdown"] = { link = "@spell" },
 
     ["@markup.list"] = { fg = c.yellow, bold = true }, -- For special punctuation that does not fall in the categories before. Also used in rust.
     ["@markup.list.unchecked"] = { fg = c.sky_blue }, -- For brackets and parens.
@@ -74,6 +73,13 @@ function M.get(c, o)
   local headers = { c.purple, c.blue, c.light_blue, c.cyan, c.sky_blue }
   for i, color in ipairs(headers) do
     theme["@markup.heading." .. i .. ".markdown"] = { fg = color, bold = true }
+  end
+
+  -- Monochrome: collapse FlowKind groups to ~6 grey lightness tiers.
+  if o.variant == "mono" then
+    for i = 0, 4 do
+      theme["@markup.heading." .. i .. ".markdown"] = { fg = c.fluo, bold = true }
+    end
   end
 
   return theme

@@ -89,22 +89,12 @@ function M.get(c, o)
     qfSeparator = { link = "qfLineNr" }, -- Separator between quickfix line number and filename.
 
     -- Spelling
-    SpellBad = {
-      fg = is_aggressive_spell and c.error or c.comment,
+    SpellBad = vim.tbl_extend("force", {
       undercurl = true,
-    }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap = {
-      fg = is_aggressive_spell and c.warning or c.comment,
-      undercurl = true,
-    }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal = {
-      fg = is_aggressive_spell and c.info or c.comment,
-      undercurl = true,
-    }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare = {
-      fg = is_aggressive_spell and c.hint or c.comment,
-      undercurl = true,
-    }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    }, is_aggressive_spell and { fg = c.error } or {}), -- Word that is not recognized by the spellchecker.
+    SpellCap = { link = "SpellBad" }, -- Word that should start with a capital.
+    SpellLocal = { link = "SpellBad" }, -- Word that is recognized by the spellchecker as one that is used in another region.
+    SpellRare = { link = "SpellBad" }, -- Word that is recognized by the spellchecker as one that is hardly ever used.
 
     -- Misc
     -- I'm not sure where these groups are set.
@@ -137,6 +127,7 @@ function M.get(c, o)
 
   -- Monochrome: collapse FlowKind groups to ~6 grey lightness tiers.
   if o.variant == "mono" then
+    theme.Normal = { fg = c.grey[10] }
     -- Tier 1: Keywords/constructors/classes
     theme.FlowKindKeyword = { fg = c.red, bold = true }
     theme.FlowKindConstructor = { fg = c.red, bold = true }
