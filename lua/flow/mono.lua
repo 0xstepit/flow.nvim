@@ -61,11 +61,9 @@ function M.apply(colors, opts)
     very_light = colors.Fluo.light,
   }
 
-  -- 3. Remap semantic colors
-  -- Diagnostics: fluo shades for error/warning/info, grey for hint
-  colors.error = colors.Fluo.default
-  colors.warning = colors.Fluo.dark
-  colors.info = colors.Fluo.light
+  colors.error = colors.Fluo.light
+  colors.warning = colors.Fluo.very_light
+  colors.info = colors.grey[5]
   colors.hint = colors.grey[7]
 
   -- Git: distinct metallic grey values
@@ -87,7 +85,6 @@ function M.apply(colors, opts)
     parent = is_dark and colors.grey[5] or colors.grey[n - 4],
   }
 
-  -- Parentheses/brackets: use fluo accent, dark shade for dark theme, light for light.
   colors.bracket = is_dark and colors.Fluo.dark or colors.Fluo.light
 
   -- Comments: use a grey that's clearly dimmer than syntax elements
