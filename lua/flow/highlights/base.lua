@@ -65,7 +65,7 @@ function M.get(c, o)
     CurSearch = { bg = (not is_dark and c.Fluo.dark) or c.Fluo.light, fg = c.bg_visual }, -- Used for highlighting a search pattern under the cursor (see 'hlsearch').
     Substitute = { link = "IncSearch" }, -- |:substitute| replacement text highlighting.
 
-    Visual = { bg = c.bg_visual }, -- Visual mode selection.
+    Visual = { bg = c.bg_visual, fg = c.fg }, -- Visual mode selection.
     VisualNOS = { bg = c.to_check }, -- visual mode selection when vim is "Not Owning the Selection".
 
     -- Messages
